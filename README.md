@@ -6,7 +6,23 @@
 
 Site: https://phyoethantnaing.github.io/Hsk-Learning/ (after the first deploy)
 
-> 🚧 Work in progress. Phase 1 is vocabulary; workbooks (Phase 2) and audio files (Phase 3) come later.
+> Phase 1 (vocabulary) is live for HSK 1; other levels follow. Workbooks (Phase 2) and recorded audio (Phase 3) come later — the data formats are already in place.
+
+## Site pages
+
+| Page | What it does |
+|---|---|
+| `/` | Choose a level; progress per level |
+| `/start/` | Beginner lessons: pinyin, the tones (with pitch diagrams and 🔊), tone marks, sounds Myanmar lacks, a daily routine |
+| `/hsk1/` | Lessons of 20 words with progress |
+| `/hsk1/lesson/1/` | The lesson's word cards |
+| `/hsk1/lesson/1/flashcards/` | Flashcards (သိတယ် / မသိသေးဘူး) |
+| `/hsk1/hsk1-0001/` | Word page: Simplified/Traditional, tone chips, all explanations, examples, related words, previous/next |
+| `/search/` | Search by Chinese, pinyin (ài / ai4 / ai), Myanmar or English |
+| `/flashcards/`, `/about/` | Flashcard lessons; data sources and licenses |
+
+Progress (learned words, flashcard answers) is stored only in the learner's browser (`localStorage`).
+🔊 uses the browser's Chinese voice until recorded audio exists (see `public/audio/README.md`).
 
 ## Run locally
 
@@ -22,6 +38,7 @@ npm run build      # static site in dist/
 
 | Command | What it does |
 |---|---|
+| `npm run sync-words` | Fills in fields copied from the official list and generated pinyin fields in `data/words/`. |
 | `npm run parse-pdfs` | Re-extracts `source/pdfs/*.pdf` into `data/raw/*.json` and checks every level's word count. |
 | `npm run validate` | Checks every word in `data/words/` against the schema and the official list, checks generated pinyin fields, and rejects Zawgyi-encoded text. |
 | `npm run check-vocab` | Flags example-sentence words above the word's own HSK level. |
@@ -36,7 +53,9 @@ source/pdfs/             official HSK 3.0 (2025) word lists (input)
 data/raw/hsk{1..6,7-9}.json   parsed lists: id, simplified, traditional, pinyin, english
 data/words/hsk1/hsk1-001-050.json   Myanmar learning content, 50 words per file
 data/schema/word.schema.json   the format of one word entry
-data/example-vocab-allowlist.json   rare exceptions for check-vocab (e.g. names)
+data/example-vocab-allowlist.json   proper nouns allowed in examples (缅甸, 仰光, 曼德勒)
+data/workbooks/          Phase 2 exercises (schema: data/schema/exercise.schema.json)
+public/audio/            Phase 3 recordings (naming: public/audio/README.md)
 scripts/                 parser and checks
 src/                     the Astro site
 ```
