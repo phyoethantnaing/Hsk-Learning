@@ -6,7 +6,7 @@ import { join } from "node:path";
 import { navigationSection } from "../src/lib/navigation.mjs";
 const base =
   process.env.AUDIT_BASE_URL || "http://localhost:4321/Hsk-Learning/";
-const output = "artifacts/audit";
+const output = process.env.AUDIT_OUTPUT || "artifacts/audit";
 await mkdir(output, { recursive: true });
 async function htmlFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -40,47 +40,61 @@ async function inspect(page, route, label, width) {
   page.on("pageerror", error);
   const response = await page.goto(new URL(route, base).href);
   await page.evaluate(() => document.fonts.ready);
-  const metrics = await page.evaluate(() => {
-    const icons = [...document.querySelectorAll("svg[data-icon]")].map(
-      (svg) => {
-        const clone = svg.cloneNode(true);
-        clone.style.cssText =
-          "position:fixed;left:0;top:0;display:block;visibility:hidden;pointer-events:none";
-        document.body.append(clone);
-        const box = clone.querySelector("path").getBBox();
-        clone.remove();
-        return {
-          name: svg.dataset.icon,
-          bounds: [box.x, box.y, box.width, box.height],
-          clipped:
-            (box.width > 0 || box.height > 0) &&
-            (box.x < 0.5 ||
-              box.y < 0.5 ||
-              box.x + box.width > 23.5 ||
-              box.y + box.height > 23.5),
-        };
-      },
-    );
-    const nav = document.querySelector("#site-nav");
-    const rect = nav.getBoundingClientRect();
-    return {
-      overflow: document.documentElement.scrollWidth > innerWidth,
-      h1: document.querySelectorAll("main h1").length,
-      active: nav.querySelector("[aria-current]")?.dataset.section || null,
-      navVisible: rect.width > 0 && rect.height > 0,
-      smallTargets: [
-        ...nav.querySelectorAll("a"),
-        ...document.querySelectorAll("button:not([hidden])"),
-      ]
-        .filter((el) => el.getClientRects().length)
-        .filter((el) => {
-          const r = el.getBoundingClientRect();
-          return r.width < 43.5 || r.height < 43.5;
-        })
-        .map((el) => el.outerHTML.slice(0, 160)),
-      icons,
-    };
-  });
+  const metrics = await page.evaluate(
+    (known) => {
+      // Identical vector paths need only one geometry measurement. Repeated
+      // getBBox calls otherwise force thousands of layouts in the QA harness.
+      const verified = new Map(
+        known.map((icon) => [icon.name + icon.path, icon]),
+      );
+      const icons = [...document.querySelectorAll("svg[data-icon]")].map(
+        (svg) => {
+          const path = svg.querySelector("path").getAttribute("d");
+          const key = svg.dataset.icon + path;
+          if (verified.has(key)) return verified.get(key);
+          const clone = svg.cloneNode(true);
+          clone.style.cssText =
+            "position:fixed;left:0;top:0;display:block;visibility:hidden;pointer-events:none";
+          document.body.append(clone);
+          const box = clone.querySelector("path").getBBox();
+          clone.remove();
+          const icon = {
+            name: svg.dataset.icon,
+            path,
+            bounds: [box.x, box.y, box.width, box.height],
+            clipped:
+              (box.width > 0 || box.height > 0) &&
+              (box.x < 0.5 ||
+                box.y < 0.5 ||
+                box.x + box.width > 23.5 ||
+                box.y + box.height > 23.5),
+          };
+          verified.set(key, icon);
+          return icon;
+        },
+      );
+      const nav = document.querySelector("#site-nav");
+      const rect = nav.getBoundingClientRect();
+      return {
+        overflow: document.documentElement.scrollWidth > innerWidth,
+        h1: document.querySelectorAll("main h1").length,
+        active: nav.querySelector("[aria-current]")?.dataset.section || null,
+        navVisible: rect.width > 0 && rect.height > 0,
+        smallTargets: [
+          ...nav.querySelectorAll("a"),
+          ...document.querySelectorAll("button:not([hidden])"),
+        ]
+          .filter((el) => el.getClientRects().length)
+          .filter((el) => {
+            const r = el.getBoundingClientRect();
+            return r.width < 43.5 || r.height < 43.5;
+          })
+          .map((el) => el.outerHTML.slice(0, 160)),
+        icons,
+      };
+    },
+    [...inventory.values()],
+  );
   page.off("pageerror", error);
   for (const icon of metrics.icons) inventory.set(icon.name, icon);
   const expected = navigationSection("/" + route);
