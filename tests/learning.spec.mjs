@@ -502,7 +502,7 @@ test("pager boundaries keep next on the right and expose unavailable destination
   );
 });
 
-test("virtual keyboard hides floating tabs only while text editing", async ({
+test("floating tabs wait for the closing keyboard viewport to recover", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -516,6 +516,14 @@ test("virtual keyboard hides floating tabs only while text editing", async ({
   await page.locator("#q").focus();
   await expect(page.locator("#site-nav")).toBeHidden();
   await page.locator("#q").press("Enter");
+  await expect(page.locator("#site-nav")).toBeHidden();
+  await page.evaluate(() => {
+    Object.defineProperty(window.visualViewport, "height", {
+      configurable: true,
+      get: () => innerHeight,
+    });
+    window.visualViewport.dispatchEvent(new Event("resize"));
+  });
   await expect(page.locator("#site-nav")).toBeVisible();
 });
 

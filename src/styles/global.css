@@ -13,6 +13,10 @@
   --accent-text: #fff;
   --accent-soft: #fbecea;
   --focus: #bd2424;
+  --gold: #805c1a;
+  --gold-edge: #b18a3e;
+  --gold-soft: #fbf4e3;
+  --gold-glint: rgb(201 162 77 / 12%);
   --draft-bg: #f2ecec;
   --draft-text: #744442;
   --tone1: #be2424;
@@ -47,6 +51,10 @@
   --accent-text: #23100e;
   --accent-soft: #392322;
   --focus: #ff9993;
+  --gold: #dfbf75;
+  --gold-edge: #987a40;
+  --gold-soft: #30291d;
+  --gold-glint: rgb(223 191 117 / 10%);
   --draft-bg: #322827;
   --draft-text: #e2b8b4;
   --tone1: #ff8881;
@@ -72,6 +80,10 @@
     --accent-text: #23100e;
     --accent-soft: #392322;
     --focus: #ff9993;
+    --gold: #dfbf75;
+    --gold-edge: #987a40;
+    --gold-soft: #30291d;
+    --gold-glint: rgb(223 191 117 / 10%);
     --draft-bg: #322827;
     --draft-text: #e2b8b4;
     --tone1: #ff8881;
@@ -208,21 +220,17 @@ main > section + section {
 ) {
   .glass {
     background-color: var(--glass);
-    -webkit-backdrop-filter: blur(20px) saturate(135%);
-    backdrop-filter: blur(20px) saturate(135%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
+    backdrop-filter: blur(12px) saturate(115%);
   }
 }
 a.card,
 button.card {
-  transition:
-    transform 220ms var(--ease),
-    box-shadow 220ms var(--ease),
-    border-color 220ms;
+  transition: border-color 140ms;
 }
 @media (hover: hover) {
   a.card:hover,
   button.card:hover {
-    transform: translateY(-3px);
     box-shadow: var(--shadow-raised);
     border-color: var(--accent);
   }
@@ -317,18 +325,23 @@ button.card {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition:
-    transform 180ms var(--ease),
-    box-shadow 180ms,
-    border-color 180ms;
+  transition: border-color 140ms;
 }
-.btn:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
+@media (hover: hover) {
+  .btn:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
 }
 .btn:active,
+a.card:active,
 button.card:active {
-  transform: scale(0.98);
+  background-color: var(--surface-2);
+  border-color: var(--accent);
+}
+.btn-primary:active {
+  background: #b92323;
+  border-color: #a82020;
 }
 .btn-primary {
   background: linear-gradient(160deg, #d8322e, #b92323);
@@ -338,9 +351,11 @@ button.card:active {
     inset 0 1px 0 rgb(255 255 255 / 25%),
     0 4px 12px rgb(180 35 30 / 16%);
 }
-.btn-primary:hover {
-  border-color: #a91e1e;
-  box-shadow: 0 6px 18px rgb(180 35 30 / 25%);
+@media (hover: hover) {
+  .btn-primary:hover {
+    border-color: #a91e1e;
+    box-shadow: 0 6px 18px rgb(180 35 30 / 25%);
+  }
 }
 button:disabled,
 .btn[aria-disabled="true"] {
@@ -368,21 +383,19 @@ button:disabled,
   color: var(--accent);
   line-height: 1;
   cursor: pointer;
-  transition:
-    background 180ms,
-    transform 180ms;
+  transition: background 120ms;
 }
 .speak.large {
   width: 54px;
   height: 54px;
 }
-.speak:hover,
 .speak.speaking {
   border-color: var(--accent);
   background: var(--accent-soft);
 }
 .speak:active {
-  transform: scale(0.94);
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 .speak-message {
   position: fixed;
@@ -424,10 +437,12 @@ button:disabled,
 .progress-bar > span {
   display: block;
   height: 100%;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
   border-radius: inherit;
   background: var(--accent);
-  transition: width 300ms var(--ease);
+  transition: transform 160ms var(--ease);
 }
 .progress[data-complete="true"] .progress-text {
   color: var(--accent);
@@ -522,15 +537,16 @@ body {
   color: var(--text);
   text-decoration: none;
   cursor: pointer;
-  transition:
-    background 160ms,
-    transform 160ms var(--ease);
+  transition: background 120ms;
 }
-.icon-button:hover {
-  background: var(--surface-2);
+@media (hover: hover) {
+  .icon-button:hover {
+    background: var(--surface-2);
+  }
 }
 .icon-button:active {
-  transform: scale(0.94);
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 .icon-button[aria-current] {
   color: var(--accent);
@@ -545,10 +561,10 @@ body {
     145deg,
     var(--highlight),
     transparent 42%,
-    var(--highlight) 160%
+    var(--gold-glint) 160%
   );
   box-shadow:
-    0 8px 32px rgb(0 0 0 / 9%),
+    0 5px 18px rgb(0 0 0 / 7%),
     inset 0 1px 0 var(--highlight),
     inset 0 -1px 0 rgb(0 0 0 / 4%);
 }
@@ -681,5 +697,54 @@ html:has(dialog[open]) {
     --border: #93939c;
     --text-muted: #dedee4;
     --glass: #1d1d21;
+  }
+}
+
+/* Native activation stays on the stable outer target. Pan and pinch zoom remain
+   available; manipulation only removes double-tap zoom delay on controls. */
+a,
+button,
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+.icon,
+.sound-icon,
+.stop-icon {
+  pointer-events: none;
+}
+:where(a, button):active {
+  transition-duration: 0s;
+}
+@media (hover: hover) {
+  .speak:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+}
+
+/* Gold signifies a selected learning path or earned mastery; actions stay red. */
+.eyebrow,
+main h2 > .icon {
+  color: var(--gold);
+}
+.progress[data-complete="true"] .progress-bar > span {
+  background: var(--gold);
+}
+.progress[data-complete="true"] .progress-text {
+  color: var(--gold);
+}
+.learned-btn[aria-pressed="true"] {
+  color: var(--gold);
+  border-color: var(--gold-edge);
+  background: var(--gold-soft);
+}
+@media (forced-colors: active) {
+  .eyebrow,
+  main h2 > .icon,
+  .learned-btn[aria-pressed="true"] {
+    color: CanvasText;
   }
 }

@@ -64,30 +64,45 @@ const exact = (href: string) =>
   const chrome = document.querySelector<HTMLElement>(".site-header")!;
   const navigation = document.querySelector<HTMLElement>("#site-nav")!;
   if ("ResizeObserver" in window) {
+    let navHeight = -1;
+    let headerHeight = -1;
     const observer = new ResizeObserver(() => {
-      document.documentElement.style.setProperty(
-        "--nav-height",
-        `${navigation.getBoundingClientRect().height}px`,
-      );
-      document.documentElement.style.setProperty(
-        "--header-height",
-        `${chrome.getBoundingClientRect().height}px`,
-      );
+      // Read both boxes before writing root styles. Avoid redundant invalidation.
+      const nextNavHeight = navigation.getBoundingClientRect().height;
+      const nextHeaderHeight = chrome.getBoundingClientRect().height;
+      if (nextNavHeight !== navHeight) {
+        navHeight = nextNavHeight;
+        document.documentElement.style.setProperty(
+          "--nav-height",
+          `${navHeight}px`,
+        );
+      }
+      if (nextHeaderHeight !== headerHeight) {
+        headerHeight = nextHeaderHeight;
+        document.documentElement.style.setProperty(
+          "--header-height",
+          `${headerHeight}px`,
+        );
+      }
     });
     observer.observe(chrome);
     observer.observe(navigation);
   }
   const viewport = window.visualViewport;
+  let keyboardOpen = false;
   function updateKeyboard() {
     const editing = document.activeElement?.matches(
       'input:not([type="radio"]), textarea, [contenteditable="true"]',
     );
-    document.documentElement.classList.toggle(
-      "keyboard-open",
-      Boolean(
-        editing && viewport && window.innerHeight - viewport.height > 120,
-      ),
+    const covered = Boolean(
+      viewport &&
+      viewport.scale === 1 &&
+      window.innerHeight - viewport.height > 120,
     );
+    // Blur precedes the keyboard's closing animation. Keep tabs out of the
+    // reduced viewport until it recovers, so they cannot cover the next tap.
+    keyboardOpen = covered && Boolean(editing || keyboardOpen);
+    document.documentElement.classList.toggle("keyboard-open", keyboardOpen);
   }
   viewport?.addEventListener("resize", updateKeyboard);
   document.addEventListener("focusin", updateKeyboard);
@@ -168,13 +183,13 @@ const exact = (href: string) =>
     color: var(--text-muted);
     transition:
       background 160ms,
-      color 160ms,
-      transform 160ms var(--ease);
+      color 120ms;
   }
   nav a[aria-current] {
     background: var(--accent-soft);
     color: var(--accent);
     font-weight: 700;
+    box-shadow: inset 0 -1px 0 var(--gold-edge);
   }
   nav a[aria-current] :global(svg) {
     stroke-width: 2.2;
@@ -186,7 +201,8 @@ const exact = (href: string) =>
     }
   }
   nav a:active {
-    transform: scale(0.96);
+    background: var(--accent-soft);
+    color: var(--accent);
   }
   @media (max-width: 899px) {
     .header-inner {

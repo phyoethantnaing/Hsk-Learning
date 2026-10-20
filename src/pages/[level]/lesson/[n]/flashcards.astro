@@ -204,7 +204,6 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
     border-radius: 30px;
     box-shadow: var(--shadow-raised);
     background: var(--surface);
-    animation: reveal 260ms var(--ease);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -217,6 +216,9 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
     font: inherit;
     color: inherit;
     cursor: pointer;
+  }
+  .back {
+    animation: reveal 120ms var(--ease);
   }
 
   .front .hanzi {
@@ -269,11 +271,9 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
   @keyframes reveal {
     from {
       opacity: 0.4;
-      transform: translateY(8px) rotateX(5deg);
     }
     to {
       opacity: 1;
-      transform: none;
     }
   }
 
@@ -283,8 +283,9 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
     width: 68px;
     height: 68px;
     border-radius: 50%;
-    color: var(--accent);
-    background: var(--accent-soft);
+    color: var(--gold);
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-edge);
     margin: 0 auto 20px;
   }
   .more {
@@ -322,6 +323,7 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
     }
   }
   .done {
+    border-color: var(--gold-edge);
     text-align: center;
   }
 
@@ -350,6 +352,7 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
   let index = 0;
   let unknown: HTMLElement[] = [];
   let knownCount = 0;
+  let visibleCard: HTMLElement | undefined;
 
   function start(list: HTMLElement[]) {
     queue = list;
@@ -365,10 +368,11 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
     document.dispatchEvent(new CustomEvent("learning-card-change"));
     progress.setAttribute("aria-valuemax", String(queue.length));
     progress.setAttribute("aria-valuenow", String(index));
-    progress.querySelector<HTMLElement>("span")!.style.width =
-      `${queue.length ? (index / queue.length) * 100 : 0}%`;
-    for (const c of cards) c.hidden = true;
+    progress.querySelector<HTMLElement>("span")!.style.transform =
+      `scaleX(${queue.length ? index / queue.length : 0})`;
+    if (visibleCard) visibleCard.hidden = true;
     const card = queue[index];
+    visibleCard = card;
     if (!card) {
       answer.hidden = true;
       answer.parentElement!.hidden = true;

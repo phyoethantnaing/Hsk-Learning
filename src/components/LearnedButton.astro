@@ -12,6 +12,8 @@ const { id } = Astro.props;
   class="btn learned-btn"
   data-learned-id={id}
   aria-pressed="false"
+  disabled
+  aria-busy="true"
 >
   <span class="off">
     <Icon name="circle" size={20} /> ဒီစကားလုံး သိပြီ
@@ -32,9 +34,9 @@ const { id } = Astro.props;
   }
 
   .learned-btn[aria-pressed="true"] {
-    background: var(--accent-soft);
-    border-color: var(--accent);
-    color: var(--accent);
+    background: var(--gold-soft);
+    border-color: var(--gold-edge);
+    color: var(--gold);
   }
 
   .learned-btn[aria-pressed="true"] .on {
@@ -57,5 +59,7 @@ const { id } = Astro.props;
     const id = btn.dataset.learnedId!;
     onProgress(() => btn.setAttribute("aria-pressed", String(isLearned(id))));
     btn.addEventListener("click", () => setLearned(id, !isLearned(id)));
+    btn.disabled = false;
+    btn.removeAttribute("aria-busy");
   }
 </script>

@@ -45,13 +45,33 @@ import { url } from "../lib/site.mjs";
     <Icon name="search" size={32} />
     <p>တရုတ်စာလုံး၊ pinyin၊ မြန်မာ သို့မဟုတ် English</p>
     <div class="suggestions">
-      <button class="btn" type="button" data-query="你好" lang="zh-Hans">
+      <button
+        class="btn"
+        type="button"
+        data-query="你好"
+        lang="zh-Hans"
+        disabled
+        aria-busy="true"
+      >
         你好
       </button>
-      <button class="btn" type="button" data-query="ai4" lang="en">
+      <button
+        class="btn"
+        type="button"
+        data-query="ai4"
+        lang="en"
+        disabled
+        aria-busy="true"
+      >
         ai4
       </button>
-      <button class="btn" type="button" data-query="ချစ်">
+      <button
+        class="btn"
+        type="button"
+        data-query="ချစ်"
+        disabled
+        aria-busy="true"
+      >
         ချစ်
       </button>
     </div>
@@ -219,6 +239,7 @@ import { url } from "../lib/site.mjs";
   let pending: Promise<Entry[]> | null = null;
   let request = 0;
   let composing = false;
+  let renderedQuery: string | null = null;
   const empty = document.querySelector<HTMLElement>("[data-search-empty]")!;
   const retry = document.querySelector<HTMLButtonElement>(
     "[data-search-retry]",
@@ -290,6 +311,7 @@ import { url } from "../lib/site.mjs";
   }
 
   function render(list: Entry[], q: string) {
+    renderedQuery = q;
     results.replaceChildren(
       ...list.map((e) => {
         const li = document.createElement("li");
@@ -322,6 +344,7 @@ import { url } from "../lib/site.mjs";
       history.replaceState(history.state, "", address);
     }
     clear.hidden = !q;
+    if (index && renderedQuery === q) return;
     retry.hidden = true;
     if (!q) {
       results.setAttribute("aria-busy", "false");
@@ -384,13 +407,24 @@ import { url } from "../lib/site.mjs";
   });
   for (const chip of document.querySelectorAll<HTMLButtonElement>(
     "[data-query]",
-  ))
+  )) {
     chip.addEventListener("click", () => {
       input.value = chip.dataset.query!;
       input.focus();
       search();
     });
+    chip.disabled = false;
+    chip.removeAttribute("aria-busy");
+  }
+  let initialized = false;
   function restore() {
+    // Preserve text entered while this module and its Pinyin dependency load.
+    if (!initialized && input.value) {
+      initialized = true;
+      search();
+      return;
+    }
+    initialized = true;
     input.value = new URLSearchParams(location.search).get("q") || "";
     search(false);
   }
