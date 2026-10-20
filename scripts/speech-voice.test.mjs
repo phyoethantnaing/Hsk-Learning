@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import { mandarinVoice } from "../src/lib/speech-voice.mjs";
+const cantonese = { lang: "zh-HK" };
+const mainland = { lang: "zh-CN" };
+const taiwan = { lang: "zh-TW" };
+const singapore = { lang: "zh-SG" };
+assert.equal(mandarinVoice([cantonese, taiwan, singapore]), singapore);
+assert.equal(mandarinVoice([taiwan, mainland]), mainland);
+assert.equal(mandarinVoice([cantonese, taiwan]), taiwan);
+assert.equal(mandarinVoice([cantonese, { lang: "en-US" }]), null);
+assert.equal(mandarinVoice([]), null);
+assert.equal(mandarinVoice([{ lang: "zh-Hant-HK" }]), null);

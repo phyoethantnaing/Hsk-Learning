@@ -1,18 +1,17 @@
 ---
 // Flashcards for one lesson. Front: character. Back: pinyin, meaning, one example.
 // "သိတယ်" / "မသိသေးဘူး" answers are saved with src/scripts/progress.js.
-import PageIntro from "../../../../components/PageIntro.astro";
+import Icon from "../../../../components/Icon.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import Pinyin from "../../../../components/Pinyin.astro";
 import SpeakButton from "../../../../components/SpeakButton.astro";
 import {
   readyLevels,
   lessonsFor,
-  levelUrl,
   lessonUrl,
   wordUrl,
 } from "../../../../lib/words.mjs";
-import { myNumber, url } from "../../../../lib/site.mjs";
+import { myNumber } from "../../../../lib/site.mjs";
 
 export function getStaticPaths() {
   return readyLevels().flatMap((level) =>
@@ -28,107 +27,111 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
 ---
 
 <BaseLayout title={title}>
-  <p class="breadcrumb">
-    <a href={url("/")}>ပင်မ</a> ›{" "}
-    <a href={levelUrl(level.key)}>{level.label}</a> ›{" "}
-    <a href={lessonUrl(level.key, lesson.n)}>သင်ခန်းစာ {myNumber(lesson.n)}</a>{" "}
-    › ကတ်ပြား
-  </p>
-  <PageIntro
-    eyebrow="RECALL · REVEAL · REMEMBER"
-    title="ကတ်ပြား လေ့ကျင့်ခန်း"
-  />
-  <p class="muted">
-    စာလုံးကို ကြည့်ပြီး အဓိပ္ပာယ်နဲ့ အသံကို စိတ်ထဲမှာ ပြောကြည့်ပါ။ ပြီးရင်
-    ကတ်ကို နှိပ်ပြီး အဖြေကို ကြည့်ပါ။
-  </p>
-
-  <div class="deck" data-deck>
-    <div
-      class="deck-progress progress-bar"
-      role="progressbar"
-      aria-label="ကတ်ပြား တိုးတက်မှု"
-      aria-valuemin="0"
-      aria-valuemax={lesson.words.length}
-      aria-valuenow="0"
-      data-deck-progress
-    >
-      <span></span>
+  <section class="practice-shell" aria-labelledby="practice-title">
+    <div class="practice-heading">
+      <a class="lesson-back" href={lessonUrl(level.key, lesson.n)}>
+        <Icon name="back" size={19} />
+        <span>
+          {level.label} · သင်ခန်းစာ {myNumber(lesson.n)}
+        </span>
+      </a>
+      <h1 id="practice-title">ကတ်ပြား လေ့ကျင့်ခန်း</h1>
+      <p class="practice-help muted">အဖြေကို စဉ်းစားပြီး ကတ်ကို လှန်ပါ။</p>
     </div>
-    <p class="counter muted" aria-live="polite">
-      <span data-pos>၁</span> /{" "}
-      <span data-total>{myNumber(lesson.words.length)}</span>
-    </p>
-
-    {lesson.words.map((w: any) => (
-      <div class="flashcard" data-card={w.id} hidden>
-        <button
-          type="button"
-          class="card face front"
-          data-flip
-          aria-label="အဖြေ ကြည့်ရန် နှိပ်ပါ"
+    <div class="deck" data-deck>
+      <div class="deck-header">
+        <p class="counter muted" aria-live="polite">
+          <span data-pos>၁</span> /{" "}
+          <span data-total>{myNumber(lesson.words.length)}</span>
+        </p>
+        <div
+          class="deck-progress progress-bar"
+          role="progressbar"
+          aria-label="ကတ်ပြား တိုးတက်မှု"
+          aria-valuemin="0"
+          aria-valuemax={lesson.words.length}
+          aria-valuenow="0"
+          data-deck-progress
         >
-          <span class="hanzi" lang="zh-Hans">
-            {w.simplified}
-          </span>
-          <span class="hint muted">အဖြေ ကြည့်ရန် နှိပ်ပါ 👆</span>
-        </button>
-        <div class="card face back" tabindex="-1" hidden>
-          <p class="hanzi small-hanzi" lang="zh-Hans">
-            {w.simplified}
-          </p>
-          <p class="py">
-            <Pinyin pinyin={w.pinyin} />{" "}
-            <SpeakButton text={w.simplified} audio={w.audio.word} />
-          </p>
-          <p class="meaning">{w.myanmar.meaning}</p>
-          <p class="example">
-            <span lang="zh-Hans">{w.examples[0].zh}</span>
-            <br />
-            <span class="muted">{w.examples[0].my}</span>
-          </p>
-          <a class="more" href={wordUrl(w)}>
-            အသေးစိတ် ဖတ်ရန် →
+          <span></span>
+        </div>
+      </div>
+      {lesson.words.map((w: any) => (
+        <div class="flashcard" data-card={w.id} hidden>
+          <button
+            type="button"
+            class="card face front"
+            data-flip
+            aria-label="အဖြေ ကြည့်ရန် နှိပ်ပါ"
+          >
+            <span class="hanzi" lang="zh-Hans">
+              {w.simplified}
+            </span>
+            <span class="hint muted">အဖြေ ကြည့်ရန် နှိပ်ပါ</span>
+          </button>
+          <div class="card face back" tabindex="-1" hidden>
+            <p class="hanzi small-hanzi" lang="zh-Hans">
+              {w.simplified}
+            </p>
+            <p class="py">
+              <Pinyin pinyin={w.pinyin} />{" "}
+              <SpeakButton text={w.simplified} audio={w.audio.word} />
+            </p>
+            <p class="meaning">{w.myanmar.meaning}</p>
+            <p class="example">
+              <span lang="zh-Hans">{w.examples[0].zh}</span>
+              <br />
+              <span class="muted">{w.examples[0].my}</span>
+            </p>
+            <a class="more" href={wordUrl(w)}>
+              အသေးစိတ် ဖတ်ရန် <Icon name="forward" size={16} />
+            </a>
+          </div>
+        </div>
+      ))}
+
+      <div class="answer-slot">
+        <div class="btn-row answer" data-answer hidden>
+          <button type="button" class="btn unknown" data-known="false">
+            မသိသေးဘူး
+          </button>
+          <button type="button" class="btn btn-primary known" data-known="true">
+            <Icon name="check" size={20} /> သိတယ်
+          </button>
+        </div>
+      </div>
+      <div class="card done" data-done tabindex="-1" hidden>
+        <div class="completion-icon">
+          <Icon name="check" size={30} />
+        </div>
+        <h2>ပြီးပါပြီ!</h2>
+        <p>
+          သိတယ် <strong data-known-count>0</strong> လုံး၊ မသိသေးဘူး{" "}
+          <strong data-unknown-count>0</strong> လုံး။
+        </p>
+        <p class="muted">
+          မသိသေးတာ ရှိလည်း စိတ်မပူပါနဲ့ — ပြန်လေ့ကျင့်ရင်း မှတ်မိလာမှာပါ။
+        </p>
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" data-retry>
+            <Icon name="retry" size={20} /> မသိသေးတာတွေ ပြန်လေ့ကျင့်မယ်
+          </button>
+          <button type="button" class="btn" data-restart>
+            အစကနေ ပြန်စမယ်
+          </button>
+          <a class="btn" href={lessonUrl(level.key, lesson.n)}>
+            သင်ခန်းစာကို ပြန်သွားမယ်
           </a>
         </div>
       </div>
-    ))}
-
-    <div class="btn-row answer" data-answer hidden>
-      <button type="button" class="btn unknown" data-known="false">
-        မသိသေးဘူး
-      </button>
-      <button type="button" class="btn btn-primary known" data-known="true">
-        ✓ သိတယ်
-      </button>
     </div>
-
-    <div class="card done" data-done tabindex="-1" hidden>
-      <h2>🎉 ပြီးပါပြီ!</h2>
-      <p>
-        သိတယ် <strong data-known-count>0</strong> လုံး၊ မသိသေးဘူး{" "}
-        <strong data-unknown-count>0</strong> လုံး။
-      </p>
-      <p class="muted">
-        မသိသေးတာ ရှိလည်း စိတ်မပူပါနဲ့ — ပြန်လေ့ကျင့်ရင်း မှတ်မိလာမှာပါ။
-      </p>
-      <div class="btn-row">
-        <button type="button" class="btn btn-primary" data-retry>
-          🔁 မသိသေးတာတွေ ပြန်လေ့ကျင့်မယ်
-        </button>
-        <button type="button" class="btn" data-restart>
-          အစကနေ ပြန်စမယ်
-        </button>
-        <a class="btn" href={lessonUrl(level.key, lesson.n)}>
-          သင်ခန်းစာကို ပြန်သွားမယ်
-        </a>
-      </div>
-    </div>
-  </div>
+  </section>
   <noscript>
     <p class="card">
       ကတ်ပြား လေ့ကျင့်ရန် JavaScript ဖွင့်ပေးပါ။{" "}
-      <a href={lessonUrl(level.key, lesson.n)}>သင်ခန်းစာကို ပြန်သွားမယ် →</a>
+      <a href={lessonUrl(level.key, lesson.n)}>
+        သင်ခန်းစာကို ပြန်သွားမယ် <Icon name="forward" size={18} />
+      </a>
     </p>
   </noscript>
 </BaseLayout>
@@ -137,27 +140,70 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
   .deck {
     max-width: 560px;
     perspective: 1200px;
-    margin: 32px auto 0;
+    margin: 16px auto 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .counter {
     text-align: center;
-    margin: 16px 0;
+    margin: 0;
     font-variant-numeric: tabular-nums;
   }
 
+  .practice-shell {
+    max-width: 680px;
+    margin: 0 auto;
+    min-height: calc(100svh - 220px - var(--nav-clearance));
+    display: flex;
+    flex-direction: column;
+  }
+  .practice-heading h1 {
+    font-size: clamp(1.25rem, 3vw, 1.8rem);
+    margin: 6px 0;
+  }
+  .lesson-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  .practice-help {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  .deck-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 14px;
+  }
+  .counter {
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+  .deck-progress {
+    flex: 1;
+  }
+  .flashcard {
+    flex: 1;
+    display: flex;
+  }
+  .answer-slot {
+    min-height: 60px;
+  }
   .face {
     width: 100%;
-    min-height: 360px;
+    min-height: 240px;
+    flex: 1;
     padding: clamp(24px, 4vw, 40px);
     border-radius: 30px;
     box-shadow: var(--shadow-raised);
-    background-image: radial-gradient(
-      ellipse at 50% 0,
-      var(--accent-soft),
-      transparent 75%
-    );
-    animation: reveal 260ms var(--ease);
+    background: var(--surface);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -170,6 +216,9 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
     font: inherit;
     color: inherit;
     cursor: pointer;
+  }
+  .back {
+    animation: reveal 120ms var(--ease);
   }
 
   .front .hanzi {
@@ -215,21 +264,66 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
   }
 
   .answer .btn {
+    min-width: 0;
     flex: 1;
   }
 
   @keyframes reveal {
     from {
       opacity: 0.4;
-      transform: translateY(8px) rotateX(5deg);
     }
     to {
       opacity: 1;
-      transform: none;
     }
   }
 
+  .completion-icon {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    color: var(--gold);
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-edge);
+    margin: 0 auto 20px;
+  }
+  .more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+  }
+  .hint {
+    font-size: 0.85rem;
+    padding-top: 18px;
+  }
+  @media (max-width: 899px) {
+    .practice-shell {
+      min-height: calc(
+        100svh - var(--header-height, 64px) - 50px - var(--nav-clearance)
+      );
+    }
+    .face {
+      padding: 24px;
+    }
+  }
+  @media (max-height: 700px) {
+    .practice-help {
+      display: none;
+    }
+    .face {
+      min-height: 180px;
+    }
+    .front .hanzi {
+      font-size: 4rem;
+    }
+    .practice-heading h1 {
+      font-size: 1.25rem;
+    }
+  }
   .done {
+    border-color: var(--gold-edge);
     text-align: center;
   }
 
@@ -258,6 +352,7 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
   let index = 0;
   let unknown: HTMLElement[] = [];
   let knownCount = 0;
+  let visibleCard: HTMLElement | undefined;
 
   function start(list: HTMLElement[]) {
     queue = list;
@@ -270,14 +365,17 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
   }
 
   function show() {
+    document.dispatchEvent(new CustomEvent("learning-card-change"));
     progress.setAttribute("aria-valuemax", String(queue.length));
     progress.setAttribute("aria-valuenow", String(index));
-    progress.querySelector<HTMLElement>("span")!.style.width =
-      `${queue.length ? (index / queue.length) * 100 : 0}%`;
-    for (const c of cards) c.hidden = true;
+    progress.querySelector<HTMLElement>("span")!.style.transform =
+      `scaleX(${queue.length ? index / queue.length : 0})`;
+    if (visibleCard) visibleCard.hidden = true;
     const card = queue[index];
+    visibleCard = card;
     if (!card) {
       answer.hidden = true;
+      answer.parentElement!.hidden = true;
       deck.querySelector("[data-known-count]")!.textContent = my(knownCount);
       deck.querySelector("[data-unknown-count]")!.textContent = my(
         unknown.length,
@@ -288,6 +386,7 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
       if (interacted) done.focus({ preventScroll: true });
       return;
     }
+    answer.parentElement!.hidden = false;
     card.hidden = false;
     card.querySelector<HTMLElement>(".front")!.hidden = false;
     card.querySelector<HTMLElement>(".back")!.hidden = true;
@@ -306,11 +405,19 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
       card.querySelector<HTMLElement>(".back")!.hidden = false;
       answer.hidden = false;
       card.querySelector<HTMLElement>(".back")!.focus({ preventScroll: true });
+      const nav = document.querySelector<HTMLElement>("#site-nav")!;
+      const bottom =
+        getComputedStyle(nav).position === "fixed"
+          ? nav.getBoundingClientRect().top
+          : window.innerHeight;
+      if (answer.getBoundingClientRect().bottom > bottom - 12)
+        answer.scrollIntoView({ block: "end", behavior: "auto" });
       return;
     }
     const knownBtn = t.closest<HTMLElement>("[data-known]");
     if (knownBtn) {
       const card = queue[index];
+      if (!card || answer.hidden) return;
       const known = knownBtn.dataset.known === "true";
       recordCard(card.dataset.card!, known);
       if (known) knownCount++;

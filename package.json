@@ -21,7 +21,9 @@
     "validate": "node scripts/validate-data.mjs",
     "check-vocab": "node scripts/check-example-vocab.mjs",
     "test": "node --test \"scripts/**/*.test.mjs\"",
-    "test:ui": "playwright test"
+    "test:ui": "playwright test",
+    "audit:ui": "node scripts/audit-ui.mjs",
+    "profile:ui": "node scripts/profile-ui.mjs"
   },
   "dependencies": {
     "astro": "7.3.5"

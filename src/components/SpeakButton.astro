@@ -23,12 +23,18 @@ const {
   type="button"
   class:list={["speak", { large: size === "large" }]}
   data-speak
+  aria-pressed="false"
   data-text={text}
   data-audio={audio ? url(audio) : undefined}
   aria-label={label}
   title={label}
 >
-  <Icon name="sound" size={size === "large" ? 23 : 19} />
+  <span class="sound-icon">
+    <Icon name="sound" size={size === "large" ? 23 : 20} />
+  </span>
+  <span class="stop-icon">
+    <Icon name="stop" size={size === "large" ? 23 : 20} />
+  </span>
 </button>
 
 <script>

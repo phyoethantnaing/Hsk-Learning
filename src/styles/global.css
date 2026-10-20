@@ -13,6 +13,10 @@
   --accent-text: #fff;
   --accent-soft: #fbecea;
   --focus: #bd2424;
+  --gold: #805c1a;
+  --gold-edge: #b18a3e;
+  --gold-soft: #fbf4e3;
+  --gold-glint: rgb(201 162 77 / 12%);
   --draft-bg: #f2ecec;
   --draft-text: #744442;
   --tone1: #be2424;
@@ -26,11 +30,11 @@
   --gap: 22px;
   --page-max: 1160px;
   --font-ui:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Myanmar",
-    "Myanmar Text", Padauk, "Noto Sans SC", sans-serif;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "HSK Myanmar",
+    "Noto Sans Myanmar", "Myanmar Text", Padauk, "Noto Sans SC", sans-serif;
   --font-zh:
-    "PingFang SC", "PingFang TC", "Noto Sans SC", "Microsoft YaHei",
-    "Noto Sans CJK SC", sans-serif;
+    "PingFang SC", "PingFang TC", "HSK CJK SC", "Noto Sans SC",
+    "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 :root[data-theme="dark"] {
@@ -47,6 +51,10 @@
   --accent-text: #23100e;
   --accent-soft: #392322;
   --focus: #ff9993;
+  --gold: #dfbf75;
+  --gold-edge: #987a40;
+  --gold-soft: #30291d;
+  --gold-glint: rgb(223 191 117 / 10%);
   --draft-bg: #322827;
   --draft-text: #e2b8b4;
   --tone1: #ff8881;
@@ -72,6 +80,10 @@
     --accent-text: #23100e;
     --accent-soft: #392322;
     --focus: #ff9993;
+    --gold: #dfbf75;
+    --gold-edge: #987a40;
+    --gold-soft: #30291d;
+    --gold-glint: rgb(223 191 117 / 10%);
     --draft-bg: #322827;
     --draft-text: #e2b8b4;
     --tone1: #ff8881;
@@ -118,7 +130,8 @@ body {
 }
 :lang(zh-Hant) {
   font-family:
-    "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", var(--font-zh);
+    "PingFang TC", "HSK CJK TC", "Noto Sans TC", "Microsoft JhengHei",
+    var(--font-zh);
 }
 h1,
 h2,
@@ -207,21 +220,17 @@ main > section + section {
 ) {
   .glass {
     background-color: var(--glass);
-    -webkit-backdrop-filter: blur(20px) saturate(135%);
-    backdrop-filter: blur(20px) saturate(135%);
+    -webkit-backdrop-filter: blur(12px) saturate(115%);
+    backdrop-filter: blur(12px) saturate(115%);
   }
 }
 a.card,
 button.card {
-  transition:
-    transform 220ms var(--ease),
-    box-shadow 220ms var(--ease),
-    border-color 220ms;
+  transition: border-color 140ms;
 }
 @media (hover: hover) {
   a.card:hover,
   button.card:hover {
-    transform: translateY(-3px);
     box-shadow: var(--shadow-raised);
     border-color: var(--accent);
   }
@@ -316,18 +325,23 @@ button.card {
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  transition:
-    transform 180ms var(--ease),
-    box-shadow 180ms,
-    border-color 180ms;
+  transition: border-color 140ms;
 }
-.btn:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
+@media (hover: hover) {
+  .btn:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
 }
 .btn:active,
+a.card:active,
 button.card:active {
-  transform: scale(0.98);
+  background-color: var(--surface-2);
+  border-color: var(--accent);
+}
+.btn-primary:active {
+  background: #b92323;
+  border-color: #a82020;
 }
 .btn-primary {
   background: linear-gradient(160deg, #d8322e, #b92323);
@@ -337,9 +351,11 @@ button.card:active {
     inset 0 1px 0 rgb(255 255 255 / 25%),
     0 4px 12px rgb(180 35 30 / 16%);
 }
-.btn-primary:hover {
-  border-color: #a91e1e;
-  box-shadow: 0 6px 18px rgb(180 35 30 / 25%);
+@media (hover: hover) {
+  .btn-primary:hover {
+    border-color: #a91e1e;
+    box-shadow: 0 6px 18px rgb(180 35 30 / 25%);
+  }
 }
 button:disabled,
 .btn[aria-disabled="true"] {
@@ -367,21 +383,19 @@ button:disabled,
   color: var(--accent);
   line-height: 1;
   cursor: pointer;
-  transition:
-    background 180ms,
-    transform 180ms;
+  transition: background 120ms;
 }
 .speak.large {
   width: 54px;
   height: 54px;
 }
-.speak:hover,
 .speak.speaking {
   border-color: var(--accent);
   background: var(--accent-soft);
 }
 .speak:active {
-  transform: scale(0.94);
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 .speak-message {
   position: fixed;
@@ -423,10 +437,12 @@ button:disabled,
 .progress-bar > span {
   display: block;
   height: 100%;
-  width: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
   border-radius: inherit;
   background: var(--accent);
-  transition: width 300ms var(--ease);
+  transition: transform 160ms var(--ease);
 }
 .progress[data-complete="true"] .progress-text {
   color: var(--accent);
@@ -442,11 +458,6 @@ button:disabled,
 }
 .breadcrumb a {
   min-height: 28px;
-}
-.pager {
-  border-top: 1px solid var(--border);
-  padding-top: 24px;
-  margin-top: 24px;
 }
 .skip-link {
   position: fixed;
@@ -495,7 +506,245 @@ button:disabled,
 @media (prefers-reduced-transparency: reduce) {
   .glass {
     background: var(--surface);
-    backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* App chrome is the glass layer. Educational content stays on quiet surfaces. */
+:root {
+  --nav-clearance: 0px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+}
+.icon-button {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 120ms;
+}
+@media (hover: hover) {
+  .icon-button:hover {
+    background: var(--surface-2);
+  }
+}
+.icon-button:active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.icon-button[aria-current] {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.card {
+  background-image: none;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 2%);
+}
+.glass {
+  background-image: linear-gradient(
+    145deg,
+    var(--highlight),
+    transparent 42%,
+    var(--gold-glint) 160%
+  );
+  box-shadow:
+    0 5px 18px rgb(0 0 0 / 7%),
+    inset 0 1px 0 var(--highlight),
+    inset 0 -1px 0 rgb(0 0 0 / 4%);
+}
+.btn {
+  font-size: 0.95rem;
+  min-width: 44px;
+}
+.breadcrumb {
+  align-items: center;
+  column-gap: 6px;
+  row-gap: 0;
+  margin-bottom: 18px;
+}
+.breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 3px;
+}
+.breadcrumb > a:first-child {
+  padding-left: 0;
+}
+.pinyin,
+:lang(zh-Latn-pinyin) {
+  font-family: var(--font-ui);
+}
+html {
+  scroll-padding-top: calc(var(--header-height, 76px) + 8px);
+  scroll-padding-bottom: calc(var(--nav-clearance) + 12px);
+}
+.speak-message {
+  bottom: calc(var(--nav-clearance) + 12px);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  max-height: min(45vh, 360px);
+  overflow-y: auto;
+}
+.speak-message p {
+  margin: 0;
+}
+.speak-message .icon-button {
+  flex: none;
+}
+.speak .stop-icon,
+.speak[aria-pressed="true"] .sound-icon {
+  display: none;
+}
+.speak[aria-pressed="true"] .stop-icon {
+  display: inline-flex;
+}
+.speak[aria-pressed="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+@media (max-width: 899px) {
+  :root {
+    --nav-clearance: calc(var(--nav-height, 70px) + 20px + var(--safe-bottom));
+  }
+  main.container {
+    padding-top: 26px;
+    padding-bottom: 44px;
+  }
+  .btn-row > .btn {
+    max-width: 100%;
+  }
+  .speak-message {
+    left: max(12px, env(safe-area-inset-left));
+    right: max(12px, env(safe-area-inset-right));
+  }
+}
+@media (prefers-contrast: more) {
+  :root {
+    --border: #8a8a92;
+    --text-muted: #44444c;
+    --glass: #fff;
+    --highlight: transparent;
+  }
+  :root[data-theme="dark"] {
+    --border: #93939c;
+    --text-muted: #dedee4;
+    --glass: #1d1d21;
+  }
+  .glass,
+  .appearance-sheet {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border-width: 2px;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--surface);
+    background-image: none;
+  }
+}
+@media (forced-colors: active) {
+  .glass,
+  .card,
+  .btn,
+  .icon-button {
+    background: Canvas;
+    color: CanvasText;
+    box-shadow: none;
+    border: 1px solid CanvasText;
+  }
+  .btn-primary,
+  [aria-current] {
+    outline: 1px solid Highlight;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
+  background: var(--bg);
+}
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+@media (forced-colors: active) {
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+  :root:not([data-theme]) {
+    --border: #93939c;
+    --text-muted: #dedee4;
+    --glass: #1d1d21;
+  }
+}
+
+/* Native activation stays on the stable outer target. Pan and pinch zoom remain
+   available; manipulation only removes double-tap zoom delay on controls. */
+a,
+button,
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+.icon,
+.sound-icon,
+.stop-icon {
+  pointer-events: none;
+}
+:where(a, button):active {
+  transition-duration: 0s;
+}
+@media (hover: hover) {
+  .speak:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+}
+
+/* Gold signifies a selected learning path or earned mastery; actions stay red. */
+.eyebrow,
+main h2 > .icon {
+  color: var(--gold);
+}
+.progress[data-complete="true"] .progress-bar > span {
+  background: var(--gold);
+}
+.progress[data-complete="true"] .progress-text {
+  color: var(--gold);
+}
+.learned-btn[aria-pressed="true"] {
+  color: var(--gold);
+  border-color: var(--gold-edge);
+  background: var(--gold-soft);
+}
+@media (forced-colors: active) {
+  .eyebrow,
+  main h2 > .icon,
+  .learned-btn[aria-pressed="true"] {
+    color: CanvasText;
   }
 }

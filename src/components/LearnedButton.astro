@@ -1,5 +1,6 @@
 ---
 // "သိပြီ" toggle on a word page; stored with src/scripts/progress.js.
+import Icon from "./Icon.astro";
 interface Props {
   id: string;
 }
@@ -11,23 +12,37 @@ const { id } = Astro.props;
   class="btn learned-btn"
   data-learned-id={id}
   aria-pressed="false"
+  disabled
+  aria-busy="true"
 >
-  <span class="off">☐ ဒီစကားလုံး သိပြီ</span>
-  <span class="on">✓ သိပြီ (ပြန်ဖြုတ်ရန် နှိပ်ပါ)</span>
+  <span class="off">
+    <Icon name="circle" size={20} /> ဒီစကားလုံး သိပြီ
+  </span>
+  <span class="on">
+    <Icon name="check" size={20} /> သိပြီ (ပြန်ဖြုတ်ရန် နှိပ်ပါ)
+  </span>
 </button>
 
 <style>
+  .learned-btn .off {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
   .learned-btn .on {
     display: none;
   }
 
   .learned-btn[aria-pressed="true"] {
-    background: var(--accent-soft);
-    border-color: var(--tone3);
+    background: var(--gold-soft);
+    border-color: var(--gold-edge);
+    color: var(--gold);
   }
 
   .learned-btn[aria-pressed="true"] .on {
-    display: inline;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
   }
 
   .learned-btn[aria-pressed="true"] .off {
@@ -44,5 +59,7 @@ const { id } = Astro.props;
     const id = btn.dataset.learnedId!;
     onProgress(() => btn.setAttribute("aria-pressed", String(isLearned(id))));
     btn.addEventListener("click", () => setLearned(id, !isLearned(id)));
+    btn.disabled = false;
+    btn.removeAttribute("aria-busy");
   }
 </script>

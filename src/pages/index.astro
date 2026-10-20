@@ -2,7 +2,7 @@
 import Icon from "../components/Icon.astro";
 import SpeakButton from "../components/SpeakButton.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { LEVELS, TOTAL_WORDS } from "../lib/levels.mjs";
+import { LEVELS } from "../lib/levels.mjs";
 import ProgressCount from "../components/ProgressCount.astro";
 import { myNumber, url } from "../lib/site.mjs";
 import { readyLevels, wordsForLevel } from "../lib/words.mjs";
@@ -21,20 +21,24 @@ const READY = new Set(readyLevels().map((l) => l.key));
         你好<span>。</span>
       </p>
       <h1>
-        တရုတ်စကားလုံးတွေကို မြန်မာလို
-        <br class="desktop-break" /> လွယ်လွယ်လေး သင်ကြမယ်
+        တရုတ်စကားလုံးတွေကို
+        <br /> မြန်မာလို လေ့လာပါ
       </h1>
       <p>
-        HSK 3.0 (၂၀၂၅) စာမေးပွဲအတွက် စကားလုံး {myNumber(TOTAL_WORDS)} လုံးကို
-        မြန်မာလို ရှင်းပြပေးထားပါတယ်။ ဆရာမရှိလည်း ကိုယ်တိုင် လေ့လာလို့ရပါတယ်။
+        HSK 3.0 (၂၀၂၅) စကားလုံးတွေကို မြန်မာလို ကိုယ်တိုင် လေ့လာပါ။ လက်ရှိ HSK 1
+        စကားလုံး {myNumber(wordsForLevel("1").length)} လုံး ရရှိနိုင်ပါတယ်။
         အခမဲ့ပါ။
       </p>
       <p class="btn-row">
-        <a class="btn btn-primary" href={url("/start/")}>
-          အစပြုရန် — ဒီကနေ စပါ <Icon name="arrow" size={18} />
+        <a
+          class="btn btn-primary"
+          href={url("/hsk1/")}
+          aria-label="HSK 1 စကားလုံးများ လေ့လာမယ်"
+        >
+          HSK 1 စမယ် <Icon name="arrow" size={18} />
         </a>
-        <a class="btn" href={url("/hsk1/")}>
-          HSK 1 စကားလုံးများ
+        <a class="btn" href={url("/start/")}>
+          <Icon name="book" size={18} /> အစပြုရန်
         </a>
       </p>
       <div class="hero-note">
@@ -48,7 +52,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
     <div class="hero-art">
       <div class="orbit orbit-one" aria-hidden="true"></div>
       <div class="orbit orbit-two" aria-hidden="true"></div>
-      <div class="sample-card glass">
+      <div class="sample-card card">
         <div class="sample-top">
           <span class="badge badge-ready" lang="en">
             HSK 1
@@ -69,7 +73,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
           <SpeakButton text="你好" />
         </div>
       </div>
-      <div class="art-label glass">
+      <div class="art-label card">
         <Icon name="book" size={18} />
         <span>တစ်နေ့ စကားလုံး ၅ လုံး</span>
       </div>
@@ -135,7 +139,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
     </ul>
   </section>
 
-  <section aria-labelledby="how-title" class="how glass">
+  <section aria-labelledby="how-title" class="how card">
     <p class="eyebrow" lang="en">
       SMALL HABITS. REAL PROGRESS.
     </p>
@@ -220,6 +224,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
     max-width: 90%;
     border-radius: 50%;
     background: radial-gradient(circle, rgb(229 57 53 / 13%), transparent 70%);
+    pointer-events: none;
     z-index: -1;
   }
   .orbit {
@@ -227,8 +232,10 @@ const READY = new Set(readyLevels().map((l) => l.key));
     width: 65%;
     aspect-ratio: 1;
     max-width: 300px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--gold-edge);
     border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.4;
     z-index: -1;
   }
   .orbit-one {
@@ -277,6 +284,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
     font-size: 0.7rem;
   }
   .art-label {
+    pointer-events: none;
     position: absolute;
     bottom: 5px;
     right: 5%;
@@ -293,11 +301,13 @@ const READY = new Set(readyLevels().map((l) => l.key));
     color: var(--accent);
   }
   .art-character {
+    pointer-events: none;
     position: absolute;
     right: 1%;
     top: 6px;
     color: var(--accent);
-    opacity: 0.08;
+    color: var(--gold);
+    opacity: 0.12;
     font-size: 7rem;
     z-index: -1;
   }
@@ -342,7 +352,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
     border-radius: 22px;
   }
   .level.ready {
-    border-color: var(--accent);
+    border-color: var(--gold-edge);
   }
   .level:not(.ready) {
     background: transparent;
@@ -434,6 +444,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
       width: 290px;
     }
     .art-label {
+      pointer-events: none;
       bottom: 32px;
     }
     .levels {
@@ -444,9 +455,6 @@ const READY = new Set(readyLevels().map((l) => l.key));
     }
   }
   @media (max-width: 779px) {
-    .desktop-break {
-      display: none;
-    }
     .hero-art {
       max-width: 420px;
       width: 100%;
@@ -459,6 +467,82 @@ const READY = new Set(readyLevels().map((l) => l.key));
     }
     .level-top .badge {
       font-size: 0.6rem;
+    }
+  }
+  @media (max-width: 779px) {
+    .hero {
+      gap: 22px;
+      padding-bottom: 38px;
+    }
+    .hero-zh {
+      font-size: 4rem;
+      margin: 8px 0 20px;
+    }
+    h1 {
+      font-size: 1.4rem;
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+    .hero-copy > p:not(.eyebrow, .hero-zh, .btn-row) {
+      font-size: 0.9rem;
+    }
+    .hero .btn-row {
+      margin-top: 20px;
+      margin-bottom: 14px;
+    }
+    .hero-art {
+      min-height: 0;
+      max-width: none;
+      margin: 0;
+      display: block;
+    }
+    .sample-card {
+      width: 100%;
+      transform: none;
+      border-radius: 22px;
+      text-align: left;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 0 16px;
+      align-items: center;
+      box-shadow: none;
+    }
+    .sample-top {
+      grid-column: 1 / -1;
+      margin-bottom: 12px;
+    }
+    .sample-hanzi {
+      grid-column: 1;
+      grid-row: 2 / 4;
+      font-size: 2.6rem;
+      margin: 0;
+    }
+    .sample-pinyin {
+      grid-column: 2;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .sample-meaning {
+      grid-column: 2;
+      margin: 0;
+      font-size: 0.8rem;
+    }
+    .sample-bottom {
+      grid-column: 3;
+      grid-row: 2 / 4;
+      padding: 0;
+      border: 0;
+    }
+    .sample-bottom .muted {
+      display: none;
+    }
+    .orbit,
+    .art-label,
+    .art-character {
+      pointer-events: none;
+      display: none;
     }
   }
 </style>
