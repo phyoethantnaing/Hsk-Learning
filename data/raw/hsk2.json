@@ -1,0 +1,1802 @@
+[
+ {
+  "id": "hsk2-0001",
+  "level": 2,
+  "number": 1,
+  "simplified": "啊",
+  "traditional": "啊",
+  "pinyin": "a",
+  "english": "(exclamatory sentence-final particle)"
+ },
+ {
+  "id": "hsk2-0002",
+  "level": 2,
+  "number": 2,
+  "simplified": "爱好",
+  "traditional": "愛好",
+  "pinyin": "àihào",
+  "english": "to be fond of; hobby; interest"
+ },
+ {
+  "id": "hsk2-0003",
+  "level": 2,
+  "number": 3,
+  "simplified": "白色",
+  "traditional": "白色",
+  "pinyin": "báisè",
+  "english": "white"
+ },
+ {
+  "id": "hsk2-0004",
+  "level": 2,
+  "number": 4,
+  "simplified": "班",
+  "traditional": "班",
+  "pinyin": "bān",
+  "english": "class; team; work shift"
+ },
+ {
+  "id": "hsk2-0005",
+  "level": 2,
+  "number": 5,
+  "simplified": "帮",
+  "traditional": "幫",
+  "pinyin": "bāng",
+  "english": "to help; to assist"
+ },
+ {
+  "id": "hsk2-0006",
+  "level": 2,
+  "number": 6,
+  "simplified": "帮忙",
+  "traditional": "幫忙",
+  "pinyin": "bāngmáng",
+  "english": "to help; to do a favor"
+ },
+ {
+  "id": "hsk2-0007",
+  "level": 2,
+  "number": 7,
+  "simplified": "包",
+  "traditional": "包",
+  "pinyin": "bāo",
+  "english": "to wrap; bag; package"
+ },
+ {
+  "id": "hsk2-0008",
+  "level": 2,
+  "number": 8,
+  "simplified": "本子",
+  "traditional": "本子",
+  "pinyin": "běnzi",
+  "english": "notebook; book"
+ },
+ {
+  "id": "hsk2-0009",
+  "level": 2,
+  "number": 9,
+  "simplified": "比",
+  "traditional": "比",
+  "pinyin": "bǐ",
+  "english": "to compare; than"
+ },
+ {
+  "id": "hsk2-0010",
+  "level": 2,
+  "number": 10,
+  "simplified": "笔",
+  "traditional": "筆",
+  "pinyin": "bǐ",
+  "english": "pen; writing brush"
+ },
+ {
+  "id": "hsk2-0011",
+  "level": 2,
+  "number": 11,
+  "simplified": "别",
+  "traditional": "別",
+  "pinyin": "bié",
+  "english": "don't"
+ },
+ {
+  "id": "hsk2-0012",
+  "level": 2,
+  "number": 12,
+  "simplified": "不错",
+  "traditional": "不錯",
+  "pinyin": "búcuò",
+  "english": "not bad; pretty good"
+ },
+ {
+  "id": "hsk2-0013",
+  "level": 2,
+  "number": 13,
+  "simplified": "不好意思",
+  "traditional": "不好意思",
+  "pinyin": "bù hǎoyìsi",
+  "english": "embarrassed; sorry to trouble you"
+ },
+ {
+  "id": "hsk2-0014",
+  "level": 2,
+  "number": 14,
+  "simplified": "长",
+  "traditional": "長",
+  "pinyin": "cháng",
+  "english": "long"
+ },
+ {
+  "id": "hsk2-0015",
+  "level": 2,
+  "number": 15,
+  "simplified": "车站",
+  "traditional": "車站",
+  "pinyin": "chēzhàn",
+  "english": "station; stop"
+ },
+ {
+  "id": "hsk2-0016",
+  "level": 2,
+  "number": 16,
+  "simplified": "出",
+  "traditional": "出",
+  "pinyin": "chū",
+  "english": "to go out; to come out"
+ },
+ {
+  "id": "hsk2-0017",
+  "level": 2,
+  "number": 17,
+  "simplified": "出国",
+  "traditional": "出國",
+  "pinyin": "chūguó",
+  "english": "to go abroad"
+ },
+ {
+  "id": "hsk2-0018",
+  "level": 2,
+  "number": 18,
+  "simplified": "出来",
+  "traditional": "出來",
+  "pinyin": "chūlái",
+  "english": "to come out"
+ },
+ {
+  "id": "hsk2-0019",
+  "level": 2,
+  "number": 19,
+  "simplified": "出门",
+  "traditional": "出門",
+  "pinyin": "chūmén",
+  "english": "to go out; to leave home"
+ },
+ {
+  "id": "hsk2-0020",
+  "level": 2,
+  "number": 20,
+  "simplified": "出去",
+  "traditional": "出去",
+  "pinyin": "chūqù",
+  "english": "to go out"
+ },
+ {
+  "id": "hsk2-0021",
+  "level": 2,
+  "number": 21,
+  "simplified": "床",
+  "traditional": "床",
+  "pinyin": "chuáng",
+  "english": "bed"
+ },
+ {
+  "id": "hsk2-0022",
+  "level": 2,
+  "number": 22,
+  "simplified": "词",
+  "traditional": "詞",
+  "pinyin": "cí",
+  "english": "word"
+ },
+ {
+  "id": "hsk2-0023",
+  "level": 2,
+  "number": 23,
+  "simplified": "次",
+  "traditional": "次",
+  "pinyin": "cì",
+  "english": "time (occurrence); measure word for occurrences"
+ },
+ {
+  "id": "hsk2-0024",
+  "level": 2,
+  "number": 24,
+  "simplified": "从",
+  "traditional": "從",
+  "pinyin": "cóng",
+  "english": "from; through"
+ },
+ {
+  "id": "hsk2-0025",
+  "level": 2,
+  "number": 25,
+  "simplified": "从小",
+  "traditional": "從小",
+  "pinyin": "cóngxiǎo",
+  "english": "since childhood"
+ },
+ {
+  "id": "hsk2-0026",
+  "level": 2,
+  "number": 26,
+  "simplified": "错",
+  "traditional": "錯",
+  "pinyin": "cuò",
+  "english": "wrong; mistake"
+ },
+ {
+  "id": "hsk2-0027",
+  "level": 2,
+  "number": 27,
+  "simplified": "打",
+  "traditional": "打",
+  "pinyin": "dǎ",
+  "english": "to hit; to strike"
+ },
+ {
+  "id": "hsk2-0028",
+  "level": 2,
+  "number": 28,
+  "simplified": "打车",
+  "traditional": "打車",
+  "pinyin": "dǎchē",
+  "english": "to take a taxi"
+ },
+ {
+  "id": "hsk2-0029",
+  "level": 2,
+  "number": 29,
+  "simplified": "打开",
+  "traditional": "打開",
+  "pinyin": "dǎkāi",
+  "english": "to open; to turn on"
+ },
+ {
+  "id": "hsk2-0030",
+  "level": 2,
+  "number": 30,
+  "simplified": "但",
+  "traditional": "但",
+  "pinyin": "dàn",
+  "english": "but; only"
+ },
+ {
+  "id": "hsk2-0031",
+  "level": 2,
+  "number": 31,
+  "simplified": "但是",
+  "traditional": "但是",
+  "pinyin": "dànshì",
+  "english": "but; however"
+ },
+ {
+  "id": "hsk2-0032",
+  "level": 2,
+  "number": 32,
+  "simplified": "得",
+  "traditional": "得",
+  "pinyin": "de",
+  "english": "(particle marking degree or result)"
+ },
+ {
+  "id": "hsk2-0033",
+  "level": 2,
+  "number": 33,
+  "simplified": "地",
+  "traditional": "地",
+  "pinyin": "de",
+  "english": "(adverbial particle, '-ly')"
+ },
+ {
+  "id": "hsk2-0034",
+  "level": 2,
+  "number": 34,
+  "simplified": "等",
+  "traditional": "等",
+  "pinyin": "děng",
+  "english": "to wait; to wait for"
+ },
+ {
+  "id": "hsk2-0035",
+  "level": 2,
+  "number": 35,
+  "simplified": "地铁",
+  "traditional": "地鐵",
+  "pinyin": "dìtiě",
+  "english": "subway; metro"
+ },
+ {
+  "id": "hsk2-0036",
+  "level": 2,
+  "number": 36,
+  "simplified": "点",
+  "traditional": "點",
+  "pinyin": "diǎn",
+  "english": "to order (food); to click; to tap; to light"
+ },
+ {
+  "id": "hsk2-0037",
+  "level": 2,
+  "number": 37,
+  "simplified": "懂",
+  "traditional": "懂",
+  "pinyin": "dǒng",
+  "english": "to understand"
+ },
+ {
+  "id": "hsk2-0038",
+  "level": 2,
+  "number": 38,
+  "simplified": "动",
+  "traditional": "動",
+  "pinyin": "dòng",
+  "english": "to move"
+ },
+ {
+  "id": "hsk2-0039",
+  "level": 2,
+  "number": 39,
+  "simplified": "饭馆",
+  "traditional": "飯館",
+  "pinyin": "fànguǎn",
+  "english": "restaurant"
+ },
+ {
+  "id": "hsk2-0040",
+  "level": 2,
+  "number": 40,
+  "simplified": "飞",
+  "traditional": "飛",
+  "pinyin": "fēi",
+  "english": "to fly"
+ },
+ {
+  "id": "hsk2-0041",
+  "level": 2,
+  "number": 41,
+  "simplified": "高",
+  "traditional": "高",
+  "pinyin": "gāo",
+  "english": "tall; high"
+ },
+ {
+  "id": "hsk2-0042",
+  "level": 2,
+  "number": 42,
+  "simplified": "高中",
+  "traditional": "高中",
+  "pinyin": "gāozhōng",
+  "english": "senior high school"
+ },
+ {
+  "id": "hsk2-0043",
+  "level": 2,
+  "number": 43,
+  "simplified": "告诉",
+  "traditional": "告訴",
+  "pinyin": "gàosu",
+  "english": "to tell; to inform"
+ },
+ {
+  "id": "hsk2-0044",
+  "level": 2,
+  "number": 44,
+  "simplified": "个子",
+  "traditional": "個子",
+  "pinyin": "gèzi",
+  "english": "height; stature; build"
+ },
+ {
+  "id": "hsk2-0045",
+  "level": 2,
+  "number": 45,
+  "simplified": "跟",
+  "traditional": "跟",
+  "pinyin": "gēn",
+  "english": "with; and; to follow"
+ },
+ {
+  "id": "hsk2-0046",
+  "level": 2,
+  "number": 46,
+  "simplified": "公交车",
+  "traditional": "公交車",
+  "pinyin": "gōngjiāochē",
+  "english": "public bus"
+ },
+ {
+  "id": "hsk2-0047",
+  "level": 2,
+  "number": 47,
+  "simplified": "过",
+  "traditional": "過",
+  "pinyin": "guò",
+  "english": "to pass; to spend (time)"
+ },
+ {
+  "id": "hsk2-0048",
+  "level": 2,
+  "number": 48,
+  "simplified": "过来",
+  "traditional": "過來",
+  "pinyin": "guòlái",
+  "english": "to come over"
+ },
+ {
+  "id": "hsk2-0049",
+  "level": 2,
+  "number": 49,
+  "simplified": "过年",
+  "traditional": "過年",
+  "pinyin": "guònián",
+  "english": "to celebrate the Lunar New Year"
+ },
+ {
+  "id": "hsk2-0050",
+  "level": 2,
+  "number": 50,
+  "simplified": "过去",
+  "traditional": "過去",
+  "pinyin": "guòqù",
+  "english": "to go over; to pass by"
+ },
+ {
+  "id": "hsk2-0051",
+  "level": 2,
+  "number": 51,
+  "simplified": "过",
+  "traditional": "過",
+  "pinyin": "guo",
+  "english": "(experienced-action particle)"
+ },
+ {
+  "id": "hsk2-0052",
+  "level": 2,
+  "number": 52,
+  "simplified": "还是",
+  "traditional": "還是",
+  "pinyin": "háishi",
+  "english": "or; still; had better"
+ },
+ {
+  "id": "hsk2-0053",
+  "level": 2,
+  "number": 53,
+  "simplified": "黑色",
+  "traditional": "黑色",
+  "pinyin": "hēisè",
+  "english": "black"
+ },
+ {
+  "id": "hsk2-0054",
+  "level": 2,
+  "number": 54,
+  "simplified": "红茶",
+  "traditional": "紅茶",
+  "pinyin": "hóngchá",
+  "english": "black tea"
+ },
+ {
+  "id": "hsk2-0055",
+  "level": 2,
+  "number": 55,
+  "simplified": "红色",
+  "traditional": "紅色",
+  "pinyin": "hóngsè",
+  "english": "red"
+ },
+ {
+  "id": "hsk2-0056",
+  "level": 2,
+  "number": 56,
+  "simplified": "后面",
+  "traditional": "後面",
+  "pinyin": "hòumiàn",
+  "english": "behind; the back"
+ },
+ {
+  "id": "hsk2-0057",
+  "level": 2,
+  "number": 57,
+  "simplified": "花",
+  "traditional": "花",
+  "pinyin": "huā",
+  "english": "to spend (money, time)"
+ },
+ {
+  "id": "hsk2-0058",
+  "level": 2,
+  "number": 58,
+  "simplified": "花",
+  "traditional": "花",
+  "pinyin": "huā",
+  "english": "flower; fancy pattern"
+ },
+ {
+  "id": "hsk2-0059",
+  "level": 2,
+  "number": 59,
+  "simplified": "画",
+  "traditional": "畫",
+  "pinyin": "huà",
+  "english": "to draw; to paint; painting"
+ },
+ {
+  "id": "hsk2-0060",
+  "level": 2,
+  "number": 60,
+  "simplified": "坏",
+  "traditional": "壞",
+  "pinyin": "huài",
+  "english": "bad; broken"
+ },
+ {
+  "id": "hsk2-0061",
+  "level": 2,
+  "number": 61,
+  "simplified": "回来",
+  "traditional": "回來",
+  "pinyin": "huílái",
+  "english": "to come back"
+ },
+ {
+  "id": "hsk2-0062",
+  "level": 2,
+  "number": 62,
+  "simplified": "回去",
+  "traditional": "回去",
+  "pinyin": "huíqù",
+  "english": "to go back"
+ },
+ {
+  "id": "hsk2-0063",
+  "level": 2,
+  "number": 63,
+  "simplified": "机场",
+  "traditional": "機場",
+  "pinyin": "jīchǎng",
+  "english": "airport"
+ },
+ {
+  "id": "hsk2-0064",
+  "level": 2,
+  "number": 64,
+  "simplified": "机票",
+  "traditional": "機票",
+  "pinyin": "jīpiào",
+  "english": "plane ticket"
+ },
+ {
+  "id": "hsk2-0065",
+  "level": 2,
+  "number": 65,
+  "simplified": "记得",
+  "traditional": "記得",
+  "pinyin": "jìde",
+  "english": "to remember"
+ },
+ {
+  "id": "hsk2-0066",
+  "level": 2,
+  "number": 66,
+  "simplified": "间",
+  "traditional": "間",
+  "pinyin": "jiān",
+  "english": "measure word for rooms; room"
+ },
+ {
+  "id": "hsk2-0067",
+  "level": 2,
+  "number": 67,
+  "simplified": "教",
+  "traditional": "教",
+  "pinyin": "jiāo",
+  "english": "to teach"
+ },
+ {
+  "id": "hsk2-0068",
+  "level": 2,
+  "number": 68,
+  "simplified": "教室",
+  "traditional": "教室",
+  "pinyin": "jiàoshì",
+  "english": "classroom"
+ },
+ {
+  "id": "hsk2-0069",
+  "level": 2,
+  "number": 69,
+  "simplified": "介绍",
+  "traditional": "介紹",
+  "pinyin": "jièshào",
+  "english": "to introduce"
+ },
+ {
+  "id": "hsk2-0070",
+  "level": 2,
+  "number": 70,
+  "simplified": "进",
+  "traditional": "進",
+  "pinyin": "jìn",
+  "english": "to enter; to advance"
+ },
+ {
+  "id": "hsk2-0071",
+  "level": 2,
+  "number": 71,
+  "simplified": "近",
+  "traditional": "近",
+  "pinyin": "jìn",
+  "english": "near; close"
+ },
+ {
+  "id": "hsk2-0072",
+  "level": 2,
+  "number": 72,
+  "simplified": "进来",
+  "traditional": "進來",
+  "pinyin": "jìnlái",
+  "english": "to come in"
+ },
+ {
+  "id": "hsk2-0073",
+  "level": 2,
+  "number": 73,
+  "simplified": "进去",
+  "traditional": "進去",
+  "pinyin": "jìnqù",
+  "english": "to go in"
+ },
+ {
+  "id": "hsk2-0074",
+  "level": 2,
+  "number": 74,
+  "simplified": "经常",
+  "traditional": "經常",
+  "pinyin": "jīngcháng",
+  "english": "often; frequently"
+ },
+ {
+  "id": "hsk2-0075",
+  "level": 2,
+  "number": 75,
+  "simplified": "酒店",
+  "traditional": "酒店",
+  "pinyin": "jiǔdiàn",
+  "english": "hotel; restaurant"
+ },
+ {
+  "id": "hsk2-0076",
+  "level": 2,
+  "number": 76,
+  "simplified": "就",
+  "traditional": "就",
+  "pinyin": "jiù",
+  "english": "then; right away; precisely"
+ },
+ {
+  "id": "hsk2-0077",
+  "level": 2,
+  "number": 77,
+  "simplified": "咖啡",
+  "traditional": "咖啡",
+  "pinyin": "kāfēi",
+  "english": "coffee"
+ },
+ {
+  "id": "hsk2-0078",
+  "level": 2,
+  "number": 78,
+  "simplified": "开始",
+  "traditional": "開始",
+  "pinyin": "kāishǐ",
+  "english": "to begin; beginning"
+ },
+ {
+  "id": "hsk2-0079",
+  "level": 2,
+  "number": 79,
+  "simplified": "开学",
+  "traditional": "開學",
+  "pinyin": "kāixué",
+  "english": "to start school; to begin a new term"
+ },
+ {
+  "id": "hsk2-0080",
+  "level": 2,
+  "number": 80,
+  "simplified": "考",
+  "traditional": "考",
+  "pinyin": "kǎo",
+  "english": "to take an exam; to test"
+ },
+ {
+  "id": "hsk2-0081",
+  "level": 2,
+  "number": 81,
+  "simplified": "考试",
+  "traditional": "考試",
+  "pinyin": "kǎoshì",
+  "english": "to take an exam; exam"
+ },
+ {
+  "id": "hsk2-0082",
+  "level": 2,
+  "number": 82,
+  "simplified": "可能",
+  "traditional": "可能",
+  "pinyin": "kěnéng",
+  "english": "possible; maybe"
+ },
+ {
+  "id": "hsk2-0083",
+  "level": 2,
+  "number": 83,
+  "simplified": "裤子",
+  "traditional": "褲子",
+  "pinyin": "kùzi",
+  "english": "pants; trousers"
+ },
+ {
+  "id": "hsk2-0084",
+  "level": 2,
+  "number": 84,
+  "simplified": "快",
+  "traditional": "快",
+  "pinyin": "kuài",
+  "english": "fast; quick; soon"
+ },
+ {
+  "id": "hsk2-0085",
+  "level": 2,
+  "number": 85,
+  "simplified": "快乐",
+  "traditional": "快樂",
+  "pinyin": "kuàilè",
+  "english": "happy"
+ },
+ {
+  "id": "hsk2-0086",
+  "level": 2,
+  "number": 86,
+  "simplified": "快要",
+  "traditional": "快要",
+  "pinyin": "kuàiyào",
+  "english": "about to; soon"
+ },
+ {
+  "id": "hsk2-0087",
+  "level": 2,
+  "number": 87,
+  "simplified": "篮球",
+  "traditional": "籃球",
+  "pinyin": "lánqiú",
+  "english": "basketball"
+ },
+ {
+  "id": "hsk2-0088",
+  "level": 2,
+  "number": 88,
+  "simplified": "累",
+  "traditional": "累",
+  "pinyin": "lèi",
+  "english": "tired"
+ },
+ {
+  "id": "hsk2-0089",
+  "level": 2,
+  "number": 89,
+  "simplified": "离",
+  "traditional": "離",
+  "pinyin": "lí",
+  "english": "to leave; away from; from"
+ },
+ {
+  "id": "hsk2-0090",
+  "level": 2,
+  "number": 90,
+  "simplified": "里面",
+  "traditional": "裡面",
+  "pinyin": "lǐmiàn",
+  "english": "inside"
+ },
+ {
+  "id": "hsk2-0091",
+  "level": 2,
+  "number": 91,
+  "simplified": "楼",
+  "traditional": "樓",
+  "pinyin": "lóu",
+  "english": "building; floor"
+ },
+ {
+  "id": "hsk2-0092",
+  "level": 2,
+  "number": 92,
+  "simplified": "路",
+  "traditional": "路",
+  "pinyin": "lù",
+  "english": "road; route"
+ },
+ {
+  "id": "hsk2-0093",
+  "level": 2,
+  "number": 93,
+  "simplified": "路上",
+  "traditional": "路上",
+  "pinyin": "lùshang",
+  "english": "on the way"
+ },
+ {
+  "id": "hsk2-0094",
+  "level": 2,
+  "number": 94,
+  "simplified": "旅游",
+  "traditional": "旅遊",
+  "pinyin": "lǚyóu",
+  "english": "to travel; tourism"
+ },
+ {
+  "id": "hsk2-0095",
+  "level": 2,
+  "number": 95,
+  "simplified": "绿茶",
+  "traditional": "綠茶",
+  "pinyin": "lǜchá",
+  "english": "green tea"
+ },
+ {
+  "id": "hsk2-0096",
+  "level": 2,
+  "number": 96,
+  "simplified": "绿色",
+  "traditional": "綠色",
+  "pinyin": "lǜsè",
+  "english": "green"
+ },
+ {
+  "id": "hsk2-0097",
+  "level": 2,
+  "number": 97,
+  "simplified": "慢",
+  "traditional": "慢",
+  "pinyin": "màn",
+  "english": "slow"
+ },
+ {
+  "id": "hsk2-0098",
+  "level": 2,
+  "number": 98,
+  "simplified": "没意思",
+  "traditional": "沒意思",
+  "pinyin": "méi yìsi",
+  "english": "boring; of no interest"
+ },
+ {
+  "id": "hsk2-0099",
+  "level": 2,
+  "number": 99,
+  "simplified": "每",
+  "traditional": "每",
+  "pinyin": "měi",
+  "english": "each; every"
+ },
+ {
+  "id": "hsk2-0100",
+  "level": 2,
+  "number": 100,
+  "simplified": "门",
+  "traditional": "門",
+  "pinyin": "mén",
+  "english": "door; gate"
+ },
+ {
+  "id": "hsk2-0101",
+  "level": 2,
+  "number": 101,
+  "simplified": "门口",
+  "traditional": "門口",
+  "pinyin": "ménkǒu",
+  "english": "doorway; entrance"
+ },
+ {
+  "id": "hsk2-0102",
+  "level": 2,
+  "number": 102,
+  "simplified": "门票",
+  "traditional": "門票",
+  "pinyin": "ménpiào",
+  "english": "entrance ticket"
+ },
+ {
+  "id": "hsk2-0103",
+  "level": 2,
+  "number": 103,
+  "simplified": "面",
+  "traditional": "面",
+  "pinyin": "miàn",
+  "english": "side (suffix); face; surface"
+ },
+ {
+  "id": "hsk2-0104",
+  "level": 2,
+  "number": 104,
+  "simplified": "名",
+  "traditional": "名",
+  "pinyin": "míng",
+  "english": "name; measure word for people"
+ },
+ {
+  "id": "hsk2-0105",
+  "level": 2,
+  "number": 105,
+  "simplified": "拿",
+  "traditional": "拿",
+  "pinyin": "ná",
+  "english": "to take; to hold"
+ },
+ {
+  "id": "hsk2-0106",
+  "level": 2,
+  "number": 106,
+  "simplified": "那么",
+  "traditional": "那麼",
+  "pinyin": "nàme",
+  "english": "like that; so; then"
+ },
+ {
+  "id": "hsk2-0107",
+  "level": 2,
+  "number": 107,
+  "simplified": "那样",
+  "traditional": "那樣",
+  "pinyin": "nàyàng",
+  "english": "that way; that kind"
+ },
+ {
+  "id": "hsk2-0108",
+  "level": 2,
+  "number": 108,
+  "simplified": "奶茶",
+  "traditional": "奶茶",
+  "pinyin": "nǎichá",
+  "english": "milk tea"
+ },
+ {
+  "id": "hsk2-0109",
+  "level": 2,
+  "number": 109,
+  "simplified": "奶奶",
+  "traditional": "奶奶",
+  "pinyin": "nǎinai",
+  "english": "grandmother (paternal)"
+ },
+ {
+  "id": "hsk2-0110",
+  "level": 2,
+  "number": 110,
+  "simplified": "男孩儿",
+  "traditional": "男孩兒",
+  "pinyin": "nánháir",
+  "english": "boy"
+ },
+ {
+  "id": "hsk2-0111",
+  "level": 2,
+  "number": 111,
+  "simplified": "鸟",
+  "traditional": "鳥",
+  "pinyin": "niǎo",
+  "english": "bird"
+ },
+ {
+  "id": "hsk2-0112",
+  "level": 2,
+  "number": 112,
+  "simplified": "女孩儿",
+  "traditional": "女孩兒",
+  "pinyin": "nǚháir",
+  "english": "girl"
+ },
+ {
+  "id": "hsk2-0113",
+  "level": 2,
+  "number": 113,
+  "simplified": "旁边",
+  "traditional": "旁邊",
+  "pinyin": "pángbiān",
+  "english": "beside; next to"
+ },
+ {
+  "id": "hsk2-0114",
+  "level": 2,
+  "number": 114,
+  "simplified": "跑",
+  "traditional": "跑",
+  "pinyin": "pǎo",
+  "english": "to run"
+ },
+ {
+  "id": "hsk2-0115",
+  "level": 2,
+  "number": 115,
+  "simplified": "跑步",
+  "traditional": "跑步",
+  "pinyin": "pǎobù",
+  "english": "to run; to jog"
+ },
+ {
+  "id": "hsk2-0116",
+  "level": 2,
+  "number": 116,
+  "simplified": "票",
+  "traditional": "票",
+  "pinyin": "piào",
+  "english": "ticket"
+ },
+ {
+  "id": "hsk2-0117",
+  "level": 2,
+  "number": 117,
+  "simplified": "妻子",
+  "traditional": "妻子",
+  "pinyin": "qīzi",
+  "english": "wife"
+ },
+ {
+  "id": "hsk2-0118",
+  "level": 2,
+  "number": 118,
+  "simplified": "起来",
+  "traditional": "起來",
+  "pinyin": "qǐlái",
+  "english": "to get up; to stand up"
+ },
+ {
+  "id": "hsk2-0119",
+  "level": 2,
+  "number": 119,
+  "simplified": "前面",
+  "traditional": "前面",
+  "pinyin": "qiánmiàn",
+  "english": "in front; ahead"
+ },
+ {
+  "id": "hsk2-0120",
+  "level": 2,
+  "number": 120,
+  "simplified": "晴",
+  "traditional": "晴",
+  "pinyin": "qíng",
+  "english": "sunny; clear (weather)"
+ },
+ {
+  "id": "hsk2-0121",
+  "level": 2,
+  "number": 121,
+  "simplified": "球",
+  "traditional": "球",
+  "pinyin": "qiú",
+  "english": "ball"
+ },
+ {
+  "id": "hsk2-0122",
+  "level": 2,
+  "number": 122,
+  "simplified": "让",
+  "traditional": "讓",
+  "pinyin": "ràng",
+  "english": "to let; to allow"
+ },
+ {
+  "id": "hsk2-0123",
+  "level": 2,
+  "number": 123,
+  "simplified": "肉",
+  "traditional": "肉",
+  "pinyin": "ròu",
+  "english": "meat"
+ },
+ {
+  "id": "hsk2-0124",
+  "level": 2,
+  "number": 124,
+  "simplified": "商场",
+  "traditional": "商場",
+  "pinyin": "shāngchǎng",
+  "english": "shopping mall"
+ },
+ {
+  "id": "hsk2-0125",
+  "level": 2,
+  "number": 125,
+  "simplified": "上来",
+  "traditional": "上來",
+  "pinyin": "shànglái",
+  "english": "to come up"
+ },
+ {
+  "id": "hsk2-0126",
+  "level": 2,
+  "number": 126,
+  "simplified": "上面",
+  "traditional": "上面",
+  "pinyin": "shàngmiàn",
+  "english": "on top; above"
+ },
+ {
+  "id": "hsk2-0127",
+  "level": 2,
+  "number": 127,
+  "simplified": "上去",
+  "traditional": "上去",
+  "pinyin": "shàngqù",
+  "english": "to go up"
+ },
+ {
+  "id": "hsk2-0128",
+  "level": 2,
+  "number": 128,
+  "simplified": "上网",
+  "traditional": "上網",
+  "pinyin": "shàngwǎng",
+  "english": "to go online"
+ },
+ {
+  "id": "hsk2-0129",
+  "level": 2,
+  "number": 129,
+  "simplified": "身体",
+  "traditional": "身體",
+  "pinyin": "shēntǐ",
+  "english": "body; health"
+ },
+ {
+  "id": "hsk2-0130",
+  "level": 2,
+  "number": 130,
+  "simplified": "生日",
+  "traditional": "生日",
+  "pinyin": "shēngrì",
+  "english": "birthday"
+ },
+ {
+  "id": "hsk2-0131",
+  "level": 2,
+  "number": 131,
+  "simplified": "时",
+  "traditional": "時",
+  "pinyin": "shí",
+  "english": "time; hour; when"
+ },
+ {
+  "id": "hsk2-0132",
+  "level": 2,
+  "number": 132,
+  "simplified": "事情",
+  "traditional": "事情",
+  "pinyin": "shìqing",
+  "english": "matter; thing"
+ },
+ {
+  "id": "hsk2-0133",
+  "level": 2,
+  "number": 133,
+  "simplified": "手",
+  "traditional": "手",
+  "pinyin": "shǒu",
+  "english": "hand"
+ },
+ {
+  "id": "hsk2-0134",
+  "level": 2,
+  "number": 134,
+  "simplified": "手表",
+  "traditional": "手錶",
+  "pinyin": "shǒubiǎo",
+  "english": "wristwatch"
+ },
+ {
+  "id": "hsk2-0135",
+  "level": 2,
+  "number": 135,
+  "simplified": "书包",
+  "traditional": "書包",
+  "pinyin": "shūbāo",
+  "english": "schoolbag"
+ },
+ {
+  "id": "hsk2-0136",
+  "level": 2,
+  "number": 136,
+  "simplified": "舒服",
+  "traditional": "舒服",
+  "pinyin": "shūfu",
+  "english": "comfortable"
+ },
+ {
+  "id": "hsk2-0137",
+  "level": 2,
+  "number": 137,
+  "simplified": "送",
+  "traditional": "送",
+  "pinyin": "sòng",
+  "english": "to give (a gift); to send; to see off"
+ },
+ {
+  "id": "hsk2-0138",
+  "level": 2,
+  "number": 138,
+  "simplified": "虽然",
+  "traditional": "雖然",
+  "pinyin": "suīrán",
+  "english": "although"
+ },
+ {
+  "id": "hsk2-0139",
+  "level": 2,
+  "number": 139,
+  "simplified": "所以",
+  "traditional": "所以",
+  "pinyin": "suǒyǐ",
+  "english": "so; therefore"
+ },
+ {
+  "id": "hsk2-0140",
+  "level": 2,
+  "number": 140,
+  "simplified": "疼",
+  "traditional": "疼",
+  "pinyin": "téng",
+  "english": "to hurt; sore; to love dearly"
+ },
+ {
+  "id": "hsk2-0141",
+  "level": 2,
+  "number": 141,
+  "simplified": "踢",
+  "traditional": "踢",
+  "pinyin": "tī",
+  "english": "to kick"
+ },
+ {
+  "id": "hsk2-0142",
+  "level": 2,
+  "number": 142,
+  "simplified": "题",
+  "traditional": "題",
+  "pinyin": "tí",
+  "english": "question; topic; problem"
+ },
+ {
+  "id": "hsk2-0143",
+  "level": 2,
+  "number": 143,
+  "simplified": "条",
+  "traditional": "條",
+  "pinyin": "tiáo",
+  "english": "measure word for long thin things"
+ },
+ {
+  "id": "hsk2-0144",
+  "level": 2,
+  "number": 144,
+  "simplified": "跳舞",
+  "traditional": "跳舞",
+  "pinyin": "tiàowǔ",
+  "english": "to dance"
+ },
+ {
+  "id": "hsk2-0145",
+  "level": 2,
+  "number": 145,
+  "simplified": "头",
+  "traditional": "頭",
+  "pinyin": "tóu",
+  "english": "head"
+ },
+ {
+  "id": "hsk2-0146",
+  "level": 2,
+  "number": 146,
+  "simplified": "外国",
+  "traditional": "外國",
+  "pinyin": "wàiguó",
+  "english": "foreign country"
+ },
+ {
+  "id": "hsk2-0147",
+  "level": 2,
+  "number": 147,
+  "simplified": "外面",
+  "traditional": "外面",
+  "pinyin": "wàimiàn",
+  "english": "outside"
+ },
+ {
+  "id": "hsk2-0148",
+  "level": 2,
+  "number": 148,
+  "simplified": "完",
+  "traditional": "完",
+  "pinyin": "wán",
+  "english": "to finish; to be over"
+ },
+ {
+  "id": "hsk2-0149",
+  "level": 2,
+  "number": 149,
+  "simplified": "万",
+  "traditional": "萬",
+  "pinyin": "wàn",
+  "english": "ten thousand"
+ },
+ {
+  "id": "hsk2-0150",
+  "level": 2,
+  "number": 150,
+  "simplified": "往",
+  "traditional": "往",
+  "pinyin": "wǎng",
+  "english": "towards; in the direction of; to go"
+ },
+ {
+  "id": "hsk2-0151",
+  "level": 2,
+  "number": 151,
+  "simplified": "网上",
+  "traditional": "網上",
+  "pinyin": "wǎngshang",
+  "english": "online; on the internet"
+ },
+ {
+  "id": "hsk2-0152",
+  "level": 2,
+  "number": 152,
+  "simplified": "忘",
+  "traditional": "忘",
+  "pinyin": "wàng",
+  "english": "to forget"
+ },
+ {
+  "id": "hsk2-0153",
+  "level": 2,
+  "number": 153,
+  "simplified": "位",
+  "traditional": "位",
+  "pinyin": "wèi",
+  "english": "measure word for people (polite)"
+ },
+ {
+  "id": "hsk2-0154",
+  "level": 2,
+  "number": 154,
+  "simplified": "为什么",
+  "traditional": "為什麼",
+  "pinyin": "wèi shénme",
+  "english": "why"
+ },
+ {
+  "id": "hsk2-0155",
+  "level": 2,
+  "number": 155,
+  "simplified": "希望",
+  "traditional": "希望",
+  "pinyin": "xīwàng",
+  "english": "to hope"
+ },
+ {
+  "id": "hsk2-0156",
+  "level": 2,
+  "number": 156,
+  "simplified": "洗",
+  "traditional": "洗",
+  "pinyin": "xǐ",
+  "english": "to wash"
+ },
+ {
+  "id": "hsk2-0157",
+  "level": 2,
+  "number": 157,
+  "simplified": "洗手间",
+  "traditional": "洗手間",
+  "pinyin": "xǐshǒujiān",
+  "english": "restroom; toilet"
+ },
+ {
+  "id": "hsk2-0158",
+  "level": 2,
+  "number": 158,
+  "simplified": "下来",
+  "traditional": "下來",
+  "pinyin": "xiàlái",
+  "english": "to come down"
+ },
+ {
+  "id": "hsk2-0159",
+  "level": 2,
+  "number": 159,
+  "simplified": "下面",
+  "traditional": "下面",
+  "pinyin": "xiàmiàn",
+  "english": "below; next"
+ },
+ {
+  "id": "hsk2-0160",
+  "level": 2,
+  "number": 160,
+  "simplified": "下去",
+  "traditional": "下去",
+  "pinyin": "xiàqù",
+  "english": "to go down; to continue"
+ },
+ {
+  "id": "hsk2-0161",
+  "level": 2,
+  "number": 161,
+  "simplified": "小孩儿",
+  "traditional": "小孩兒",
+  "pinyin": "xiǎoháir",
+  "english": "child"
+ },
+ {
+  "id": "hsk2-0162",
+  "level": 2,
+  "number": 162,
+  "simplified": "小时候",
+  "traditional": "小時候",
+  "pinyin": "xiǎoshíhou",
+  "english": "childhood; when one was young"
+ },
+ {
+  "id": "hsk2-0163",
+  "level": 2,
+  "number": 163,
+  "simplified": "笑",
+  "traditional": "笑",
+  "pinyin": "xiào",
+  "english": "to laugh; to smile"
+ },
+ {
+  "id": "hsk2-0164",
+  "level": 2,
+  "number": 164,
+  "simplified": "姓",
+  "traditional": "姓",
+  "pinyin": "xìng",
+  "english": "surname; to be surnamed"
+ },
+ {
+  "id": "hsk2-0165",
+  "level": 2,
+  "number": 165,
+  "simplified": "姓名",
+  "traditional": "姓名",
+  "pinyin": "xìngmíng",
+  "english": "full name"
+ },
+ {
+  "id": "hsk2-0166",
+  "level": 2,
+  "number": 166,
+  "simplified": "颜色",
+  "traditional": "顏色",
+  "pinyin": "yánsè",
+  "english": "color"
+ },
+ {
+  "id": "hsk2-0167",
+  "level": 2,
+  "number": 167,
+  "simplified": "眼睛",
+  "traditional": "眼睛",
+  "pinyin": "yǎnjing",
+  "english": "eye"
+ },
+ {
+  "id": "hsk2-0168",
+  "level": 2,
+  "number": 168,
+  "simplified": "药",
+  "traditional": "藥",
+  "pinyin": "yào",
+  "english": "medicine; drug"
+ },
+ {
+  "id": "hsk2-0169",
+  "level": 2,
+  "number": 169,
+  "simplified": "药店",
+  "traditional": "藥店",
+  "pinyin": "yàodiàn",
+  "english": "pharmacy; drugstore"
+ },
+ {
+  "id": "hsk2-0170",
+  "level": 2,
+  "number": 170,
+  "simplified": "爷爷",
+  "traditional": "爺爺",
+  "pinyin": "yéye",
+  "english": "paternal grandfather; grandpa"
+ },
+ {
+  "id": "hsk2-0171",
+  "level": 2,
+  "number": 171,
+  "simplified": "一会儿",
+  "traditional": "一會兒",
+  "pinyin": "yíhuìr",
+  "english": "a moment; a while"
+ },
+ {
+  "id": "hsk2-0172",
+  "level": 2,
+  "number": 172,
+  "simplified": "已经",
+  "traditional": "已經",
+  "pinyin": "yǐjīng",
+  "english": "already"
+ },
+ {
+  "id": "hsk2-0173",
+  "level": 2,
+  "number": 173,
+  "simplified": "一起",
+  "traditional": "一起",
+  "pinyin": "yìqǐ",
+  "english": "together"
+ },
+ {
+  "id": "hsk2-0174",
+  "level": 2,
+  "number": 174,
+  "simplified": "意思",
+  "traditional": "意思",
+  "pinyin": "yìsi",
+  "english": "meaning; idea"
+ },
+ {
+  "id": "hsk2-0175",
+  "level": 2,
+  "number": 175,
+  "simplified": "阴",
+  "traditional": "陰",
+  "pinyin": "yīn",
+  "english": "overcast; cloudy"
+ },
+ {
+  "id": "hsk2-0176",
+  "level": 2,
+  "number": 176,
+  "simplified": "因为",
+  "traditional": "因為",
+  "pinyin": "yīnwèi",
+  "english": "because"
+ },
+ {
+  "id": "hsk2-0177",
+  "level": 2,
+  "number": 177,
+  "simplified": "游",
+  "traditional": "游",
+  "pinyin": "yóu",
+  "english": "to swim"
+ },
+ {
+  "id": "hsk2-0178",
+  "level": 2,
+  "number": 178,
+  "simplified": "游泳",
+  "traditional": "游泳",
+  "pinyin": "yóuyǒng",
+  "english": "to swim; swimming"
+ },
+ {
+  "id": "hsk2-0179",
+  "level": 2,
+  "number": 179,
+  "simplified": "有意思",
+  "traditional": "有意思",
+  "pinyin": "yǒu yìsi",
+  "english": "interesting; fun"
+ },
+ {
+  "id": "hsk2-0180",
+  "level": 2,
+  "number": 180,
+  "simplified": "有时",
+  "traditional": "有時",
+  "pinyin": "yǒushí",
+  "english": "sometimes; now and then"
+ },
+ {
+  "id": "hsk2-0181",
+  "level": 2,
+  "number": 181,
+  "simplified": "右",
+  "traditional": "右",
+  "pinyin": "yòu",
+  "english": "right (direction)"
+ },
+ {
+  "id": "hsk2-0182",
+  "level": 2,
+  "number": 182,
+  "simplified": "右边",
+  "traditional": "右邊",
+  "pinyin": "yòubian",
+  "english": "right side; to the right"
+ },
+ {
+  "id": "hsk2-0183",
+  "level": 2,
+  "number": 183,
+  "simplified": "鱼",
+  "traditional": "魚",
+  "pinyin": "yú",
+  "english": "fish"
+ },
+ {
+  "id": "hsk2-0184",
+  "level": 2,
+  "number": 184,
+  "simplified": "远",
+  "traditional": "遠",
+  "pinyin": "yuǎn",
+  "english": "far; distant"
+ },
+ {
+  "id": "hsk2-0185",
+  "level": 2,
+  "number": 185,
+  "simplified": "运动",
+  "traditional": "運動",
+  "pinyin": "yùndòng",
+  "english": "to exercise; sports"
+ },
+ {
+  "id": "hsk2-0186",
+  "level": 2,
+  "number": 186,
+  "simplified": "站",
+  "traditional": "站",
+  "pinyin": "zhàn",
+  "english": "station; stop"
+ },
+ {
+  "id": "hsk2-0187",
+  "level": 2,
+  "number": 187,
+  "simplified": "丈夫",
+  "traditional": "丈夫",
+  "pinyin": "zhàngfu",
+  "english": "husband"
+ },
+ {
+  "id": "hsk2-0188",
+  "level": 2,
+  "number": 188,
+  "simplified": "这么",
+  "traditional": "這麼",
+  "pinyin": "zhème",
+  "english": "so; like this"
+ },
+ {
+  "id": "hsk2-0189",
+  "level": 2,
+  "number": 189,
+  "simplified": "这样",
+  "traditional": "這樣",
+  "pinyin": "zhèyàng",
+  "english": "this way; like this; so"
+ },
+ {
+  "id": "hsk2-0190",
+  "level": 2,
+  "number": 190,
+  "simplified": "着",
+  "traditional": "著",
+  "pinyin": "zhe",
+  "english": "(marks an ongoing action or state)"
+ },
+ {
+  "id": "hsk2-0191",
+  "level": 2,
+  "number": 191,
+  "simplified": "正",
+  "traditional": "正",
+  "pinyin": "zhèng",
+  "english": "just; exactly; right now"
+ },
+ {
+  "id": "hsk2-0192",
+  "level": 2,
+  "number": 192,
+  "simplified": "周",
+  "traditional": "週",
+  "pinyin": "zhōu",
+  "english": "week; measure word for weeks"
+ },
+ {
+  "id": "hsk2-0193",
+  "level": 2,
+  "number": 193,
+  "simplified": "准备",
+  "traditional": "準備",
+  "pinyin": "zhǔnbèi",
+  "english": "to prepare; to intend"
+ },
+ {
+  "id": "hsk2-0194",
+  "level": 2,
+  "number": 194,
+  "simplified": "自己",
+  "traditional": "自己",
+  "pinyin": "zìjǐ",
+  "english": "oneself"
+ },
+ {
+  "id": "hsk2-0195",
+  "level": 2,
+  "number": 195,
+  "simplified": "走",
+  "traditional": "走",
+  "pinyin": "zǒu",
+  "english": "to walk; to leave"
+ },
+ {
+  "id": "hsk2-0196",
+  "level": 2,
+  "number": 196,
+  "simplified": "走路",
+  "traditional": "走路",
+  "pinyin": "zǒulù",
+  "english": "to walk; to go on foot"
+ },
+ {
+  "id": "hsk2-0197",
+  "level": 2,
+  "number": 197,
+  "simplified": "足球",
+  "traditional": "足球",
+  "pinyin": "zúqiú",
+  "english": "soccer; football"
+ },
+ {
+  "id": "hsk2-0198",
+  "level": 2,
+  "number": 198,
+  "simplified": "最",
+  "traditional": "最",
+  "pinyin": "zuì",
+  "english": "most (superlative)"
+ },
+ {
+  "id": "hsk2-0199",
+  "level": 2,
+  "number": 199,
+  "simplified": "左",
+  "traditional": "左",
+  "pinyin": "zuǒ",
+  "english": "left"
+ },
+ {
+  "id": "hsk2-0200",
+  "level": 2,
+  "number": 200,
+  "simplified": "左边",
+  "traditional": "左邊",
+  "pinyin": "zuǒbian",
+  "english": "left side; to the left"
+ }
+]
