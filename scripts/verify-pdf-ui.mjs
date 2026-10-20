@@ -105,6 +105,11 @@ for (const theme of ["light", "dark"]) {
       await page.goto(new URL(route, base).href);
       if (route.startsWith("reader")) await ready(1);
       await page.evaluate(() => document.fonts.ready);
+      if (route.startsWith("reader")) {
+        // Let the reader's 180ms resize debounce finish before recording a view.
+        await page.waitForTimeout(250);
+        await ready(1);
+      }
       const data = await page.evaluate(() => ({
         overflow: document.documentElement.scrollWidth > innerWidth,
         small: [
