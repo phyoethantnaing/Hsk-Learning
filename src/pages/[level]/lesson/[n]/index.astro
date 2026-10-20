@@ -1,6 +1,8 @@
 ---
 // One lesson (e.g. /hsk1/lesson/1/): its ~20 words as cards.
+import Icon from "../../../../components/Icon.astro";
 import PageIntro from "../../../../components/PageIntro.astro";
+import PagePager from "../../../../components/PagePager.astro";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
 import WordCard from "../../../../components/WordCard.astro";
 import ProgressCount from "../../../../components/ProgressCount.astro";
@@ -50,22 +52,29 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
 
   <div class="btn-row actions">
     <a class="btn btn-primary" href={flashcardsUrl(level.key, lesson.n)}>
-      ကတ်ပြားနဲ့ လေ့ကျင့်မယ် →
+      <Icon name="cards" size={20} /> ကတ်ပြားနဲ့ လေ့ကျင့်မယ်
     </a>
   </div>
 
-  <nav class="btn-row pager" aria-label="သင်ခန်းစာများ">
-    {lesson.n > 1 && (
-      <a class="btn" href={lessonUrl(level.key, lesson.n - 1)}>
-        ← သင်ခန်းစာ {myNumber(lesson.n - 1)}
-      </a>
-    )}
-    {lesson.n < total && (
-      <a class="btn" href={lessonUrl(level.key, lesson.n + 1)}>
-        သင်ခန်းစာ {myNumber(lesson.n + 1)} →
-      </a>
-    )}
-  </nav>
+  <PagePager
+    label="သင်ခန်းစာများ"
+    previous={
+      lesson.n > 1
+        ? {
+            href: lessonUrl(level.key, lesson.n - 1),
+            label: `သင်ခန်းစာ ${myNumber(lesson.n - 1)}`,
+          }
+        : null
+    }
+    next={
+      lesson.n < total
+        ? {
+            href: lessonUrl(level.key, lesson.n + 1),
+            label: `သင်ခန်းစာ ${myNumber(lesson.n + 1)}`,
+          }
+        : null
+    }
+  />
 </BaseLayout>
 
 <style>
@@ -75,9 +84,5 @@ const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n
 
   .actions {
     margin: 8px 0 20px;
-  }
-
-  .pager {
-    justify-content: space-between;
   }
 </style>

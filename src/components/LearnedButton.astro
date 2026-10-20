@@ -1,5 +1,6 @@
 ---
 // "သိပြီ" toggle on a word page; stored with src/scripts/progress.js.
+import Icon from "./Icon.astro";
 interface Props {
   id: string;
 }
@@ -12,22 +13,34 @@ const { id } = Astro.props;
   data-learned-id={id}
   aria-pressed="false"
 >
-  <span class="off">☐ ဒီစကားလုံး သိပြီ</span>
-  <span class="on">✓ သိပြီ (ပြန်ဖြုတ်ရန် နှိပ်ပါ)</span>
+  <span class="off">
+    <Icon name="circle" size={20} /> ဒီစကားလုံး သိပြီ
+  </span>
+  <span class="on">
+    <Icon name="check" size={20} /> သိပြီ (ပြန်ဖြုတ်ရန် နှိပ်ပါ)
+  </span>
 </button>
 
 <style>
+  .learned-btn .off {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+  }
   .learned-btn .on {
     display: none;
   }
 
   .learned-btn[aria-pressed="true"] {
     background: var(--accent-soft);
-    border-color: var(--tone3);
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .learned-btn[aria-pressed="true"] .on {
-    display: inline;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
   }
 
   .learned-btn[aria-pressed="true"] .off {

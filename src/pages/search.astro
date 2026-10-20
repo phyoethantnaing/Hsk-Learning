@@ -8,13 +8,15 @@ import { url } from "../lib/site.mjs";
 
 <BaseLayout title="ရှာရန်">
   <PageIntro eyebrow="FIND YOUR NEXT WORD" title="စကားလုံး ရှာရန်" />
-  <form class="search glass" role="search" onsubmit="return false">
+  <form class="search" role="search" action={url("/search/")} method="get">
     <Icon name="search" size={23} />
     <label for="q" class="visually-hidden">
       ရှာမယ့် စကားလုံး
     </label>
     <input
       id="q"
+      name="q"
+      enterkeyhint="search"
       type="search"
       aria-describedby="search-help"
       autocomplete="off"
@@ -24,6 +26,15 @@ import { url } from "../lib/site.mjs";
       data-index={url("/search-index.json")}
       data-base={url("/")}
     />
+    <button
+      type="button"
+      class="icon-button search-clear"
+      data-search-clear
+      aria-label="ရှာဖွေမှု ရှင်းရန်"
+      hidden
+    >
+      <Icon name="close" size={18} />
+    </button>
   </form>
   <p class="muted small" id="search-help">
     တရုတ်စာလုံး၊ pinyin (အသံအမှတ် ပါပါ မပါပါ — ai၊ ài၊ ai4)၊ မြန်မာ အဓိပ္ပာယ်
@@ -45,16 +56,32 @@ import { url } from "../lib/site.mjs";
       </button>
     </div>
   </div>
+  <button class="btn search-retry" type="button" data-search-retry hidden>
+    <Icon name="retry" /> ပြန်စမ်းမယ်
+  </button>
   <ul class="results" data-results aria-label="ရှာဖွေမှု ရလဒ်များ"></ul>
   <noscript>
     <p class="card">
       ရှာဖွေရန် JavaScript ဖွင့်ပေးပါ။{" "}
-      <a href={url("/hsk1/")}>HSK 1 စကားလုံးများ →</a>
+      <a href={url("/hsk1/")}>
+        HSK 1 စကားလုံးများ <Icon name="forward" size={18} />
+      </a>
     </p>
   </noscript>
 </BaseLayout>
 
 <style>
+  .search-retry {
+    margin: 0 0 20px;
+  }
+  .search-clear {
+    flex: none;
+    border: 0;
+    background: var(--surface-2);
+  }
+  .search input::-webkit-search-cancel-button {
+    display: none;
+  }
   .search {
     display: flex;
     align-items: center;
@@ -62,7 +89,9 @@ import { url } from "../lib/site.mjs";
     padding: 10px 20px;
     border-radius: 22px;
     margin-bottom: 16px;
-    color: var(--accent);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    background: var(--surface);
   }
   .search:focus-within {
     border-color: var(--accent);
@@ -78,7 +107,7 @@ import { url } from "../lib/site.mjs";
     background: transparent;
     color: var(--text);
     font: inherit;
-    font-size: clamp(0.9rem, 3vw, 1.125rem);
+    font-size: 1rem;
     border-radius: 0;
   }
   .search input:focus {
@@ -187,31 +216,29 @@ import { url } from "../lib/site.mjs";
   const status = document.querySelector<HTMLElement>("[data-status]")!;
   const base = input.dataset.base!.replace(/\/$/, "");
   let index: Entry[] | null = null;
-  let pending: Promise<Entry[] | null> | null = null;
+  let pending: Promise<Entry[]> | null = null;
   let request = 0;
+  let composing = false;
   const empty = document.querySelector<HTMLElement>("[data-search-empty]")!;
-
-  async function load(): Promise<Entry[] | null> {
-    if (index) return index;
+  const retry = document.querySelector<HTMLButtonElement>(
+    "[data-search-retry]",
+  )!;
+  const clear = document.querySelector<HTMLButtonElement>(
+    "[data-search-clear]",
+  )!;
+  function load(): Promise<Entry[]> {
+    if (index) return Promise.resolve(index);
     if (pending) return pending;
-    status.textContent = "ခဏစောင့်ပါ…";
-    results.setAttribute("aria-busy", "true");
     pending = (async () => {
-      try {
-        const response = await fetch(input.dataset.index!);
-        if (!response.ok) throw new Error("Search index unavailable");
-        index = await response.json();
-        status.textContent = "";
-        return index;
-      } catch {
-        status.textContent =
-          "ရှာဖို့ ဒေတာ မရသေးပါဘူး။ အင်တာနက် ချိတ်ပြီး ပြန်စမ်းကြည့်ပါ။";
-        return null;
-      } finally {
-        pending = null;
-        results.setAttribute("aria-busy", "false");
-      }
-    })();
+      const response = await fetch(input.dataset.index!);
+      if (!response.ok) throw new Error("Search unavailable");
+      const data = await response.json();
+      if (!Array.isArray(data)) throw new Error("Invalid search data");
+      index = data;
+      return data;
+    })().finally(() => {
+      pending = null;
+    });
     return pending;
   }
 
@@ -280,40 +307,96 @@ import { url } from "../lib/site.mjs";
     empty.hidden = Boolean(q.trim());
     status.textContent = q
       ? list.length
-        ? `${list.length}${list.length === 50 ? "+" : ""} ခု တွေ့ပါတယ်`
+        ? `${list.length} ခု တွေ့ပါတယ်`
         : "မတွေ့ပါဘူး။ တခြား စကားလုံးနဲ့ ရှာကြည့်ပါ။"
       : "";
   }
 
-  async function search() {
+  async function search(updateUrl = true) {
     const currentRequest = ++request;
-    const q = input.value;
-    if (!q.trim()) return render([], "");
-    const data = await load();
-    if (!data || currentRequest !== request) return;
-    const found = data
-      .map((e) => ({ e, s: score(e, q) }))
-      .filter((x) => x.s > 0)
-      .sort((a, b) => b.s - a.s || a.e.id.localeCompare(b.e.id))
-      .slice(0, 50)
-      .map((x) => x.e);
-    render(found, q);
+    const q = input.value.trim();
+    if (updateUrl) {
+      const address = new URL(location.href);
+      if (q) address.searchParams.set("q", q);
+      else address.searchParams.delete("q");
+      history.replaceState(history.state, "", address);
+    }
+    clear.hidden = !q;
+    retry.hidden = true;
+    if (!q) {
+      results.setAttribute("aria-busy", "false");
+      render([], "");
+      return;
+    }
+    empty.hidden = true;
+    if (!index) {
+      results.replaceChildren();
+      status.textContent = "ခဏစောင့်ပါ…";
+      results.setAttribute("aria-busy", "true");
+    }
+    try {
+      const data = await load();
+      if (currentRequest !== request) return;
+      const found = data
+        .map((e) => ({ e, s: score(e, q) }))
+        .filter((x) => x.s > 0)
+        .sort((a, b) => b.s - a.s || a.e.id.localeCompare(b.e.id));
+      render(
+        found.slice(0, 50).map((x) => x.e),
+        q,
+      );
+      if (found.length > 50)
+        status.textContent = `${found.length} ခု တွေ့ပါတယ် · ပထမ 50 ခု`;
+    } catch {
+      if (currentRequest !== request) return;
+      results.replaceChildren();
+      status.textContent =
+        "ရှာဖို့ ဒေတာ မရသေးပါဘူး။ အင်တာနက် ချိတ်ပြီး ပြန်စမ်းကြည့်ပါ။";
+      retry.hidden = false;
+    } finally {
+      if (currentRequest === request)
+        results.setAttribute("aria-busy", "false");
+    }
   }
-
-  input.addEventListener("input", search);
+  input.addEventListener("compositionstart", () => {
+    composing = true;
+  });
+  input.addEventListener("compositionend", () => {
+    composing = false;
+    search();
+  });
+  input.addEventListener("input", () => {
+    if (!composing) search();
+  });
+  input.closest("form")!.addEventListener("submit", (event) => {
+    event.preventDefault();
+    search();
+    input.blur();
+  });
+  clear.addEventListener("click", () => {
+    input.value = "";
+    input.focus();
+    search();
+  });
+  retry.addEventListener("click", () => {
+    input.focus();
+    search();
+  });
   for (const chip of document.querySelectorAll<HTMLButtonElement>(
     "[data-query]",
-  )) {
+  ))
     chip.addEventListener("click", () => {
       input.value = chip.dataset.query!;
       input.focus();
       search();
     });
+  function restore() {
+    input.value = new URLSearchParams(location.search).get("q") || "";
+    search(false);
   }
-  input.addEventListener("focus", load, { once: true });
-  const initial = new URLSearchParams(location.search).get("q");
-  if (initial) {
-    input.value = initial;
-    search();
-  }
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) restore();
+  });
+  window.addEventListener("popstate", restore);
+  restore();
 </script>

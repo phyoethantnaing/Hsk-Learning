@@ -1,4 +1,5 @@
 ---
+import { url } from "../lib/site.mjs";
 ---
 
 <footer class="site-footer">
@@ -20,6 +21,10 @@
       )။
     </p>
     <p>
+      <a href={url("/start/")}>အစပြုသူ လမ်းညွှန်</a> ·{" "}
+      <a href={url("/about/")}>ဆိုက်အကြောင်း</a>
+    </p>
+    <p>
       ဒီဆိုက်က အခမဲ့ပါ။ ကုဒ်ကို{" "}
       <a href="https://github.com/phyoethantnaing/Hsk-Learning" rel="noopener">
         GitHub
@@ -34,8 +39,8 @@
     border-top: 1px solid var(--border);
     background: var(--surface);
     color: var(--text-muted);
-    font-size: 0.75rem;
-    padding: 32px 0 max(32px, env(safe-area-inset-bottom));
+    font-size: 0.8rem;
+    padding: 28px 0 calc(28px + var(--nav-clearance));
     line-height: 2;
   }
 

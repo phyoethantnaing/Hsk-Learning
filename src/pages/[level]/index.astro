@@ -1,5 +1,6 @@
 ---
 // A level (e.g. /hsk1/): its lessons of ~20 words, each with progress.
+import Icon from "../../components/Icon.astro";
 import PageIntro from "../../components/PageIntro.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProgressCount from "../../components/ProgressCount.astro";
@@ -61,7 +62,7 @@ const words = wordsForLevel(level.key);
         <ProgressCount ids={lesson.words.map((w) => w.id)} />
         <div class="btn-row">
           <a class="btn" href={lessonUrl(level.key, lesson.n)}>
-            စကားလုံးများ →
+            စကားလုံးများ <Icon name="forward" size={18} />
           </a>
           <a class="btn" href={flashcardsUrl(level.key, lesson.n)}>
             ကတ်ပြား
