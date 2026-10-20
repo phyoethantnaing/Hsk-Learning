@@ -83,6 +83,8 @@ if (!process.env.PDF_QA_SKIP_CATALOG)
       failures.push({ id: doc.id, error: e.message });
     }
   }
+// Start on the site origin even when the full catalog pass is skipped.
+await page.goto(new URL("library/", base).href);
 for (const theme of ["light", "dark"]) {
   await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
   await page.evaluate((t) => localStorage.setItem("hsk-mm-theme-v1", t), theme);
@@ -103,6 +105,11 @@ for (const theme of ["light", "dark"]) {
       await page.goto(new URL(route, base).href);
       if (route.startsWith("reader")) await ready(1);
       await page.evaluate(() => document.fonts.ready);
+      if (route.startsWith("reader")) {
+        // Let the reader's 180ms resize debounce finish before recording a view.
+        await page.waitForTimeout(250);
+        await ready(1);
+      }
       const data = await page.evaluate(() => ({
         overflow: document.documentElement.scrollWidth > innerWidth,
         small: [
