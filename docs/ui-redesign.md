@@ -14,8 +14,9 @@ components provide the reusable UI.
   navigation use progressive backdrop blur. Unsupported blur and reduced
   transparency fall back to solid surfaces.
 - System UI fonts, Noto Sans Myanmar, Myanmar Text, and Padauk preserve Myanmar
-  combining marks. Chinese uses PingFang/Noto CJK fallbacks. The existing Google
-  Fonts stylesheet remains; no external scripts were added.
+  combining marks. Chinese uses PingFang and locally served Noto CJK subsets,
+  with OS fallbacks. Fonts use the SIL Open Font License 1.1 and their licenses
+  ship in `public/fonts/`. No external font or script requests are required.
 - Restrained transform transitions respect reduced motion. Controls provide
   visible focus and practical 44px minimum touch targets. Reading pages use a
   narrower measure than lesson grids.
@@ -62,3 +63,13 @@ Automated accessibility audits supplement visual and keyboard review; they do no
 establish complete WCAG conformance. Speech pronunciation depends on the device's
 Chinese voices; the browser tests stub dispatch rather than claiming audible
 pronunciation on every device. Physical iPhone/Safari testing remains useful.
+
+## Local fonts
+
+Myanmar fonts retain all glyphs and shaping tables. Chinese SC/TC subsets include
+all current source and vocabulary characters. After adding educational content,
+regenerate CJK subsets with `python3 scripts/subset-fonts.py` on a machine with
+Python FontTools with Brotli (`fonttools[woff]`) and Debian `fonts-noto-core` / `fonts-noto-cjk`. These are optional
+asset-maintenance tools; the normal Node build does not require them. Missing
+subset characters still use the system CJK fallback. WOFF2 is supported across
+modern iOS, Android, and desktop browsers. Fonts load with `font-display: swap`.
