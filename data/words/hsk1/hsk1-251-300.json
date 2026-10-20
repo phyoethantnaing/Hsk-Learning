@@ -55,10 +55,7 @@
       4
     ],
     "english": "to want; to need",
-    "partOfSpeech": [
-      "verb",
-      "auxiliary verb"
-    ],
+    "partOfSpeech": "verb",
     "myanmar": {
       "meaning": "လိုချင်တယ်၊ ...ရမယ်",
       "kidExplanation": "要 ဆိုတာ \"လိုချင်တယ်\" (我要这个 = ဒါ လိုချင်တယ်) ပါ။ \"…ရမယ်\" (你要多喝水 = ရေ များများ သောက်ရမယ်) လို့လည်း အဓိပ္ပာယ်ရပါတယ်။",
@@ -372,7 +369,13 @@
       4
     ],
     "english": "(after a verb) a little; briefly",
-    "partOfSpeech": "phrase",
+    "partOfSpeech": "numeral-measure",
+    "partOfSpeechMinor": [
+      "adverb"
+    ],
+    "alsoLevels": [
+      "4"
+    ],
     "myanmar": {
       "meaning": "ခဏ၊ တစ်ချက်",
       "kidExplanation": "一下 ကို လုပ်ရပ်ရဲ့ နောက်မှာ ထည့်ရင် \"ခဏ၊ တစ်ချက်လောက်\" လို့ အဓိပ္ပာယ်ရပြီး စကားကို ပိုပျော့ပြောင်းစေပါတယ်။ 看一下 = ခဏ ကြည့်လိုက်ပါ။",
@@ -461,7 +464,7 @@
       3
     ],
     "english": "a little; a bit",
-    "partOfSpeech": "phrase",
+    "partOfSpeech": "numeral-measure",
     "myanmar": {
       "meaning": "နည်းနည်း",
       "kidExplanation": "一点儿 ဆိုတာ \"နည်းနည်း\" ပါ။ 我会说一点儿汉语 = တရုတ်လို နည်းနည်း ပြောတတ်တယ်။",
@@ -506,7 +509,7 @@
       1
     ],
     "english": "some; a few; a little",
-    "partOfSpeech": "measure word",
+    "partOfSpeech": "numeral-measure",
     "myanmar": {
       "meaning": "တချို့",
       "kidExplanation": "一些 ဆိုတာ \"တချို့၊ နည်းနည်း\" ပါ — ရေတွက်လို့ရတာ ရော မရတာ ရော သုံးလို့ရပါတယ်။",
@@ -687,6 +690,12 @@
     ],
     "english": "some",
     "partOfSpeech": "pronoun",
+    "partOfSpeechMinor": [
+      "adverb"
+    ],
+    "alsoLevels": [
+      "3"
+    ],
     "myanmar": {
       "meaning": "တချို့",
       "kidExplanation": "有些 ဆိုတာ \"တချို့\" ပါ — 有的 နဲ့ အဓိပ္ပာယ် နီးပါတယ်။",
@@ -957,7 +966,7 @@
       4
     ],
     "english": "goodbye",
-    "partOfSpeech": "phrase",
+    "partOfSpeech": "verb",
     "myanmar": {
       "meaning": "တာ့တာ၊ နောက်မှ တွေ့မယ်",
       "kidExplanation": "再见 ဆိုတာ \"တာ့တာ၊ နောက်မှ တွေ့မယ်\" ပါ။ ကျောင်းဆင်းရင် ဆရာကို 老师再见！ လို့ ပြောပါ။",
@@ -1542,6 +1551,12 @@
     ],
     "english": "really; truly",
     "partOfSpeech": "adverb",
+    "partOfSpeechMinor": [
+      "adjective"
+    ],
+    "alsoLevels": [
+      "4"
+    ],
     "myanmar": {
       "meaning": "တကယ်",
       "kidExplanation": "真 ဆိုတာ \"တကယ်\" ပါ။ 真好！ = တကယ် ကောင်းတယ်! 你真漂亮！ = မင်း တကယ်လှတယ်!",
@@ -1720,7 +1735,7 @@
       2
     ],
     "english": "China",
-    "partOfSpeech": "proper noun",
+    "partOfSpeech": "noun",
     "myanmar": {
       "meaning": "တရုတ်နိုင်ငံ",
       "kidExplanation": "中国 ဆိုတာ တရုတ်နိုင်ငံပါ — မြန်မာနိုင်ငံရဲ့ အိမ်နီးချင်း နိုင်ငံကြီးပေါ့။",
