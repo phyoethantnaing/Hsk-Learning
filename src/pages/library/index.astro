@@ -1,0 +1,213 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import Icon from "../../components/Icon.astro";
+import {
+  PDF_DOCUMENTS,
+  PDF_FOLDER_URL,
+  pdfTitle,
+  pdfSize,
+} from "../../lib/pdf-library.mjs";
+import { url } from "../../lib/site.mjs";
+const levels = ["1", "2", "3", "4", "5", "6", "7-9"];
+---
+
+<BaseLayout title="PDF စာကြည့်တိုက်">
+  <PageIntro eyebrow="YOUR READING ROOM" title="PDF စာကြည့်တိုက်">
+    <p lang="en">
+      A quiet space for Chinese study. Read original textbooks, workbooks and
+      vocabulary lists, one page at a time.
+    </p>
+  </PageIntro>
+  <nav class="library-levels" aria-label="PDF levels" lang="en">
+    {levels.map((level) => (
+      <a class="btn" href={`#level-${level}`}>
+        HSK {level}
+      </a>
+    ))}
+  </nav>
+  <aside class="library-note card" lang="en">
+    <Icon name="highlight" />
+    <p>
+      Select text to save a highlight in gold, red or graphite. Highlights stay
+      in this browser. Scanned pages may not have selectable text. These books
+      retain their original editions; they are separate from this site’s HSK 3.0
+      lessons.
+    </p>
+  </aside>
+  {levels.map((level) => (
+    <section
+      aria-labelledby={`level-${level}`}
+      class="library-section"
+      lang="en"
+    >
+      <div class="library-heading">
+        <h2 id={`level-${level}`}>HSK {level}</h2>
+        <span class="eyebrow">READ &amp; PRACTISE</span>
+      </div>
+      <div class="pdf-grid">
+        {PDF_DOCUMENTS.filter((doc) => String(doc.level) === level).map(
+          (doc) => (
+            <article
+              class:list={[
+                "card",
+                "pdf-book",
+                { "pdf-unavailable": doc.status === "oversize" },
+              ]}
+            >
+              <div class="pdf-book-top">
+                <span class="pdf-monogram" aria-hidden="true">
+                  {doc.kind === "Vocabulary"
+                    ? "词"
+                    : doc.kind === "Workbook"
+                      ? "练"
+                      : "读"}
+                </span>
+                <span class="badge">{doc.kind}</span>
+              </div>
+              <h3>{pdfTitle(doc)}</h3>
+              <p class="muted pdf-metadata">
+                {doc.pages ? `${doc.pages} pages · ` : ""}
+                {pdfSize(doc.bytes)} · PDF
+              </p>
+              {doc.status === "oversize" ? (
+                <>
+                  <p class="pdf-hosting-note">
+                    Source only · Above GitHub’s 100 MiB file limit. The
+                    original is not hosted here.
+                  </p>
+                  <a class="btn" href={doc.sourceUrl} rel="noopener">
+                    View on Google Drive <Icon name="link" />
+                  </a>
+                </>
+              ) : (
+                <a
+                  class="btn"
+                  href={url(`/reader/${doc.id}/`)}
+                  aria-label={`Read ${pdfTitle(doc)}`}
+                >
+                  Read book <Icon name="arrow" />
+                </a>
+              )}
+            </article>
+          ),
+        )}
+      </div>
+    </section>
+  ))}
+  <p class="library-attribution muted" lang="en">
+    Textbooks and workbooks: original files from the{" "}
+    <a href={PDF_FOLDER_URL} rel="noopener">
+      shared Google Drive folder
+    </a>
+    . Vocabulary lists: existing repository sources, credited to Second
+    Language. PDF copyrights remain with their respective owners. Reader powered
+    by{" "}
+    <a href="https://mozilla.github.io/pdf.js/" rel="noopener">
+      Mozilla PDF.js
+    </a>{" "}
+    (<a href={url("/pdfjs/LICENSE")}>Apache 2.0</a>). Public PDFs remain
+    accessible even though this reader has no download, share, print or export
+    controls.
+  </p>
+</BaseLayout>
+<style>
+  .library-levels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .library-levels .btn {
+    font-size: 0.8rem;
+    padding-inline: 16px;
+  }
+  .library-note {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 0.88rem;
+    margin-bottom: 36px;
+  }
+  .library-note .icon {
+    flex-shrink: 0;
+    color: var(--gold);
+    margin-top: 5px;
+  }
+  .library-note p {
+    margin: 0;
+    color: var(--text-muted);
+  }
+  .library-section {
+    margin-block: 36px;
+  }
+  .library-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .library-heading h2 {
+    margin: 0;
+    scroll-margin-top: calc(var(--header-height, 76px) + 20px);
+  }
+  .library-heading .eyebrow {
+    font-size: 0.65rem;
+  }
+  .pdf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 265px), 1fr));
+    gap: 18px;
+  }
+  .pdf-book {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .pdf-book-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .pdf-monogram {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 58px;
+    border: 1px solid var(--gold-edge);
+    border-radius: 12px;
+    color: var(--gold);
+    background: var(--gold-soft);
+    font-family: var(--font-zh);
+    font-size: 1.8rem;
+  }
+  .pdf-book h3 {
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .pdf-metadata {
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+  }
+  .pdf-book .btn {
+    margin-top: auto;
+    justify-content: space-between;
+  }
+  .pdf-hosting-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .pdf-unavailable {
+    border-style: dashed;
+  }
+  .library-attribution {
+    font-size: 0.8rem;
+    max-width: 860px;
+    margin-top: 42px;
+  }
+</style>

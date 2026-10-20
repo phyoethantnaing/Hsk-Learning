@@ -1,0 +1,86 @@
+[
+  {
+    "id": "vocabulary-hsk-1",
+    "filename": "vocabulary-hsk-1.pdf",
+    "title": "HSK 1 \u00b7 Vocabulary (2025)",
+    "level": "1",
+    "kind": "Vocabulary",
+    "status": "existing",
+    "bytes": 168542,
+    "sha256": "9c0ce823ae4df5aebc857553360890d91972d911e7e32729a25fcfd755239a62",
+    "pages": 7,
+    "sourcePath": "source/pdfs/hsk-1.pdf"
+  },
+  {
+    "id": "vocabulary-hsk-2",
+    "filename": "vocabulary-hsk-2.pdf",
+    "title": "HSK 2 \u00b7 Vocabulary (2025)",
+    "level": "2",
+    "kind": "Vocabulary",
+    "status": "existing",
+    "bytes": 151954,
+    "sha256": "fbb9f04dda4d1743cbce48b49bf91e8d91499c4fcec1c3817f077d39a74a655a",
+    "pages": 5,
+    "sourcePath": "source/pdfs/hsk-2.pdf"
+  },
+  {
+    "id": "vocabulary-hsk-3",
+    "filename": "vocabulary-hsk-3.pdf",
+    "title": "HSK 3 \u00b7 Vocabulary (2025)",
+    "level": "3",
+    "kind": "Vocabulary",
+    "status": "existing",
+    "bytes": 322417,
+    "sha256": "824d862d6326af7bdfae8bd77f01b9232cde9d78d40dad20b2f9f79d246bc184",
+    "pages": 12,
+    "sourcePath": "source/pdfs/hsk-3.pdf"
+  },
+  {
+    "id": "vocabulary-hsk-4",
+    "filename": "vocabulary-hsk-4.pdf",
+    "title": "HSK 4 \u00b7 Vocabulary (2025)",
+    "level": "4",
+    "kind": "Vocabulary",
+    "status": "existing",
+    "bytes": 523331,
+    "sha256": "dc08ad0df13c0840680d9272245a307b3ff8133b7da763b932122f8dfb7fdbb2",
+    "pages": 23,
+    "sourcePath": "source/pdfs/hsk-4.pdf"
+  },
+  {
+    "id": "vocabulary-hsk-5",
+    "filename": "vocabulary-hsk-5.pdf",
+    "title": "HSK 5 \u00b7 Vocabulary (2025)",
+    "level": "5",
+    "kind": "Vocabulary",
+    "status": "existing",
+    "bytes": 762964,
+    "sha256": "fb092dcc10f6d9f112ff3cfb6e9c50a224fa8cd9151e025de27bae927911c96e",
+    "pages": 36,
+    "sourcePath": "source/pdfs/hsk-5.pdf"
+  },
+  {
+    "id": "vocabulary-hsk-6",
+    "filename": "vocabulary-hsk-6.pdf",
+    "title": "HSK 6 \u00b7 Vocabulary (2025)",
+    "level": "6",
+    "kind": "Vocabulary",
+    "status": "existing",
+    "bytes": 898186,
+    "sha256": "9ba210d456192e355dbf1f10a478cbd58c6c83fefa619e1cc55d9abfbf94e6e1",
+    "pages": 41,
+    "sourcePath": "source/pdfs/hsk-6.pdf"
+  },
+  {
+    "id": "vocabulary-hsk-7-9",
+    "filename": "vocabulary-hsk-7-9.pdf",
+    "title": "HSK 7-9 \u00b7 Vocabulary (2025)",
+    "level": "7-9",
+    "kind": "Vocabulary",
+    "status": "existing",
+    "bytes": 2051514,
+    "sha256": "80fdadec46d93d85c61576ab56c84f17cc080f994cc0544fd816247ebf0dbe47",
+    "pages": 125,
+    "sourcePath": "source/pdfs/hsk-7-9.pdf"
+  }
+]

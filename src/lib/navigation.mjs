@@ -9,7 +9,7 @@ export const NAV_ITEMS = [
 export function navigationSection(path) {
   if (/\/flashcards(?:\/|$)/.test(path)) return "cards";
   if (/\/search(?:\/|$)/.test(path)) return "search";
-  if (/\/(?:hsk[1-6]|hsk7-9|start)(?:\/|$)/.test(path)) return "learn";
+  if (/\/(?:hsk[1-6]|hsk7-9|start|library|reader)(?:\/|$)/.test(path)) return "learn";
   if (path === "/" || path === "") return "home";
   return null;
 }

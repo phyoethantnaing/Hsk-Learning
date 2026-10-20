@@ -8,3 +8,7 @@ __pycache__/
 artifacts/
 playwright-report/
 test-results/
+
+# Generated from pinned PDF.js and the existing source originals by prebuild.
+public/pdfjs/
+public/pdfs/vocabulary-hsk-*.pdf
