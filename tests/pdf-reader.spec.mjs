@@ -283,3 +283,33 @@ test("large text selections are explained instead of silently truncated", async 
     "HSK 1 Vocabulary",
   );
 });
+
+test("page turns return to the top of the page below sticky controls", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(reader);
+  await ready(page);
+  const buttonBefore = await page.locator("[data-pdf-next]").boundingBox();
+  await page.locator("[data-pdf-next]").click();
+  await ready(page, 2);
+  const buttonAfter = await page.locator("[data-pdf-next]").boundingBox();
+  expect(buttonAfter.y).toBeCloseTo(buttonBefore.y, 0);
+  await page.locator("[data-pdf-prev]").click();
+  await ready(page, 1);
+  await page
+    .locator("[data-pdf-paper]")
+    .evaluate((el) =>
+      scrollTo(0, el.getBoundingClientRect().top + scrollY + 650),
+    );
+  await page.locator("[data-pdf-next]").click();
+  await ready(page, 2);
+  const geometry = await page.evaluate(() => ({
+    top: document.querySelector("[data-pdf-paper]").getBoundingClientRect().top,
+    toolbarBottom: document
+      .querySelector(".reader-toolbar")
+      .getBoundingClientRect().bottom,
+  }));
+  expect(geometry.top).toBeGreaterThanOrEqual(geometry.toolbarBottom);
+  expect(geometry.top).toBeLessThan(300);
+});

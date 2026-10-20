@@ -116,6 +116,9 @@
   width: 100%;
   height: 100%;
 }
+.reader-scroll[aria-busy="true"] .reader-highlights {
+  visibility: hidden;
+}
 .reader-highlights {
   position: absolute;
   inset: 0;

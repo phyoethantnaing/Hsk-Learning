@@ -123,7 +123,7 @@ async function startReader(root) {
       link.append(label, quote);
       link.addEventListener("click", () => {
         navigate(mark.page);
-        scroll.scrollIntoView({ block: "start" });
+        scroll.focus({ preventScroll: true });
       });
       const remove = document.createElement("button");
       remove.type = "button";
@@ -343,6 +343,21 @@ async function startReader(root) {
     if (!ready) return;
     desired = Math.max(1, Math.min(pageCount, Math.trunc(page) || 1));
     scroll.scrollLeft = 0;
+    const toolbar = root.querySelector(".reader-toolbar");
+    const toolbarRect = toolbar.getBoundingClientRect();
+    if (matchMedia("(min-width: 601px)").matches) {
+      if (scroll.getBoundingClientRect().top < toolbarRect.bottom + 8) {
+        scroll.style.scrollMarginTop = `${toolbarRect.height + 16}px`;
+        scroll.scrollIntoView({ block: "start" });
+      }
+    } else {
+      const headerBottom = document
+        .querySelector(".site-header")
+        .getBoundingClientRect().bottom;
+      if (toolbarRect.top < headerBottom || toolbarRect.bottom > innerHeight) {
+        toolbar.scrollIntoView({ block: "start" });
+      }
+    }
     renderPage();
   }
   previous.addEventListener("click", () => navigate(desired - 1));

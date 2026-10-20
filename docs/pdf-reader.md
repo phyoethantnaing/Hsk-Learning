@@ -57,6 +57,8 @@ References: [GitHub file limits](https://docs.github.com/en/repositories/working
 - One visible page is rendered at a time. Raster density is capped at 2× and
   approximately six million pixels. Previous-page resources are cleaned up.
   Rapid requests cancel old tasks, and generation tokens prevent stale commits.
+  Page turns restore the top of a scrolled page below the toolbar without moving
+  controls that are already visible. Old highlight overlays hide while rendering.
   Range requests are enabled and automatic whole-document prefetch is disabled.
   Control feedback paints before rendering resumes, and PDF.js receives text in
   bounded 60-item stream batches, yielding between batches for input and paint.
@@ -134,7 +136,8 @@ budgets and touch target dimensions. Optional local axe integration checks WCAG
 - Final integrated learning/reader regression: **90 cases passed** in desktop
   light and mobile dark appearances, including the scheduling refinement,
   selection limits, cross-tab updates and keyboard/text-zoom regression checks.
-  The expanded reader suite also passed 20 cases independently.
+  The expanded reader suite also passed 22 cases independently, including the
+  final review regression for page-turn scroll position and stable tap targets.
 - Production build: 528 static pages; approximately 646.5 MB, under the 1 GB limit.
   All 23 hosted originals pass size/signature/hash/deduplication checks. The 16
   Drive imports contain 2,661 pages in total; no document was recompressed.
