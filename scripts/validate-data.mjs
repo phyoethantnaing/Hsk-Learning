@@ -213,7 +213,7 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
       if (/ောင်/u.test(hint)) err(where, `pronunciationTip hint ${hint}: write ao as ော် (e.g. "ပေါ်"), not ောင်`);
     }
     for (const ex of w.examples) {
-      if (ex.my.includes('ကျွန်တော်')) firstPerson.male++;
+      if (ex.my.includes('ကျွန်တော')) firstPerson.male++; // ကျွန်တော် and ကျွန်တော့် ("my")
       if (ex.my.includes('ကျွန်မ')) firstPerson.female++;
     }
 

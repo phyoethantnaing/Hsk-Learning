@@ -84,7 +84,10 @@ test("typing before the search module loads is retained and searched", async ({
     await expect(page.locator("[data-query]").first()).toBeDisabled();
     release();
     await expect(page.locator("#q")).toHaveValue("love");
-    await expect(page.locator("[data-results] a")).toHaveCount(1);
+    await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+      "href",
+      /hsk1-0001\/?$/,
+    );
     await expect(page).toHaveURL(/q=love/);
     await tap(page, "[data-search-clear]");
     await expect(page.locator("#q")).toHaveValue("");

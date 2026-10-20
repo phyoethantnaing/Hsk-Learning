@@ -372,11 +372,18 @@ test("search survives refresh, Back and Forward and clear keeps the URL in sync"
   await page.locator("#q").fill("love");
   await expect(page).toHaveURL(/q=love/);
   await page.reload();
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
-  await page.locator("[data-results] a").click();
+  // 爱 ranks first; 疼 ("to love dearly", HSK 2) also matches.
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
+  await page.locator("[data-results] a").first().click();
   await page.goBack();
   await expect(page.locator("#q")).toHaveValue("love");
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
   await page.goForward();
   await expect(page.locator("h1")).toContainText("爱");
   await page.goBack();
@@ -411,7 +418,10 @@ test("delayed search failure cannot overwrite a cleared query and retry is expli
   await expect(page.locator("[data-search-retry]")).toBeVisible();
   await page.unroute("**/search-index.json");
   await page.locator("[data-search-retry]").click();
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
 });
 
 test("malformed progress containers cannot break learning", async ({
