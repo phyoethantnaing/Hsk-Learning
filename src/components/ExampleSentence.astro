@@ -3,6 +3,7 @@
 // allowlisted proper noun (缅甸, 仰光 …), its gloss is shown underneath because
 // it is not an HSK word the learner has studied.
 import { allowlistedIn } from '../lib/allowlist.mjs';
+import SpeakButton from './SpeakButton.astro';
 
 interface Props {
   example: { zh: string; pinyin: string; my: string; audio: string | null };
@@ -13,7 +14,10 @@ const extras = allowlistedIn(example.zh);
 ---
 
 <div class="example">
-  <p class="zh" lang="zh-Hans">{example.zh}</p>
+  <p class="zh">
+    <span lang="zh-Hans">{example.zh}</span>
+    <SpeakButton text={example.zh} audio={example.audio} label="ဥပမာ စာကြောင်းကို နားထောင်ရန်" />
+  </p>
   <p class="py">{example.pinyin}</p>
   <p class="my">{example.my}</p>
   {
@@ -38,6 +42,10 @@ const extras = allowlistedIn(example.zh);
 
   .zh {
     font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
   }
 
   .py {

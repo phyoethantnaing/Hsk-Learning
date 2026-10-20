@@ -4,10 +4,10 @@ import { url } from '../lib/site.mjs';
 // `ready: false` items are shown greyed out until their page is built.
 const NAV = [
   { href: '/', label: 'ပင်မ', ready: true },
-  { href: '/start', label: 'အစပြုရန်', ready: false },
-  { href: '/search', label: 'ရှာရန်', ready: false },
-  { href: '/flashcards', label: 'ကတ်ပြား', ready: false },
-  { href: '/about', label: 'အကြောင်း', ready: false },
+  { href: '/start/', label: 'အစပြုရန်', ready: true },
+  { href: '/search/', label: 'ရှာရန်', ready: true },
+  { href: '/flashcards/', label: 'ကတ်ပြား', ready: true },
+  { href: '/about/', label: 'အကြောင်း', ready: true },
 ];
 
 const current = Astro.url.pathname.replace(/\/$/, '') || '/';

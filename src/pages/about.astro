@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { TOTAL_WORDS } from '../lib/levels.mjs';
+import { myNumber } from '../lib/site.mjs';
+---
+
+<BaseLayout title="ဆိုက်အကြောင်း">
+  <h1>ℹ️ ဒီဆိုက်အကြောင်း</h1>
+
+  <section class="card">
+    <h2>ဘာအတွက်လဲ</h2>
+    <p>
+      HSK 3.0 (၂၀၂၅) တရုတ်စာ စာမေးပွဲရဲ့ စကားလုံး {myNumber(TOTAL_WORDS)} လုံးကို မြန်မာကလေးတွေ ဆရာမပါဘဲ ကိုယ်တိုင် လေ့လာနိုင်အောင်
+      မြန်မာလို ရှင်းပြထားတဲ့ အခမဲ့ ဆိုက်ပါ။ အခု HSK 1 ကို အရင် ရေးထားပြီး နောက်အဆင့်တွေကို ဆက်ထည့်သွားပါမယ်။
+    </p>
+    <p>
+      <span class="badge badge-draft">စစ်ဆေးဆဲ</span> ဆိုတဲ့ အမှတ်အသား ပါတဲ့ စကားလုံးတွေကို ဆရာက ပြန်စစ်ဆေးနေဆဲပါ။ အမှားတွေ့ရင် အောက်က လင့်ခ်ကနေ
+      ပြောပေးပါ — ကျေးဇူးတင်ပါတယ်!
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>ဒေတာ ရင်းမြစ်များနဲ့ လိုင်စင်</h2>
+    <ul>
+      <li><strong>စကားလုံးစာရင်းနဲ့ pinyin:</strong> <span lang="zh-Hans">新版HSK考试大纲</span> (၂၀၂၅) — HSK 3.0 တရားဝင် သင်ရိုးညွှန်းတမ်း။</li>
+      <li>
+        <strong>ရိုးရာစာလုံး (Traditional) နဲ့ အင်္ဂလိပ် အဓိပ္ပာယ်:</strong>
+        <a href="https://cc-cedict.org/wiki/" rel="noopener">CC-CEDICT</a>၊
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a> လိုင်စင်။
+      </li>
+      <li>စကားလုံးစာရင်း PDF များကို <a href="https://second-language.app/tools/hsk-vocabulary" rel="noopener">Second Language</a> က စုစည်းထားပါတယ်။</li>
+      <li>
+        <strong>မြန်မာ ရှင်းပြချက်နဲ့ ဥပမာများ:</strong> ဒီပရောဂျက်အတွက် ရေးထားတာပါ။ CC-CEDICT ဒေတာနဲ့ တွဲထားလို့
+        CC BY-SA 4.0 လိုင်စင်နဲ့ မျှဝေပါတယ်။
+      </li>
+      <li><strong>ဝက်ဘ်ဆိုက် ကုဒ်:</strong> MIT လိုင်စင်။</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>အသံ</h2>
+    <p>
+      အခုလောလောဆယ် 🔊 ခလုတ်က ဖုန်း/ကွန်ပျူတာထဲက တရုတ်အသံ (browser speech) နဲ့ ဖတ်ပေးတာပါ။ နောက်ပိုင်းမှာ စကားလုံးတိုင်းအတွက်
+      အသံဖိုင်တွေ ထည့်ပေးသွားပါမယ်။
+    </p>
+  </section>
+
+  <section class="card">
+    <h2>အမှားပြင်ပေးရန်</h2>
+    <p>
+      အမှားတွေ့ရင် ဒါမှမဟုတ် အကြံပြုချင်ရင်
+      <a href="https://github.com/phyoethantnaing/Hsk-Learning/issues" rel="noopener">GitHub Issues</a> မှာ ရေးပေးပါ။ ကုဒ်အားလုံးကို
+      <a href="https://github.com/phyoethantnaing/Hsk-Learning" rel="noopener">GitHub</a> မှာ ကြည့်လို့ ရပါတယ်။
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    margin-bottom: 14px;
+  }
+
+  section h2 {
+    font-size: 1.125rem;
+  }
+
+  section :last-child {
+    margin-bottom: 0;
+  }
+</style>

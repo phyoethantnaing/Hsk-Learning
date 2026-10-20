@@ -1,0 +1,30 @@
+---
+// 🔊 button. Plays `audio` (a recorded file under public/, Phase 3) when it is set,
+// otherwise the browser's Chinese voice reads `text`. Behaviour: src/scripts/speak.js.
+import { url } from '../lib/site.mjs';
+
+interface Props {
+  text: string;
+  audio?: string | null;
+  label?: string;
+  size?: 'normal' | 'large';
+}
+
+const { text, audio = null, label = 'အသံ နားထောင်ရန်', size = 'normal' } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={['speak', { large: size === 'large' }]}
+  data-speak
+  data-text={text}
+  data-audio={audio ? url(audio) : undefined}
+  aria-label={label}
+  title={label}
+>
+  <span aria-hidden="true">🔊</span>
+</button>
+
+<script>
+  import '../scripts/speak.js';
+</script>

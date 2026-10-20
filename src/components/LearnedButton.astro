@@ -1,0 +1,41 @@
+---
+// "သိပြီ" toggle on a word page; stored with src/scripts/progress.js.
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+---
+
+<button type="button" class="btn learned-btn" data-learned-id={id} aria-pressed="false">
+  <span class="off">☐ ဒီစကားလုံး သိပြီ</span>
+  <span class="on">✅ သိပြီ (ပြန်ဖြုတ်ရန် နှိပ်ပါ)</span>
+</button>
+
+<style>
+  .learned-btn .on {
+    display: none;
+  }
+
+  .learned-btn[aria-pressed='true'] {
+    background: var(--accent-soft);
+    border-color: var(--tone3);
+  }
+
+  .learned-btn[aria-pressed='true'] .on {
+    display: inline;
+  }
+
+  .learned-btn[aria-pressed='true'] .off {
+    display: none;
+  }
+</style>
+
+<script>
+  import { isLearned, setLearned, onProgress } from '../scripts/progress.js';
+
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-learned-id]')) {
+    const id = btn.dataset.learnedId!;
+    onProgress(() => btn.setAttribute('aria-pressed', String(isLearned(id))));
+    btn.addEventListener('click', () => setLearned(id, !isLearned(id)));
+  }
+</script>

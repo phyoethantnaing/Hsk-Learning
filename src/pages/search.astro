@@ -1,0 +1,190 @@
+---
+// Client-side search by Chinese, pinyin (with or without tones/numbers), Myanmar or English.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/site.mjs';
+---
+
+<BaseLayout title="ရှာရန်">
+  <h1>🔍 စကားလုံး ရှာရန်</h1>
+  <form class="search" role="search" onsubmit="return false">
+    <label for="q" class="visually-hidden">ရှာမယ့် စကားလုံး</label>
+    <input
+      id="q"
+      type="search"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="爱 / ài / ai4 / ချစ် / love"
+      data-index={url('/search-index.json')}
+      data-base={url('/')}
+    />
+  </form>
+  <p class="muted small">
+    တရုတ်စာလုံး၊ pinyin (အသံအမှတ် ပါပါ မပါပါ — ai၊ ài၊ ai4)၊ မြန်မာ အဓိပ္ပာယ် ဒါမှမဟုတ် အင်္ဂလိပ်လို ရိုက်ရှာလို့ ရပါတယ်။
+  </p>
+  <p class="status muted" aria-live="polite" data-status></p>
+  <ul class="results" data-results></ul>
+</BaseLayout>
+
+<style>
+  .search input {
+    width: 100%;
+    min-height: 52px;
+    padding: 8px 16px;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 1.125rem;
+  }
+
+  .search input:focus {
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  .small {
+    font-size: 0.875rem;
+  }
+
+  .results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .results :global(a) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .results :global(.r-hanzi) {
+    font-size: 1.75rem;
+    min-width: 3.5rem;
+    text-align: center;
+  }
+
+  .results :global(.r-text) {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+  }
+
+  .results :global(.r-level) {
+    margin-left: auto;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+  import { normalizeForSearch, toNumbered } from '../lib/pinyin.mjs';
+
+  type Entry = { id: string; l: string; ll: string; s: string; t: string; p: string; n: string; k: string; m: string; e: string };
+
+  const input = document.querySelector<HTMLInputElement>('#q')!;
+  const results = document.querySelector<HTMLElement>('[data-results]')!;
+  const status = document.querySelector<HTMLElement>('[data-status]')!;
+  const base = input.dataset.base!.replace(/\/$/, '');
+  let index: Entry[] | null = null;
+
+  async function load() {
+    if (index) return index;
+    status.textContent = 'ခဏစောင့်ပါ…';
+    try {
+      index = await (await fetch(input.dataset.index!)).json();
+    } catch {
+      status.textContent = 'ရှာဖို့ ဒေတာ မရသေးပါဘူး။ အင်တာနက် ချိတ်ပြီး ပြန်စမ်းကြည့်ပါ။';
+      index = null;
+    }
+    return index;
+  }
+
+  const HAN = /\p{Script=Han}/u;
+  const MYANMAR = /[\u1000-\u109F]/u;
+
+  function score(e: Entry, raw: string): number {
+    const q = raw.trim();
+    if (HAN.test(q)) {
+      if (e.s === q || e.t === q) return 100;
+      if (e.s.includes(q) || e.t.includes(q)) return 60 - e.s.length;
+      return 0;
+    }
+    if (MYANMAR.test(q)) {
+      const parts = e.m.split('၊').map((x) => x.trim());
+      if (parts.includes(q)) return 90;
+      return e.m.includes(q) ? 50 : 0;
+    }
+    const lower = q.toLowerCase();
+    const bare = normalizeForSearch(q);
+    let s = 0;
+    if (bare) {
+      // Tone-exact match first: "ai4" or "ài" → "ai4".
+      let numbered = '';
+      if (/[0-9]|[\u0100-\u01dc]/i.test(q)) {
+        try {
+          numbered = /[0-9]/.test(q) ? lower.replace(/[\s']/g, '').replace(/u:/g, 'v').replace(/ü/g, 'v') : toNumbered(lower).replace(/\s/g, '');
+        } catch {
+          numbered = '';
+        }
+      }
+      if (numbered && e.n === numbered) s = Math.max(s, 95);
+      if (e.k === bare) s = Math.max(s, 80);
+      else if (e.k.startsWith(bare)) s = Math.max(s, 55);
+    }
+    const english = e.e.toLowerCase();
+    if (lower.length >= 3) {
+      if (new RegExp(`(^|[;\\s(])(to )?${lower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|[;\\s),])`).test(english)) s = Math.max(s, 70);
+      else if (english.includes(lower)) s = Math.max(s, 30);
+    }
+    return s;
+  }
+
+  function render(list: Entry[], q: string) {
+    results.replaceChildren(
+      ...list.map((e) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a class="card" href="${base}/${e.l}/${e.id}/">
+          <span class="r-hanzi" lang="zh-Hans"></span>
+          <span class="r-text"><span class="r-py"></span><span class="r-my"></span></span>
+          <span class="r-level"></span></a>`;
+        li.querySelector('.r-hanzi')!.textContent = e.s;
+        li.querySelector('.r-py')!.textContent = e.p;
+        li.querySelector('.r-my')!.textContent = e.m;
+        li.querySelector('.r-level')!.textContent = e.ll;
+        return li;
+      }),
+    );
+    status.textContent = q ? (list.length ? '' : 'မတွေ့ပါဘူး။ တခြား စကားလုံးနဲ့ ရှာကြည့်ပါ။') : '';
+  }
+
+  async function search() {
+    const q = input.value;
+    if (!q.trim()) return render([], '');
+    const data = await load();
+    if (!data) return;
+    const found = data
+      .map((e) => ({ e, s: score(e, q) }))
+      .filter((x) => x.s > 0)
+      .sort((a, b) => b.s - a.s || a.e.id.localeCompare(b.e.id))
+      .slice(0, 50)
+      .map((x) => x.e);
+    render(found, q);
+  }
+
+  input.addEventListener('input', search);
+  input.addEventListener('focus', load, { once: true });
+  const initial = new URLSearchParams(location.search).get('q');
+  if (initial) {
+    input.value = initial;
+    search();
+  }
+</script>

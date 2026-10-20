@@ -1,0 +1,243 @@
+---
+// One word (e.g. /hsk1/hsk1-0001/): everything a learner needs on one page.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pinyin from '../../components/Pinyin.astro';
+import ToneChips from '../../components/ToneChips.astro';
+import SpeakButton from '../../components/SpeakButton.astro';
+import ExampleSentence from '../../components/ExampleSentence.astro';
+import LearnedButton from '../../components/LearnedButton.astro';
+import { readyLevels, wordsForLevel, lessonNumberOf, findWord, wordUrl, levelUrl, lessonUrl } from '../../lib/words.mjs';
+import { posList } from '../../lib/pos.mjs';
+import { HINT_DISCLAIMER } from '../../lib/tones.mjs';
+import { myNumber, url } from '../../lib/site.mjs';
+
+export function getStaticPaths() {
+  return readyLevels().flatMap((level) => {
+    const words = wordsForLevel(level.key);
+    return words.map((word, i) => ({
+      params: { level: level.slug, id: word.id },
+      props: { level, word, prev: words[i - 1] ?? null, next: words[i + 1] ?? null },
+    }));
+  });
+}
+
+const { level, word: w, prev, next } = Astro.props;
+const lesson = lessonNumberOf(w);
+const sameScript = w.simplified === w.traditional;
+
+const SECTIONS = [
+  ['kidExplanation', '💡', 'ရှင်းပြချက်'],
+  ['memoryTip', '🧠', 'မှတ်ရလွယ်အောင်'],
+  ['usageNote', '✍️', 'ဘယ်လို သုံးမလဲ'],
+  ['commonMistake', '⚠️', 'သတိထားရန်'],
+] as const;
+---
+
+<BaseLayout title={`${w.simplified} (${w.pinyin}) — ${w.myanmar.meaning}`} description={w.myanmar.kidExplanation}>
+  <p class="breadcrumb">
+    <a href={url('/')}>ပင်မ</a> › <a href={levelUrl(level.key)}>{level.label}</a> ›{' '}
+    <a href={lessonUrl(level.key, lesson)}>သင်ခန်းစာ {myNumber(lesson)}</a>
+  </p>
+
+  <article>
+    <header class="card hero" data-script="simplified">
+      <div class="hero-top">
+        {w.reviewStatus === 'draft' && <span class="badge badge-draft" title="ဒီစကားလုံးရဲ့ ရှင်းပြချက်ကို ဆရာက စစ်ဆေးနေဆဲပါ">စစ်ဆေးဆဲ</span>}
+        <span class="muted">#{myNumber(Number(w.id.split('-').at(-1)))}</span>
+      </div>
+      <h1 class="hanzi">
+        <span class="simp" lang="zh-Hans">{w.simplified}</span>
+        <span class="trad" lang="zh-Hant">{w.traditional}</span>
+      </h1>
+      <p class="py"><Pinyin pinyin={w.pinyin} /> <SpeakButton text={w.simplified} audio={w.audio.word} size="large" /></p>
+      <p class="meaning">{w.myanmar.meaning}</p>
+      {
+        sameScript ? (
+          <p class="muted small">ရိုးရာစာလုံး (Traditional) လည်း ဒီအတိုင်းပါပဲ။</p>
+        ) : (
+          <button type="button" class="btn script-toggle" aria-pressed="false">
+            <span class="to-trad">ရိုးရာစာလုံး (繁) ကြည့်ရန်</span>
+            <span class="to-simp">ရိုးရှင်းစာလုံး (简) ပြန်ကြည့်ရန်</span>
+          </button>
+        )
+      }
+      <p class="muted small english">English: {w.english}</p>
+    </header>
+
+    <section class="card">
+      <h2>🗣️ အသံထွက်နည်း</h2>
+      <ToneChips pinyin={w.pinyin} />
+      <p class="tip">{w.myanmar.pronunciationTip}</p>
+      <p class="muted small">{HINT_DISCLAIMER}</p>
+    </section>
+
+    <section class="card">
+      <h2>🏷️ စကားလုံး အမျိုးအစား</h2>
+      <ul class="pos">
+        {posList(w.partOfSpeech).map((p) => <li><strong>{p.name}</strong> — {p.help}</li>)}
+      </ul>
+    </section>
+
+    {
+      SECTIONS.filter(([key]) => w.myanmar[key]).map(([key, icon, label]) => (
+        <section class="card">
+          <h2>{icon} {label}</h2>
+          <p>{w.myanmar[key]}</p>
+        </section>
+      ))
+    }
+
+    <section class="card">
+      <h2>📖 ဥပမာ စာကြောင်းများ</h2>
+      {w.examples.map((ex: any) => <ExampleSentence example={ex} />)}
+    </section>
+
+    {
+      w.relatedWords.length > 0 && (
+        <section class="card">
+          <h2>🔗 ဆက်စပ် စကားလုံးများ</h2>
+          <ul class="related">
+            {w.relatedWords.map((r: string) => {
+              const found = findWord(r);
+              return (
+                <li>
+                  {found ? (
+                    <a href={wordUrl(found)}>
+                      <span lang="zh-Hans">{r}</span> <span class="muted">{found.myanmar.meaning}</span>
+                    </a>
+                  ) : (
+                    <span lang="zh-Hans">{r}</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="btn-row learned-row">
+      <LearnedButton id={w.id} />
+    </div>
+
+    <nav class="btn-row pager" aria-label="စကားလုံးများ">
+      {prev ? <a class="btn" href={wordUrl(prev)}>← <span lang="zh-Hans">{prev.simplified}</span></a> : <span />}
+      {next && <a class="btn" href={wordUrl(next)}><span lang="zh-Hans">{next.simplified}</span> →</a>}
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hanzi {
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .trad,
+  [data-script='traditional'] .simp {
+    display: none;
+  }
+
+  [data-script='traditional'] .trad {
+    display: inline;
+  }
+
+  .py {
+    font-size: 1.75rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .meaning {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin: 4px 0 8px;
+  }
+
+  .script-toggle .to-simp,
+  .script-toggle[aria-pressed='true'] .to-trad {
+    display: none;
+  }
+
+  .script-toggle[aria-pressed='true'] .to-simp {
+    display: inline;
+  }
+
+  .english {
+    margin: 8px 0 0;
+  }
+
+  .small {
+    font-size: 0.875rem;
+  }
+
+  section h2 {
+    font-size: 1.125rem;
+  }
+
+  section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .tip {
+    margin: 12px 0 4px;
+  }
+
+  .pos {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+
+  .related {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+  }
+
+  .related [lang] {
+    font-size: 1.25rem;
+  }
+
+  .learned-row {
+    justify-content: center;
+  }
+
+  .pager {
+    justify-content: space-between;
+  }
+</style>
+
+<script>
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('.script-toggle')) {
+    btn.addEventListener('click', () => {
+      const hero = btn.closest<HTMLElement>('[data-script]')!;
+      const trad = hero.dataset.script !== 'traditional';
+      hero.dataset.script = trad ? 'traditional' : 'simplified';
+      btn.setAttribute('aria-pressed', String(trad));
+    });
+  }
+</script>
