@@ -1,0 +1,33 @@
+---
+// "သိပြီ 12 / 20" with a bar, counted in the browser from saved progress.
+interface Props {
+  ids: string[];
+  label?: string;
+}
+const { ids, label = 'သိပြီ' } = Astro.props;
+---
+
+<div class="progress" data-progress-ids={ids.join(',')}>
+  <div class="progress-bar"><span></span></div>
+  <p class="progress-text muted">{label} <span class="count">0</span> / {ids.length}</p>
+</div>
+
+<style>
+  .progress-text {
+    font-size: 0.875rem;
+    margin: 4px 0 0;
+  }
+</style>
+
+<script>
+  import { countLearned, onProgress } from '../scripts/progress.js';
+
+  onProgress(() => {
+    for (const el of document.querySelectorAll<HTMLElement>('[data-progress-ids]')) {
+      const ids = el.dataset.progressIds!.split(',').filter(Boolean);
+      const done = countLearned(ids);
+      el.querySelector('.count')!.textContent = String(done);
+      el.querySelector<HTMLElement>('.progress-bar > span')!.style.width = `${ids.length ? (done / ids.length) * 100 : 0}%`;
+    }
+  });
+</script>

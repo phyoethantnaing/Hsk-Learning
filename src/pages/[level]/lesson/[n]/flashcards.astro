@@ -1,0 +1,225 @@
+---
+// Flashcards for one lesson. Front: character. Back: pinyin, meaning, one example.
+// "သိတယ်" / "မသိသေးဘူး" answers are saved with src/scripts/progress.js.
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import Pinyin from '../../../../components/Pinyin.astro';
+import SpeakButton from '../../../../components/SpeakButton.astro';
+import { readyLevels, lessonsFor, levelUrl, lessonUrl, wordUrl } from '../../../../lib/words.mjs';
+import { myNumber, url } from '../../../../lib/site.mjs';
+
+export function getStaticPaths() {
+  return readyLevels().flatMap((level) =>
+    lessonsFor(level.key).map((lesson) => ({
+      params: { level: level.slug, n: String(lesson.n) },
+      props: { level, lesson },
+    })),
+  );
+}
+
+const { level, lesson } = Astro.props;
+const title = `${level.label} · သင်ခန်းစာ ${myNumber(lesson.n)} · ကတ်ပြား`;
+---
+
+<BaseLayout title={title}>
+  <p class="breadcrumb">
+    <a href={url('/')}>ပင်မ</a> › <a href={levelUrl(level.key)}>{level.label}</a> ›{' '}
+    <a href={lessonUrl(level.key, lesson.n)}>သင်ခန်းစာ {myNumber(lesson.n)}</a> › ကတ်ပြား
+  </p>
+  <h1>🃏 ကတ်ပြား လေ့ကျင့်ခန်း</h1>
+  <p class="muted">စာလုံးကို ကြည့်ပြီး အဓိပ္ပာယ်နဲ့ အသံကို စိတ်ထဲမှာ ပြောကြည့်ပါ။ ပြီးရင် ကတ်ကို နှိပ်ပြီး အဖြေကို ကြည့်ပါ။</p>
+
+  <div class="deck" data-deck>
+    <p class="counter muted" aria-live="polite"><span data-pos>၁</span> / <span data-total>{myNumber(lesson.words.length)}</span></p>
+
+    {
+      lesson.words.map((w: any) => (
+        <div class="flashcard" data-card={w.id} hidden>
+          <button type="button" class="card face front" data-flip aria-label="အဖြေ ကြည့်ရန် နှိပ်ပါ">
+            <span class="hanzi" lang="zh-Hans">{w.simplified}</span>
+            <span class="hint muted">အဖြေ ကြည့်ရန် နှိပ်ပါ 👆</span>
+          </button>
+          <div class="card face back" hidden>
+            <p class="hanzi small-hanzi" lang="zh-Hans">{w.simplified}</p>
+            <p class="py"><Pinyin pinyin={w.pinyin} /> <SpeakButton text={w.simplified} audio={w.audio.word} /></p>
+            <p class="meaning">{w.myanmar.meaning}</p>
+            <p class="example">
+              <span lang="zh-Hans">{w.examples[0].zh}</span><br />
+              <span class="muted">{w.examples[0].my}</span>
+            </p>
+            <a class="more" href={wordUrl(w)}>အသေးစိတ် ဖတ်ရန် →</a>
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="btn-row answer" data-answer hidden>
+      <button type="button" class="btn unknown" data-known="false">🤔 မသိသေးဘူး</button>
+      <button type="button" class="btn btn-primary known" data-known="true">😀 သိတယ်</button>
+    </div>
+
+    <div class="card done" data-done hidden>
+      <h2>🎉 ပြီးပါပြီ!</h2>
+      <p>သိတယ် <strong data-known-count>0</strong> လုံး၊ မသိသေးဘူး <strong data-unknown-count>0</strong> လုံး။</p>
+      <p class="muted">မသိသေးတာ ရှိလည်း စိတ်မပူပါနဲ့ — ပြန်လေ့ကျင့်ရင်း မှတ်မိလာမှာပါ။</p>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" data-retry>🔁 မသိသေးတာတွေ ပြန်လေ့ကျင့်မယ်</button>
+        <button type="button" class="btn" data-restart>အစကနေ ပြန်စမယ်</button>
+        <a class="btn" href={lessonUrl(level.key, lesson.n)}>သင်ခန်းစာကို ပြန်သွားမယ်</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .deck {
+    max-width: 480px;
+    margin: 16px auto 0;
+  }
+
+  .counter {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .face {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 4px;
+  }
+
+  .front {
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .front .hanzi {
+    font-size: 6rem;
+    line-height: 1.2;
+  }
+
+  .back p {
+    margin: 0;
+  }
+
+  .small-hanzi {
+    font-size: 2.5rem;
+  }
+
+  .py {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .meaning {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .example {
+    margin-top: 8px !important;
+  }
+
+  .more {
+    margin-top: 8px;
+    font-size: 0.875rem;
+  }
+
+  .answer {
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .answer .btn {
+    flex: 1;
+  }
+
+  .done {
+    text-align: center;
+  }
+
+  .done .btn-row {
+    justify-content: center;
+  }
+</style>
+
+<script>
+  import { recordCard } from '../../../../scripts/progress.js';
+
+  const DIGITS = '၀၁၂၃၄၅၆၇၈၉';
+  const my = (n: number) => String(n).replace(/[0-9]/g, (d) => DIGITS[Number(d)]);
+
+  const deck = document.querySelector<HTMLElement>('[data-deck]')!;
+  const cards = [...deck.querySelectorAll<HTMLElement>('[data-card]')];
+  const answer = deck.querySelector<HTMLElement>('[data-answer]')!;
+  const done = deck.querySelector<HTMLElement>('[data-done]')!;
+  const pos = deck.querySelector<HTMLElement>('[data-pos]')!;
+  const total = deck.querySelector<HTMLElement>('[data-total]')!;
+
+  let queue: HTMLElement[] = [];
+  let index = 0;
+  let unknown: HTMLElement[] = [];
+  let knownCount = 0;
+
+  function start(list: HTMLElement[]) {
+    queue = list;
+    index = 0;
+    unknown = [];
+    knownCount = 0;
+    done.hidden = true;
+    total.textContent = my(queue.length);
+    show();
+  }
+
+  function show() {
+    for (const c of cards) c.hidden = true;
+    const card = queue[index];
+    if (!card) {
+      answer.hidden = true;
+      deck.querySelector('[data-known-count]')!.textContent = my(knownCount);
+      deck.querySelector('[data-unknown-count]')!.textContent = my(unknown.length);
+      (deck.querySelector('[data-retry]') as HTMLElement).hidden = unknown.length === 0;
+      done.hidden = false;
+      return;
+    }
+    card.hidden = false;
+    card.querySelector<HTMLElement>('.front')!.hidden = false;
+    card.querySelector<HTMLElement>('.back')!.hidden = true;
+    answer.hidden = true;
+    pos.textContent = my(index + 1);
+    card.querySelector<HTMLElement>('.front')!.focus();
+  }
+
+  deck.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    if (t.closest('[data-flip]')) {
+      const card = queue[index];
+      card.querySelector<HTMLElement>('.front')!.hidden = true;
+      card.querySelector<HTMLElement>('.back')!.hidden = false;
+      answer.hidden = false;
+      return;
+    }
+    const knownBtn = t.closest<HTMLElement>('[data-known]');
+    if (knownBtn) {
+      const card = queue[index];
+      const known = knownBtn.dataset.known === 'true';
+      recordCard(card.dataset.card!, known);
+      if (known) knownCount++;
+      else unknown.push(card);
+      index++;
+      show();
+      return;
+    }
+    if (t.closest('[data-retry]')) start(unknown);
+    if (t.closest('[data-restart]')) start(cards);
+  });
+
+  start(cards);
+</script>

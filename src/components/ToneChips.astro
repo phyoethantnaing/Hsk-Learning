@@ -1,0 +1,68 @@
+---
+// One chip per syllable: the syllable in its tone colour, the tone name and how
+// to say it. Built from the pinyin, so the word data never repeats tone descriptions.
+import { syllables } from '../lib/pinyin.mjs';
+import { TONES } from '../lib/tones.mjs';
+
+interface Props {
+  pinyin: string;
+}
+
+const parts = syllables(Astro.props.pinyin);
+---
+
+<ul class="tone-chips" aria-label="အသံ (tone) များ">
+  {
+    parts.map((p) => (
+      <li class={`chip tone-bg${p.tone}`}>
+        <span class={`syl tone${p.tone}`}>{p.text}</span>
+        <span class="name">{TONES[p.tone].name}</span>
+        <span class="how">{TONES[p.tone].short}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .tone-chips {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 84px;
+    padding: 6px 10px;
+    border-radius: 12px;
+    background: var(--surface-2);
+    border: 2px solid currentColor;
+    line-height: 1.5;
+  }
+
+  .syl {
+    font-size: 1.375rem;
+    font-weight: 700;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+
+  .how {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  .tone-bg1 { border-color: var(--tone1); }
+  .tone-bg2 { border-color: var(--tone2); }
+  .tone-bg3 { border-color: var(--tone3); }
+  .tone-bg4 { border-color: var(--tone4); }
+  .tone-bg5 { border-color: var(--tone5); }
+</style>

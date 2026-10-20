@@ -1,0 +1,72 @@
+---
+// A word in a lesson list: character, tone-coloured pinyin, Myanmar meaning.
+// A ✓ appears when the learner has marked the word as learned (client side).
+import Pinyin from './Pinyin.astro';
+import { wordUrl } from '../lib/words.mjs';
+
+interface Props {
+  word: any;
+}
+
+const { word } = Astro.props;
+---
+
+<a class="card word-card" href={wordUrl(word)} data-word-id={word.id}>
+  <span class="hanzi" lang="zh-Hans">{word.simplified}</span>
+  <span class="py"><Pinyin pinyin={word.pinyin} /></span>
+  <span class="meaning">{word.myanmar.meaning}</span>
+  <span class="done" aria-label="သိပြီ" hidden>✓</span>
+</a>
+
+<style>
+  .word-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2px;
+    padding: 12px 8px;
+    color: var(--text);
+    text-decoration: none;
+    height: 100%;
+  }
+
+  .word-card:hover {
+    border-color: var(--accent);
+  }
+
+  .hanzi {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .py {
+    font-size: 1rem;
+  }
+
+  .meaning {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .done {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    color: var(--tone3);
+    font-weight: 700;
+  }
+</style>
+
+<script>
+  import { isLearned, onProgress } from '../scripts/progress.js';
+
+  onProgress(() => {
+    for (const card of document.querySelectorAll<HTMLElement>('[data-word-id]')) {
+      const tick = card.querySelector<HTMLElement>('.done');
+      if (tick) tick.hidden = !isLearned(card.dataset.wordId!);
+    }
+  });
+</script>

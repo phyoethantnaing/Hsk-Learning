@@ -1,10 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { LEVELS, TOTAL_WORDS } from '../lib/levels.mjs';
+import ProgressCount from '../components/ProgressCount.astro';
 import { myNumber, url } from '../lib/site.mjs';
+import { readyLevels, wordsForLevel } from '../lib/words.mjs';
 
-// Levels with finished pages. Filled in as each level's content is written.
-const READY = new Set<string>();
+// Levels whose content is written get a link and a progress bar; the rest say "soon".
+const READY = new Set(readyLevels().map((l) => l.key));
 ---
 
 <BaseLayout>
@@ -15,7 +17,10 @@ const READY = new Set<string>();
       HSK 3.0 (၂၀၂၅) စာမေးပွဲအတွက် စကားလုံး {myNumber(TOTAL_WORDS)} လုံးကို မြန်မာလို ရှင်းပြပေးထားပါတယ်။
       ဆရာမရှိလည်း ကိုယ်တိုင် လေ့လာလို့ရပါတယ်။ အခမဲ့ပါ။
     </p>
-    <p class="notice">🚧 ဒီဆိုက်ကို အခု တည်ဆောက်နေဆဲပါ။ စကားလုံးတွေ မကြာခင် ရောက်လာပါမယ်။</p>
+    <p class="btn-row">
+      <a class="btn btn-primary" href={url('/start/')}>🌱 အစပြုရန် — ဒီကနေ စပါ</a>
+      <a class="btn" href={url('/hsk1/')}>HSK 1 စကားလုံးများ</a>
+    </p>
   </section>
 
   <section aria-labelledby="levels-title">
@@ -30,7 +35,11 @@ const READY = new Set<string>();
               <Tag class:list={['card', 'level', { ready }]} href={ready ? url(level.slug) : undefined}>
                 <span class="level-name">{level.label}</span>
                 <span class="muted">စကားလုံး <span class="nowrap">{myNumber(level.count)} လုံး</span></span>
-                {!ready && <span class="badge badge-soon">မကြာခင်</span>}
+                {ready ? (
+                  <ProgressCount ids={wordsForLevel(level.key).map((w) => w.id)} />
+                ) : (
+                  <span class="badge badge-soon">မကြာခင်</span>
+                )}
               </Tag>
             </li>
           );
@@ -42,7 +51,7 @@ const READY = new Set<string>();
   <section aria-labelledby="how-title" class="how">
     <h2 id="how-title">ဘယ်လို လေ့လာမလဲ</h2>
     <ol>
-      <li>“အစပြုရန်” အပိုင်းမှာ pinyin ဆိုတာ ဘာလဲ၊ အသံ ၄ မျိုးကို ဘယ်လိုထွက်လဲ အရင် လေ့လာပါ။</li>
+      <li><a href={url('/start/')}>“အစပြုရန်”</a> အပိုင်းမှာ pinyin ဆိုတာ ဘာလဲ၊ အသံ ၄ မျိုးကို ဘယ်လိုထွက်လဲ အရင် လေ့လာပါ။</li>
       <li>HSK 1 ကနေ စပါ။ တစ်နေ့ကို စကားလုံး ၅ လုံးလောက် သင်ရင် လုံလောက်ပါပြီ။</li>
       <li>စကားလုံးတိုင်းမှာ 🔊 ခလုတ်ကို နှိပ်ပြီး အသံကို နားထောင်ပါ။ ပြီးရင် ကျယ်ကျယ် လိုက်ပြောပါ။</li>
       <li>ကတ်ပြားတွေနဲ့ မနေ့က သင်ထားတာတွေကို ပြန်လေ့ကျင့်ပါ။</li>
@@ -62,12 +71,6 @@ const READY = new Set<string>();
     margin: 0;
   }
 
-  .notice {
-    background: var(--draft-bg);
-    color: var(--draft-text);
-    border-radius: var(--radius);
-    padding: 10px 14px;
-  }
 
   .levels {
     list-style: none;
@@ -81,7 +84,7 @@ const READY = new Set<string>();
   .level {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 2px;
     height: 100%;
     color: var(--text);

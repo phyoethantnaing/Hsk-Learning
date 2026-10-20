@@ -49,7 +49,12 @@
       "properties": {
         "meaning": { "$ref": "#/$defs/myanmarText", "description": "1–4 short meanings separated by ၊" },
         "kidExplanation": { "$ref": "#/$defs/myanmarText" },
-        "pronunciationTip": { "$ref": "#/$defs/myanmarText" },
+        "pronunciationTip": {
+          "description": "The Myanmar-letter sound hint in quotes plus only what is special (tone change, sounds Myanmar lacks). No tone descriptions or disclaimer: the page shows tone chips from `tones` and the reminder once. See docs/content-guide.md.",
+          "$ref": "#/$defs/myanmarText",
+          "type": "string",
+          "maxLength": 300
+        },
         "memoryTip": { "$ref": "#/$defs/myanmarText" },
         "usageNote": { "type": "string", "description": "May be empty for very simple words." },
         "commonMistake": { "type": "string", "description": "May be empty when there is nothing useful to say." }

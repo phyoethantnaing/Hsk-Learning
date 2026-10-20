@@ -1,0 +1,2254 @@
+[
+  {
+    "id": "hsk1-0251",
+    "level": 1,
+    "simplified": "雪",
+    "traditional": "雪",
+    "pinyin": "xuě",
+    "pinyinNumbered": "xue3",
+    "tones": [
+      3
+    ],
+    "english": "snow",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "နှင်း",
+      "kidExplanation": "雪 ဆိုတာ ဆောင်းတွင်း အရမ်းအေးတဲ့ နေရာတွေမှာ ကောင်းကင်က ကျလာတဲ့ ဖြူဖြူ အေးအေး နှင်းပွင့်လေးတွေပါ။ မြန်မာပြည် မြောက်ဘက်စွန်းက တောင်ကြီးတွေပေါ်မှာ မြင်ရနိုင်ပါတယ်။",
+      "pronunciationTip": "\"ရှွဲ\" လို့ ပြောပါ။ x က \"ရှ\" နဲ့ နီးပြီး လျှာ မကော့ပါဘူး။ ü ကို နှုတ်ခမ်း လုံးပြီး ပြောပါ။",
+      "memoryTip": "雪 ရဲ့ အပေါ်မှာ 雨 (မိုး) ပါတယ်။ အေးခဲသွားတဲ့ မိုး = နှင်း!",
+      "usageNote": "\"နှင်းကျတယ်\" ကို 下雪 လို့ ပြောပါတယ် — 下雨 (မိုးရွာ) လိုပဲ 下 နဲ့ ပြောပါတယ်။",
+      "commonMistake": "雪 (xuě, နှင်း) နဲ့ 学 (xué, သင်) — အသံ ၃ နဲ့ အသံ ၂ ပါ။"
+    },
+    "examples": [
+      {
+        "zh": "中国下雪了。",
+        "pinyin": "Zhōngguó xià xuě le.",
+        "my": "တရုတ်ပြည်မှာ နှင်းကျနေပြီ။",
+        "audio": null
+      },
+      {
+        "zh": "我想看雪。",
+        "pinyin": "Wǒ xiǎng kàn xuě.",
+        "my": "ကျွန်တော် နှင်းကို ကြည့်ချင်တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "雨",
+      "下雨",
+      "冷"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0252",
+    "level": 1,
+    "simplified": "要",
+    "traditional": "要",
+    "pinyin": "yào",
+    "pinyinNumbered": "yao4",
+    "tones": [
+      4
+    ],
+    "english": "to want; to need",
+    "partOfSpeech": [
+      "verb",
+      "auxiliary verb"
+    ],
+    "myanmar": {
+      "meaning": "လိုချင်တယ်၊ ...ရမယ်",
+      "kidExplanation": "要 ဆိုတာ \"လိုချင်တယ်\" (我要这个 = ဒါ လိုချင်တယ်) ပါ။ \"…ရမယ်\" (你要多喝水 = ရေ များများ သောက်ရမယ်) လို့လည်း အဓိပ္ပာယ်ရပါတယ်။",
+      "pronunciationTip": "\"ယော်\" လို့ ပြောပါ။",
+      "memoryTip": "要 ရဲ့ အောက်မှာ 女 (မိန်းကလေး) ပါတယ်။ ညီမလေးက \"ဒါ လိုချင်တယ်!\" လို့ ပြောနေတယ်လို့ ပုံဖော်ပါ။",
+      "usageNote": "要 + ပစ္စည်း = လိုချင်တယ်/ယူမယ်။ 要 + လုပ်ရပ် = …ရမယ်/…မယ်။",
+      "commonMistake": "\"မလိုချင်ဘူး\" = 不要။ ဒါပေမဲ့ \"…စရာ မလိုဘူး\" ကိုတော့ 不用 လို့ ပြောပါတယ် (နောက်အဆင့်မှာ သင်ရမယ်)။"
+    },
+    "examples": [
+      {
+        "zh": "你要什么？",
+        "pinyin": "Nǐ yào shénme?",
+        "my": "မင်း ဘာလိုချင်လဲ။",
+        "audio": null
+      },
+      {
+        "zh": "明天要上课。",
+        "pinyin": "Míngtiān yào shàngkè.",
+        "my": "မနက်ဖြန် ကျောင်းတက်ရမယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "想",
+      "不要"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0253",
+    "level": 1,
+    "simplified": "也",
+    "traditional": "也",
+    "pinyin": "yě",
+    "pinyinNumbered": "ye3",
+    "tones": [
+      3
+    ],
+    "english": "also; too; as well",
+    "partOfSpeech": "adverb",
+    "myanmar": {
+      "meaning": "...လည်း",
+      "kidExplanation": "也 ဆိုတာ \"…လည်း\" ပါ။ 我也是学生 = ကျွန်တော်လည်း ကျောင်းသားပါ။",
+      "pronunciationTip": "\"ယဲ\" လို့ ပြောပါ။",
+      "memoryTip": "也 က ကောက်ကွေ့နေတဲ့ မြွေလေး တစ်ကောင်လိုပဲ — \"ငါလည်း ပါမယ်!\" လို့ နောက်ကနေ လိုက်လာတယ်လို့ ပုံဖော်ပါ။",
+      "usageNote": "也 ကို လူရဲ့ နောက်၊ လုပ်ရပ်ရဲ့ ရှေ့မှာ ထားပါ: 我也去 (ငါလည်း သွားမယ်)။",
+      "commonMistake": "也 ကို စာကြောင်း အဆုံးမှာ မထားပါနဲ့: 我去也 ✘ / 我也去 ✔။"
+    },
+    "examples": [
+      {
+        "zh": "我也喜欢猫。",
+        "pinyin": "Wǒ yě xǐhuan māo.",
+        "my": "ကျွန်မလည်း ကြောင်တွေကို ကြိုက်တယ်။",
+        "audio": null
+      },
+      {
+        "zh": "他是学生，我也是学生。",
+        "pinyin": "Tā shì xuéshēng, wǒ yě shì xuéshēng.",
+        "my": "သူက ကျောင်းသား၊ ကျွန်တော်လည်း ကျောင်းသားပါ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "都",
+      "还"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0254",
+    "level": 1,
+    "simplified": "一",
+    "traditional": "一",
+    "pinyin": "yī",
+    "pinyinNumbered": "yi1",
+    "tones": [
+      1
+    ],
+    "english": "one",
+    "partOfSpeech": "numeral",
+    "myanmar": {
+      "meaning": "တစ် (၁)",
+      "kidExplanation": "一 ဆိုတာ နံပါတ် ၁ ပါ — မျဉ်း တစ်ကြောင်းတည်း!",
+      "pronunciationTip": "\"ယီ\" လို့ ပြောပါ။ 一 ရဲ့ အသံက ပြောင်းတတ်ပါတယ်: တစ်လုံးတည်း ဒါမှမဟုတ် ဂဏန်း ရေတဲ့အခါ yī၊ အသံ ၄ ရှေ့မှာ yí (一个၊ 一下)၊ တခြား အသံတွေ ရှေ့မှာ yì (一天၊ 一本)။",
+      "memoryTip": "一 က မျဉ်း တစ်ကြောင်း — တစ်!",
+      "usageNote": "一 + ရေတွက်ပုဒ် + နာမ်: 一个人၊ 一本书။",
+      "commonMistake": "一 ရဲ့ အသံ ပြောင်းတာကို စိတ်ပူစရာ မလိုပါဘူး — ကြားရင်း ပြောရင်း အလိုလို သိလာပါလိမ့်မယ်။"
+    },
+    "examples": [
+      {
+        "zh": "一、二、三、四、五！",
+        "pinyin": "Yī, èr, sān, sì, wǔ!",
+        "my": "တစ်၊ နှစ်၊ သုံး၊ လေး၊ ငါး!",
+        "audio": null
+      },
+      {
+        "zh": "我有一个哥哥。",
+        "pinyin": "Wǒ yǒu yí ge gēge.",
+        "my": "ကျွန်မမှာ အစ်ကို တစ်ယောက် ရှိတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "二",
+      "一些",
+      "一下"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0255",
+    "level": 1,
+    "simplified": "衣服",
+    "traditional": "衣服",
+    "pinyin": "yīfu",
+    "pinyinNumbered": "yi1 fu5",
+    "tones": [
+      1,
+      5
+    ],
+    "english": "clothes",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "အဝတ်အစား",
+      "kidExplanation": "衣服 ဆိုတာ အင်္ကျီ၊ ဘောင်းဘီ စတဲ့ အဝတ်အစားတွေ အားလုံးပါ။",
+      "pronunciationTip": "\"ယီ-ဖူ\" လို့ ပြောပါ။ f က အပေါ်သွားကို အောက်နှုတ်ခမ်းပေါ် တင်ပြီး လေမှုတ်ထုတ်တဲ့ အသံပါ (မြန်မာ \"ဖ\" နဲ့ မတူပါ)။",
+      "memoryTip": "衣 က ရှေးတုန်းက လည်ပင်းနဲ့ လက်ပါတဲ့ အင်္ကျီပုံကနေ လာတာပါ။ 服 ကလည်း \"အဝတ်\"။",
+      "usageNote": "穿衣服 (အဝတ်ဝတ်တယ်)၊ 一件衣服 (အင်္ကျီ တစ်ထည်)။",
+      "commonMistake": "衣服 ကို 个 နဲ့ မရေတွက်ပါနဲ့ — 件 ကို သုံးပါ။"
+    },
+    "examples": [
+      {
+        "zh": "我想买新衣服。",
+        "pinyin": "Wǒ xiǎng mǎi xīn yīfu.",
+        "my": "ကျွန်တော် အဝတ်အစား အသစ် ဝယ်ချင်တယ်။",
+        "audio": null
+      },
+      {
+        "zh": "你的衣服在哪儿？",
+        "pinyin": "Nǐ de yīfu zài nǎr?",
+        "my": "မင်းအဝတ်တွေ ဘယ်မှာလဲ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "穿",
+      "件"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0256",
+    "level": 1,
+    "simplified": "医生",
+    "traditional": "醫生",
+    "pinyin": "yīshēng",
+    "pinyinNumbered": "yi1 sheng1",
+    "tones": [
+      1,
+      1
+    ],
+    "english": "doctor",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "ဆရာဝန်",
+      "kidExplanation": "医生 ဆိုတာ ဆရာဝန်ပါ — နေမကောင်းရင် ကုပေးတဲ့သူ။",
+      "pronunciationTip": "\"ယီ ရှန်\" လို့ ပြောပါ။ sh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "医 (ဆေးကု) + 生 (လူ) = ဆေးကုတဲ့ လူ = ဆရာဝန်။",
+      "usageNote": "看医生 (ဆရာဝန် ပြတယ်)။",
+      "commonMistake": "医生 (ဆရာဝန်) နဲ့ 医院 (ဆေးရုံ) ကို မရောပါနဲ့။"
+    },
+    "examples": [
+      {
+        "zh": "我妈妈是医生。",
+        "pinyin": "Wǒ māma shì yīshēng.",
+        "my": "ကျွန်မ မေမေက ဆရာဝန်ပါ။",
+        "audio": null
+      },
+      {
+        "zh": "医生说我要多休息。",
+        "pinyin": "Yīshēng shuō wǒ yào duō xiūxi.",
+        "my": "ကျွန်တော် များများ နားရမယ်လို့ ဆရာဝန်က ပြောတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "医院",
+      "看病",
+      "病"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0257",
+    "level": 1,
+    "simplified": "医院",
+    "traditional": "醫院",
+    "pinyin": "yīyuàn",
+    "pinyinNumbered": "yi1 yuan4",
+    "tones": [
+      1,
+      4
+    ],
+    "english": "hospital",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "ဆေးရုံ",
+      "kidExplanation": "医院 ဆိုတာ ဆေးရုံပါ — ဆရာဝန်တွေ လူနာတွေကို ကုပေးတဲ့ နေရာ။",
+      "pronunciationTip": "\"ယီ ယွမ်\" လို့ ပြောပါ။",
+      "memoryTip": "医 (ဆေးကု) + 院 (အဆောက်အအုံ) = ဆေးကုတဲ့ အဆောက်အအုံ။ 电影院 မှာလည်း 院 ပါပါတယ်။",
+      "usageNote": "去医院 (ဆေးရုံ သွားတယ်)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "你要去医院吗？",
+        "pinyin": "Nǐ yào qù yīyuàn ma?",
+        "my": "မင်း ဆေးရုံ သွားရမလား။",
+        "audio": null
+      },
+      {
+        "zh": "医院在学校后边。",
+        "pinyin": "Yīyuàn zài xuéxiào hòubian.",
+        "my": "ဆေးရုံက ကျောင်းနောက်မှာ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "医生",
+      "看病"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0258",
+    "level": 1,
+    "simplified": "一半",
+    "traditional": "一半",
+    "pinyin": "yíbàn",
+    "pinyinNumbered": "yi2 ban4",
+    "tones": [
+      2,
+      4
+    ],
+    "english": "half",
+    "partOfSpeech": "numeral",
+    "myanmar": {
+      "meaning": "တစ်ဝက်",
+      "kidExplanation": "一半 ဆိုတာ \"တစ်ဝက်\" ပါ။ မုန့်ကို တစ်ယောက် တစ်ဝက်စီ ခွဲစားရင် 一人一半！",
+      "pronunciationTip": "\"ယီ ပန်\" လို့ ပြောပါ။ 一 က နောက်က 半 (အသံ ၄) ကြောင့် yí (အသံ ၂) ဖြစ်သွားပါတယ်။",
+      "memoryTip": "一 (တစ်) + 半 (ဝက်) = တစ်ဝက်။",
+      "usageNote": "一半 + 的 + နာမ်: 一半的学生 (ကျောင်းသား တစ်ဝက်)။",
+      "commonMistake": "နာရီခွဲမှာ 一半 မသုံးပါနဲ့ — 三点半 ပါ။"
+    },
+    "examples": [
+      {
+        "zh": "我们一人一半。",
+        "pinyin": "Wǒmen yì rén yíbàn.",
+        "my": "ငါတို့ တစ်ယောက် တစ်ဝက်စီ။",
+        "audio": null
+      },
+      {
+        "zh": "我吃了一半。",
+        "pinyin": "Wǒ chīle yíbàn.",
+        "my": "ကျွန်မ တစ်ဝက် စားလိုက်ပြီ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "半"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0259",
+    "level": 1,
+    "simplified": "一下",
+    "traditional": "一下",
+    "pinyin": "yíxià",
+    "pinyinNumbered": "yi2 xia4",
+    "tones": [
+      2,
+      4
+    ],
+    "english": "(after a verb) a little; briefly",
+    "partOfSpeech": "phrase",
+    "myanmar": {
+      "meaning": "ခဏ၊ တစ်ချက်",
+      "kidExplanation": "一下 ကို လုပ်ရပ်ရဲ့ နောက်မှာ ထည့်ရင် \"ခဏ၊ တစ်ချက်လောက်\" လို့ အဓိပ္ပာယ်ရပြီး စကားကို ပိုပျော့ပြောင်းစေပါတယ်။ 看一下 = ခဏ ကြည့်လိုက်ပါ။",
+      "pronunciationTip": "\"ယီ ရှာ\" လို့ ပြောပါ။ 一 က နောက်က 下 (အသံ ၄) ကြောင့် yí ဖြစ်သွားပါတယ်။ x က \"ရှ\" နဲ့ နီးပြီး လျှာ မကော့ပါဘူး။",
+      "memoryTip": "一 (တစ်) + 下 (ချက်) = တစ်ချက် — ခဏလေး!",
+      "usageNote": "လုပ်ရပ် + 一下: 看一下၊ 休息一下၊ 问一下။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "你看一下。",
+        "pinyin": "Nǐ kàn yíxià.",
+        "my": "ခဏ ကြည့်လိုက်ပါ။",
+        "audio": null
+      },
+      {
+        "zh": "我想问一下。",
+        "pinyin": "Wǒ xiǎng wèn yíxià.",
+        "my": "နည်းနည်း မေးချင်လို့ပါ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "一点儿"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0260",
+    "level": 1,
+    "simplified": "椅子",
+    "traditional": "椅子",
+    "pinyin": "yǐzi",
+    "pinyinNumbered": "yi3 zi5",
+    "tones": [
+      3,
+      5
+    ],
+    "english": "chair",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "ကုလားထိုင်",
+      "kidExplanation": "椅子 ဆိုတာ ထိုင်ဖို့ ကုလားထိုင်ပါ။",
+      "pronunciationTip": "\"ယီ-ဇ\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "椅 ရဲ့ ဘယ်ဘက်မှာ 木 (သစ်သား) ပါတယ်။ သစ်သားနဲ့ လုပ်ထားတဲ့ ကုလားထိုင်!",
+      "usageNote": "坐在椅子上 (ကုလားထိုင်ပေါ်မှာ ထိုင်တယ်)။",
+      "commonMistake": "椅子 (ကုလားထိုင်) နဲ့ 桌子 (စားပွဲ) ကို မရောပါနဲ့။"
+    },
+    "examples": [
+      {
+        "zh": "请坐这个椅子。",
+        "pinyin": "Qǐng zuò zhège yǐzi.",
+        "my": "ဒီကုလားထိုင်မှာ ထိုင်ပါ။",
+        "audio": null
+      },
+      {
+        "zh": "房间里有两个椅子。",
+        "pinyin": "Fángjiān lǐ yǒu liǎng ge yǐzi.",
+        "my": "အခန်းထဲမှာ ကုလားထိုင် နှစ်လုံး ရှိတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "桌子",
+      "坐"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0261",
+    "level": 1,
+    "simplified": "一点儿",
+    "traditional": "一點兒",
+    "pinyin": "yìdiǎnr",
+    "pinyinNumbered": "yi4 dianr3",
+    "tones": [
+      4,
+      3
+    ],
+    "english": "a little; a bit",
+    "partOfSpeech": "phrase",
+    "myanmar": {
+      "meaning": "နည်းနည်း",
+      "kidExplanation": "一点儿 ဆိုတာ \"နည်းနည်း\" ပါ။ 我会说一点儿汉语 = တရုတ်လို နည်းနည်း ပြောတတ်တယ်။",
+      "pronunciationTip": "\"ယီ တိယာရ်\" လို့ ပြောပါ။ 一 ကို yì လို့ ပြောပါ။ 儿 ကို သီးသန့် မဖတ်ပါနဲ့ — ရှေ့က အသံရဲ့ နောက်မှာ လျှာကို ကော့လိုက်ရုံပါ။",
+      "memoryTip": "一 (တစ်) + 点 (အစက်) + 儿 = အစက်လေး တစ်စက်စာ — နည်းနည်းလေး!",
+      "usageNote": "一点儿 ကို နာမ်ရှေ့ ဒါမှမဟုတ် ပုံပြစကားလုံး နောက်မှာ ထားပါ: 喝一点儿水 / 便宜一点儿။",
+      "commonMistake": "一点儿 နဲ့ 有点儿 ကို ခွဲပါ: 有点儿 က ပုံပြစကားလုံး ရှေ့မှာ လာပြီး မကြိုက်စရာကို ပြောတာပါ — 有点儿冷 (နည်းနည်း အေးတယ်)။"
+    },
+    "examples": [
+      {
+        "zh": "我会说一点儿汉语。",
+        "pinyin": "Wǒ huì shuō yìdiǎnr Hànyǔ.",
+        "my": "ကျွန်မ တရုတ်လို နည်းနည်း ပြောတတ်တယ်။",
+        "audio": null
+      },
+      {
+        "zh": "你吃一点儿吧。",
+        "pinyin": "Nǐ chī yìdiǎnr ba.",
+        "my": "နည်းနည်း စားပါဦး။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "有点儿",
+      "一些"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0262",
+    "level": 1,
+    "simplified": "一些",
+    "traditional": "一些",
+    "pinyin": "yìxiē",
+    "pinyinNumbered": "yi4 xie1",
+    "tones": [
+      4,
+      1
+    ],
+    "english": "some; a few; a little",
+    "partOfSpeech": "measure word",
+    "myanmar": {
+      "meaning": "တချို့",
+      "kidExplanation": "一些 ဆိုတာ \"တချို့၊ နည်းနည်း\" ပါ — ရေတွက်လို့ရတာ ရော မရတာ ရော သုံးလို့ရပါတယ်။",
+      "pronunciationTip": "\"ယီ ရှဲ\" လို့ ပြောပါ။ 一 ကို yì လို့ ပြောပါ။ x က \"ရှ\" နဲ့ နီးပြီး လျှာ မကော့ပါဘူး။",
+      "memoryTip": "一 + 些 (တချို့) = တချို့။",
+      "usageNote": "一些 + နာမ်: 一些朋友 (သူငယ်ချင်း တချို့)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "我有一些中国朋友。",
+        "pinyin": "Wǒ yǒu yìxiē Zhōngguó péngyou.",
+        "my": "ကျွန်တော့်မှာ တရုတ် သူငယ်ချင်း တချို့ ရှိတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "妈妈买了一些菜。",
+        "pinyin": "Māma mǎile yìxiē cài.",
+        "my": "မေမေ ဟင်းသီးဟင်းရွက် တချို့ ဝယ်ခဲ့တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "些",
+      "有些",
+      "一点儿"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0263",
+    "level": 1,
+    "simplified": "有",
+    "traditional": "有",
+    "pinyin": "yǒu",
+    "pinyinNumbered": "you3",
+    "tones": [
+      3
+    ],
+    "english": "to have; there is",
+    "partOfSpeech": "verb",
+    "myanmar": {
+      "meaning": "ရှိတယ်",
+      "kidExplanation": "有 ဆိုတာ \"ရှိတယ်\" ပါ။ 我有一只猫 = ကျွန်တော့်မှာ ကြောင် တစ်ကောင် ရှိတယ်။",
+      "pronunciationTip": "\"ယို\" လို့ ပြောပါ။",
+      "memoryTip": "有 ရဲ့ အောက်မှာ 月 ပါတယ် — ဒီမှာ အသားကို ပြတာပါ။ လက်ထဲမှာ အသား ကိုင်ထားတယ် — \"ရှိတယ်\"!",
+      "usageNote": "လူ + 有 + ပစ္စည်း (…မှာ …ရှိတယ်)၊ နေရာ + 有 + အရာ (…မှာ …ရှိတယ်)။ မရှိရင် 没有။",
+      "commonMistake": "不有 လို့ မပြောပါနဲ့ — 没有 ပါ။"
+    },
+    "examples": [
+      {
+        "zh": "你有手机吗？",
+        "pinyin": "Nǐ yǒu shǒujī ma?",
+        "my": "မင်းမှာ ဖုန်း ရှိလား။",
+        "audio": null
+      },
+      {
+        "zh": "桌子上有一本书。",
+        "pinyin": "Zhuōzi shang yǒu yì běn shū.",
+        "my": "စားပွဲပေါ်မှာ စာအုပ် တစ်အုပ် ရှိတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "没有",
+      "在"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0264",
+    "level": 1,
+    "simplified": "有的",
+    "traditional": "有的",
+    "pinyin": "yǒude",
+    "pinyinNumbered": "you3 de5",
+    "tones": [
+      3,
+      5
+    ],
+    "english": "some",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "တချို့",
+      "kidExplanation": "有的 ဆိုတာ \"တချို့ (လူ/ပစ္စည်း)\" ပါ။ 有的…有的… = တချို့က … တချို့က …။",
+      "pronunciationTip": "\"ယို-တ\" လို့ ပြောပါ။",
+      "memoryTip": "有 (ရှိ) + 的 = ရှိတဲ့ အထဲက တချို့။",
+      "usageNote": "有的 + နာမ်: 有的学生 (ကျောင်းသား တချို့)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "有的同学喜欢唱歌。",
+        "pinyin": "Yǒude tóngxué xǐhuan chàng gē.",
+        "my": "အတန်းဖော် တချို့က သီချင်းဆိုရတာ ကြိုက်တယ်။",
+        "audio": null
+      },
+      {
+        "zh": "有的人喝茶，有的人喝水。",
+        "pinyin": "Yǒude rén hē chá, yǒude rén hē shuǐ.",
+        "my": "တချို့က ရေနွေးကြမ်း သောက်တယ်၊ တချို့က ရေ သောက်တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "有些",
+      "一些"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0265",
+    "level": 1,
+    "simplified": "有点儿",
+    "traditional": "有點兒",
+    "pinyin": "yǒudiǎnr",
+    "pinyinNumbered": "you3 dianr3",
+    "tones": [
+      3,
+      3
+    ],
+    "english": "slightly; a little; somewhat",
+    "partOfSpeech": "adverb",
+    "myanmar": {
+      "meaning": "နည်းနည်း (မကြိုက်စရာ)",
+      "kidExplanation": "有点儿 ဆိုတာ \"နည်းနည်း…တယ်\" ပါ — များသောအားဖြင့် မကြိုက်စရာ အရာကို ပြောတဲ့အခါ သုံးပါတယ်။ 有点儿冷 = နည်းနည်း အေးတယ်။",
+      "pronunciationTip": "\"ယို တိယာရ်\" လို့ ပြောပါ။ 儿 ကို သီးသန့် မဖတ်ပါနဲ့ — ရှေ့က အသံရဲ့ နောက်မှာ လျှာကို ကော့လိုက်ရုံပါ။",
+      "memoryTip": "有 + 一点儿 → 有点儿 — \"နည်းနည်း ရှိတယ်\"။",
+      "usageNote": "有点儿 + ပုံပြစကားလုံး: 有点儿贵 (နည်းနည်း ဈေးကြီးတယ်)။",
+      "commonMistake": "有点儿 ကို ပုံပြစကားလုံး ရှေ့မှာ ထားပါ: 有点儿冷 ✔ / 冷有点儿 ✘။"
+    },
+    "examples": [
+      {
+        "zh": "今天有点儿冷。",
+        "pinyin": "Jīntiān yǒudiǎnr lěng.",
+        "my": "ဒီနေ့ နည်းနည်း အေးတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "这个有点儿贵。",
+        "pinyin": "Zhège yǒudiǎnr guì.",
+        "my": "ဒါ နည်းနည်း ဈေးကြီးတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "一点儿",
+      "很"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0266",
+    "level": 1,
+    "simplified": "有些",
+    "traditional": "有些",
+    "pinyin": "yǒuxiē",
+    "pinyinNumbered": "you3 xie1",
+    "tones": [
+      3,
+      1
+    ],
+    "english": "some",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "တချို့",
+      "kidExplanation": "有些 ဆိုတာ \"တချို့\" ပါ — 有的 နဲ့ အဓိပ္ပာယ် နီးပါတယ်။",
+      "pronunciationTip": "\"ယို ရှဲ\" လို့ ပြောပါ။ x က \"ရှ\" နဲ့ နီးပြီး လျှာ မကော့ပါဘူး။",
+      "memoryTip": "有 (ရှိ) + 些 (တချို့) = တချို့။",
+      "usageNote": "有些 + နာမ်: 有些人 (လူ တချို့)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "有些人不喜欢下雨。",
+        "pinyin": "Yǒuxiē rén bù xǐhuan xià yǔ.",
+        "my": "တချို့လူတွေ မိုးရွာတာ မကြိုက်ကြဘူး။",
+        "audio": null
+      },
+      {
+        "zh": "有些字我不认识。",
+        "pinyin": "Yǒuxiē zì wǒ bú rènshi.",
+        "my": "တချို့ စာလုံးတွေကို ကျွန်မ မသိဘူး။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "有的",
+      "一些"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0267",
+    "level": 1,
+    "simplified": "雨",
+    "traditional": "雨",
+    "pinyin": "yǔ",
+    "pinyinNumbered": "yu3",
+    "tones": [
+      3
+    ],
+    "english": "rain",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "မိုး",
+      "kidExplanation": "雨 ဆိုတာ မိုးပါ။ 下雨 = မိုးရွာတယ်။",
+      "pronunciationTip": "\"ယွီ\" လို့ ပြောပါ။ ü က \"ယူ\" မဟုတ်ပါ — \"အီ\" လို့ ပြောရင်း နှုတ်ခမ်းကို လုံးလိုက်ပါ။",
+      "memoryTip": "雨 ကို ကြည့်ပါ — အပေါ်က မျဉ်းက ကောင်းကင်၊ အထဲက အစက်လေးတွေက မိုးစက်တွေ!",
+      "usageNote": "下雨 (မိုးရွာ)၊ 雨很大 (မိုး အရမ်းသည်းတယ်)။",
+      "commonMistake": "雨 (yǔ) ကို \"ယူ\" လို့ မထွက်ပါနဲ့ — ü အသံပါ။"
+    },
+    "examples": [
+      {
+        "zh": "外边的雨很大。",
+        "pinyin": "Wàibian de yǔ hěn dà.",
+        "my": "အပြင်မှာ မိုး အရမ်းသည်းတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "我喜欢听雨。",
+        "pinyin": "Wǒ xǐhuan tīng yǔ.",
+        "my": "ကျွန်တော် မိုးသံ နားထောင်ရတာ ကြိုက်တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "下雨",
+      "雪",
+      "天气"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0268",
+    "level": 1,
+    "simplified": "元",
+    "traditional": "元",
+    "pinyin": "yuán",
+    "pinyinNumbered": "yuan2",
+    "tones": [
+      2
+    ],
+    "english": "measure word for yuan (currency)",
+    "partOfSpeech": "measure word",
+    "myanmar": {
+      "meaning": "ယွမ် (ငွေ)",
+      "kidExplanation": "元 ဆိုတာ တရုတ်ငွေ \"ယွမ်\" ပါ။ ဈေးနှုန်းကို ရေးတဲ့အခါ 元 ကို သုံးပြီး ပြောတဲ့အခါ 块 ကို ပိုသုံးပါတယ်။",
+      "pronunciationTip": "\"ယွမ်\" လို့ ပြောပါ။ ü ကို နှုတ်ခမ်း လုံးပြီး ပြောပါ။",
+      "memoryTip": "မြန်မာလို \"ယွမ်\" ဆိုတဲ့ စကားလုံးဟာ 元 (yuán) ကနေ လာတာပါ — အသံ တူတယ်နော်!",
+      "usageNote": "ဂဏန်း + 元: 十元 (ဆယ်ယွမ်)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "这本书二十元。",
+        "pinyin": "Zhè běn shū èrshí yuán.",
+        "my": "ဒီစာအုပ် နှစ်ဆယ်ယွမ်ပါ။",
+        "audio": null
+      },
+      {
+        "zh": "一个包子三元。",
+        "pinyin": "Yí ge bāozi sān yuán.",
+        "my": "ပေါက်စီ တစ်လုံး သုံးယွမ်ပါ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "块",
+      "钱"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0269",
+    "level": 1,
+    "simplified": "月",
+    "traditional": "月",
+    "pinyin": "yuè",
+    "pinyinNumbered": "yue4",
+    "tones": [
+      4
+    ],
+    "english": "month; moon",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "လ",
+      "kidExplanation": "月 ဆိုတာ \"လ\" ပါ — ကောင်းကင်က လမင်းရော၊ တစ်နှစ်ရဲ့ လရော။ တရုတ်လို လနာမည်တွေက ဂဏန်းနဲ့ပဲ: 一月 (ဇန်နဝါရီ)၊ 二月 (ဖေဖော်ဝါရီ)…။",
+      "pronunciationTip": "\"ယွဲ\" လို့ ပြောပါ။ ü ကို နှုတ်ခမ်း လုံးပြီး ပြောပါ။",
+      "memoryTip": "月 က လခြမ်းပုံကနေ လာတာပါ!",
+      "usageNote": "ဂဏန်း + 月 = …လ: 十月 (အောက်တိုဘာ)။ \"…လ ကြာ\" ဆိုရင် 个月: 三个月 (သုံးလ)။",
+      "commonMistake": "一月 (ဇန်နဝါရီ) နဲ့ 一个月 (တစ်လ ကြာ) ကို ခွဲပါ။"
+    },
+    "examples": [
+      {
+        "zh": "现在是十月。",
+        "pinyin": "Xiànzài shì shí yuè.",
+        "my": "အခု အောက်တိုဘာလပါ။",
+        "audio": null
+      },
+      {
+        "zh": "我四月去曼德勒。",
+        "pinyin": "Wǒ sì yuè qù Màndélè.",
+        "my": "ကျွန်မ ဧပြီလမှာ မန္တလေး သွားမယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "年",
+      "日",
+      "号"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0270",
+    "level": 1,
+    "simplified": "再",
+    "traditional": "再",
+    "pinyin": "zài",
+    "pinyinNumbered": "zai4",
+    "tones": [
+      4
+    ],
+    "english": "again; once more",
+    "partOfSpeech": "adverb",
+    "myanmar": {
+      "meaning": "ထပ်ပြီး၊ နောက်တစ်ခါ",
+      "kidExplanation": "再 ဆိုတာ \"ထပ်ပြီး၊ နောက်တစ်ခါ\" ပါ။ 再说一下 = ထပ်ပြောပါဦး။ 再见 (နောက်မှ ပြန်တွေ့မယ်) မှာလည်း ပါပါတယ်။",
+      "pronunciationTip": "\"ဇိုင်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "再 ကို ကြည့်ပါ — မျဉ်းလဲတွေ ထပ်ထပ် ပါနေတယ်။ \"ထပ်ပြီး၊ ထပ်ပြီး!\"",
+      "usageNote": "再 + လုပ်ရပ်: 再吃一个 (နောက်တစ်လုံး ထပ်စား)။",
+      "commonMistake": "再 (နောက်တစ်ခါ) နဲ့ 在 (ရှိတယ်/…နေတယ်) က အသံ အတူတူ zài ပါ! စာလုံးကို ကြည့်ပြီး ခွဲပါ။"
+    },
+    "examples": [
+      {
+        "zh": "再吃一个吧！",
+        "pinyin": "Zài chī yí ge ba!",
+        "my": "နောက်တစ်လုံး ထပ်စားပါဦး!",
+        "audio": null
+      },
+      {
+        "zh": "明天再来吧。",
+        "pinyin": "Míngtiān zài lái ba.",
+        "my": "မနက်ဖြန် ထပ်လာခဲ့ပါ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "再见",
+      "还"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0271",
+    "level": 1,
+    "simplified": "在",
+    "traditional": "在",
+    "pinyin": "zài",
+    "pinyinNumbered": "zai4",
+    "tones": [
+      4
+    ],
+    "english": "to be at; at; in; (indicates ongoing action)",
+    "partOfSpeech": [
+      "verb",
+      "preposition",
+      "adverb"
+    ],
+    "myanmar": {
+      "meaning": "ရှိတယ်၊ ...မှာ၊ ...နေတယ်",
+      "kidExplanation": "在 မှာ အသုံး သုံးမျိုး ရှိပါတယ်: \"ရှိတယ်\" (妈妈在家 = မေမေ အိမ်မှာ ရှိတယ်)၊ \"…မှာ\" (在学校学习)၊ \"…နေတယ်\" (我在吃饭 = ထမင်းစားနေတယ်)။",
+      "pronunciationTip": "\"ဇိုင်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "在 ရဲ့ အောက်မှာ 土 (မြေ) ပါတယ်။ မြေပေါ်မှာ ရှိနေတယ် — \"ရှိတယ်\"!",
+      "usageNote": "လူ + 在 + နေရာ: 我在家။ 在 + လုပ်ရပ် = …နေတယ်: 他在睡觉။",
+      "commonMistake": "\"ကျောင်းမှာ စာသင်တယ်\" ကို 我学习在学校 လို့ မပြောပါနဲ့ — 我在学校学习 ပါ။ နေရာက လုပ်ရပ်ရဲ့ ရှေ့မှာ လာပါတယ်။"
+    },
+    "examples": [
+      {
+        "zh": "你在哪儿？",
+        "pinyin": "Nǐ zài nǎr?",
+        "my": "မင်း ဘယ်မှာလဲ။",
+        "audio": null
+      },
+      {
+        "zh": "我在吃饭。",
+        "pinyin": "Wǒ zài chī fàn.",
+        "my": "ကျွန်တော် ထမင်းစားနေတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "正在",
+      "有"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0272",
+    "level": 1,
+    "simplified": "再见",
+    "traditional": "再見",
+    "pinyin": "zàijiàn",
+    "pinyinNumbered": "zai4 jian4",
+    "tones": [
+      4,
+      4
+    ],
+    "english": "goodbye",
+    "partOfSpeech": "phrase",
+    "myanmar": {
+      "meaning": "တာ့တာ၊ နောက်မှ တွေ့မယ်",
+      "kidExplanation": "再见 ဆိုတာ \"တာ့တာ၊ နောက်မှ တွေ့မယ်\" ပါ။ ကျောင်းဆင်းရင် ဆရာကို 老师再见！ လို့ ပြောပါ။",
+      "pronunciationTip": "\"ဇိုင် ကျန်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "再 (ထပ်) + 见 (တွေ့) = ထပ်တွေ့မယ် — တာ့တာ!",
+      "usageNote": "明天见 (မနက်ဖြန် တွေ့မယ်) လိုလည်း ပြောလို့ရပါတယ်။",
+      "commonMistake": "再见 ရဲ့ 再 ကို 在 နဲ့ မရောရေးပါနဲ့။"
+    },
+    "examples": [
+      {
+        "zh": "老师再见！",
+        "pinyin": "Lǎoshī zàijiàn!",
+        "my": "ဆရာ၊ တာ့တာ!",
+        "audio": null
+      },
+      {
+        "zh": "再见，明天见！",
+        "pinyin": "Zàijiàn, míngtiān jiàn!",
+        "my": "တာ့တာ၊ မနက်ဖြန် တွေ့မယ်!",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "你好",
+      "见"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0273",
+    "level": 1,
+    "simplified": "早",
+    "traditional": "早",
+    "pinyin": "zǎo",
+    "pinyinNumbered": "zao3",
+    "tones": [
+      3
+    ],
+    "english": "early; morning",
+    "partOfSpeech": "adjective",
+    "myanmar": {
+      "meaning": "စောတယ်",
+      "kidExplanation": "早 ဆိုတာ \"စောတယ်\" ပါ။ မနက်ခင်း နှုတ်ဆက်တဲ့အခါ 早！ ဒါမှမဟုတ် 早上好！ လို့ ပြောပါတယ်။",
+      "pronunciationTip": "\"ဇော်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "早 = 日 (နေ) + 十။ နေက မြေကြီးပေါ် ထွက်လာပြီ — စောစော မနက်!",
+      "usageNote": "很早 (အရမ်းစောတယ်)။",
+      "commonMistake": "早 (စော) နဲ့ 晚 (နောက်ကျ) — ဆန့်ကျင်ဘက်ပါ။"
+    },
+    "examples": [
+      {
+        "zh": "你早！",
+        "pinyin": "Nǐ zǎo!",
+        "my": "မင်္ဂလာ နံနက်ခင်းပါ!",
+        "audio": null
+      },
+      {
+        "zh": "今天我起床很早。",
+        "pinyin": "Jīntiān wǒ qǐchuáng hěn zǎo.",
+        "my": "ဒီနေ့ ကျွန်မ အရမ်းစောစော ထတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "早上",
+      "晚"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0274",
+    "level": 1,
+    "simplified": "早饭",
+    "traditional": "早飯",
+    "pinyin": "zǎofàn",
+    "pinyinNumbered": "zao3 fan4",
+    "tones": [
+      3,
+      4
+    ],
+    "english": "breakfast",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "မနက်စာ",
+      "kidExplanation": "早饭 ဆိုတာ မနက်စာပါ — ကျောင်းမသွားခင် စားတဲ့ ထမင်း၊ မုန့်ဟင်းခါး၊ ပေါက်စီ…!",
+      "pronunciationTip": "\"ဇော် ဖန်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။ f က အပေါ်သွားကို အောက်နှုတ်ခမ်းပေါ် တင်ပြီး လေမှုတ်ထုတ်တဲ့ အသံပါ (မြန်မာ \"ဖ\" နဲ့ မတူပါ)။",
+      "memoryTip": "早 (စော/မနက်) + 饭 (ထမင်း) = မနက်စာ။",
+      "usageNote": "吃早饭 (မနက်စာ စားတယ်)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "你吃早饭了吗？",
+        "pinyin": "Nǐ chī zǎofàn le ma?",
+        "my": "မင်း မနက်စာ စားပြီးပြီလား။",
+        "audio": null
+      },
+      {
+        "zh": "我早饭吃面包。",
+        "pinyin": "Wǒ zǎofàn chī miànbāo.",
+        "my": "ကျွန်တော် မနက်စာ ပေါင်မုန့် စားတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "午饭",
+      "晚饭",
+      "早上"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0275",
+    "level": 1,
+    "simplified": "早上",
+    "traditional": "早上",
+    "pinyin": "zǎoshang",
+    "pinyinNumbered": "zao3 shang5",
+    "tones": [
+      3,
+      5
+    ],
+    "english": "morning",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "မနက်",
+      "kidExplanation": "早上 ဆိုတာ မနက်စောစောပါ။ 早上好！ = မင်္ဂလာ နံနက်ခင်းပါ။",
+      "pronunciationTip": "\"ဇော်-ရှန်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။ sh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "早 (စော) + 上 = မနက်ပိုင်း။",
+      "usageNote": "早上七点 (မနက် ခုနစ်နာရီ)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "早上好！",
+        "pinyin": "Zǎoshang hǎo!",
+        "my": "မင်္ဂလာ နံနက်ခင်းပါ။",
+        "audio": null
+      },
+      {
+        "zh": "早上很冷。",
+        "pinyin": "Zǎoshang hěn lěng.",
+        "my": "မနက်ပိုင်း အရမ်းအေးတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "上午",
+      "早",
+      "晚上"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0276",
+    "level": 1,
+    "simplified": "怎么",
+    "traditional": "怎麼",
+    "pinyin": "zěnme",
+    "pinyinNumbered": "zen3 me5",
+    "tones": [
+      3,
+      5
+    ],
+    "english": "how; why",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဘယ်လို၊ ဘာလို့",
+      "kidExplanation": "怎么 ဆိုတာ \"ဘယ်လို\" (怎么读？ = ဘယ်လို ဖတ်လဲ) ဒါမှမဟုတ် \"ဘာလို့\" (你怎么不吃？ = ဘာလို့ မစားတာလဲ) လို့ မေးတာပါ။",
+      "pronunciationTip": "\"ဇန်-မ\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။ en ကို an ထက် ပါးစပ် နည်းနည်းပဲ ဟပြီး ပြောပါ။",
+      "memoryTip": "怎 ရဲ့ အောက်မှာ 心 (နှလုံးသား) ပါတယ်။ \"ဘယ်လို လုပ်ရမလဲ\" လို့ စိတ်ထဲမှာ တွေးနေတယ်!",
+      "usageNote": "怎么 + လုပ်ရပ် = ဘယ်လို…: 怎么去？ (ဘယ်လို သွားမလဲ)။",
+      "commonMistake": "怎么 ပါတဲ့ မေးခွန်းမှာ 吗 ထပ်မထည့်ပါနဲ့။"
+    },
+    "examples": [
+      {
+        "zh": "这个字怎么写？",
+        "pinyin": "Zhège zì zěnme xiě?",
+        "my": "ဒီစာလုံး ဘယ်လိုရေးလဲ။",
+        "audio": null
+      },
+      {
+        "zh": "你怎么不高兴？",
+        "pinyin": "Nǐ zěnme bù gāoxìng?",
+        "my": "မင်း ဘာလို့ မပျော်တာလဲ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "怎么样",
+      "什么"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0277",
+    "level": 1,
+    "simplified": "怎么样",
+    "traditional": "怎麼樣",
+    "pinyin": "zěnmeyàng",
+    "pinyinNumbered": "zen3 me5 yang4",
+    "tones": [
+      3,
+      5,
+      4
+    ],
+    "english": "how; how about",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဘယ်လိုလဲ",
+      "kidExplanation": "怎么样 ဆိုတာ \"ဘယ်လိုလဲ၊ ဘယ်လို ထင်လဲ\" လို့ မေးတာပါ။ 你怎么样？ = နေကောင်းလား၊ ဘယ်လိုလဲ။",
+      "pronunciationTip": "\"ဇန်-မ ယန်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။ en ကို an ထက် ပါးစပ် နည်းနည်းပဲ ဟပြီး ပြောပါ။",
+      "memoryTip": "怎么 (ဘယ်လို) + 样 (ပုံစံ) = ဘယ်လို ပုံစံလဲ။",
+      "usageNote": "အကြံပေးပြီး မေးရင်လည်း သုံးပါတယ်: 我们去看电影，怎么样？ (ရုပ်ရှင်ကြည့်ကြမလား၊ ဘယ်လိုလဲ)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "这个菜怎么样？",
+        "pinyin": "Zhège cài zěnmeyàng?",
+        "my": "ဒီဟင်း ဘယ်လိုလဲ။",
+        "audio": null
+      },
+      {
+        "zh": "我们明天去，怎么样？",
+        "pinyin": "Wǒmen míngtiān qù, zěnmeyàng?",
+        "my": "မနက်ဖြန် သွားကြမလား၊ ဘယ်လိုလဲ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "怎么"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0278",
+    "level": 1,
+    "simplified": "找",
+    "traditional": "找",
+    "pinyin": "zhǎo",
+    "pinyinNumbered": "zhao3",
+    "tones": [
+      3
+    ],
+    "english": "to look for",
+    "partOfSpeech": "verb",
+    "myanmar": {
+      "meaning": "ရှာတယ်",
+      "kidExplanation": "找 ဆိုတာ ရှာတာပါ။ 我找我的手机 = ကျွန်တော့် ဖုန်းကို ရှာနေတယ်။ တစ်ယောက်ယောက်ကို လာတွေ့တာကိုလည်း 找 လို့ ပြောပါတယ်။",
+      "pronunciationTip": "\"ကျော်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "找 ရဲ့ ဘယ်ဘက်မှာ 扌 (လက်) ပါတယ်။ လက်နဲ့ စမ်းပြီး ရှာတယ်!",
+      "usageNote": "找 + အရာ/လူ: 找书၊ 找老师 (ဆရာ့ကို လာတွေ့တာ)။",
+      "commonMistake": "找 (ရှာနေတာ) နဲ့ 找到 (ရှာတွေ့သွားတာ) ကို ခွဲပါ။"
+    },
+    "examples": [
+      {
+        "zh": "你找什么？",
+        "pinyin": "Nǐ zhǎo shénme?",
+        "my": "မင်း ဘာရှာနေတာလဲ။",
+        "audio": null
+      },
+      {
+        "zh": "我在找我的猫。",
+        "pinyin": "Wǒ zài zhǎo wǒ de māo.",
+        "my": "ကျွန်မ ကြောင်လေးကို ရှာနေတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "看见"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0279",
+    "level": 1,
+    "simplified": "这",
+    "traditional": "這",
+    "pinyin": "zhè",
+    "pinyinNumbered": "zhe4",
+    "tones": [
+      4
+    ],
+    "english": "this; these",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဒီ၊ ဒါ",
+      "kidExplanation": "这 ဆိုတာ နီးနီးက အရာကို ညွှန်ပြီး \"ဒီ၊ ဒါ\" လို့ ပြောတာပါ။ 这是我的书 = ဒါ ကျွန်တော့် စာအုပ်ပါ။",
+      "pronunciationTip": "\"ကျဲ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ e က မြန်မာ \"အ\" နဲ့ \"အော\" ကြားက အသံပါ။",
+      "memoryTip": "这 ရဲ့ ဘယ်ဘက်အောက်မှာ 辶 (လမ်းလျှောက်) ပါတယ်။ \"ဒီကို လာ၊ ဒါ!\" လို့ နီးနီးကို ညွှန်ပြတယ်။",
+      "usageNote": "这 + ရေတွက်ပုဒ် + နာမ်: 这本书 (ဒီစာအုပ်)။ 这是… (ဒါက …ပါ)။",
+      "commonMistake": "这 (zhè, ဒီ — နီး) နဲ့ 那 (nà, ဟို — ဝေး) ကို ခွဲပါ။"
+    },
+    "examples": [
+      {
+        "zh": "这是我妈妈。",
+        "pinyin": "Zhè shì wǒ māma.",
+        "my": "ဒါ ကျွန်တော့် မေမေပါ။",
+        "audio": null
+      },
+      {
+        "zh": "这件衣服是新的。",
+        "pinyin": "Zhè jiàn yīfu shì xīn de.",
+        "my": "ဒီအင်္ကျီက အသစ်ပါ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "那",
+      "这个",
+      "这里"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0280",
+    "level": 1,
+    "simplified": "这边",
+    "traditional": "這邊",
+    "pinyin": "zhèbiān",
+    "pinyinNumbered": "zhe4 bian1",
+    "tones": [
+      4,
+      1
+    ],
+    "english": "this side; here",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဒီဘက်",
+      "kidExplanation": "这边 ဆိုတာ \"ဒီဘက်\" ပါ။ 请到这边来 = ဒီဘက်ကို လာပါ။",
+      "pronunciationTip": "\"ကျဲ ပျန်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "这 (ဒီ) + 边 (ဘက်) = ဒီဘက်။",
+      "usageNote": "在这边 (ဒီဘက်မှာ)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "请到这边来。",
+        "pinyin": "Qǐng dào zhèbiān lái.",
+        "my": "ဒီဘက်ကို လာပါ။",
+        "audio": null
+      },
+      {
+        "zh": "这边人很少。",
+        "pinyin": "Zhèbiān rén hěn shǎo.",
+        "my": "ဒီဘက်မှာ လူ နည်းတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "那边",
+      "这里"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0281",
+    "level": 1,
+    "simplified": "这个",
+    "traditional": "這個",
+    "pinyin": "zhège",
+    "pinyinNumbered": "zhe4 ge5",
+    "tones": [
+      4,
+      5
+    ],
+    "english": "this; this one",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဒီဟာ",
+      "kidExplanation": "这个 ဆိုတာ \"ဒီဟာ\" ပါ။ 我要这个 = ကျွန်တော် ဒီဟာ ယူမယ်။",
+      "pronunciationTip": "\"ကျဲ-ကဲ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ စကားပြောရင် zhèige (\"ကျေ-ကဲ\") လို့လည်း ပြောကြပါတယ်။",
+      "memoryTip": "这 (ဒီ) + 个 (ခု) = ဒီဟာ။",
+      "usageNote": "这个 + နာမ်: 这个人 (ဒီလူ)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "我要这个。",
+        "pinyin": "Wǒ yào zhège.",
+        "my": "ကျွန်မ ဒီဟာ ယူမယ်။",
+        "audio": null
+      },
+      {
+        "zh": "这个是我的，那个是你的。",
+        "pinyin": "Zhège shì wǒ de, nàge shì nǐ de.",
+        "my": "ဒါ ကျွန်တော့်ဟာ၊ ဟိုဟာ မင်းဟာ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "那个",
+      "哪个"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0282",
+    "level": 1,
+    "simplified": "这里",
+    "traditional": "這裡",
+    "pinyin": "zhèlǐ",
+    "pinyinNumbered": "zhe4 li3",
+    "tones": [
+      4,
+      3
+    ],
+    "english": "here",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဒီမှာ",
+      "kidExplanation": "这里 ဆိုတာ \"ဒီမှာ၊ ဒီနေရာ\" ပါ။ 这儿 နဲ့ အဓိပ္ပာယ် အတူတူပါ။",
+      "pronunciationTip": "\"ကျဲ လီ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "这 (ဒီ) + 里 (နေရာ) = ဒီနေရာ။",
+      "usageNote": "在这里 (ဒီမှာ)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "我家在这里。",
+        "pinyin": "Wǒ jiā zài zhèlǐ.",
+        "my": "ကျွန်တော့်အိမ် ဒီမှာ။",
+        "audio": null
+      },
+      {
+        "zh": "这里很漂亮。",
+        "pinyin": "Zhèlǐ hěn piàoliang.",
+        "my": "ဒီနေရာ အရမ်းလှတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "那里",
+      "哪里",
+      "这儿"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0283",
+    "level": 1,
+    "simplified": "这儿",
+    "traditional": "這兒",
+    "pinyin": "zhèr",
+    "pinyinNumbered": "zher4",
+    "tones": [
+      4
+    ],
+    "english": "here",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဒီမှာ",
+      "kidExplanation": "这儿 က 这里 နဲ့ အဓိပ္ပာယ် အတူတူပါ — \"ဒီမှာ\"။",
+      "pronunciationTip": "\"ကျဲရ်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ 儿 ကို သီးသန့် မဖတ်ပါနဲ့ — ရှေ့က အသံရဲ့ နောက်မှာ လျှာကို ကော့လိုက်ရုံပါ။",
+      "memoryTip": "这 + 儿 (လျှာကော့သံ) = 这儿။",
+      "usageNote": "",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "你来这儿吧。",
+        "pinyin": "Nǐ lái zhèr ba.",
+        "my": "ဒီကို လာခဲ့ပါ။",
+        "audio": null
+      },
+      {
+        "zh": "我的书在这儿。",
+        "pinyin": "Wǒ de shū zài zhèr.",
+        "my": "ကျွန်မရဲ့ စာအုပ် ဒီမှာ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "那儿",
+      "哪儿",
+      "这里"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0284",
+    "level": 1,
+    "simplified": "这些",
+    "traditional": "這些",
+    "pinyin": "zhèxiē",
+    "pinyinNumbered": "zhe4 xie1",
+    "tones": [
+      4,
+      1
+    ],
+    "english": "these",
+    "partOfSpeech": "pronoun",
+    "myanmar": {
+      "meaning": "ဒါတွေ",
+      "kidExplanation": "这些 ဆိုတာ \"ဒါတွေ\" ပါ — နီးနီးမှာ ရှိတဲ့ အရာ အများ။",
+      "pronunciationTip": "\"ကျဲ ရှဲ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ x က \"ရှ\" နဲ့ နီးပြီး လျှာ မကော့ပါဘူး။",
+      "memoryTip": "这 (ဒီ) + 些 (တချို့) = ဒါတွေ။",
+      "usageNote": "这些 + နာမ်: 这些书 (ဒီစာအုပ်တွေ)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "这些是我的朋友。",
+        "pinyin": "Zhèxiē shì wǒ de péngyou.",
+        "my": "ဒီလူတွေက ကျွန်တော့် သူငယ်ချင်းတွေပါ။",
+        "audio": null
+      },
+      {
+        "zh": "这些苹果多少钱？",
+        "pinyin": "Zhèxiē píngguǒ duōshao qián?",
+        "my": "ဒီပန်းသီးတွေ ဘယ်လောက်လဲ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "那些",
+      "哪些"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0285",
+    "level": 1,
+    "simplified": "真",
+    "traditional": "真",
+    "pinyin": "zhēn",
+    "pinyinNumbered": "zhen1",
+    "tones": [
+      1
+    ],
+    "english": "really; truly",
+    "partOfSpeech": "adverb",
+    "myanmar": {
+      "meaning": "တကယ်",
+      "kidExplanation": "真 ဆိုတာ \"တကယ်\" ပါ။ 真好！ = တကယ် ကောင်းတယ်! 你真漂亮！ = မင်း တကယ်လှတယ်!",
+      "pronunciationTip": "\"ကျန်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ en ကို an ထက် ပါးစပ် နည်းနည်းပဲ ဟပြီး ပြောပါ။",
+      "memoryTip": "真 ရဲ့ အလယ်မှာ 目 (မျက်လုံး) ပါတယ် — \"ကိုယ့်မျက်လုံးနဲ့ မြင်တယ်၊ တကယ်ပဲ!\"",
+      "usageNote": "真 + ပုံပြစကားလုံး: 真好吃 (တကယ် စားကောင်းတယ်)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "你真好！",
+        "pinyin": "Nǐ zhēn hǎo!",
+        "my": "မင်း တကယ် သဘောကောင်းတယ်!",
+        "audio": null
+      },
+      {
+        "zh": "这个包子真好吃！",
+        "pinyin": "Zhège bāozi zhēn hǎochī!",
+        "my": "ဒီပေါက်စီ တကယ် စားကောင်းတယ်!",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "很",
+      "太"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0286",
+    "level": 1,
+    "simplified": "正在",
+    "traditional": "正在",
+    "pinyin": "zhèngzài",
+    "pinyinNumbered": "zheng4 zai4",
+    "tones": [
+      4,
+      4
+    ],
+    "english": "in the process of; currently",
+    "partOfSpeech": "adverb",
+    "myanmar": {
+      "meaning": "(အခု) ...နေတယ်",
+      "kidExplanation": "正在 ဆိုတာ \"အခု …နေတယ်\" ပါ — လုပ်ရပ်ကို လုပ်နေဆဲ ဆိုတာ ပြတာပါ။ 我正在吃饭 = ထမင်း စားနေတယ်။",
+      "pronunciationTip": "\"ကျန် ဇိုင်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "正 (တည့်တည့်) + 在 (ရှိ) = \"အခု တည့်တည့်မှာ\" — လုပ်နေဆဲ!",
+      "usageNote": "正在 + လုပ်ရပ်: 他正在睡觉 (သူ အိပ်နေတယ်)။",
+      "commonMistake": "正在 နဲ့ 在 (…နေတယ်) အဓိပ္ပာယ် နီးပါတယ်။ 正在 က \"အခု ဒီအချိန်\" ကို ပိုအလေးပေးပါတယ်။"
+    },
+    "examples": [
+      {
+        "zh": "妈妈正在做饭。",
+        "pinyin": "Māma zhèngzài zuò fàn.",
+        "my": "မေမေ အခု ထမင်းချက်နေတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "我正在看书呢。",
+        "pinyin": "Wǒ zhèngzài kàn shū ne.",
+        "my": "ကျွန်တော် စာအုပ် ဖတ်နေတုန်းပါ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "在"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0287",
+    "level": 1,
+    "simplified": "只",
+    "traditional": "隻",
+    "pinyin": "zhī",
+    "pinyinNumbered": "zhi1",
+    "tones": [
+      1
+    ],
+    "english": "measure word for birds and certain animals",
+    "partOfSpeech": "measure word",
+    "myanmar": {
+      "meaning": "ကောင် (တိရစ္ဆာန်)",
+      "kidExplanation": "只 ကို ကြောင်၊ ခွေး၊ ငှက် လို တိရစ္ဆာန်တွေ ရေတွက်တဲ့အခါ သုံးပါတယ် — မြန်မာ \"ကောင်\" လိုပေါ့။ 一只猫 = ကြောင် တစ်ကောင်။",
+      "pronunciationTip": "\"ကျီ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ zhi/chi/shi/ri ရဲ့ i ကို \"အီ\" လို အပြည့် မထွက်ပါနဲ့။",
+      "memoryTip": "只 ရဲ့ အပေါ်မှာ 口 (ပါးစပ်)၊ အောက်မှာ ခြေထောက် နှစ်ချောင်းလို ပုံ — တိရစ္ဆာန်လေး တစ်ကောင်လို့ ပုံဖော်ပါ!",
+      "usageNote": "ဂဏန်း + 只 + တိရစ္ဆာန်: 两只狗။",
+      "commonMistake": "တိရစ္ဆာန်ကို 个 နဲ့ ရေတွက်ရင်လည်း နားလည်ပေမဲ့ 只 က ပိုမှန်ပါတယ်။"
+    },
+    "examples": [
+      {
+        "zh": "那只猫是谁的？",
+        "pinyin": "Nà zhī māo shì shéi de?",
+        "my": "ဟိုကြောင်က ဘယ်သူ့ဟာလဲ။",
+        "audio": null
+      },
+      {
+        "zh": "我想要一只小狗。",
+        "pinyin": "Wǒ xiǎng yào yì zhī xiǎo gǒu.",
+        "my": "ကျွန်မ ခွေးကလေး တစ်ကောင် လိုချင်တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "个",
+      "猫",
+      "狗"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0288",
+    "level": 1,
+    "simplified": "知道",
+    "traditional": "知道",
+    "pinyin": "zhīdào",
+    "pinyinNumbered": "zhi1 dao4",
+    "tones": [
+      1,
+      4
+    ],
+    "english": "to know",
+    "partOfSpeech": "verb",
+    "myanmar": {
+      "meaning": "သိတယ်",
+      "kidExplanation": "知道 ဆိုတာ သိတာပါ — သတင်း၊ အဖြေ စတာတွေကို သိတာ။ 我知道！ = ငါ သိတယ်! 我不知道 = မသိဘူး။",
+      "pronunciationTip": "\"ကျီ-တော်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ zhi/chi/shi/ri ရဲ့ i ကို \"အီ\" လို အပြည့် မထွက်ပါနဲ့။",
+      "memoryTip": "知 = 矢 (မြား) + 口 (ပါးစပ်)။ မြားလို မြန်မြန် ပါးစပ်က အဖြေ ထွက်လာတယ် — သိလို့ပေါ့!",
+      "usageNote": "知道 + အကြောင်းအရာ: 我知道他的名字 (သူ့နာမည်ကို သိတယ်)။",
+      "commonMistake": "知道 (အချက်အလက်ကို သိ) နဲ့ 认识 (လူ၊ စာလုံးကို သိ) ကို ခွဲပါ: 我认识他 (သူ့ကို သိတယ်) / 我知道他的名字 (သူ့နာမည်ကို သိတယ်)။"
+    },
+    "examples": [
+      {
+        "zh": "我不知道。",
+        "pinyin": "Wǒ bù zhīdào.",
+        "my": "ကျွန်တော် မသိဘူး။",
+        "audio": null
+      },
+      {
+        "zh": "你知道他在哪儿吗？",
+        "pinyin": "Nǐ zhīdào tā zài nǎr ma?",
+        "my": "သူ ဘယ်မှာလဲ မင်း သိလား။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "认识",
+      "觉得"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0289",
+    "level": 1,
+    "simplified": "中国",
+    "traditional": "中國",
+    "pinyin": "Zhōngguó",
+    "pinyinNumbered": "zhong1 guo2",
+    "tones": [
+      1,
+      2
+    ],
+    "english": "China",
+    "partOfSpeech": "proper noun",
+    "myanmar": {
+      "meaning": "တရုတ်နိုင်ငံ",
+      "kidExplanation": "中国 ဆိုတာ တရုတ်နိုင်ငံပါ — မြန်မာနိုင်ငံရဲ့ အိမ်နီးချင်း နိုင်ငံကြီးပေါ့။",
+      "pronunciationTip": "\"ကျုန် ကွော\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "中 (အလယ်) + 国 (နိုင်ငံ) = \"အလယ်က နိုင်ငံ\"။ 中 ကို ကြည့်ပါ — လေးထောင့်ကို အလယ်က ဖြတ်ထိုးထားတဲ့ မျဉ်း!",
+      "usageNote": "中国人 (တရုတ်လူမျိုး)၊ 去中国 (တရုတ်ပြည် သွား)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "中国很大。",
+        "pinyin": "Zhōngguó hěn dà.",
+        "my": "တရုတ်နိုင်ငံ အရမ်းကြီးတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "我想去中国学习汉语。",
+        "pinyin": "Wǒ xiǎng qù Zhōngguó xuéxí Hànyǔ.",
+        "my": "ကျွန်မ တရုတ်ပြည် သွားပြီး တရုတ်စာ သင်ချင်တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "中文",
+      "国",
+      "汉语"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0290",
+    "level": 1,
+    "simplified": "中文",
+    "traditional": "中文",
+    "pinyin": "Zhōngwén",
+    "pinyinNumbered": "zhong1 wen2",
+    "tones": [
+      1,
+      2
+    ],
+    "english": "Chinese (language)",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "တရုတ်ဘာသာ",
+      "kidExplanation": "中文 ဆိုတာ တရုတ်ဘာသာစကား၊ တရုတ်စာပါ — 汉语 နဲ့ အဓိပ္ပာယ် အတူတူပါ။",
+      "pronunciationTip": "\"ကျုန် ဝန်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "中 (တရုတ်) + 文 (စာပေ) = တရုတ်စာ။",
+      "usageNote": "中文书 (တရုတ်စာအုပ်)။",
+      "commonMistake": "中文 နဲ့ 汉语 — နှစ်ခုလုံး \"တရုတ်ဘာသာ\" ပါ။ 中文 က စာရေးတာနဲ့ ပိုဆိုင်ပြီး 汉语 က ပြောတဲ့ ဘာသာစကားကို ပိုပြောတာပါ။"
+    },
+    "examples": [
+      {
+        "zh": "你会写中文吗？",
+        "pinyin": "Nǐ huì xiě Zhōngwén ma?",
+        "my": "မင်း တရုတ်စာ ရေးတတ်လား။",
+        "audio": null
+      },
+      {
+        "zh": "这是中文书。",
+        "pinyin": "Zhè shì Zhōngwén shū.",
+        "my": "ဒါ တရုတ်စာအုပ်ပါ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "汉语",
+      "汉字"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0291",
+    "level": 1,
+    "simplified": "中午",
+    "traditional": "中午",
+    "pinyin": "zhōngwǔ",
+    "pinyinNumbered": "zhong1 wu3",
+    "tones": [
+      1,
+      3
+    ],
+    "english": "noon; midday",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "နေ့လယ်",
+      "kidExplanation": "中午 ဆိုတာ နေ့လယ် ၁၂ နာရီဝန်းကျင်ပါ — နေ့လယ်စာ စားချိန်ပေါ့။",
+      "pronunciationTip": "\"ကျုန် ဝူ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "中 (အလယ်) + 午 (မွန်းတည့်) = မွန်းတည့်ချိန်။",
+      "usageNote": "中午十二点 (နေ့လယ် ၁၂ နာရီ)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "中午我们吃饺子吧。",
+        "pinyin": "Zhōngwǔ wǒmen chī jiǎozi ba.",
+        "my": "နေ့လယ်မှာ ဖက်ထုပ် စားကြရအောင်။",
+        "audio": null
+      },
+      {
+        "zh": "中午很热。",
+        "pinyin": "Zhōngwǔ hěn rè.",
+        "my": "နေ့လယ်မှာ အရမ်းပူတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "上午",
+      "下午",
+      "午饭"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0292",
+    "level": 1,
+    "simplified": "中学",
+    "traditional": "中學",
+    "pinyin": "zhōngxué",
+    "pinyinNumbered": "zhong1 xue2",
+    "tones": [
+      1,
+      2
+    ],
+    "english": "middle school; secondary school",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "အလယ်တန်း/အထက်တန်း ကျောင်း",
+      "kidExplanation": "中学 ဆိုတာ မူလတန်း ပြီးရင် တက်ရတဲ့ အလယ်တန်း၊ အထက်တန်း ကျောင်းပါ။",
+      "pronunciationTip": "\"ကျုန် ရှွဲ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ xué ကို နှုတ်ခမ်း လုံးပြီး ပြောပါ။",
+      "memoryTip": "中 (အလယ်) + 学 (ကျောင်း)။ 小学 → 中学 → 大学။",
+      "usageNote": "上中学 (အလယ်တန်း တက်တယ်)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "我哥哥上中学。",
+        "pinyin": "Wǒ gēge shàng zhōngxué.",
+        "my": "ကျွန်တော့် အစ်ကို အထက်တန်းကျောင်း တက်နေတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "我姐姐的中学很大。",
+        "pinyin": "Wǒ jiějie de zhōngxué hěn dà.",
+        "my": "ကျွန်မ အစ်မရဲ့ ကျောင်း အရမ်းကြီးတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "小学",
+      "大学",
+      "中学生"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0293",
+    "level": 1,
+    "simplified": "中学生",
+    "traditional": "中學生",
+    "pinyin": "zhōngxuéshēng",
+    "pinyinNumbered": "zhong1 xue2 sheng1",
+    "tones": [
+      1,
+      2,
+      1
+    ],
+    "english": "middle school student",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "အလယ်/အထက်တန်း ကျောင်းသား",
+      "kidExplanation": "中学生 ဆိုတာ အလယ်တန်း၊ အထက်တန်း ကျောင်းမှာ တက်နေတဲ့ ကျောင်းသားပါ။",
+      "pronunciationTip": "\"ကျုန် ရှွဲ ရှန်\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ sh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "中学 (အလယ်တန်းကျောင်း) + 生 (ကျောင်းသား) = 中学生။",
+      "usageNote": "",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "他是中学生。",
+        "pinyin": "Tā shì zhōngxuéshēng.",
+        "my": "သူက အထက်တန်း ကျောင်းသားပါ။",
+        "audio": null
+      },
+      {
+        "zh": "明年我是中学生了！",
+        "pinyin": "Míngnián wǒ shì zhōngxuéshēng le!",
+        "my": "နောက်နှစ် ကျွန်တော် အလယ်တန်း ကျောင်းသား ဖြစ်ပြီ!",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "中学",
+      "小学生",
+      "大学生"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0294",
+    "level": 1,
+    "simplified": "住",
+    "traditional": "住",
+    "pinyin": "zhù",
+    "pinyinNumbered": "zhu4",
+    "tones": [
+      4
+    ],
+    "english": "to live; to reside; to stay",
+    "partOfSpeech": "verb",
+    "myanmar": {
+      "meaning": "နေတယ် (နေထိုင်)",
+      "kidExplanation": "住 ဆိုတာ တစ်နေရာမှာ နေထိုင်တာပါ။ 我住在仰光 = ကျွန်တော် ရန်ကုန်မှာ နေတယ်။",
+      "pronunciationTip": "\"ကျူ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။",
+      "memoryTip": "住 = 亻 (လူ) + 主 (ပိုင်ရှင်)။ အိမ်ပိုင်ရှင် လူက အိမ်မှာ နေတယ်!",
+      "usageNote": "住在 + နေရာ: 住在仰光။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "你住在哪儿？",
+        "pinyin": "Nǐ zhù zài nǎr?",
+        "my": "မင်း ဘယ်မှာ နေလဲ။",
+        "audio": null
+      },
+      {
+        "zh": "我住在仰光。",
+        "pinyin": "Wǒ zhù zài Yǎngguāng.",
+        "my": "ကျွန်မ ရန်ကုန်မှာ နေတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "家",
+      "在"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0295",
+    "level": 1,
+    "simplified": "桌子",
+    "traditional": "桌子",
+    "pinyin": "zhuōzi",
+    "pinyinNumbered": "zhuo1 zi5",
+    "tones": [
+      1,
+      5
+    ],
+    "english": "table; desk",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "စားပွဲ",
+      "kidExplanation": "桌子 ဆိုတာ စားပွဲပါ — စာရေး၊ ထမင်းစားတဲ့ စားပွဲပေါ့။",
+      "pronunciationTip": "\"ကျွော-ဇ\" လို့ ပြောပါ။ zh ကို လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "桌 ရဲ့ အောက်မှာ 木 (သစ်သား) ပါတယ်။ သစ်သားနဲ့ လုပ်ထားတဲ့ စားပွဲ!",
+      "usageNote": "桌子上 (စားပွဲပေါ်မှာ)။",
+      "commonMistake": "桌子 (စားပွဲ) နဲ့ 椅子 (ကုလားထိုင်) ကို မရောပါနဲ့။"
+    },
+    "examples": [
+      {
+        "zh": "我的桌子很小。",
+        "pinyin": "Wǒ de zhuōzi hěn xiǎo.",
+        "my": "ကျွန်တော့် စားပွဲလေး သေးတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "桌子上有什么？",
+        "pinyin": "Zhuōzi shang yǒu shénme?",
+        "my": "စားပွဲပေါ်မှာ ဘာရှိလဲ။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "椅子",
+      "房间"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0296",
+    "level": 1,
+    "simplified": "字",
+    "traditional": "字",
+    "pinyin": "zì",
+    "pinyinNumbered": "zi4",
+    "tones": [
+      4
+    ],
+    "english": "character; word",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "စာလုံး",
+      "kidExplanation": "字 ဆိုတာ စာလုံးပါ။ 汉字 = တရုတ်စာလုံး။",
+      "pronunciationTip": "\"ဇ\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။ zi/ci/si ရဲ့ i ကို \"အီ\" လို မထွက်ပါနဲ့ — သွားကြားက တိုးတိုးလေး ဆက်ထွက်တဲ့ အသံပါ။",
+      "memoryTip": "字 = 宀 (အမိုး) + 子 (ကလေး)။ အိမ်ထဲမှာ ကလေးက စာလုံး သင်နေတယ်!",
+      "usageNote": "写字 (စာရေးတယ်)၊ 一个字 (စာလုံး တစ်လုံး)။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "你的字很漂亮。",
+        "pinyin": "Nǐ de zì hěn piàoliang.",
+        "my": "မင်းလက်ရေး အရမ်းလှတယ်။",
+        "audio": null
+      },
+      {
+        "zh": "我认识一百个字。",
+        "pinyin": "Wǒ rènshi yìbǎi ge zì.",
+        "my": "ကျွန်မ စာလုံး တစ်ရာ သိတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "汉字",
+      "名字",
+      "写"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0297",
+    "level": 1,
+    "simplified": "昨天",
+    "traditional": "昨天",
+    "pinyin": "zuótiān",
+    "pinyinNumbered": "zuo2 tian1",
+    "tones": [
+      2,
+      1
+    ],
+    "english": "yesterday",
+    "partOfSpeech": "noun",
+    "myanmar": {
+      "meaning": "မနေ့က",
+      "kidExplanation": "昨天 ဆိုတာ \"မနေ့က\" ပါ — ဒီနေ့ (今天) ရဲ့ အရင်နေ့။",
+      "pronunciationTip": "\"ဇွော ထိယန်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။ t က \"ထ\" လို လေထွက်တဲ့ အသံပါ။ \"ထိ\" နဲ့ \"ယန်\" ကို တစ်ချက်တည်း မြန်မြန် ဆက်ပြောပါ။",
+      "memoryTip": "昨 ရဲ့ ဘယ်ဘက်မှာ 日 (နေ) ပါတယ်။ ပြီးသွားတဲ့ နေ့ = မနေ့က။",
+      "usageNote": "昨天 ကို စာကြောင်းရှေ့ ဒါမှမဟုတ် လူရဲ့ နောက်မှာ ထားပါ။",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "昨天你去哪儿了？",
+        "pinyin": "Zuótiān nǐ qù nǎr le?",
+        "my": "မနေ့က မင်း ဘယ်သွားခဲ့လဲ။",
+        "audio": null
+      },
+      {
+        "zh": "我昨天生病了。",
+        "pinyin": "Wǒ zuótiān shēngbìng le.",
+        "my": "ကျွန်တော် မနေ့က နေမကောင်း ဖြစ်ခဲ့တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "今天",
+      "明天"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0298",
+    "level": 1,
+    "simplified": "坐",
+    "traditional": "坐",
+    "pinyin": "zuò",
+    "pinyinNumbered": "zuo4",
+    "tones": [
+      4
+    ],
+    "english": "to sit; to take (a bus etc)",
+    "partOfSpeech": "verb",
+    "myanmar": {
+      "meaning": "ထိုင်တယ်၊ (ယာဉ်) စီးတယ်",
+      "kidExplanation": "坐 ဆိုတာ ထိုင်တာပါ။ ကား၊ ရထား၊ လေယာဉ် စီးတာကိုလည်း 坐 လို့ ပြောပါတယ် — ယာဉ်ထဲမှာ ထိုင်ပြီး သွားရလို့ပေါ့!",
+      "pronunciationTip": "\"ဇွော\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "坐 ကို ကြည့်ပါ — 土 (မြေ) ပေါ်မှာ 人 (လူ) နှစ်ယောက် ထိုင်နေတယ်!",
+      "usageNote": "坐 + ယာဉ်: 坐车၊ 坐飞机။ 请坐 (ထိုင်ပါ)။",
+      "commonMistake": "坐 (zuò, ထိုင်) နဲ့ 做 (zuò, လုပ်) က အသံ အတူတူပါ! စာလုံးကို ကြည့်ပြီး ခွဲပါ။"
+    },
+    "examples": [
+      {
+        "zh": "你坐这儿吧。",
+        "pinyin": "Nǐ zuò zhèr ba.",
+        "my": "ဒီမှာ ထိုင်ပါ။",
+        "audio": null
+      },
+      {
+        "zh": "我坐火车去曼德勒。",
+        "pinyin": "Wǒ zuò huǒchē qù Màndélè.",
+        "my": "ကျွန်မ ရထားစီးပြီး မန္တလေး သွားတယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "椅子",
+      "开车"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0299",
+    "level": 1,
+    "simplified": "做",
+    "traditional": "做",
+    "pinyin": "zuò",
+    "pinyinNumbered": "zuo4",
+    "tones": [
+      4
+    ],
+    "english": "to make; to do",
+    "partOfSpeech": "verb",
+    "myanmar": {
+      "meaning": "လုပ်တယ်",
+      "kidExplanation": "做 ဆိုတာ လုပ်တာပါ။ 你做什么？ = မင်း ဘာလုပ်လဲ။ ထမင်းချက်တာကိုလည်း 做饭 လို့ ပြောပါတယ်။",
+      "pronunciationTip": "\"ဇွော\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။",
+      "memoryTip": "做 ရဲ့ ဘယ်ဘက်မှာ 亻 (လူ) ပါတယ်။ လူက အလုပ်လုပ်တယ်!",
+      "usageNote": "做 + အရာ: 做饭၊ 做菜။",
+      "commonMistake": "做 (လုပ်) နဲ့ 坐 (ထိုင်) — အသံ တူပေမဲ့ စာလုံး မတူပါ။"
+    },
+    "examples": [
+      {
+        "zh": "你在做什么？",
+        "pinyin": "Nǐ zài zuò shénme?",
+        "my": "မင်း ဘာလုပ်နေလဲ။",
+        "audio": null
+      },
+      {
+        "zh": "我会做饺子。",
+        "pinyin": "Wǒ huì zuò jiǎozi.",
+        "my": "ကျွန်တော် ဖက်ထုပ် လုပ်တတ်တယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "做饭",
+      "工作"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  },
+  {
+    "id": "hsk1-0300",
+    "level": 1,
+    "simplified": "做饭",
+    "traditional": "做飯",
+    "pinyin": "zuò fàn",
+    "pinyinNumbered": "zuo4 fan4",
+    "tones": [
+      4,
+      4
+    ],
+    "english": "to cook; to prepare a meal",
+    "partOfSpeech": "verb",
+    "myanmar": {
+      "meaning": "ထမင်းချက်တယ်",
+      "kidExplanation": "做饭 ဆိုတာ ထမင်းဟင်း ချက်တာပါ။ မေမေ ဒါမှမဟုတ် ဖေဖေ မီးဖိုချောင်ထဲမှာ ချက်ပြုတ်တာပေါ့။",
+      "pronunciationTip": "\"ဇွော ဖန်\" လို့ ပြောပါ။ z က \"ဇ\" နဲ့ \"စ\" ကြားက ts အသံပါ၊ လေ မထွက်ပါဘူး။ f က အပေါ်သွားကို အောက်နှုတ်ခမ်းပေါ် တင်ပြီး လေမှုတ်ထုတ်တဲ့ အသံပါ (မြန်မာ \"ဖ\" နဲ့ မတူပါ)။",
+      "memoryTip": "做 (လုပ်) + 饭 (ထမင်း) = ထမင်းလုပ်တယ် = ချက်တယ်။",
+      "usageNote": "",
+      "commonMistake": ""
+    },
+    "examples": [
+      {
+        "zh": "爸爸也会做饭。",
+        "pinyin": "Bàba yě huì zuò fàn.",
+        "my": "ဖေဖေလည်း ထမင်းချက်တတ်တယ်။",
+        "audio": null
+      },
+      {
+        "zh": "今天我做饭。",
+        "pinyin": "Jīntiān wǒ zuò fàn.",
+        "my": "ဒီနေ့ ကျွန်မ ထမင်းချက်မယ်။",
+        "audio": null
+      }
+    ],
+    "relatedWords": [
+      "做",
+      "饭",
+      "菜"
+    ],
+    "audio": {
+      "word": null
+    },
+    "workbookRefs": [],
+    "reviewStatus": "draft"
+  }
+]

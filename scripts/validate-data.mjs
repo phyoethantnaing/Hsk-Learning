@@ -12,6 +12,9 @@
 //  - Myanmar text is Unicode, not Zawgyi (also checks the site's own UI text in src/)
 //  - example pinyin is real pinyin with one syllable per Chinese character
 //  - data/example-vocab-allowlist.json entries are well formed
+//  - pronunciationTip follows docs/content-guide.md (quoted hint, no tone
+//    descriptions or disclaimer, agreed Myanmar spellings)
+//  - warns when a file's first-person examples are not roughly half ကျွန်မ
 
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
@@ -21,6 +24,7 @@ import Ajv2020 from 'ajv/dist/2020.js';
 import { toNumbered, tones, syllables } from '../src/lib/pinyin.mjs';
 import { zawgyiProblems } from './lib/zawgyi.mjs';
 import { ALLOWLIST } from '../src/lib/allowlist.mjs';
+import { TONES } from '../src/lib/tones.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LEVELS = ['1', '2', '3', '4', '5', '6', '7-9'];
@@ -117,6 +121,7 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
   else if (m[1] !== dirLevel) err(rel, `file is in folder hsk${dirLevel} but named for hsk${m[1]}`);
 
   let prevNumber = 0;
+  const firstPerson = { male: 0, female: 0 };
   words.forEach((w, i) => {
     const where = `${rel} [${i}] ${w?.id ?? '(no id)'} ${w?.simplified ?? ''}`;
     if (!validateWord(w)) {
@@ -159,6 +164,23 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
       for (const p of zawgyiProblems(text)) err(where, `${field} looks like Zawgyi (${p})`);
     }
 
+    // Pronunciation tip (docs/content-guide.md)
+    const tip = w.myanmar.pronunciationTip;
+    if (!/"[^"]*[\u1000-\u109F][^"]*"/u.test(tip)) {
+      err(where, 'pronunciationTip needs the Myanmar sound hint in quotes, e.g. "ပေါ်-ဇ" လို့ ပြောပါ။');
+    }
+    for (const phrase of [...Object.values(TONES).map((t) => t.how), 'အကြမ်းဖျင်း', '🔊']) {
+      if (tip.includes(phrase)) err(where, `pronunciationTip must not repeat "${phrase}" — the page shows tone chips and the reminder`);
+    }
+    for (const hint of tip.match(/"[^"]*"/g) ?? []) {
+      if (/[တထဒန]ျ/u.test(hint)) err(where, `pronunciationTip hint ${hint}: write ian after d/t/n as ိယန် (e.g. "တိယန်"), not a ျ stack`);
+      if (/ောင်/u.test(hint)) err(where, `pronunciationTip hint ${hint}: write ao as ော် (e.g. "ပေါ်"), not ောင်`);
+    }
+    for (const ex of w.examples) {
+      if (ex.my.includes('ကျွန်တော်')) firstPerson.male++;
+      if (ex.my.includes('ကျွန်မ')) firstPerson.female++;
+    }
+
     // Examples
     w.examples.forEach((ex, n) => {
       const problem = pinyinMismatch(ex.zh, ex.pinyin);
@@ -176,6 +198,11 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
     s.words++;
     s[w.reviewStatus]++;
   });
+
+  const fp = firstPerson.male + firstPerson.female;
+  if (fp >= 6 && (firstPerson.female / fp < 0.35 || firstPerson.female / fp > 0.65)) {
+    warn(rel, `${firstPerson.female} of ${fp} first-person examples use ကျွန်မ; aim for about half`);
+  }
 }
 
 for (const r of raw.values()) {

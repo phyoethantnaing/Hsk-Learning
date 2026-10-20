@@ -1,0 +1,55 @@
+---
+// Pick a lesson to practise with flashcards.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProgressCount from '../components/ProgressCount.astro';
+import { readyLevels, lessonsFor, flashcardsUrl } from '../lib/words.mjs';
+import { myNumber } from '../lib/site.mjs';
+
+const levels = readyLevels().map((level) => ({ level, lessons: lessonsFor(level.key) }));
+---
+
+<BaseLayout title="ကတ်ပြား">
+  <h1>🃏 ကတ်ပြား လေ့ကျင့်ခန်း</h1>
+  <p>သင်ခန်းစာ တစ်ခုကို ရွေးပါ။ စာလုံးကို ကြည့်ပြီး အဓိပ္ပာယ်ကို စိတ်ထဲမှာ ပြောကြည့်၊ ပြီးရင် ကတ်ကို လှန်ပြီး စစ်ကြည့်ပါ။</p>
+  {
+    levels.map(({ level, lessons }) => (
+      <section>
+        <h2>{level.label}</h2>
+        <ul class="grid-cards">
+          {lessons.map((lesson) => (
+            <li>
+              <a class="card lesson" href={flashcardsUrl(level.key, lesson.n)}>
+                <span class="name">သင်ခန်းစာ {myNumber(lesson.n)}</span>
+                <span class="preview" lang="zh-Hans">{lesson.words.slice(0, 4).map((w: any) => w.simplified).join(' ')}</span>
+                <ProgressCount ids={lesson.words.map((w: any) => w.id)} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .lesson {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--text);
+    text-decoration: none;
+    height: 100%;
+  }
+
+  .lesson:hover {
+    border-color: var(--accent);
+  }
+
+  .name {
+    font-weight: 700;
+  }
+
+  .preview {
+    color: var(--text-muted);
+  }
+</style>
