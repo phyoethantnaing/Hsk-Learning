@@ -29,6 +29,10 @@ A 10-year-old Myanmar child who has never studied Chinese and has no teacher.
 
 Fields copied from the official list (`simplified`, `pinyin`, `english`…) and
 generated ones (`pinyinNumbered`, `tones`) are filled by `npm run sync-words`.
+So is `partOfSpeech`: it comes from the syllabus' own labels (动 名 形 量…;
+uses in （…） go to `partOfSpeechMinor`). Write `partOfSpeech` by hand only for
+the words where the syllabus gives none — `npm run validate` tells you if a
+hand-written value disagrees with the syllabus.
 
 ## pronunciationTip
 

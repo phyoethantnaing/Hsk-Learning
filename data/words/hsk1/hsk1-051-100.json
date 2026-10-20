@@ -193,9 +193,13 @@
       1
     ],
     "english": "minute; point (score)",
-    "partOfSpeech": [
-      "measure word",
+    "partOfSpeech": "measure word",
+    "partOfSpeechMinor": [
+      "verb",
       "noun"
+    ],
+    "alsoLevels": [
+      "3"
     ],
     "myanmar": {
       "meaning": "မိနစ်၊ (အမှတ်) မှတ်၊ (ငွေ) ပြား",
@@ -242,7 +246,7 @@
       1
     ],
     "english": "minute",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "measure word",
     "myanmar": {
       "meaning": "မိနစ် (ကြာချိန်)",
       "kidExplanation": "分钟 ဆိုတာ \"ဘယ်နှမိနစ် ကြာလဲ\" ပြောတဲ့ မိနစ်ပါ။ 五分钟 = ငါးမိနစ် (ကြာတယ်)။",
@@ -473,9 +477,12 @@
       3
     ],
     "english": "to give; for",
-    "partOfSpeech": [
-      "verb",
+    "partOfSpeech": "verb",
+    "partOfSpeechMinor": [
       "preposition"
+    ],
+    "alsoLevels": [
+      "2"
     ],
     "myanmar": {
       "meaning": "ပေးတယ်၊ ...ဆီကို၊ ...အတွက်",
@@ -929,6 +936,14 @@
     ],
     "english": "good",
     "partOfSpeech": "adjective",
+    "partOfSpeechMinor": [
+      "adverb",
+      "verb"
+    ],
+    "alsoLevels": [
+      "2",
+      "4"
+    ],
     "myanmar": {
       "meaning": "ကောင်းတယ်",
       "kidExplanation": "好 ဆိုတာ ကောင်းတာပါ။ 你好 (မင်္ဂလာပါ)၊ 很好 (အရမ်းကောင်းတယ်) လို နေရာတိုင်းမှာ တွေ့ရပါတယ်။",
@@ -1155,7 +1170,10 @@
       4
     ],
     "english": "number; day of the month",
-    "partOfSpeech": "noun",
+    "partOfSpeech": [
+      "noun",
+      "measure word"
+    ],
     "myanmar": {
       "meaning": "(လ၏) ရက်၊ နံပါတ်",
       "kidExplanation": "号 ကို ရက်စွဲ ပြောတဲ့အခါ \"ရက်\" အဖြစ် သုံးပါတယ်: 五月一号 = မေလ ၁ ရက်။ အခန်းနံပါတ်လို နံပါတ်တွေကိုလည်း 号 လို့ ပြောပါတယ်။",
@@ -1245,7 +1263,11 @@
       2
     ],
     "english": "and; with",
-    "partOfSpeech": "conjunction",
+    "partOfSpeech": [
+      "preposition",
+      "conjunction"
+    ],
+    "sense": 1,
     "myanmar": {
       "meaning": "...နဲ့",
       "kidExplanation": "和 ဆိုတာ \"နဲ့\" ပါ။ 我和你 = ငါနဲ့ မင်း။ နှစ်ခု ဒါမှမဟုတ် နှစ်ယောက်ကို ဆက်ပြောတဲ့အခါ သုံးပါတယ်။",
@@ -1377,6 +1399,12 @@
     ],
     "english": "to return; to go back",
     "partOfSpeech": "verb",
+    "partOfSpeechMinor": [
+      "measure word"
+    ],
+    "alsoLevels": [
+      "3"
+    ],
     "myanmar": {
       "meaning": "ပြန်တယ်",
       "kidExplanation": "回 ဆိုတာ ပြန်တာပါ — အိမ်ပြန်တယ်၊ ကျောင်းပြန်လာတယ်။ 回家 = အိမ်ပြန်တယ်။",
@@ -1421,7 +1449,8 @@
       4
     ],
     "english": "can; to know how to",
-    "partOfSpeech": "auxiliary verb",
+    "partOfSpeech": "verb",
+    "sense": 1,
     "myanmar": {
       "meaning": "...တတ်တယ်",
       "kidExplanation": "会 ဆိုတာ သင်ယူထားလို့ \"တတ်တယ်\" ပါ။ 我会说汉语 = ကျွန်တော် တရုတ်လို ပြောတတ်တယ်။",
@@ -1555,7 +1584,10 @@
       3
     ],
     "english": "how many; several",
-    "partOfSpeech": "pronoun",
+    "partOfSpeech": [
+      "pronoun",
+      "numeral"
+    ],
     "myanmar": {
       "meaning": "ဘယ်နှ (ခု)",
       "kidExplanation": "几 ဆိုတာ \"ဘယ်နှ\" လို့ မေးတာပါ — များသောအားဖြင့် ၁၀ ထက် နည်းမယ်ထင်ရင် သုံးပါတယ်။ 几点？ = ဘယ်နှနာရီလဲ။",
@@ -1599,7 +1631,16 @@
       1
     ],
     "english": "home; family",
-    "partOfSpeech": "noun",
+    "partOfSpeech": [
+      "noun",
+      "measure word"
+    ],
+    "partOfSpeechMinor": [
+      "suffix"
+    ],
+    "alsoLevels": [
+      "3"
+    ],
     "myanmar": {
       "meaning": "အိမ်၊ မိသားစု",
       "kidExplanation": "家 ဆိုတာ အိမ်၊ မိသားစုပါ။ 我家 = ကျွန်တော့်အိမ် (ကျွန်တော့်မိသားစု)။",
@@ -1825,6 +1866,12 @@
     ],
     "english": "to call; to be called",
     "partOfSpeech": "verb",
+    "partOfSpeechMinor": [
+      "preposition"
+    ],
+    "alsoLevels": [
+      "4"
+    ],
     "myanmar": {
       "meaning": "...လို့ ခေါ်တယ်၊ နာမည်...ပါ",
       "kidExplanation": "叫 ဆိုတာ ခေါ်တာပါ။ နာမည် ပြောတဲ့အခါ အသုံးအများဆုံးပါ: 我叫… = ကျွန်တော့်နာမည် …ပါ။",

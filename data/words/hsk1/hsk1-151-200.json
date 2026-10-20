@@ -683,7 +683,7 @@
       4
     ],
     "english": "excuse me; may I ask",
-    "partOfSpeech": "phrase",
+    "partOfSpeech": "verb",
     "myanmar": {
       "meaning": "မေးပါရစေ",
       "kidExplanation": "请问 ဆိုတာ တစ်ယောက်ယောက်ကို မေးခွန်း မမေးခင် ယဉ်ယဉ်ကျေးကျေး \"မေးပါရစေ\" လို့ ပြောတာပါ။",
@@ -950,7 +950,13 @@
       4
     ],
     "english": "day; day of the month",
-    "partOfSpeech": "noun",
+    "partOfSpeech": "measure word",
+    "partOfSpeechMinor": [
+      "noun"
+    ],
+    "alsoLevels": [
+      "4"
+    ],
     "myanmar": {
       "meaning": "နေ့၊ (လ၏) ရက်",
       "kidExplanation": "日 ဆိုတာ \"နေ့\" ပါ။ ရက်စွဲ ရေးတဲ့အခါ \"ရက်\" အဖြစ် သုံးပါတယ်: 五月一日။ နေမင်းကိုလည်း 日 လို့ ခေါ်ပါတယ်။",
@@ -1316,7 +1322,10 @@
       3
     ],
     "english": "few; little; to lack",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": [
+      "adjective",
+      "verb"
+    ],
     "myanmar": {
       "meaning": "နည်းတယ်",
       "kidExplanation": "少 ဆိုတာ နည်းတာပါ။ 多 (များတယ်) ရဲ့ ဆန့်ကျင်ဘက်ပါ။ 人很少 = လူ နည်းတယ်။",

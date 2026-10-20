@@ -280,7 +280,10 @@
       1
     ],
     "english": "day; sky",
-    "partOfSpeech": "noun",
+    "partOfSpeech": [
+      "noun",
+      "measure word"
+    ],
     "myanmar": {
       "meaning": "နေ့၊ ကောင်းကင်",
       "kidExplanation": "天 ဆိုတာ \"နေ့\" ပါ — 三天 = သုံးရက်။ ကောင်းကင်ကိုလည်း 天 လို့ ခေါ်ပါတယ်။",
@@ -776,6 +779,7 @@
     ],
     "english": "hello (on telephone); hey",
     "partOfSpeech": "interjection",
+    "sense": 1,
     "myanmar": {
       "meaning": "ဟဲလို (ဖုန်း)၊ ဟေး",
       "kidExplanation": "喂 ကို ဖုန်းကိုင်တဲ့အခါ \"ဟဲလို\" လို့ ပြောတာပါ။ တစ်ယောက်ယောက်ကို \"ဟေး\" လို့ လှမ်းခေါ်တဲ့အခါလည်း သုံးပါတယ်။",
@@ -1136,7 +1140,8 @@
     "english": "down; below; next; to go down",
     "partOfSpeech": [
       "noun",
-      "verb"
+      "verb",
+      "measure word"
     ],
     "myanmar": {
       "meaning": "အောက်၊ ဆင်းတယ်",
@@ -1452,10 +1457,7 @@
       3
     ],
     "english": "to want to; to think; to miss",
-    "partOfSpeech": [
-      "verb",
-      "auxiliary verb"
-    ],
+    "partOfSpeech": "verb",
     "myanmar": {
       "meaning": "...ချင်တယ်၊ စဉ်းစားတယ်၊ လွမ်းတယ်",
       "kidExplanation": "想 မှာ အဓိပ္ပာယ် သုံးခု ရှိပါတယ်: \"…ချင်တယ်\" (我想吃 = စားချင်တယ်)၊ \"စဉ်းစားတယ်၊ ထင်တယ်\"၊ \"လွမ်းတယ်\" (我想妈妈 = မေမေ့ကို လွမ်းတယ်)။",
@@ -1500,7 +1502,10 @@
       3
     ],
     "english": "small; little",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": [
+      "adjective",
+      "prefix"
+    ],
     "myanmar": {
       "meaning": "သေးတယ်၊ ငယ်တယ်",
       "kidExplanation": "小 ဆိုတာ သေးတာ၊ ငယ်တာပါ။ 大 (ကြီး) ရဲ့ ဆန့်ကျင်ဘက်ပါ။",

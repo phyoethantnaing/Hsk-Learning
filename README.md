@@ -39,8 +39,8 @@ npm run build      # static site in dist/
 | Command | What it does |
 |---|---|
 | `npm run sync-words` | Fills in fields copied from the official list and generated pinyin fields in `data/words/`. |
-| `npm run parse-pdfs` | Re-extracts `source/pdfs/*.pdf` into `data/raw/*.json` and checks every level's word count. |
-| `npm run validate` | Checks every word in `data/words/` against the schema and the official list, checks generated pinyin fields, and rejects Zawgyi-encoded text. |
+| `npm run parse-pdfs` | Re-extracts `source/pdfs/*.pdf` into `data/raw/*.json`, checks every level's word count, checks every row against `source/hsk-3-0-all-levels.json` and adds its part of speech, sense and alsoLevels. |
+| `npm run validate` | Checks that `data/raw` still matches `source/hsk-3-0-all-levels.json`, every word in `data/words/` against the schema and the official list (including the official part of speech), generated pinyin fields, and rejects Zawgyi-encoded text. |
 | `npm run check-vocab` | Flags example-sentence words above the word's own HSK level. |
 | `npm test` | Unit tests for the pinyin and Zawgyi helpers. |
 
@@ -50,6 +50,8 @@ CI runs all of these on every push and pull request.
 
 ```
 source/pdfs/             official HSK 3.0 (2025) word lists (input)
+source/hsk-3-0-all-levels.json   the same list as one JSON file, plus the official
+                         part of speech (动 名 形…), sense and alsoLevels
 data/raw/hsk{1..6,7-9}.json   parsed lists: id, simplified, traditional, pinyin, english
 data/words/hsk1/hsk1-001-050.json   Myanmar learning content, 50 words per file
 data/schema/word.schema.json   the format of one word entry

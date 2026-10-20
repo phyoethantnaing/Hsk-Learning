@@ -36,11 +36,30 @@
     },
     "english": { "$ref": "#/$defs/nonEmpty" },
     "partOfSpeech": {
-      "description": "One part of speech, or a list when the word has several uses.",
+      "description": "Main part(s) of speech. Copied by sync-words from the official syllabus (data/raw partOfSpeech) when it has one; written by hand only for the entries it leaves empty.",
       "oneOf": [
         { "$ref": "#/$defs/pos" },
         { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/pos" } }
       ]
+    },
+    "partOfSpeechMinor": {
+      "description": "Secondary uses the syllabus lists in （…）, e.g. 量、（名）. Copied by sync-words.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/pos" }
+    },
+    "sense": {
+      "description": "1, 2… when the syllabus lists the same word more than once with different meanings. Copied by sync-words.",
+      "type": "integer",
+      "minimum": 1
+    },
+    "alsoLevels": {
+      "description": "Other HSK levels whose list includes this word again. Copied by sync-words.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["1", "2", "3", "4", "5", "6", "7-9"] }
     },
     "myanmar": {
       "type": "object",
@@ -114,7 +133,7 @@
     },
     "pos": {
       "enum": [
-        "noun", "verb", "adjective", "adverb", "pronoun", "numeral", "measure word",
+        "noun", "verb", "adjective", "adverb", "pronoun", "numeral", "numeral-measure", "measure word",
         "preposition", "conjunction", "particle", "interjection", "auxiliary verb",
         "onomatopoeia", "prefix", "suffix", "phrase", "idiom", "proper noun"
       ]

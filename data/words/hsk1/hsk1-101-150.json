@@ -57,7 +57,10 @@
       3
     ],
     "english": "can; may",
-    "partOfSpeech": "auxiliary verb",
+    "partOfSpeech": [
+      "verb",
+      "adjective"
+    ],
     "myanmar": {
       "meaning": "...လို့ ရတယ်",
       "kidExplanation": "可以 ဆိုတာ \"လုပ်လို့ ရတယ်၊ ခွင့်ရှိတယ်\" ပါ။ ဆရာ့ကို \"ဒီမှာ ထိုင်လို့ ရလား\" လို့ မေးချင်ရင် 我可以坐这儿吗？ လို့ မေးပါ။",
@@ -462,6 +465,7 @@
     ],
     "english": "two; a couple of",
     "partOfSpeech": "numeral",
+    "sense": 1,
     "myanmar": {
       "meaning": "နှစ် (ရေတွက်ရာမှာ)",
       "kidExplanation": "两 ဆိုတာ \"နှစ်\" ပါ — ပစ္စည်း၊ လူ ရေတွက်တဲ့အခါ သုံးပါတယ်: 两个人 = လူ နှစ်ယောက်။",
@@ -772,7 +776,10 @@
       2
     ],
     "english": "busy",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": [
+      "adjective",
+      "verb"
+    ],
     "myanmar": {
       "meaning": "အလုပ်များတယ်",
       "kidExplanation": "忙 ဆိုတာ လုပ်စရာ များလို့ အားလပ်ချိန် မရှိတာပါ။ စာမေးပွဲ နီးရင် ကျောင်းသားတွေ 忙 ဖြစ်တာပေါ့။",
@@ -908,7 +915,7 @@
       4
     ],
     "english": "it's nothing; no problem",
-    "partOfSpeech": "phrase",
+    "partOfSpeech": "verb",
     "myanmar": {
       "meaning": "ဘာမှ မဖြစ်ပါဘူး၊ ရပါတယ်",
       "kidExplanation": "没事 ဆိုတာ \"ဘာမှ မဖြစ်ပါဘူး၊ အဆင်ပြေပါတယ်\" ပါ။ လဲကျပြီးနောက် \"နာလား\" လို့ မေးရင် 没事！ လို့ ဖြေလို့ရပါတယ်။",
@@ -953,7 +960,10 @@
       3
     ],
     "english": "to not have; there isn't",
-    "partOfSpeech": "verb",
+    "partOfSpeech": [
+      "verb",
+      "adverb"
+    ],
     "myanmar": {
       "meaning": "မရှိဘူး",
       "kidExplanation": "没有 ဆိုတာ \"မရှိဘူး\" ပါ။ 有 (ရှိတယ်) ရဲ့ ဆန့်ကျင်ဘက်ပါ။ 我没有钱 = ကျွန်တော့်မှာ ပိုက်ဆံ မရှိဘူး။ \"မ…ခဲ့ဘူး\" လို့ အတိတ်ကို ပြောတဲ့အခါလည်း သုံးပါတယ်။",
@@ -1588,6 +1598,12 @@
     ],
     "english": "that; then",
     "partOfSpeech": "pronoun",
+    "partOfSpeechMinor": [
+      "conjunction"
+    ],
+    "alsoLevels": [
+      "2"
+    ],
     "myanmar": {
       "meaning": "ဟို၊ အဲဒါ",
       "kidExplanation": "那 ဆိုတာ ဝေးဝေးက အရာကို ညွှန်ပြီး \"ဟိုဟာ၊ အဲဒါ\" လို့ ပြောတာပါ။ နီးတဲ့ အရာဆိုရင် 这 (ဒီ) ကို သုံးပါ။",
@@ -1993,7 +2009,7 @@
       2
     ],
     "english": "can; to be able to",
-    "partOfSpeech": "auxiliary verb",
+    "partOfSpeech": "verb",
     "myanmar": {
       "meaning": "...နိုင်တယ်",
       "kidExplanation": "能 ဆိုတာ \"…နိုင်တယ်\" ပါ — အခြေအနေ ရှိလို့ လုပ်နိုင်တာ။ 明天我能来 = မနက်ဖြန် ကျွန်တော် လာနိုင်တယ်။",
@@ -2174,7 +2190,10 @@
       2
     ],
     "english": "year",
-    "partOfSpeech": "noun",
+    "partOfSpeech": [
+      "noun",
+      "measure word"
+    ],
     "myanmar": {
       "meaning": "နှစ်",
       "kidExplanation": "年 ဆိုတာ \"နှစ်\" ပါ — တစ်နှစ်မှာ ၁၂ လ ရှိတယ်။ 今年 (ဒီနှစ်)၊ 明年 (နောက်နှစ်)။",
