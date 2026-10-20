@@ -1,11 +1,13 @@
 ---
 // Beginner lessons: what pinyin is, the four tones + neutral tone, tone marks,
-// sounds Myanmar does not have, and a daily routine for using the site.
+// sounds Myanmar does not have (one #sound-<id> entry per rule in lib/sounds.mjs,
+// linked from every word page), and a daily routine for using the site.
 import Icon from "../components/Icon.astro";
 import PageIntro from "../components/PageIntro.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SpeakButton from "../components/SpeakButton.astro";
 import { TONES, HINT_DISCLAIMER } from "../lib/tones.mjs";
+import { SOUNDS } from "../lib/sounds.mjs";
 import { levelUrl } from "../lib/words.mjs";
 
 // Pitch contours on the usual 1 (low) – 5 (high) scale.
@@ -153,29 +155,30 @@ const EXAMPLES = [
     </ul>
   </section>
 
-  <section class="card">
+  <section class="card" id="sounds">
     <h2>၄။ မြန်မာစကားမှာ မရှိတဲ့ အသံလေးတွေ</h2>
-    <ul>
-      <li>
-        <strong>b d g</strong> — မြန်မာ "ဘ ဒ ဂ" ထက် "ပ တ က" နဲ့ ပိုနီးပါတယ် (လေ
-        မထွက်ပါ)။ <strong>p t k</strong> က "ဖ ထ ခ" လို လေ ထွက်ပါတယ်။
-      </li>
-      <li>
-        <strong>zh ch sh r</strong> — လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။
-      </li>
-      <li>
-        <strong>j q x</strong> — "ကျ ချ ရှ" နဲ့ နီးပြီး လျှာ မကော့ပါ။
-      </li>
-      <li>
-        <strong>z c s</strong> — z က "ဇ/စ" ကြား၊ c က လေထွက်တဲ့ "ဆ" (ts)၊ s က
-        "စ"။
-      </li>
-      <li>
-        <strong>ü</strong> — "အီ" လို့ ပြောရင်း နှုတ်ခမ်းကို လုံးလိုက်ပါ။
-      </li>
-      <li>
-        <strong>f</strong> — အပေါ်သွားကို အောက်နှုတ်ခမ်းပေါ် တင်ပြီး လေမှုတ်ပါ။
-      </li>
+    <p>
+      စကားလုံး စာမျက်နှာတိုင်းမှာ အဲဒီစကားလုံးထဲက ခက်တဲ့ အသံတွေကို ဒီနေရာကို
+      ချိတ်ပေးထားပါတယ်။ တစ်ခါ သေချာ ဖတ်ထားရင် ရပါပြီ။
+    </p>
+    <ul class="sounds">
+      {SOUNDS.map((s) => (
+        <li id={`sound-${s.id}`}>
+          <h3>{s.title}</h3>
+          <p>{s.body}</p>
+          <p class="ex">
+            {s.examples.map(([zh, py]) => (
+              <span class="sound-ex">
+                <span lang="zh-Hans" class="zh">
+                  {zh}
+                </span>{" "}
+                {py}
+                <SpeakButton text={zh} label={`${py} ကို နားထောင်ရန်`} />
+              </span>
+            ))}
+          </p>
+        </li>
+      ))}
     </ul>
     <p class="muted small">{HINT_DISCLAIMER}</p>
   </section>
@@ -302,6 +305,45 @@ const EXAMPLES = [
   .ex {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
+  }
+
+  .sounds {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sounds li {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-2);
+    scroll-margin-top: 96px;
+  }
+
+  .sounds li:target {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+
+  .sounds h3 {
+    margin: 0 0 4px;
+    font-size: 1.0625rem;
+  }
+
+  .sounds p {
+    margin: 0 0 8px;
+  }
+
+  .sound-ex {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 12px;
   }
 </style>

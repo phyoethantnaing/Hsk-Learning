@@ -82,6 +82,21 @@ test("appearance follows the system and manual selection persists", async ({
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 });
 
+test("word pages link each hard sound to its rule on the start page", async ({
+  page,
+}) => {
+  await page.goto("hsk1/hsk1-0021/");
+  const links = page.locator(".sound-links a");
+  await expect(links).toHaveText([
+    "ch အသံ ဘယ်လို ထွက်လဲ?",
+    "chi ရဲ့ i အသံ ဘယ်လို ထွက်လဲ?",
+  ]);
+  await links.first().click();
+  await expect(page).toHaveURL(/\/start\/#sound-zhchshr$/);
+  await expect(page.locator("#sound-zhchshr")).toBeInViewport();
+  await expect(page.locator("#sound-zhchshr h3")).toHaveText("zh ch sh r");
+});
+
 test("mobile tabs remain visible, route-aware, and keyboard operable", async ({
   page,
 }) => {

@@ -15,7 +15,8 @@
 //  - example pinyin is real pinyin with one syllable per Chinese character
 //  - data/example-vocab-allowlist.json entries are well formed
 //  - pronunciationTip follows docs/content-guide.md (quoted hint, no tone
-//    descriptions or disclaimer, agreed Myanmar spellings)
+//    descriptions or disclaimer, agreed Myanmar spellings; from HSK 3 on, at
+//    most one note and no basic sound rules, which the start page explains)
 //  - warns when a file's first-person examples are not roughly half ကျွန်မ
 
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
@@ -31,6 +32,16 @@ import { parseOfficialPos } from '../src/lib/pos.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LEVELS = ['1', '2', '3', '4', '5', '6', '7-9'];
+const rank = (level) => LEVELS.indexOf(String(level)) + 1; // "7-9" -> 7
+
+// Phrases of the general sound rules in src/lib/sounds.mjs (b/d/g, zh/ch/sh,
+// j/q/x, z/c/s, ü, e, en, f, h, the buzzing i, the ိယန် glide).
+const BASIC_SOUND_NOTES = [
+  'လေ မထွက်ဘဲ', 'လေထွက်တဲ့ အသံ', 'ကော့ပြီး ပြောပါ', 'ကော့ထားတဲ့', 'လျှာ မကော့',
+  'နှုတ်ခမ်း လုံး', 'နှုတ်ခမ်းကို လုံး', 'အောက်နှုတ်ခမ်းပေါ်', 'လည်ချောင်းထဲက',
+  '"အ" နဲ့ "အော" ကြား', 'ပါးစပ် နည်းနည်းပဲ ဟ', 'ts အသံ', '"အီ" လို',
+  'တစ်ချက်တည်း မြန်မြန် ဆက်ပြော',
+];
 
 const errors = [];
 const warnings = [];
@@ -207,6 +218,15 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
     }
     for (const phrase of [...Object.values(TONES).map((t) => t.how), 'အကြမ်းဖျင်း', '🔊']) {
       if (tip.includes(phrase)) err(where, `pronunciationTip must not repeat "${phrase}" — the page shows tone chips and the reminder`);
+    }
+    // From HSK 3 on, the basic sound rules are explained once on the start page
+    // (word pages link to them), so a tip is the hint plus at most one note.
+    if (rank(w.level) >= 3) {
+      if ((tip.match(/။/g) ?? []).length > 2) {
+        err(where, 'pronunciationTip: the hint plus at most ONE note about this word (HSK 3+)');
+      }
+      const basic = BASIC_SOUND_NOTES.find((phrase) => tip.includes(phrase));
+      if (basic) err(where, `pronunciationTip repeats a basic sound rule ("${basic}") — the page links to it on the start page`);
     }
     for (const hint of tip.match(/"[^"]*"/g) ?? []) {
       if (/[တထဒန]ျ/u.test(hint)) err(where, `pronunciationTip hint ${hint}: write ian after d/t/n as ိယန် (e.g. "တိယန်"), not a ျ stack`);
