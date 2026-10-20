@@ -259,3 +259,27 @@ test("reader keyboard controls and text zoom remain usable at 320 pixels", async
   await ready(page, 1);
   await expect(page.locator("[data-pdf-zoom]")).toHaveText("125%");
 });
+
+test("large text selections are explained instead of silently truncated", async ({
+  page,
+}) => {
+  await page.goto(reader);
+  await ready(page);
+  await page.locator("[data-pdf-text]").evaluate((layer) => {
+    const range = document.createRange();
+    range.selectNodeContents(layer);
+    const s = getSelection();
+    s.removeAllRanges();
+    s.addRange(range);
+    document.dispatchEvent(new Event("selectionchange"));
+  });
+  await expect(page.locator("[data-pdf-save]")).toBeDisabled();
+  await expect(page.locator("[data-pdf-status]")).toContainText(
+    "shorter passage",
+  );
+  await selectText(page);
+  await page.locator("[data-pdf-save]").click();
+  await expect(page.locator("[data-pdf-list] q")).toHaveText(
+    "HSK 1 Vocabulary",
+  );
+});

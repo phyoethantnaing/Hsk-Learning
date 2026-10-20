@@ -170,11 +170,17 @@ async function startReader(root) {
       !layer.contains(range.endContainer)
     )
       return;
-    const text = selected.toString().trim().slice(0, 4000);
+    const text = selected.toString().trim();
     const rects = normalizeRects(
       [...range.getClientRects()],
       paper.getBoundingClientRect(),
     );
+    if (text.length > 4000 || rects.length > 200) {
+      clearSelection();
+      status.textContent =
+        "Select a shorter passage: up to 4,000 characters and 200 text segments per highlight.";
+      return;
+    }
     if (text && rects.length) {
       selection = { page: rendered, text, rects };
       save.disabled = false;

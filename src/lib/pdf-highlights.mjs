@@ -47,15 +47,13 @@ export function decodeHighlights(raw, pageCount) {
   return data.items;
 }
 export function normalizeRects(rectangles, paper) {
-  return rectangles
-    .flatMap((rect) => {
-      const left = Math.max(0, (rect.left - paper.left) / paper.width);
-      const top = Math.max(0, (rect.top - paper.top) / paper.height);
-      const right = Math.min(1, (rect.right - paper.left) / paper.width);
-      const bottom = Math.min(1, (rect.bottom - paper.top) / paper.height);
-      return right - left > 0.0001 && bottom - top > 0.0001
-        ? [[left, top, right - left, bottom - top]]
-        : [];
-    })
-    .slice(0, 200);
+  return rectangles.flatMap((rect) => {
+    const left = Math.max(0, (rect.left - paper.left) / paper.width);
+    const top = Math.max(0, (rect.top - paper.top) / paper.height);
+    const right = Math.min(1, (rect.right - paper.left) / paper.width);
+    const bottom = Math.min(1, (rect.bottom - paper.top) / paper.height);
+    return right - left > 0.0001 && bottom - top > 0.0001
+      ? [[left, top, right - left, bottom - top]]
+      : [];
+  });
 }
