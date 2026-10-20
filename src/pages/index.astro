@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LEVELS, TOTAL_WORDS } from '../lib/levels.mjs';
+import { myNumber, url } from '../lib/site.mjs';
+
+// Levels with finished pages. Filled in as each level's content is written.
+const READY = new Set<string>();
+---
+
+<BaseLayout>
+  <section class="hero">
+    <p class="hero-zh" lang="zh-Hans" aria-hidden="true">你好！</p>
+    <h1>တရုတ်စကားလုံးတွေကို မြန်မာလို လွယ်လွယ်လေး သင်ကြမယ်</h1>
+    <p>
+      HSK 3.0 (၂၀၂၅) စာမေးပွဲအတွက် စကားလုံး {myNumber(TOTAL_WORDS)} လုံးကို မြန်မာလို ရှင်းပြပေးထားပါတယ်။
+      ဆရာမရှိလည်း ကိုယ်တိုင် လေ့လာလို့ရပါတယ်။ အခမဲ့ပါ။
+    </p>
+    <p class="notice">🚧 ဒီဆိုက်ကို အခု တည်ဆောက်နေဆဲပါ။ စကားလုံးတွေ မကြာခင် ရောက်လာပါမယ်။</p>
+  </section>
+
+  <section aria-labelledby="levels-title">
+    <h2 id="levels-title">အဆင့် ရွေးပါ</h2>
+    <ul class="levels">
+      {
+        LEVELS.map((level) => {
+          const ready = READY.has(level.key);
+          const Tag = ready ? 'a' : 'div';
+          return (
+            <li>
+              <Tag class:list={['card', 'level', { ready }]} href={ready ? url(level.slug) : undefined}>
+                <span class="level-name">{level.label}</span>
+                <span class="muted">စကားလုံး <span class="nowrap">{myNumber(level.count)} လုံး</span></span>
+                {!ready && <span class="badge badge-soon">မကြာခင်</span>}
+              </Tag>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+
+  <section aria-labelledby="how-title" class="how">
+    <h2 id="how-title">ဘယ်လို လေ့လာမလဲ</h2>
+    <ol>
+      <li>“အစပြုရန်” အပိုင်းမှာ pinyin ဆိုတာ ဘာလဲ၊ အသံ ၄ မျိုးကို ဘယ်လိုထွက်လဲ အရင် လေ့လာပါ။</li>
+      <li>HSK 1 ကနေ စပါ။ တစ်နေ့ကို စကားလုံး ၅ လုံးလောက် သင်ရင် လုံလောက်ပါပြီ။</li>
+      <li>စကားလုံးတိုင်းမှာ 🔊 ခလုတ်ကို နှိပ်ပြီး အသံကို နားထောင်ပါ။ ပြီးရင် ကျယ်ကျယ် လိုက်ပြောပါ။</li>
+      <li>ကတ်ပြားတွေနဲ့ မနေ့က သင်ထားတာတွေကို ပြန်လေ့ကျင့်ပါ။</li>
+    </ol>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 8px 0 12px;
+  }
+
+  .hero-zh {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .notice {
+    background: var(--draft-bg);
+    color: var(--draft-text);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+  }
+
+  .levels {
+    list-style: none;
+    margin: 0 0 28px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .level {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    height: 100%;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .level.ready:hover {
+    border-color: var(--accent);
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .level-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .how ol {
+    padding-left: 1.4em;
+  }
+
+  .how li {
+    margin-bottom: 0.5em;
+  }
+
+  @media (min-width: 640px) {
+    .levels {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

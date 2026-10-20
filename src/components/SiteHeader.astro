@@ -1,0 +1,109 @@
+---
+import { url } from '../lib/site.mjs';
+
+// `ready: false` items are shown greyed out until their page is built.
+const NAV = [
+  { href: '/', label: 'ပင်မ', ready: true },
+  { href: '/start', label: 'အစပြုရန်', ready: false },
+  { href: '/search', label: 'ရှာရန်', ready: false },
+  { href: '/flashcards', label: 'ကတ်ပြား', ready: false },
+  { href: '/about', label: 'အကြောင်း', ready: false },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => url(href).replace(/\/$/, '') === current.replace(/\/$/, '');
+---
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href={url('/')}>
+      <span class="logo" lang="zh-Hans" aria-hidden="true">汉</span>
+      <span>HSK မြန်မာ</span>
+    </a>
+  </div>
+  <nav class="container" aria-label="အဓိက မီနူး">
+    <ul>
+      {
+        NAV.map((item) => (
+          <li>
+            {item.ready ? (
+              <a href={url(item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ) : (
+              <span class="soon" title="မကြာခင် ရောက်လာပါမယ်">{item.label}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .logo {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--accent-text);
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 4px;
+    margin: 0;
+    padding: 6px 0 8px;
+    list-style: none;
+  }
+
+  nav a,
+  nav .soon {
+    display: block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  nav a {
+    color: var(--text);
+  }
+
+  nav a[aria-current='page'] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  nav .soon {
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+</style>
