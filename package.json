@@ -1,0 +1,31 @@
+{
+  "name": "hsk-learning",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Free HSK 3.0 (2025) vocabulary self-study site in Myanmar (Burmese)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phyoethantnaing/Hsk-Learning.git"
+  },
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "parse-pdfs": "python3 scripts/parse-pdfs.py",
+    "validate": "node scripts/validate-data.mjs",
+    "check-vocab": "node scripts/check-example-vocab.mjs",
+    "test": "node --test \"scripts/**/*.test.mjs\""
+  },
+  "dependencies": {
+    "astro": "7.3.5"
+  },
+  "devDependencies": {
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1"
+  }
+}

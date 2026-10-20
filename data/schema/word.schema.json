@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://phyoethantnaing.github.io/Hsk-Learning/schema/word.schema.json",
+  "title": "HSK word with Myanmar learning content",
+  "description": "One entry in a data/words/hsk{level}/hsk{level}-{from}-{to}.json batch file (each file is an array of these).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "level", "simplified", "traditional", "pinyin", "pinyinNumbered", "tones",
+    "english", "partOfSpeech", "myanmar", "examples", "relatedWords", "audio",
+    "workbookRefs", "reviewStatus"
+  ],
+  "properties": {
+    "id": {
+      "description": "hsk{level}-{number from the official list, 4 digits}. Never changes once published.",
+      "type": "string",
+      "pattern": "^hsk([1-6]|7-9)-[0-9]{4}$"
+    },
+    "level": { "enum": [1, 2, 3, 4, 5, 6, "7-9"] },
+    "simplified": { "$ref": "#/$defs/chinese" },
+    "traditional": { "$ref": "#/$defs/chinese" },
+    "pinyin": {
+      "description": "Pinyin with tone marks, copied from the official list. Several readings are separated by '/'.",
+      "$ref": "#/$defs/nonEmpty"
+    },
+    "pinyinNumbered": {
+      "description": "Generated from pinyin: syllables with tone numbers, 5 = neutral tone, ü written v. e.g. \"ba4 ba5\".",
+      "type": "string",
+      "pattern": "^[a-z]+[1-5]( [a-z]+[1-5])*(/[a-z]+[1-5]( [a-z]+[1-5])*)*$"
+    },
+    "tones": {
+      "description": "Tone of each syllable of the first reading. 5 = neutral tone.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "integer", "minimum": 1, "maximum": 5 }
+    },
+    "english": { "$ref": "#/$defs/nonEmpty" },
+    "partOfSpeech": {
+      "description": "One part of speech, or a list when the word has several uses.",
+      "oneOf": [
+        { "$ref": "#/$defs/pos" },
+        { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/pos" } }
+      ]
+    },
+    "myanmar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["meaning", "kidExplanation", "pronunciationTip", "memoryTip", "usageNote", "commonMistake"],
+      "properties": {
+        "meaning": { "$ref": "#/$defs/myanmarText", "description": "1–4 short meanings separated by ၊" },
+        "kidExplanation": { "$ref": "#/$defs/myanmarText" },
+        "pronunciationTip": { "$ref": "#/$defs/myanmarText" },
+        "memoryTip": { "$ref": "#/$defs/myanmarText" },
+        "usageNote": { "type": "string", "description": "May be empty for very simple words." },
+        "commonMistake": { "type": "string", "description": "May be empty when there is nothing useful to say." }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["zh", "pinyin", "my", "audio"],
+        "properties": {
+          "zh": { "$ref": "#/$defs/nonEmpty" },
+          "pinyin": { "$ref": "#/$defs/nonEmpty" },
+          "my": { "$ref": "#/$defs/myanmarText" },
+          "audio": { "$ref": "#/$defs/audioPath" }
+        }
+      }
+    },
+    "relatedWords": {
+      "description": "Simplified forms of related HSK words.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/chinese" }
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["word"],
+      "properties": { "word": { "$ref": "#/$defs/audioPath" } }
+    },
+    "workbookRefs": {
+      "description": "Phase 2: ids of workbook exercises that use this word.",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reviewStatus": { "enum": ["draft", "reviewed"] },
+    "needsReview": {
+      "description": "Set when something in the source data itself is uncertain and must be checked against the official syllabus.",
+      "type": "boolean"
+    },
+    "reviewNote": { "type": "string" }
+  },
+  "$defs": {
+    "nonEmpty": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "chinese": { "type": "string", "minLength": 1, "pattern": "^[\\p{Script=Han}…（）·]+$" },
+    "myanmarText": {
+      "description": "Non-empty text that contains Myanmar script (Unicode, never Zawgyi — checked by scripts/validate-data.mjs).",
+      "type": "string",
+      "pattern": "[\\u1000-\\u109F]"
+    },
+    "audioPath": {
+      "description": "Phase 3: path under public/, e.g. audio/hsk1/hsk1-0001.mp3. null until recorded.",
+      "type": ["string", "null"],
+      "pattern": "^audio/hsk([1-6]|7-9)/hsk([1-6]|7-9)-[0-9]{4}(-ex[0-9]+)?\\.mp3$"
+    },
+    "pos": {
+      "enum": [
+        "noun", "verb", "adjective", "adverb", "pronoun", "numeral", "measure word",
+        "preposition", "conjunction", "particle", "interjection", "auxiliary verb",
+        "onomatopoeia", "prefix", "suffix", "phrase", "idiom", "proper noun"
+      ]
+    }
+  }
+}
