@@ -36,7 +36,7 @@ CORRECTIONS = {
     # PDF shows "□ g": the tone-marked ǹ is a missing glyph. ǹg is the
     # "agreeing" reading that matches the English gloss. Verify against the
     # printed 新版HSK考试大纲 when possible.
-    ("hsk4", 534): {"simplified": "嗯", "pinyin": "ǹg"},
+    ("hsk4", 534): {"simplified": "嗯", "pinyin": "ǹg", "needsReview": True},
 }
 
 # Every pinyin syllable, written without tone marks (ü as v).
@@ -124,6 +124,8 @@ def parse_level(pdf, key, level, expected):
                 continue
             fixed.append(f"#{r['number']} {r['simplified']}: pinyin {r['pinyin']!r} -> {fix['pinyin']!r}")
             r["pinyin"] = fix["pinyin"]
+            if fix.get("needsReview"):
+                r["needsReview"] = True
         if not pinyin_ok(r["pinyin"]):
             errors.append((0, f"#{r['number']} {r['simplified']}: not valid pinyin", r["pinyin"]))
 
