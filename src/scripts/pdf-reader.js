@@ -60,6 +60,7 @@ export function startReader(root) {
     list = find("list");
   const key = highlightKey(root.dataset.fingerprint);
   paper.hidden = true;
+  scroll.hidden = false;
   delete root.dataset.canvasPage;
   list.replaceChildren();
   find("selection-help").textContent =
@@ -256,6 +257,7 @@ export function startReader(root) {
   });
   function showError(message) {
     error.hidden = false;
+    scroll.hidden = paper.hidden;
     find("error-message").textContent = message;
     scroll.setAttribute("aria-busy", "false");
     status.textContent =
@@ -264,6 +266,7 @@ export function startReader(root) {
   async function renderPage() {
     if (disposed || !pdf) return;
     const current = ++token;
+    scroll.hidden = false;
     renderTask?.cancel();
     textTask?.cancel();
     clearSelection();
@@ -459,6 +462,7 @@ export function startReader(root) {
     }
   });
   const observer = new ResizeObserver((entries) => {
+    if (scroll.hidden) return;
     const width = entries[0].contentRect.width;
     if (lastWidth === null) {
       lastWidth = width;
@@ -475,6 +479,7 @@ export function startReader(root) {
   async function open() {
     const attempt = ++openToken;
     error.hidden = true;
+    scroll.hidden = false;
     ready = false;
     controls();
     phase("Initializing reader…");
@@ -625,4 +630,43 @@ export function startReader(root) {
 }
 
 const root = document.querySelector("[data-pdf-reader]");
-if (root && !root.closest("[data-reader-host]")) startReader(root);
+if (root && !root.closest("[data-reader-host]")) {
+  const close = root.querySelector("[data-pdf-close]");
+  let closing = false,
+    controller,
+    left = false;
+  const path = location.pathname;
+  const returnPosition = history.state?.hskReaderReturn;
+  window.addEventListener("popstate", () => {
+    closing = false;
+    // Entries created by pushState before a reload may still traverse inside
+    // this document. Load the target route instead of leaving a reader at /library/.
+    if (location.pathname !== path) {
+      left = true;
+      controller?.dispose();
+      if (location.pathname === new URL(close.href).pathname && returnPosition)
+        history.replaceState(
+          { ...history.state, hskReaderReturn: returnPosition },
+          "",
+          location.href,
+        );
+      location.replace(location.href);
+    } else if (left) {
+      left = false;
+      controller = startReader(root);
+    }
+  });
+  close.addEventListener("click", (event) => {
+    // Reloading a modal URL produces a direct reader document. Retain the
+    // original library entry instead of pushing another library visit on Close.
+    if (!history.state?.hskReader || history.length < 2) return;
+    event.preventDefault();
+    if (closing) return;
+    closing = true;
+    history.back();
+  });
+  window.addEventListener("pageshow", () => {
+    closing = false;
+  });
+  controller = startReader(root);
+}

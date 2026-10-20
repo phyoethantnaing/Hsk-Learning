@@ -220,3 +220,27 @@ test("immersive reader follows system appearance and preserves manual preference
   await ready(page);
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
+
+test("closing a refreshed modal URL traverses back instead of adding a library entry", async ({
+  page,
+}) => {
+  await page.goto("library/");
+  await page.locator(book).scrollIntoViewIfNeeded();
+  const returnY = await page.evaluate(() => scrollY);
+  await page.locator(book).click();
+  await ready(page);
+  const length = await page.evaluate(() => history.length);
+  await page.reload();
+  await ready(page);
+  await expect(page.locator(".site-header")).toHaveCount(0);
+  await page.locator("[data-pdf-close]").click();
+  await expect(page).toHaveURL(/library\/?$/);
+  await expect(page.locator(host)).toHaveJSProperty("open", false);
+  expect(await page.evaluate(() => history.length)).toBe(length);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeCloseTo(returnY, 0);
+  await expect(page.locator(book)).toBeFocused();
+  await page.goForward();
+  await ready(page);
+  await page.locator("[data-pdf-close]").click();
+  await expect(page).toHaveURL(/library\/?$/);
+});

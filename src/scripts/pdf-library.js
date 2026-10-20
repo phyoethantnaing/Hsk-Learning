@@ -8,8 +8,14 @@ if (host && typeof host.showModal === "function") {
     title,
     book,
     closing = false;
+  function clearReturn() {
+    const state = { ...history.state };
+    delete state.hskReaderReturn;
+    history.replaceState(state, "", location.href);
+  }
   function hide() {
     closing = false;
+    clearReturn();
     controller?.dispose();
     controller = null;
     host.close();
@@ -35,6 +41,11 @@ if (host && typeof host.showModal === "function") {
       host.showModal();
     }
     book = data;
+    history.replaceState(
+      { ...history.state, hskReaderReturn: { y: scrollY, book: data.id } },
+      "",
+      location.href,
+    );
     host.setAttribute("aria-label", data.title);
     root.dataset.file = data.file;
     root.dataset.fingerprint = data.sha256;
@@ -59,6 +70,14 @@ if (host && typeof host.showModal === "function") {
       return;
     event.preventDefault();
     const data = JSON.parse(link.dataset.readerBook);
+    history.replaceState(
+      {
+        ...history.state,
+        hskReaderReturn: { y: window.scrollY, book: data.id },
+      },
+      "",
+      location.href,
+    );
     history.pushState({ ...history.state, hskReader: data.id }, "", link.href);
     show(data, link);
   });
@@ -87,6 +106,20 @@ if (host && typeof host.showModal === "function") {
     if (link && (!host.open || book?.id !== history.state.hskReader))
       show(JSON.parse(link.dataset.readerBook), link);
   });
+  // Reloading a reader URL can discard the background document. Its original
+  // history entry carries the return position so a fresh library can restore it.
+  const returning = history.state?.hskReaderReturn;
+  if (returning && !history.state?.hskReader) {
+    clearReturn();
+    requestAnimationFrame(() => {
+      if (Number.isFinite(returning.y)) window.scrollTo(0, returning.y);
+      [...document.querySelectorAll("[data-reader-book]")]
+        .find(
+          (link) => JSON.parse(link.dataset.readerBook).id === returning.book,
+        )
+        ?.focus({ preventScroll: true });
+    });
+  }
   window.addEventListener("pagehide", (event) => {
     if (!event.persisted) controller?.dispose();
   });

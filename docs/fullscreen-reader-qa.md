@@ -63,7 +63,8 @@ dependencies or deployment permissions are changed.
   does not impose a total download-duration limit. Retry/Close remain available.
   Missing, invalid, password-protected, network and render failures are reported.
   A failed module/worker initialization can reload the reader on explicit Retry,
-  avoiding permanently cached module-fetch failures.
+  avoiding permanently cached module-fetch failures. A failed first load clears
+  the skeleton; reloading a modal URL retains Close/Back history behavior.
 - No download, share, print, export or open-original buttons, no Pencil/handwriting,
   OCR, external scripts, services or extra production dependencies.
 
