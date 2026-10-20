@@ -80,7 +80,7 @@ References: [GitHub file limits](https://docs.github.com/en/repositories/working
 
 ## Verification
 
-See the completed run results recorded below. Reproducible commands:
+Local results are recorded below. Reproducible commands:
 
 ```sh
 npm ci
@@ -131,9 +131,10 @@ budgets and touch target dimensions. Optional local axe integration checks WCAG
 - Clean lockfile installation, data validation and all unit tests pass. All 909
   example sentences pass the level vocabulary check. The parser reproduces all
   11,000 source entries, and sync leaves educational files unchanged relative to main.
-- Integrated learning/reader regression: 88 cases passed; the expanded reader
-  regression (including selection limits) passed 20 cases. The final scheduling
-  refinement is covered by the complete 90-case CI suite before merge.
+- Final integrated learning/reader regression: **90 cases passed** in desktop
+  light and mobile dark appearances, including the scheduling refinement,
+  selection limits, cross-tab updates and keyboard/text-zoom regression checks.
+  The expanded reader suite also passed 20 cases independently.
 - Production build: 528 static pages; approximately 646.5 MB, under the 1 GB limit.
   All 23 hosted originals pass size/signature/hash/deduplication checks. The 16
   Drive imports contain 2,661 pages in total; no document was recompressed.
