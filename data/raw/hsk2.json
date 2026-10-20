@@ -6,7 +6,8 @@
   "simplified": "啊",
   "traditional": "啊",
   "pinyin": "a",
-  "english": "(exclamatory sentence-final particle)"
+  "english": "(exclamatory sentence-final particle)",
+  "partOfSpeech": "助"
  },
  {
   "id": "hsk2-0002",
@@ -15,7 +16,8 @@
   "simplified": "爱好",
   "traditional": "愛好",
   "pinyin": "àihào",
-  "english": "to be fond of; hobby; interest"
+  "english": "to be fond of; hobby; interest",
+  "partOfSpeech": "动、名"
  },
  {
   "id": "hsk2-0003",
@@ -24,7 +26,8 @@
   "simplified": "白色",
   "traditional": "白色",
   "pinyin": "báisè",
-  "english": "white"
+  "english": "white",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0004",
@@ -33,7 +36,11 @@
   "simplified": "班",
   "traditional": "班",
   "pinyin": "bān",
-  "english": "class; team; work shift"
+  "english": "class; team; work shift",
+  "partOfSpeech": "名、（量）",
+  "alsoLevels": [
+   "5"
+  ]
  },
  {
   "id": "hsk2-0005",
@@ -42,7 +49,8 @@
   "simplified": "帮",
   "traditional": "幫",
   "pinyin": "bāng",
-  "english": "to help; to assist"
+  "english": "to help; to assist",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0006",
@@ -51,7 +59,8 @@
   "simplified": "帮忙",
   "traditional": "幫忙",
   "pinyin": "bāngmáng",
-  "english": "to help; to do a favor"
+  "english": "to help; to do a favor",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0007",
@@ -60,7 +69,8 @@
   "simplified": "包",
   "traditional": "包",
   "pinyin": "bāo",
-  "english": "to wrap; bag; package"
+  "english": "to wrap; bag; package",
+  "partOfSpeech": "动、名、量"
  },
  {
   "id": "hsk2-0008",
@@ -69,7 +79,8 @@
   "simplified": "本子",
   "traditional": "本子",
   "pinyin": "běnzi",
-  "english": "notebook; book"
+  "english": "notebook; book",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0009",
@@ -78,7 +89,8 @@
   "simplified": "比",
   "traditional": "比",
   "pinyin": "bǐ",
-  "english": "to compare; than"
+  "english": "to compare; than",
+  "partOfSpeech": "动、介"
  },
  {
   "id": "hsk2-0010",
@@ -87,7 +99,11 @@
   "simplified": "笔",
   "traditional": "筆",
   "pinyin": "bǐ",
-  "english": "pen; writing brush"
+  "english": "pen; writing brush",
+  "partOfSpeech": "名、（量）",
+  "alsoLevels": [
+   "5"
+  ]
  },
  {
   "id": "hsk2-0011",
@@ -96,7 +112,9 @@
   "simplified": "别",
   "traditional": "別",
   "pinyin": "bié",
-  "english": "don't"
+  "english": "don't",
+  "partOfSpeech": "副",
+  "sense": 1
  },
  {
   "id": "hsk2-0012",
@@ -105,7 +123,8 @@
   "simplified": "不错",
   "traditional": "不錯",
   "pinyin": "búcuò",
-  "english": "not bad; pretty good"
+  "english": "not bad; pretty good",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0013",
@@ -114,7 +133,8 @@
   "simplified": "不好意思",
   "traditional": "不好意思",
   "pinyin": "bù hǎoyìsi",
-  "english": "embarrassed; sorry to trouble you"
+  "english": "embarrassed; sorry to trouble you",
+  "partOfSpeech": ""
  },
  {
   "id": "hsk2-0014",
@@ -123,7 +143,8 @@
   "simplified": "长",
   "traditional": "長",
   "pinyin": "cháng",
-  "english": "long"
+  "english": "long",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0015",
@@ -132,7 +153,8 @@
   "simplified": "车站",
   "traditional": "車站",
   "pinyin": "chēzhàn",
-  "english": "station; stop"
+  "english": "station; stop",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0016",
@@ -141,7 +163,8 @@
   "simplified": "出",
   "traditional": "出",
   "pinyin": "chū",
-  "english": "to go out; to come out"
+  "english": "to go out; to come out",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0017",
@@ -150,7 +173,8 @@
   "simplified": "出国",
   "traditional": "出國",
   "pinyin": "chūguó",
-  "english": "to go abroad"
+  "english": "to go abroad",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0018",
@@ -159,7 +183,8 @@
   "simplified": "出来",
   "traditional": "出來",
   "pinyin": "chūlái",
-  "english": "to come out"
+  "english": "to come out",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0019",
@@ -168,7 +193,8 @@
   "simplified": "出门",
   "traditional": "出門",
   "pinyin": "chūmén",
-  "english": "to go out; to leave home"
+  "english": "to go out; to leave home",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0020",
@@ -177,7 +203,8 @@
   "simplified": "出去",
   "traditional": "出去",
   "pinyin": "chūqù",
-  "english": "to go out"
+  "english": "to go out",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0021",
@@ -186,7 +213,8 @@
   "simplified": "床",
   "traditional": "床",
   "pinyin": "chuáng",
-  "english": "bed"
+  "english": "bed",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0022",
@@ -195,7 +223,8 @@
   "simplified": "词",
   "traditional": "詞",
   "pinyin": "cí",
-  "english": "word"
+  "english": "word",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0023",
@@ -204,7 +233,11 @@
   "simplified": "次",
   "traditional": "次",
   "pinyin": "cì",
-  "english": "time (occurrence); measure word for occurrences"
+  "english": "time (occurrence); measure word for occurrences",
+  "partOfSpeech": "量、（形）",
+  "alsoLevels": [
+   "7-9"
+  ]
  },
  {
   "id": "hsk2-0024",
@@ -213,7 +246,11 @@
   "simplified": "从",
   "traditional": "從",
   "pinyin": "cóng",
-  "english": "from; through"
+  "english": "from; through",
+  "partOfSpeech": "介、（副）",
+  "alsoLevels": [
+   "4"
+  ]
  },
  {
   "id": "hsk2-0025",
@@ -222,7 +259,8 @@
   "simplified": "从小",
   "traditional": "從小",
   "pinyin": "cóngxiǎo",
-  "english": "since childhood"
+  "english": "since childhood",
+  "partOfSpeech": "副"
  },
  {
   "id": "hsk2-0026",
@@ -231,7 +269,8 @@
   "simplified": "错",
   "traditional": "錯",
   "pinyin": "cuò",
-  "english": "wrong; mistake"
+  "english": "wrong; mistake",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0027",
@@ -240,7 +279,9 @@
   "simplified": "打",
   "traditional": "打",
   "pinyin": "dǎ",
-  "english": "to hit; to strike"
+  "english": "to hit; to strike",
+  "partOfSpeech": "动",
+  "sense": 1
  },
  {
   "id": "hsk2-0028",
@@ -249,7 +290,8 @@
   "simplified": "打车",
   "traditional": "打車",
   "pinyin": "dǎchē",
-  "english": "to take a taxi"
+  "english": "to take a taxi",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0029",
@@ -258,7 +300,8 @@
   "simplified": "打开",
   "traditional": "打開",
   "pinyin": "dǎkāi",
-  "english": "to open; to turn on"
+  "english": "to open; to turn on",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0030",
@@ -267,7 +310,11 @@
   "simplified": "但",
   "traditional": "但",
   "pinyin": "dàn",
-  "english": "but; only"
+  "english": "but; only",
+  "partOfSpeech": "连、（副）",
+  "alsoLevels": [
+   "7-9"
+  ]
  },
  {
   "id": "hsk2-0031",
@@ -276,7 +323,8 @@
   "simplified": "但是",
   "traditional": "但是",
   "pinyin": "dànshì",
-  "english": "but; however"
+  "english": "but; however",
+  "partOfSpeech": "连"
  },
  {
   "id": "hsk2-0032",
@@ -285,7 +333,8 @@
   "simplified": "得",
   "traditional": "得",
   "pinyin": "de",
-  "english": "(particle marking degree or result)"
+  "english": "(particle marking degree or result)",
+  "partOfSpeech": "助"
  },
  {
   "id": "hsk2-0033",
@@ -294,7 +343,8 @@
   "simplified": "地",
   "traditional": "地",
   "pinyin": "de",
-  "english": "(adverbial particle, '-ly')"
+  "english": "(adverbial particle, '-ly')",
+  "partOfSpeech": "助"
  },
  {
   "id": "hsk2-0034",
@@ -303,7 +353,12 @@
   "simplified": "等",
   "traditional": "等",
   "pinyin": "děng",
-  "english": "to wait; to wait for"
+  "english": "to wait; to wait for",
+  "partOfSpeech": "动、（介）",
+  "sense": 1,
+  "alsoLevels": [
+   "4"
+  ]
  },
  {
   "id": "hsk2-0035",
@@ -312,7 +367,8 @@
   "simplified": "地铁",
   "traditional": "地鐵",
   "pinyin": "dìtiě",
-  "english": "subway; metro"
+  "english": "subway; metro",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0036",
@@ -321,7 +377,12 @@
   "simplified": "点",
   "traditional": "點",
   "pinyin": "diǎn",
-  "english": "to order (food); to click; to tap; to light"
+  "english": "to order (food); to click; to tap; to light",
+  "partOfSpeech": "动、（名、量）",
+  "sense": 2,
+  "alsoLevels": [
+   "4"
+  ]
  },
  {
   "id": "hsk2-0037",
@@ -330,7 +391,8 @@
   "simplified": "懂",
   "traditional": "懂",
   "pinyin": "dǒng",
-  "english": "to understand"
+  "english": "to understand",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0038",
@@ -339,7 +401,8 @@
   "simplified": "动",
   "traditional": "動",
   "pinyin": "dòng",
-  "english": "to move"
+  "english": "to move",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0039",
@@ -348,7 +411,8 @@
   "simplified": "饭馆",
   "traditional": "飯館",
   "pinyin": "fànguǎn",
-  "english": "restaurant"
+  "english": "restaurant",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0040",
@@ -357,7 +421,8 @@
   "simplified": "飞",
   "traditional": "飛",
   "pinyin": "fēi",
-  "english": "to fly"
+  "english": "to fly",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0041",
@@ -366,7 +431,8 @@
   "simplified": "高",
   "traditional": "高",
   "pinyin": "gāo",
-  "english": "tall; high"
+  "english": "tall; high",
+  "partOfSpeech": "形、名"
  },
  {
   "id": "hsk2-0042",
@@ -375,7 +441,8 @@
   "simplified": "高中",
   "traditional": "高中",
   "pinyin": "gāozhōng",
-  "english": "senior high school"
+  "english": "senior high school",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0043",
@@ -384,7 +451,8 @@
   "simplified": "告诉",
   "traditional": "告訴",
   "pinyin": "gàosu",
-  "english": "to tell; to inform"
+  "english": "to tell; to inform",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0044",
@@ -393,7 +461,8 @@
   "simplified": "个子",
   "traditional": "個子",
   "pinyin": "gèzi",
-  "english": "height; stature; build"
+  "english": "height; stature; build",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0045",
@@ -402,7 +471,11 @@
   "simplified": "跟",
   "traditional": "跟",
   "pinyin": "gēn",
-  "english": "with; and; to follow"
+  "english": "with; and; to follow",
+  "partOfSpeech": "介、连、（名、动）",
+  "alsoLevels": [
+   "5"
+  ]
  },
  {
   "id": "hsk2-0046",
@@ -411,7 +484,8 @@
   "simplified": "公交车",
   "traditional": "公交車",
   "pinyin": "gōngjiāochē",
-  "english": "public bus"
+  "english": "public bus",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0047",
@@ -420,7 +494,8 @@
   "simplified": "过",
   "traditional": "過",
   "pinyin": "guò",
-  "english": "to pass; to spend (time)"
+  "english": "to pass; to spend (time)",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0048",
@@ -429,7 +504,8 @@
   "simplified": "过来",
   "traditional": "過來",
   "pinyin": "guòlái",
-  "english": "to come over"
+  "english": "to come over",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0049",
@@ -438,7 +514,8 @@
   "simplified": "过年",
   "traditional": "過年",
   "pinyin": "guònián",
-  "english": "to celebrate the Lunar New Year"
+  "english": "to celebrate the Lunar New Year",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0050",
@@ -447,7 +524,9 @@
   "simplified": "过去",
   "traditional": "過去",
   "pinyin": "guòqù",
-  "english": "to go over; to pass by"
+  "english": "to go over; to pass by",
+  "partOfSpeech": "动",
+  "sense": 1
  },
  {
   "id": "hsk2-0051",
@@ -456,7 +535,8 @@
   "simplified": "过",
   "traditional": "過",
   "pinyin": "guo",
-  "english": "(experienced-action particle)"
+  "english": "(experienced-action particle)",
+  "partOfSpeech": "助"
  },
  {
   "id": "hsk2-0052",
@@ -465,7 +545,8 @@
   "simplified": "还是",
   "traditional": "還是",
   "pinyin": "háishi",
-  "english": "or; still; had better"
+  "english": "or; still; had better",
+  "partOfSpeech": "副、连"
  },
  {
   "id": "hsk2-0053",
@@ -474,7 +555,8 @@
   "simplified": "黑色",
   "traditional": "黑色",
   "pinyin": "hēisè",
-  "english": "black"
+  "english": "black",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0054",
@@ -483,7 +565,8 @@
   "simplified": "红茶",
   "traditional": "紅茶",
   "pinyin": "hóngchá",
-  "english": "black tea"
+  "english": "black tea",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0055",
@@ -492,7 +575,8 @@
   "simplified": "红色",
   "traditional": "紅色",
   "pinyin": "hóngsè",
-  "english": "red"
+  "english": "red",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0056",
@@ -501,7 +585,8 @@
   "simplified": "后面",
   "traditional": "後面",
   "pinyin": "hòumiàn",
-  "english": "behind; the back"
+  "english": "behind; the back",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0057",
@@ -510,7 +595,9 @@
   "simplified": "花",
   "traditional": "花",
   "pinyin": "huā",
-  "english": "to spend (money, time)"
+  "english": "to spend (money, time)",
+  "partOfSpeech": "动",
+  "sense": 1
  },
  {
   "id": "hsk2-0058",
@@ -519,7 +606,12 @@
   "simplified": "花",
   "traditional": "花",
   "pinyin": "huā",
-  "english": "flower; fancy pattern"
+  "english": "flower; fancy pattern",
+  "partOfSpeech": "名、（形）",
+  "sense": 2,
+  "alsoLevels": [
+   "6"
+  ]
  },
  {
   "id": "hsk2-0059",
@@ -528,7 +620,8 @@
   "simplified": "画",
   "traditional": "畫",
   "pinyin": "huà",
-  "english": "to draw; to paint; painting"
+  "english": "to draw; to paint; painting",
+  "partOfSpeech": "动、名"
  },
  {
   "id": "hsk2-0060",
@@ -537,7 +630,8 @@
   "simplified": "坏",
   "traditional": "壞",
   "pinyin": "huài",
-  "english": "bad; broken"
+  "english": "bad; broken",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0061",
@@ -546,7 +640,8 @@
   "simplified": "回来",
   "traditional": "回來",
   "pinyin": "huílái",
-  "english": "to come back"
+  "english": "to come back",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0062",
@@ -555,7 +650,8 @@
   "simplified": "回去",
   "traditional": "回去",
   "pinyin": "huíqù",
-  "english": "to go back"
+  "english": "to go back",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0063",
@@ -564,7 +660,8 @@
   "simplified": "机场",
   "traditional": "機場",
   "pinyin": "jīchǎng",
-  "english": "airport"
+  "english": "airport",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0064",
@@ -573,7 +670,8 @@
   "simplified": "机票",
   "traditional": "機票",
   "pinyin": "jīpiào",
-  "english": "plane ticket"
+  "english": "plane ticket",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0065",
@@ -582,7 +680,8 @@
   "simplified": "记得",
   "traditional": "記得",
   "pinyin": "jìde",
-  "english": "to remember"
+  "english": "to remember",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0066",
@@ -591,7 +690,11 @@
   "simplified": "间",
   "traditional": "間",
   "pinyin": "jiān",
-  "english": "measure word for rooms; room"
+  "english": "measure word for rooms; room",
+  "partOfSpeech": "量、（名）",
+  "alsoLevels": [
+   "4"
+  ]
  },
  {
   "id": "hsk2-0067",
@@ -600,7 +703,8 @@
   "simplified": "教",
   "traditional": "教",
   "pinyin": "jiāo",
-  "english": "to teach"
+  "english": "to teach",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0068",
@@ -609,7 +713,8 @@
   "simplified": "教室",
   "traditional": "教室",
   "pinyin": "jiàoshì",
-  "english": "classroom"
+  "english": "classroom",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0069",
@@ -618,7 +723,8 @@
   "simplified": "介绍",
   "traditional": "介紹",
   "pinyin": "jièshào",
-  "english": "to introduce"
+  "english": "to introduce",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0070",
@@ -627,7 +733,8 @@
   "simplified": "进",
   "traditional": "進",
   "pinyin": "jìn",
-  "english": "to enter; to advance"
+  "english": "to enter; to advance",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0071",
@@ -636,7 +743,8 @@
   "simplified": "近",
   "traditional": "近",
   "pinyin": "jìn",
-  "english": "near; close"
+  "english": "near; close",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0072",
@@ -645,7 +753,8 @@
   "simplified": "进来",
   "traditional": "進來",
   "pinyin": "jìnlái",
-  "english": "to come in"
+  "english": "to come in",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0073",
@@ -654,7 +763,8 @@
   "simplified": "进去",
   "traditional": "進去",
   "pinyin": "jìnqù",
-  "english": "to go in"
+  "english": "to go in",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0074",
@@ -663,7 +773,8 @@
   "simplified": "经常",
   "traditional": "經常",
   "pinyin": "jīngcháng",
-  "english": "often; frequently"
+  "english": "often; frequently",
+  "partOfSpeech": "副"
  },
  {
   "id": "hsk2-0075",
@@ -672,7 +783,8 @@
   "simplified": "酒店",
   "traditional": "酒店",
   "pinyin": "jiǔdiàn",
-  "english": "hotel; restaurant"
+  "english": "hotel; restaurant",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0076",
@@ -681,7 +793,11 @@
   "simplified": "就",
   "traditional": "就",
   "pinyin": "jiù",
-  "english": "then; right away; precisely"
+  "english": "then; right away; precisely",
+  "partOfSpeech": "副、（介）",
+  "alsoLevels": [
+   "7-9"
+  ]
  },
  {
   "id": "hsk2-0077",
@@ -690,7 +806,8 @@
   "simplified": "咖啡",
   "traditional": "咖啡",
   "pinyin": "kāfēi",
-  "english": "coffee"
+  "english": "coffee",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0078",
@@ -699,7 +816,8 @@
   "simplified": "开始",
   "traditional": "開始",
   "pinyin": "kāishǐ",
-  "english": "to begin; beginning"
+  "english": "to begin; beginning",
+  "partOfSpeech": "动、名"
  },
  {
   "id": "hsk2-0079",
@@ -708,7 +826,8 @@
   "simplified": "开学",
   "traditional": "開學",
   "pinyin": "kāixué",
-  "english": "to start school; to begin a new term"
+  "english": "to start school; to begin a new term",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0080",
@@ -717,7 +836,8 @@
   "simplified": "考",
   "traditional": "考",
   "pinyin": "kǎo",
-  "english": "to take an exam; to test"
+  "english": "to take an exam; to test",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0081",
@@ -726,7 +846,8 @@
   "simplified": "考试",
   "traditional": "考試",
   "pinyin": "kǎoshì",
-  "english": "to take an exam; exam"
+  "english": "to take an exam; exam",
+  "partOfSpeech": "动、名"
  },
  {
   "id": "hsk2-0082",
@@ -735,7 +856,8 @@
   "simplified": "可能",
   "traditional": "可能",
   "pinyin": "kěnéng",
-  "english": "possible; maybe"
+  "english": "possible; maybe",
+  "partOfSpeech": "形、名、动"
  },
  {
   "id": "hsk2-0083",
@@ -744,7 +866,8 @@
   "simplified": "裤子",
   "traditional": "褲子",
   "pinyin": "kùzi",
-  "english": "pants; trousers"
+  "english": "pants; trousers",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0084",
@@ -753,7 +876,8 @@
   "simplified": "快",
   "traditional": "快",
   "pinyin": "kuài",
-  "english": "fast; quick; soon"
+  "english": "fast; quick; soon",
+  "partOfSpeech": "形、副"
  },
  {
   "id": "hsk2-0085",
@@ -762,7 +886,8 @@
   "simplified": "快乐",
   "traditional": "快樂",
   "pinyin": "kuàilè",
-  "english": "happy"
+  "english": "happy",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0086",
@@ -771,7 +896,8 @@
   "simplified": "快要",
   "traditional": "快要",
   "pinyin": "kuàiyào",
-  "english": "about to; soon"
+  "english": "about to; soon",
+  "partOfSpeech": "副"
  },
  {
   "id": "hsk2-0087",
@@ -780,7 +906,8 @@
   "simplified": "篮球",
   "traditional": "籃球",
   "pinyin": "lánqiú",
-  "english": "basketball"
+  "english": "basketball",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0088",
@@ -789,7 +916,8 @@
   "simplified": "累",
   "traditional": "累",
   "pinyin": "lèi",
-  "english": "tired"
+  "english": "tired",
+  "partOfSpeech": "形、动"
  },
  {
   "id": "hsk2-0089",
@@ -798,7 +926,8 @@
   "simplified": "离",
   "traditional": "離",
   "pinyin": "lí",
-  "english": "to leave; away from; from"
+  "english": "to leave; away from; from",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0090",
@@ -807,7 +936,8 @@
   "simplified": "里面",
   "traditional": "裡面",
   "pinyin": "lǐmiàn",
-  "english": "inside"
+  "english": "inside",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0091",
@@ -816,7 +946,8 @@
   "simplified": "楼",
   "traditional": "樓",
   "pinyin": "lóu",
-  "english": "building; floor"
+  "english": "building; floor",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0092",
@@ -825,7 +956,8 @@
   "simplified": "路",
   "traditional": "路",
   "pinyin": "lù",
-  "english": "road; route"
+  "english": "road; route",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0093",
@@ -834,7 +966,8 @@
   "simplified": "路上",
   "traditional": "路上",
   "pinyin": "lùshang",
-  "english": "on the way"
+  "english": "on the way",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0094",
@@ -843,7 +976,8 @@
   "simplified": "旅游",
   "traditional": "旅遊",
   "pinyin": "lǚyóu",
-  "english": "to travel; tourism"
+  "english": "to travel; tourism",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0095",
@@ -852,7 +986,8 @@
   "simplified": "绿茶",
   "traditional": "綠茶",
   "pinyin": "lǜchá",
-  "english": "green tea"
+  "english": "green tea",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0096",
@@ -861,7 +996,11 @@
   "simplified": "绿色",
   "traditional": "綠色",
   "pinyin": "lǜsè",
-  "english": "green"
+  "english": "green",
+  "partOfSpeech": "名、（形）",
+  "alsoLevels": [
+   "4"
+  ]
  },
  {
   "id": "hsk2-0097",
@@ -870,7 +1009,8 @@
   "simplified": "慢",
   "traditional": "慢",
   "pinyin": "màn",
-  "english": "slow"
+  "english": "slow",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0098",
@@ -879,7 +1019,8 @@
   "simplified": "没意思",
   "traditional": "沒意思",
   "pinyin": "méi yìsi",
-  "english": "boring; of no interest"
+  "english": "boring; of no interest",
+  "partOfSpeech": ""
  },
  {
   "id": "hsk2-0099",
@@ -888,7 +1029,11 @@
   "simplified": "每",
   "traditional": "每",
   "pinyin": "měi",
-  "english": "each; every"
+  "english": "each; every",
+  "partOfSpeech": "代、（副）",
+  "alsoLevels": [
+   "4"
+  ]
  },
  {
   "id": "hsk2-0100",
@@ -897,7 +1042,8 @@
   "simplified": "门",
   "traditional": "門",
   "pinyin": "mén",
-  "english": "door; gate"
+  "english": "door; gate",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0101",
@@ -906,7 +1052,8 @@
   "simplified": "门口",
   "traditional": "門口",
   "pinyin": "ménkǒu",
-  "english": "doorway; entrance"
+  "english": "doorway; entrance",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0102",
@@ -915,7 +1062,8 @@
   "simplified": "门票",
   "traditional": "門票",
   "pinyin": "ménpiào",
-  "english": "entrance ticket"
+  "english": "entrance ticket",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0103",
@@ -924,7 +1072,12 @@
   "simplified": "面",
   "traditional": "面",
   "pinyin": "miàn",
-  "english": "side (suffix); face; surface"
+  "english": "side (suffix); face; surface",
+  "partOfSpeech": "后缀、（动、名、量）",
+  "sense": 1,
+  "alsoLevels": [
+   "5"
+  ]
  },
  {
   "id": "hsk2-0104",
@@ -933,7 +1086,8 @@
   "simplified": "名",
   "traditional": "名",
   "pinyin": "míng",
-  "english": "name; measure word for people"
+  "english": "name; measure word for people",
+  "partOfSpeech": "名、量"
  },
  {
   "id": "hsk2-0105",
@@ -942,7 +1096,8 @@
   "simplified": "拿",
   "traditional": "拿",
   "pinyin": "ná",
-  "english": "to take; to hold"
+  "english": "to take; to hold",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0106",
@@ -951,7 +1106,8 @@
   "simplified": "那么",
   "traditional": "那麼",
   "pinyin": "nàme",
-  "english": "like that; so; then"
+  "english": "like that; so; then",
+  "partOfSpeech": "代、连"
  },
  {
   "id": "hsk2-0107",
@@ -960,7 +1116,8 @@
   "simplified": "那样",
   "traditional": "那樣",
   "pinyin": "nàyàng",
-  "english": "that way; that kind"
+  "english": "that way; that kind",
+  "partOfSpeech": "代"
  },
  {
   "id": "hsk2-0108",
@@ -969,7 +1126,8 @@
   "simplified": "奶茶",
   "traditional": "奶茶",
   "pinyin": "nǎichá",
-  "english": "milk tea"
+  "english": "milk tea",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0109",
@@ -978,7 +1136,8 @@
   "simplified": "奶奶",
   "traditional": "奶奶",
   "pinyin": "nǎinai",
-  "english": "grandmother (paternal)"
+  "english": "grandmother (paternal)",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0110",
@@ -987,7 +1146,8 @@
   "simplified": "男孩儿",
   "traditional": "男孩兒",
   "pinyin": "nánháir",
-  "english": "boy"
+  "english": "boy",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0111",
@@ -996,7 +1156,8 @@
   "simplified": "鸟",
   "traditional": "鳥",
   "pinyin": "niǎo",
-  "english": "bird"
+  "english": "bird",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0112",
@@ -1005,7 +1166,8 @@
   "simplified": "女孩儿",
   "traditional": "女孩兒",
   "pinyin": "nǚháir",
-  "english": "girl"
+  "english": "girl",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0113",
@@ -1014,7 +1176,8 @@
   "simplified": "旁边",
   "traditional": "旁邊",
   "pinyin": "pángbiān",
-  "english": "beside; next to"
+  "english": "beside; next to",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0114",
@@ -1023,7 +1186,8 @@
   "simplified": "跑",
   "traditional": "跑",
   "pinyin": "pǎo",
-  "english": "to run"
+  "english": "to run",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0115",
@@ -1032,7 +1196,8 @@
   "simplified": "跑步",
   "traditional": "跑步",
   "pinyin": "pǎobù",
-  "english": "to run; to jog"
+  "english": "to run; to jog",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0116",
@@ -1041,7 +1206,8 @@
   "simplified": "票",
   "traditional": "票",
   "pinyin": "piào",
-  "english": "ticket"
+  "english": "ticket",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0117",
@@ -1050,7 +1216,8 @@
   "simplified": "妻子",
   "traditional": "妻子",
   "pinyin": "qīzi",
-  "english": "wife"
+  "english": "wife",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0118",
@@ -1059,7 +1226,8 @@
   "simplified": "起来",
   "traditional": "起來",
   "pinyin": "qǐlái",
-  "english": "to get up; to stand up"
+  "english": "to get up; to stand up",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0119",
@@ -1068,7 +1236,8 @@
   "simplified": "前面",
   "traditional": "前面",
   "pinyin": "qiánmiàn",
-  "english": "in front; ahead"
+  "english": "in front; ahead",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0120",
@@ -1077,7 +1246,8 @@
   "simplified": "晴",
   "traditional": "晴",
   "pinyin": "qíng",
-  "english": "sunny; clear (weather)"
+  "english": "sunny; clear (weather)",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0121",
@@ -1086,7 +1256,8 @@
   "simplified": "球",
   "traditional": "球",
   "pinyin": "qiú",
-  "english": "ball"
+  "english": "ball",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0122",
@@ -1095,7 +1266,11 @@
   "simplified": "让",
   "traditional": "讓",
   "pinyin": "ràng",
-  "english": "to let; to allow"
+  "english": "to let; to allow",
+  "partOfSpeech": "动、（介）",
+  "alsoLevels": [
+   "4"
+  ]
  },
  {
   "id": "hsk2-0123",
@@ -1104,7 +1279,8 @@
   "simplified": "肉",
   "traditional": "肉",
   "pinyin": "ròu",
-  "english": "meat"
+  "english": "meat",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0124",
@@ -1113,7 +1289,8 @@
   "simplified": "商场",
   "traditional": "商場",
   "pinyin": "shāngchǎng",
-  "english": "shopping mall"
+  "english": "shopping mall",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0125",
@@ -1122,7 +1299,8 @@
   "simplified": "上来",
   "traditional": "上來",
   "pinyin": "shànglái",
-  "english": "to come up"
+  "english": "to come up",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0126",
@@ -1131,7 +1309,8 @@
   "simplified": "上面",
   "traditional": "上面",
   "pinyin": "shàngmiàn",
-  "english": "on top; above"
+  "english": "on top; above",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0127",
@@ -1140,7 +1319,8 @@
   "simplified": "上去",
   "traditional": "上去",
   "pinyin": "shàngqù",
-  "english": "to go up"
+  "english": "to go up",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0128",
@@ -1149,7 +1329,8 @@
   "simplified": "上网",
   "traditional": "上網",
   "pinyin": "shàngwǎng",
-  "english": "to go online"
+  "english": "to go online",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0129",
@@ -1158,7 +1339,8 @@
   "simplified": "身体",
   "traditional": "身體",
   "pinyin": "shēntǐ",
-  "english": "body; health"
+  "english": "body; health",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0130",
@@ -1167,7 +1349,8 @@
   "simplified": "生日",
   "traditional": "生日",
   "pinyin": "shēngrì",
-  "english": "birthday"
+  "english": "birthday",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0131",
@@ -1176,7 +1359,11 @@
   "simplified": "时",
   "traditional": "時",
   "pinyin": "shí",
-  "english": "time; hour; when"
+  "english": "time; hour; when",
+  "partOfSpeech": "名、（量）",
+  "alsoLevels": [
+   "6"
+  ]
  },
  {
   "id": "hsk2-0132",
@@ -1185,7 +1372,8 @@
   "simplified": "事情",
   "traditional": "事情",
   "pinyin": "shìqing",
-  "english": "matter; thing"
+  "english": "matter; thing",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0133",
@@ -1194,7 +1382,8 @@
   "simplified": "手",
   "traditional": "手",
   "pinyin": "shǒu",
-  "english": "hand"
+  "english": "hand",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0134",
@@ -1203,7 +1392,8 @@
   "simplified": "手表",
   "traditional": "手錶",
   "pinyin": "shǒubiǎo",
-  "english": "wristwatch"
+  "english": "wristwatch",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0135",
@@ -1212,7 +1402,8 @@
   "simplified": "书包",
   "traditional": "書包",
   "pinyin": "shūbāo",
-  "english": "schoolbag"
+  "english": "schoolbag",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0136",
@@ -1221,7 +1412,8 @@
   "simplified": "舒服",
   "traditional": "舒服",
   "pinyin": "shūfu",
-  "english": "comfortable"
+  "english": "comfortable",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0137",
@@ -1230,7 +1422,8 @@
   "simplified": "送",
   "traditional": "送",
   "pinyin": "sòng",
-  "english": "to give (a gift); to send; to see off"
+  "english": "to give (a gift); to send; to see off",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0138",
@@ -1239,7 +1432,8 @@
   "simplified": "虽然",
   "traditional": "雖然",
   "pinyin": "suīrán",
-  "english": "although"
+  "english": "although",
+  "partOfSpeech": "连"
  },
  {
   "id": "hsk2-0139",
@@ -1248,7 +1442,8 @@
   "simplified": "所以",
   "traditional": "所以",
   "pinyin": "suǒyǐ",
-  "english": "so; therefore"
+  "english": "so; therefore",
+  "partOfSpeech": "连"
  },
  {
   "id": "hsk2-0140",
@@ -1257,7 +1452,11 @@
   "simplified": "疼",
   "traditional": "疼",
   "pinyin": "téng",
-  "english": "to hurt; sore; to love dearly"
+  "english": "to hurt; sore; to love dearly",
+  "partOfSpeech": "形、（动）",
+  "alsoLevels": [
+   "6"
+  ]
  },
  {
   "id": "hsk2-0141",
@@ -1266,7 +1465,8 @@
   "simplified": "踢",
   "traditional": "踢",
   "pinyin": "tī",
-  "english": "to kick"
+  "english": "to kick",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0142",
@@ -1275,7 +1475,8 @@
   "simplified": "题",
   "traditional": "題",
   "pinyin": "tí",
-  "english": "question; topic; problem"
+  "english": "question; topic; problem",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0143",
@@ -1284,7 +1485,11 @@
   "simplified": "条",
   "traditional": "條",
   "pinyin": "tiáo",
-  "english": "measure word for long thin things"
+  "english": "measure word for long thin things",
+  "partOfSpeech": "量、（名）",
+  "alsoLevels": [
+   "5"
+  ]
  },
  {
   "id": "hsk2-0144",
@@ -1293,7 +1498,8 @@
   "simplified": "跳舞",
   "traditional": "跳舞",
   "pinyin": "tiàowǔ",
-  "english": "to dance"
+  "english": "to dance",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0145",
@@ -1302,7 +1508,12 @@
   "simplified": "头",
   "traditional": "頭",
   "pinyin": "tóu",
-  "english": "head"
+  "english": "head",
+  "partOfSpeech": "名、（量）、（形）",
+  "alsoLevels": [
+   "3",
+   "5"
+  ]
  },
  {
   "id": "hsk2-0146",
@@ -1311,7 +1522,8 @@
   "simplified": "外国",
   "traditional": "外國",
   "pinyin": "wàiguó",
-  "english": "foreign country"
+  "english": "foreign country",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0147",
@@ -1320,7 +1532,8 @@
   "simplified": "外面",
   "traditional": "外面",
   "pinyin": "wàimiàn",
-  "english": "outside"
+  "english": "outside",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0148",
@@ -1329,7 +1542,8 @@
   "simplified": "完",
   "traditional": "完",
   "pinyin": "wán",
-  "english": "to finish; to be over"
+  "english": "to finish; to be over",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0149",
@@ -1338,7 +1552,8 @@
   "simplified": "万",
   "traditional": "萬",
   "pinyin": "wàn",
-  "english": "ten thousand"
+  "english": "ten thousand",
+  "partOfSpeech": "数"
  },
  {
   "id": "hsk2-0150",
@@ -1347,7 +1562,8 @@
   "simplified": "往",
   "traditional": "往",
   "pinyin": "wǎng",
-  "english": "towards; in the direction of; to go"
+  "english": "towards; in the direction of; to go",
+  "partOfSpeech": "动、介"
  },
  {
   "id": "hsk2-0151",
@@ -1356,7 +1572,8 @@
   "simplified": "网上",
   "traditional": "網上",
   "pinyin": "wǎngshang",
-  "english": "online; on the internet"
+  "english": "online; on the internet",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0152",
@@ -1365,7 +1582,8 @@
   "simplified": "忘",
   "traditional": "忘",
   "pinyin": "wàng",
-  "english": "to forget"
+  "english": "to forget",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0153",
@@ -1374,7 +1592,8 @@
   "simplified": "位",
   "traditional": "位",
   "pinyin": "wèi",
-  "english": "measure word for people (polite)"
+  "english": "measure word for people (polite)",
+  "partOfSpeech": "量"
  },
  {
   "id": "hsk2-0154",
@@ -1383,7 +1602,8 @@
   "simplified": "为什么",
   "traditional": "為什麼",
   "pinyin": "wèi shénme",
-  "english": "why"
+  "english": "why",
+  "partOfSpeech": ""
  },
  {
   "id": "hsk2-0155",
@@ -1392,7 +1612,8 @@
   "simplified": "希望",
   "traditional": "希望",
   "pinyin": "xīwàng",
-  "english": "to hope"
+  "english": "to hope",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0156",
@@ -1401,7 +1622,8 @@
   "simplified": "洗",
   "traditional": "洗",
   "pinyin": "xǐ",
-  "english": "to wash"
+  "english": "to wash",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0157",
@@ -1410,7 +1632,8 @@
   "simplified": "洗手间",
   "traditional": "洗手間",
   "pinyin": "xǐshǒujiān",
-  "english": "restroom; toilet"
+  "english": "restroom; toilet",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0158",
@@ -1419,7 +1642,8 @@
   "simplified": "下来",
   "traditional": "下來",
   "pinyin": "xiàlái",
-  "english": "to come down"
+  "english": "to come down",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0159",
@@ -1428,7 +1652,8 @@
   "simplified": "下面",
   "traditional": "下面",
   "pinyin": "xiàmiàn",
-  "english": "below; next"
+  "english": "below; next",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0160",
@@ -1437,7 +1662,8 @@
   "simplified": "下去",
   "traditional": "下去",
   "pinyin": "xiàqù",
-  "english": "to go down; to continue"
+  "english": "to go down; to continue",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0161",
@@ -1446,7 +1672,8 @@
   "simplified": "小孩儿",
   "traditional": "小孩兒",
   "pinyin": "xiǎoháir",
-  "english": "child"
+  "english": "child",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0162",
@@ -1455,7 +1682,8 @@
   "simplified": "小时候",
   "traditional": "小時候",
   "pinyin": "xiǎoshíhou",
-  "english": "childhood; when one was young"
+  "english": "childhood; when one was young",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0163",
@@ -1464,7 +1692,8 @@
   "simplified": "笑",
   "traditional": "笑",
   "pinyin": "xiào",
-  "english": "to laugh; to smile"
+  "english": "to laugh; to smile",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0164",
@@ -1473,7 +1702,8 @@
   "simplified": "姓",
   "traditional": "姓",
   "pinyin": "xìng",
-  "english": "surname; to be surnamed"
+  "english": "surname; to be surnamed",
+  "partOfSpeech": "名、动"
  },
  {
   "id": "hsk2-0165",
@@ -1482,7 +1712,8 @@
   "simplified": "姓名",
   "traditional": "姓名",
   "pinyin": "xìngmíng",
-  "english": "full name"
+  "english": "full name",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0166",
@@ -1491,7 +1722,8 @@
   "simplified": "颜色",
   "traditional": "顏色",
   "pinyin": "yánsè",
-  "english": "color"
+  "english": "color",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0167",
@@ -1500,7 +1732,8 @@
   "simplified": "眼睛",
   "traditional": "眼睛",
   "pinyin": "yǎnjing",
-  "english": "eye"
+  "english": "eye",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0168",
@@ -1509,7 +1742,8 @@
   "simplified": "药",
   "traditional": "藥",
   "pinyin": "yào",
-  "english": "medicine; drug"
+  "english": "medicine; drug",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0169",
@@ -1518,7 +1752,8 @@
   "simplified": "药店",
   "traditional": "藥店",
   "pinyin": "yàodiàn",
-  "english": "pharmacy; drugstore"
+  "english": "pharmacy; drugstore",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0170",
@@ -1527,7 +1762,8 @@
   "simplified": "爷爷",
   "traditional": "爺爺",
   "pinyin": "yéye",
-  "english": "paternal grandfather; grandpa"
+  "english": "paternal grandfather; grandpa",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0171",
@@ -1536,7 +1772,11 @@
   "simplified": "一会儿",
   "traditional": "一會兒",
   "pinyin": "yíhuìr",
-  "english": "a moment; a while"
+  "english": "a moment; a while",
+  "partOfSpeech": "数量、（副）",
+  "alsoLevels": [
+   "3"
+  ]
  },
  {
   "id": "hsk2-0172",
@@ -1545,7 +1785,8 @@
   "simplified": "已经",
   "traditional": "已經",
   "pinyin": "yǐjīng",
-  "english": "already"
+  "english": "already",
+  "partOfSpeech": "副"
  },
  {
   "id": "hsk2-0173",
@@ -1554,7 +1795,8 @@
   "simplified": "一起",
   "traditional": "一起",
   "pinyin": "yìqǐ",
-  "english": "together"
+  "english": "together",
+  "partOfSpeech": "副"
  },
  {
   "id": "hsk2-0174",
@@ -1563,7 +1805,8 @@
   "simplified": "意思",
   "traditional": "意思",
   "pinyin": "yìsi",
-  "english": "meaning; idea"
+  "english": "meaning; idea",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0175",
@@ -1572,7 +1815,8 @@
   "simplified": "阴",
   "traditional": "陰",
   "pinyin": "yīn",
-  "english": "overcast; cloudy"
+  "english": "overcast; cloudy",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0176",
@@ -1581,7 +1825,8 @@
   "simplified": "因为",
   "traditional": "因為",
   "pinyin": "yīnwèi",
-  "english": "because"
+  "english": "because",
+  "partOfSpeech": "介、连"
  },
  {
   "id": "hsk2-0177",
@@ -1590,7 +1835,8 @@
   "simplified": "游",
   "traditional": "游",
   "pinyin": "yóu",
-  "english": "to swim"
+  "english": "to swim",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0178",
@@ -1599,7 +1845,8 @@
   "simplified": "游泳",
   "traditional": "游泳",
   "pinyin": "yóuyǒng",
-  "english": "to swim; swimming"
+  "english": "to swim; swimming",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0179",
@@ -1608,7 +1855,8 @@
   "simplified": "有意思",
   "traditional": "有意思",
   "pinyin": "yǒu yìsi",
-  "english": "interesting; fun"
+  "english": "interesting; fun",
+  "partOfSpeech": ""
  },
  {
   "id": "hsk2-0180",
@@ -1617,7 +1865,8 @@
   "simplified": "有时",
   "traditional": "有時",
   "pinyin": "yǒushí",
-  "english": "sometimes; now and then"
+  "english": "sometimes; now and then",
+  "partOfSpeech": "副"
  },
  {
   "id": "hsk2-0181",
@@ -1626,7 +1875,8 @@
   "simplified": "右",
   "traditional": "右",
   "pinyin": "yòu",
-  "english": "right (direction)"
+  "english": "right (direction)",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0182",
@@ -1635,7 +1885,8 @@
   "simplified": "右边",
   "traditional": "右邊",
   "pinyin": "yòubian",
-  "english": "right side; to the right"
+  "english": "right side; to the right",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0183",
@@ -1644,7 +1895,8 @@
   "simplified": "鱼",
   "traditional": "魚",
   "pinyin": "yú",
-  "english": "fish"
+  "english": "fish",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0184",
@@ -1653,7 +1905,8 @@
   "simplified": "远",
   "traditional": "遠",
   "pinyin": "yuǎn",
-  "english": "far; distant"
+  "english": "far; distant",
+  "partOfSpeech": "形"
  },
  {
   "id": "hsk2-0185",
@@ -1662,7 +1915,8 @@
   "simplified": "运动",
   "traditional": "運動",
   "pinyin": "yùndòng",
-  "english": "to exercise; sports"
+  "english": "to exercise; sports",
+  "partOfSpeech": "动、名"
  },
  {
   "id": "hsk2-0186",
@@ -1671,7 +1925,9 @@
   "simplified": "站",
   "traditional": "站",
   "pinyin": "zhàn",
-  "english": "station; stop"
+  "english": "station; stop",
+  "partOfSpeech": "名",
+  "sense": 1
  },
  {
   "id": "hsk2-0187",
@@ -1680,7 +1936,8 @@
   "simplified": "丈夫",
   "traditional": "丈夫",
   "pinyin": "zhàngfu",
-  "english": "husband"
+  "english": "husband",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0188",
@@ -1689,7 +1946,8 @@
   "simplified": "这么",
   "traditional": "這麼",
   "pinyin": "zhème",
-  "english": "so; like this"
+  "english": "so; like this",
+  "partOfSpeech": "代"
  },
  {
   "id": "hsk2-0189",
@@ -1698,7 +1956,8 @@
   "simplified": "这样",
   "traditional": "這樣",
   "pinyin": "zhèyàng",
-  "english": "this way; like this; so"
+  "english": "this way; like this; so",
+  "partOfSpeech": "代"
  },
  {
   "id": "hsk2-0190",
@@ -1707,7 +1966,8 @@
   "simplified": "着",
   "traditional": "著",
   "pinyin": "zhe",
-  "english": "(marks an ongoing action or state)"
+  "english": "(marks an ongoing action or state)",
+  "partOfSpeech": "助"
  },
  {
   "id": "hsk2-0191",
@@ -1716,7 +1976,11 @@
   "simplified": "正",
   "traditional": "正",
   "pinyin": "zhèng",
-  "english": "just; exactly; right now"
+  "english": "just; exactly; right now",
+  "partOfSpeech": "副、（形）",
+  "alsoLevels": [
+   "5"
+  ]
  },
  {
   "id": "hsk2-0192",
@@ -1725,7 +1989,11 @@
   "simplified": "周",
   "traditional": "週",
   "pinyin": "zhōu",
-  "english": "week; measure word for weeks"
+  "english": "week; measure word for weeks",
+  "partOfSpeech": "名、（量）",
+  "alsoLevels": [
+   "6"
+  ]
  },
  {
   "id": "hsk2-0193",
@@ -1734,7 +2002,8 @@
   "simplified": "准备",
   "traditional": "準備",
   "pinyin": "zhǔnbèi",
-  "english": "to prepare; to intend"
+  "english": "to prepare; to intend",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0194",
@@ -1743,7 +2012,8 @@
   "simplified": "自己",
   "traditional": "自己",
   "pinyin": "zìjǐ",
-  "english": "oneself"
+  "english": "oneself",
+  "partOfSpeech": "代"
  },
  {
   "id": "hsk2-0195",
@@ -1752,7 +2022,8 @@
   "simplified": "走",
   "traditional": "走",
   "pinyin": "zǒu",
-  "english": "to walk; to leave"
+  "english": "to walk; to leave",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0196",
@@ -1761,7 +2032,8 @@
   "simplified": "走路",
   "traditional": "走路",
   "pinyin": "zǒulù",
-  "english": "to walk; to go on foot"
+  "english": "to walk; to go on foot",
+  "partOfSpeech": "动"
  },
  {
   "id": "hsk2-0197",
@@ -1770,7 +2042,8 @@
   "simplified": "足球",
   "traditional": "足球",
   "pinyin": "zúqiú",
-  "english": "soccer; football"
+  "english": "soccer; football",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0198",
@@ -1779,7 +2052,8 @@
   "simplified": "最",
   "traditional": "最",
   "pinyin": "zuì",
-  "english": "most (superlative)"
+  "english": "most (superlative)",
+  "partOfSpeech": "副"
  },
  {
   "id": "hsk2-0199",
@@ -1788,7 +2062,8 @@
   "simplified": "左",
   "traditional": "左",
   "pinyin": "zuǒ",
-  "english": "left"
+  "english": "left",
+  "partOfSpeech": "名"
  },
  {
   "id": "hsk2-0200",
@@ -1797,6 +2072,7 @@
   "simplified": "左边",
   "traditional": "左邊",
   "pinyin": "zuǒbian",
-  "english": "left side; to the left"
+  "english": "left side; to the left",
+  "partOfSpeech": "名"
  }
 ]

@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """Extract the HSK 3.0 (2025) word tables from source/pdfs/*.pdf into data/raw/*.json.
 
+Every row is then checked against source/hsk-3-0-all-levels.json (same source,
+all levels in one list): simplified, traditional, pinyin and english must match
+in the same order. That file also adds the official part of speech
+(partOfSpeech, e.g. "动、（名）"), sense (1/2 for words listed twice) and
+alsoLevels (other levels that list the word again).
+
 Requires `pdftotext` (poppler-utils). Usage: python3 scripts/parse-pdfs.py
-Exits non-zero if any row fails to parse or a level's count is wrong.
+Exits non-zero if any row fails to parse, a level's count is wrong, or the
+PDFs and the JSON disagree.
 """
 import json
 import re
@@ -14,6 +21,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PDF_DIR = ROOT / "source" / "pdfs"
 OUT_DIR = ROOT / "data" / "raw"
+OFFICIAL_JSON = ROOT / "source" / "hsk-3-0-all-levels.json"
+COMPARED = ("simplified", "traditional", "pinyin", "english")
 
 LEVELS = [
     # (pdf file, output key, numeric level used in ids, expected count)
@@ -135,10 +144,31 @@ def parse_level(pdf, key, level, expected):
     return rows, errors, missing, extra, fixed
 
 
+def add_official(all_rows):
+    """Check rows against the all-levels JSON and copy its extra fields. Returns error strings."""
+    terms = json.loads(OFFICIAL_JSON.read_text(encoding="utf-8"))["terms"]
+    if len(terms) != len(all_rows):
+        return [f"{OFFICIAL_JSON.name} has {len(terms)} terms but the PDFs have {len(all_rows)} rows"]
+    errors = []
+    for i, (row, term) in enumerate(zip(all_rows, terms)):
+        if term["number"] != i + 1:
+            errors.append(f"{OFFICIAL_JSON.name} term {i + 1} is numbered {term['number']}")
+        for field in COMPARED:
+            if row[field] != term[field]:
+                errors.append(f"{row['id']}: {field} is {row[field]!r} in the PDF but {term[field]!r} in {OFFICIAL_JSON.name}")
+        row["partOfSpeech"] = term["partOfSpeech"]
+        if "sense" in term:
+            row["sense"] = term["sense"]
+        if term.get("alsoLevels"):
+            row["alsoLevels"] = term["alsoLevels"]
+    return errors
+
+
 def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     ok = True
     total = 0
+    parsed = []
     print(f"{'Level':<8}{'Expected':>10}{'Parsed':>10}  Status")
     for pdf, key, level, expected in LEVELS:
         rows, errors, missing, extra, fixed = parse_level(pdf, key, level, expected)
@@ -154,14 +184,23 @@ def main():
             print(f"    missing row numbers: {missing[:30]}{' …' if len(missing) > 30 else ''}")
         if extra:
             print(f"    unexpected row numbers: {extra[:30]}")
-        if good:
-            out = OUT_DIR / f"{key}.json"
-            out.write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        parsed.append((key, rows))
     print(f"Total parsed: {total}")
     if not ok:
         print("\nParsing FAILED — fix the errors above before continuing.")
         sys.exit(1)
-    print("\nAll levels parsed and counts match.")
+
+    mismatches = add_official([row for _, rows in parsed for row in rows])
+    if mismatches:
+        print(f"\n{len(mismatches)} difference(s) between the PDFs and {OFFICIAL_JSON.name}:")
+        for m in mismatches[:50]:
+            print(f"  {m}")
+        sys.exit(1)
+
+    for key, rows in parsed:
+        out = OUT_DIR / f"{key}.json"
+        out.write_text(json.dumps(rows, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"\nAll levels parsed, counts match, and every row matches {OFFICIAL_JSON.name}.")
 
 
 if __name__ == "__main__":
