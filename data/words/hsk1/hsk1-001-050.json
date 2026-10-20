@@ -283,6 +283,12 @@
     ],
     "english": "half",
     "partOfSpeech": "numeral",
+    "partOfSpeechMinor": [
+      "adverb"
+    ],
+    "alsoLevels": [
+      "4"
+    ],
     "myanmar": {
       "meaning": "တစ်ဝက်၊ ...ခွဲ",
       "kidExplanation": "半 ဆိုတာ တစ်ခုကို အညီအမျှ နှစ်ပိုင်း ခွဲထားရင် တစ်ပိုင်း — တစ်ဝက်ပါ။ ပန်းသီး တစ်ခြမ်း၊ နာရီဝက် စတာတွေမှာ သုံးပါတယ်။ \"သုံးနာရီခွဲ\" ကို 三点半 လို့ ပြောပါတယ်။",
@@ -417,6 +423,7 @@
     ],
     "english": "measure word for books, periodicals, files",
     "partOfSpeech": "measure word",
+    "sense": 1,
     "myanmar": {
       "meaning": "အုပ် (စာအုပ် ရေတွက်ရန်)",
       "kidExplanation": "本 ကို စာအုပ်တွေ ရေတွက်တဲ့အခါ သုံးပါတယ်။ မြန်မာလို \"စာအုပ် နှစ်အုပ်\" လို့ \"အုပ်\" ထည့်ပြောသလိုပဲ တရုတ်လိုလည်း 两本书 လို့ 本 ထည့်ပြောပါတယ်။",
@@ -460,7 +467,10 @@
       1
     ],
     "english": "side; edge",
-    "partOfSpeech": "noun",
+    "partOfSpeech": [
+      "noun",
+      "suffix"
+    ],
     "myanmar": {
       "meaning": "ဘက်၊ ဘေး၊ အစွန်း",
       "kidExplanation": "边 ဆိုတာ တစ်ခုခုရဲ့ ဘေးဘက်၊ အစွန်းပါ။ 这边 (ဒီဘက်)၊ 那边 (ဟိုဘက်) လို စကားလုံးတွေထဲမှာ အများဆုံး တွေ့ရပါတယ်။",
@@ -657,7 +667,7 @@
       4
     ],
     "english": "don't; must not",
-    "partOfSpeech": "phrase",
+    "partOfSpeech": "adverb",
     "myanmar": {
       "meaning": "မ...နဲ့၊ မလိုချင်ဘူး",
       "kidExplanation": "不要 ကို တစ်ယောက်ယောက်ကို \"ဒါ မလုပ်နဲ့\" လို့ ပြောတဲ့အခါ သုံးပါတယ်။ 不要说话 = စကား မပြောနဲ့။ \"မလိုချင်ဘူး\" လို့ ပြောတဲ့အခါမှာလည်း သုံးပါတယ်။",
@@ -1483,9 +1493,13 @@
       3
     ],
     "english": "o'clock; a little bit",
-    "partOfSpeech": [
-      "measure word",
+    "partOfSpeech": "measure word",
+    "partOfSpeechMinor": [
       "noun"
+    ],
+    "sense": 1,
+    "alsoLevels": [
+      "3"
     ],
     "myanmar": {
       "meaning": "နာရီ (အချိန်)၊ အစက်",
@@ -1992,6 +2006,13 @@
       "adjective",
       "preposition"
     ],
+    "partOfSpeechMinor": [
+      "verb",
+      "measure word"
+    ],
+    "alsoLevels": [
+      "4"
+    ],
     "myanmar": {
       "meaning": "မှန်တယ်၊ ...ကို၊ ...အပေါ်",
       "kidExplanation": "对 မှာ အဓိပ္ပာယ် နှစ်ခုရှိပါတယ်။ တစ်ခုက \"မှန်တယ်၊ ဟုတ်တယ်\"။ ဆရာက မေးလို့ အဖြေမှန်ရင် 对！ လို့ ပြောတာပေါ့။ နောက်တစ်ခုက \"တစ်ယောက်ယောက်အပေါ်\" ပါ: 他对我很好 = သူက ကျွန်တော့်အပေါ် အရမ်းကောင်းတယ်။",
@@ -2043,7 +2064,7 @@
       3
     ],
     "english": "sorry; excuse me",
-    "partOfSpeech": "phrase",
+    "partOfSpeech": "verb",
     "myanmar": {
       "meaning": "တောင်းပန်ပါတယ်၊ ဆောရီး",
       "kidExplanation": "对不起 ဆိုတာ \"တောင်းပန်ပါတယ်\" ပါ။ အမှားလုပ်မိရင်၊ တစ်ယောက်ယောက်ကို တိုက်မိရင် ပြောပါ။",
@@ -2087,7 +2108,18 @@
       1
     ],
     "english": "many; much",
-    "partOfSpeech": "adjective",
+    "partOfSpeech": [
+      "adjective",
+      "verb",
+      "pronoun"
+    ],
+    "partOfSpeechMinor": [
+      "numeral",
+      "adverb"
+    ],
+    "alsoLevels": [
+      "2"
+    ],
     "myanmar": {
       "meaning": "များတယ်",
       "kidExplanation": "多 ဆိုတာ များတာပါ။ 很多 = အများကြီး။ 少 (နည်းတယ်) ရဲ့ ဆန့်ကျင်ဘက်ပါ။",

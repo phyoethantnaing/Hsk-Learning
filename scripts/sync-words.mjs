@@ -4,7 +4,9 @@
 //
 //   node scripts/sync-words.mjs
 //
-// From data/raw (by id): level, simplified, traditional, pinyin, english, needsReview.
+// From data/raw (by id): level, simplified, traditional, pinyin, english, needsReview,
+// sense, alsoLevels, and the official part of speech (partOfSpeech, plus
+// partOfSpeechMinor for uses in （…）) — kept as written only where the syllabus has none.
 // Generated from pinyin: pinyinNumbered, tones.
 // Defaults when missing: relatedWords [], audio { word: null }, examples[].audio null,
 // workbookRefs [], reviewStatus "draft".
@@ -14,6 +16,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from '
 import { join, relative, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { toNumbered, tones } from '../src/lib/pinyin.mjs';
+import { parseOfficialPos } from '../src/lib/pos.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LEVELS = ['1', '2', '3', '4', '5', '6', '7-9'];
@@ -25,8 +28,8 @@ for (const level of LEVELS) {
 
 const ORDER = [
   'id', 'level', 'simplified', 'traditional', 'pinyin', 'pinyinNumbered', 'tones', 'english',
-  'partOfSpeech', 'myanmar', 'examples', 'relatedWords', 'audio', 'workbookRefs',
-  'reviewStatus', 'needsReview', 'reviewNote',
+  'partOfSpeech', 'partOfSpeechMinor', 'sense', 'alsoLevels', 'myanmar', 'examples',
+  'relatedWords', 'audio', 'workbookRefs', 'reviewStatus', 'needsReview', 'reviewNote',
 ];
 const MYANMAR_ORDER = ['meaning', 'kidExplanation', 'pronunciationTip', 'memoryTip', 'usageNote', 'commonMistake'];
 
@@ -55,6 +58,17 @@ function sync(word) {
     reviewStatus: word.reviewStatus ?? 'draft',
   };
   if (r.needsReview && w.needsReview === undefined && w.reviewStatus === 'draft') w.needsReview = true;
+
+  const official = parseOfficialPos(r.partOfSpeech);
+  if (official) {
+    w.partOfSpeech = official.main.length === 1 ? official.main[0] : official.main;
+    if (official.minor.length) w.partOfSpeechMinor = official.minor;
+    else delete w.partOfSpeechMinor;
+  }
+  if (r.sense) w.sense = r.sense;
+  else delete w.sense;
+  if (r.alsoLevels) w.alsoLevels = r.alsoLevels;
+  else delete w.alsoLevels;
   if (w.myanmar) w.myanmar = ordered(w.myanmar, MYANMAR_ORDER);
   if (w.examples) w.examples = w.examples.map((ex) => ordered({ ...ex, audio: ex.audio ?? null }, ['zh', 'pinyin', 'my', 'audio']));
   return ordered(w, ORDER);

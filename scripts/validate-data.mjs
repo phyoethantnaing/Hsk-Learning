@@ -7,7 +7,9 @@
 // Checks:
 //  - JSON Schema (data/schema/word.schema.json): required fields, types, ≥2 examples
 //  - file names match their contents (data/words/hsk1/hsk1-001-050.json holds #1–#50)
+//  - data/raw matches source/hsk-3-0-all-levels.json (same order and fields)
 //  - id, level, simplified, traditional, pinyin, english match data/raw exactly
+//  - partOfSpeech/partOfSpeechMinor/sense/alsoLevels match the official data
 //  - pinyinNumbered and tones match what the pinyin says
 //  - Myanmar text is Unicode, not Zawgyi (also checks the site's own UI text in src/)
 //  - example pinyin is real pinyin with one syllable per Chinese character
@@ -25,6 +27,7 @@ import { toNumbered, tones, syllables } from '../src/lib/pinyin.mjs';
 import { zawgyiProblems } from './lib/zawgyi.mjs';
 import { ALLOWLIST } from '../src/lib/allowlist.mjs';
 import { TONES } from '../src/lib/tones.mjs';
+import { parseOfficialPos } from '../src/lib/pos.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LEVELS = ['1', '2', '3', '4', '5', '6', '7-9'];
@@ -57,6 +60,29 @@ const raw = new Map();
 for (const level of LEVELS) {
   const rows = readJson(join(ROOT, 'data/raw', `hsk${level}.json`)) ?? [];
   for (const r of rows) raw.set(r.id, r);
+}
+
+// data/raw must still match the all-levels JSON from the same source (parse-pdfs
+// copies it in; this catches hand edits without needing pdftotext).
+{
+  const where = 'data/raw vs source/hsk-3-0-all-levels.json';
+  const terms = readJson(join(ROOT, 'source/hsk-3-0-all-levels.json'))?.terms ?? [];
+  const rows = [...raw.values()];
+  if (terms.length !== rows.length) err(where, `${terms.length} terms but ${rows.length} rows`);
+  rows.forEach((r, i) => {
+    const t = terms[i];
+    if (!t) return;
+    for (const key of ['simplified', 'traditional', 'pinyin', 'english', 'partOfSpeech']) {
+      if (r[key] !== t[key]) err(where, `${r.id} ${key}: ${JSON.stringify(r[key])} ≠ ${JSON.stringify(t[key])}`);
+    }
+    if ((r.sense ?? null) !== (t.sense ?? null)) err(where, `${r.id} sense differs`);
+    if (!isDeepStrictEqual(r.alsoLevels ?? null, t.alsoLevels ?? null)) err(where, `${r.id} alsoLevels differs`);
+    try {
+      parseOfficialPos(r.partOfSpeech);
+    } catch (e) {
+      err(where, `${r.id}: ${e.message}`);
+    }
+  });
 }
 
 // --- schema ------------------------------------------------------------------
@@ -150,6 +176,16 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
       if (w[key] !== r[key]) err(where, `${key} is ${JSON.stringify(w[key])} but the official list says ${JSON.stringify(r[key])}`);
     }
 
+    // Fields copied from the official data by sync-words
+    const official = parseOfficialPos(r.partOfSpeech);
+    if (official) {
+      const main = official.main.length === 1 ? official.main[0] : official.main;
+      if (!isDeepStrictEqual(w.partOfSpeech, main)) err(where, `partOfSpeech should be ${JSON.stringify(main)} (official: ${r.partOfSpeech}); run npm run sync-words`);
+      if (!isDeepStrictEqual(w.partOfSpeechMinor ?? [], official.minor)) err(where, `partOfSpeechMinor should be ${JSON.stringify(official.minor)}; run npm run sync-words`);
+    }
+    if ((w.sense ?? null) !== (r.sense ?? null)) err(where, 'sense differs from data/raw; run npm run sync-words');
+    if (!isDeepStrictEqual(w.alsoLevels ?? null, r.alsoLevels ?? null)) err(where, 'alsoLevels differs from data/raw; run npm run sync-words');
+
     // Generated pinyin fields
     const expectedNumbered = toNumbered(w.pinyin);
     if (w.pinyinNumbered !== expectedNumbered) err(where, `pinyinNumbered should be "${expectedNumbered}"`);
@@ -177,7 +213,7 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
       if (/ောင်/u.test(hint)) err(where, `pronunciationTip hint ${hint}: write ao as ော် (e.g. "ပေါ်"), not ောင်`);
     }
     for (const ex of w.examples) {
-      if (ex.my.includes('ကျွန်တော်')) firstPerson.male++;
+      if (ex.my.includes('ကျွန်တော')) firstPerson.male++; // ကျွန်တော် and ကျွန်တော့် ("my")
       if (ex.my.includes('ကျွန်မ')) firstPerson.female++;
     }
 

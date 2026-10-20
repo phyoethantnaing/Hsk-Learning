@@ -1,4 +1,11 @@
 import { test, expect } from "@playwright/test";
+import { existsSync, readdirSync } from "node:fs";
+
+// Levels that have word files, in syllabus order (e.g. ["1", "2"]).
+const published = ["1", "2", "3", "4", "5", "6", "7-9"].filter((key) => {
+  const dir = new URL(`../data/words/hsk${key}/`, import.meta.url);
+  return existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(".json"));
+});
 
 async function setTheme(page, value) {
   await page.locator("[data-appearance-open]").click();
@@ -47,12 +54,17 @@ test("every page type loads without script errors or horizontal overflow", async
 
 test("only published levels are linked", async ({ page }) => {
   await page.goto("./");
-  await expect(page.locator(".levels a")).toHaveCount(1);
-  await expect(page.locator(".levels a")).toHaveAttribute(
-    "href",
-    "/Hsk-Learning/hsk1/",
+  const links = page.locator(".levels a");
+  await expect(links).toHaveCount(published.length);
+  for (const [i, key] of published.entries()) {
+    await expect(links.nth(i)).toHaveAttribute(
+      "href",
+      `/Hsk-Learning/hsk${key}/`,
+    );
+  }
+  await expect(page.locator(".levels .level:not(.ready)")).toHaveCount(
+    7 - published.length,
   );
-  await expect(page.locator(".levels .level:not(.ready)")).toHaveCount(6);
 });
 
 test("appearance follows the system and manual selection persists", async ({
@@ -128,7 +140,10 @@ test("search reports a network error and retries safely", async ({ page }) => {
   );
   await page.unroute("**/search-index.json");
   await page.locator("#q").fill("爱");
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
 });
 
 test("existing saved progress survives themes, navigation, and flashcard answers", async ({
@@ -357,11 +372,18 @@ test("search survives refresh, Back and Forward and clear keeps the URL in sync"
   await page.locator("#q").fill("love");
   await expect(page).toHaveURL(/q=love/);
   await page.reload();
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
-  await page.locator("[data-results] a").click();
+  // 爱 ranks first; 疼 ("to love dearly", HSK 2) also matches.
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
+  await page.locator("[data-results] a").first().click();
   await page.goBack();
   await expect(page.locator("#q")).toHaveValue("love");
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
   await page.goForward();
   await expect(page.locator("h1")).toContainText("爱");
   await page.goBack();
@@ -396,7 +418,10 @@ test("delayed search failure cannot overwrite a cleared query and retry is expli
   await expect(page.locator("[data-search-retry]")).toBeVisible();
   await page.unroute("**/search-index.json");
   await page.locator("[data-search-retry]").click();
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
 });
 
 test("malformed progress containers cannot break learning", async ({

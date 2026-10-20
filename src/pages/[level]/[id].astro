@@ -18,6 +18,7 @@ import {
   lessonUrl,
 } from "../../lib/words.mjs";
 import { posList } from "../../lib/pos.mjs";
+import { LEVELS } from "../../lib/levels.mjs";
 import { HINT_DISCLAIMER } from "../../lib/tones.mjs";
 import { myNumber, url } from "../../lib/site.mjs";
 
@@ -39,6 +40,9 @@ export function getStaticPaths() {
 const { level, word: w, prev, next } = Astro.props;
 const lesson = lessonNumberOf(w);
 const sameScript = w.simplified === w.traditional;
+const alsoIn = (w.alsoLevels ?? [])
+  .map((key: string) => LEVELS.find((l) => l.key === key)?.label ?? `HSK ${key}`)
+  .join("၊ ");
 
 const SECTIONS = [
   ["kidExplanation", "spark", "ရှင်းပြချက်"],
@@ -82,6 +86,7 @@ const SECTIONS = [
         <SpeakButton text={w.simplified} audio={w.audio.word} size="large" />
       </p>
       <p class="meaning">{w.myanmar.meaning}</p>
+      {alsoIn && <p class="also-levels">{alsoIn} မှာလည်း ပါပါတယ်</p>}
       {sameScript ? (
         <p class="muted small">
           ရိုးရာစာလုံး (Traditional) လည်း ဒီအတိုင်းပါပဲ။
@@ -114,6 +119,12 @@ const SECTIONS = [
         {posList(w.partOfSpeech).map((p) => (
           <li>
             <strong>{p.name}</strong> — {p.help}
+          </li>
+        ))}
+        {posList(w.partOfSpeechMinor).map((p) => (
+          <li>
+            <strong>{p.name}</strong> — {p.help}{" "}
+            <span class="muted">(တစ်ခါတစ်လေ ဒီလိုလည်း သုံးပါတယ်)</span>
           </li>
         ))}
       </ul>
@@ -250,6 +261,15 @@ const SECTIONS = [
 
   .english {
     margin: 8px 0 0;
+  }
+
+  .also-levels {
+    display: inline-block;
+    margin: 0 0 8px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    font-size: 0.875rem;
   }
 
   .small {
