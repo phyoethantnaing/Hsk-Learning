@@ -1,4 +1,4 @@
-export const HIGHLIGHT_COLORS = ["gold", "red", "graphite"];
+export const HIGHLIGHT_COLORS = ["gold", "red", "yellow", "graphite"];
 export const MAX_HIGHLIGHTS = 1000;
 export function highlightKey(fingerprint) {
   return `hsk-mm-pdf-highlights-v1:${fingerprint}`;

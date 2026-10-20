@@ -1,38 +1,3 @@
-.pdf-reader {
-  min-width: 0;
-}
-.reader-heading {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: end;
-  gap: 8px 24px;
-  margin-block: 24px;
-}
-.reader-heading h1 {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
-  line-height: 1.3;
-  margin: 0;
-}
-.reader-heading .eyebrow {
-  margin-bottom: 8px;
-}
-.reader-heading > p {
-  font-size: 0.8rem;
-  margin: 0;
-}
-.reader-toolbar {
-  position: sticky;
-  top: calc(var(--header-height, 76px) + 8px);
-  z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px 18px;
-  padding: 10px;
-  border-radius: 22px;
-}
 .reader-control-group {
   display: flex;
   flex-wrap: wrap;
@@ -81,27 +46,11 @@
   color: var(--text-muted);
   text-align: center;
 }
-.reader-status {
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin: 12px 2px;
-  min-height: 1.95em;
-}
-.reader-scroll {
-  max-width: 100%;
-  overflow: auto;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--surface-2);
-  scrollbar-gutter: stable;
-}
+
 .reader-scroll[aria-busy="true"] {
   cursor: progress;
 }
-.reader-scroll:has(.reader-paper[hidden]) {
-  min-height: 240px;
-}
+
 .reader-paper {
   position: relative;
   margin-inline: auto;
@@ -279,24 +228,14 @@
   font-size: 0.8rem;
   margin-block: 20px 0;
 }
-.reader-error {
-  margin-block: 16px;
-}
+
 .reader-error h2 {
   font-size: 1.1rem;
 }
 @media (max-width: 600px) {
-  .reader-toolbar {
-    position: static;
-    gap: 6px;
-  }
   .reader-control-group {
     justify-content: center;
     width: 100%;
-  }
-  .reader-scroll {
-    padding: 6px;
-    border-radius: 12px;
   }
   .reader-page-form {
     gap: 4px;
@@ -322,4 +261,217 @@
     background: Highlight !important;
     opacity: 0.35;
   }
+}
+
+/* The content is opaque; only the small control layer uses a glass material. */
+.reader-dialog {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  height: 100dvh;
+  max-height: none;
+  border: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+.reader-dialog::backdrop {
+  background: var(--bg);
+}
+.reader-open,
+.reader-immersive {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.reader-immersive #main {
+  padding: 0;
+  margin: 0;
+  max-width: none;
+}
+.reader-immersive .skip-link {
+  display: none;
+}
+.pdf-reader {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+.reader-heading {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--gold-edge);
+}
+.reader-heading > div {
+  flex: 1;
+  min-width: 0;
+}
+.reader-heading h1 {
+  font-size: clamp(1rem, 3.5vw, 1.35rem);
+  overflow-wrap: anywhere;
+  line-height: 1.35;
+}
+.reader-heading .eyebrow {
+  font-size: 0.65rem;
+  margin: 0 0 2px;
+}
+.reader-close,
+.reader-notes-toggle {
+  flex-shrink: 0;
+}
+.reader-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 18px;
+  z-index: 10;
+  position: relative;
+  top: auto;
+  flex: 0 0 auto;
+  margin: 8px 12px 0;
+  padding: 6px 10px;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px #0000000a;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.reader-status {
+  flex: 0 0 auto;
+  margin: 4px 16px;
+  font-size: 0.75rem;
+  min-height: 1.5em;
+}
+.reader-error {
+  flex: 0 0 auto;
+  margin: 8px 16px;
+  padding: 14px;
+}
+.reader-error h2 {
+  margin: 0;
+}
+.reader-error p {
+  margin: 4px 0 10px;
+}
+.reader-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0 12px max(24px, env(safe-area-inset-bottom, 0px));
+  scrollbar-gutter: stable;
+}
+.reader-scroll {
+  max-width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 8px;
+}
+.reader-scroll:has(.reader-paper[hidden]) {
+  min-height: min(65vh, 700px);
+}
+.reader-scroll:has(.reader-paper[hidden])::before {
+  content: "";
+  display: block;
+  width: min(100%, 520px);
+  height: 60vh;
+  margin-inline: auto;
+  background: linear-gradient(115deg, #ffffff10, #ffffff50);
+  border: 1px solid var(--gold-edge);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.reader-paper {
+  max-width: none;
+}
+.reader-mark[data-color="yellow"] {
+  background: #fff06580;
+}
+.reader-marking {
+  max-width: 980px;
+  margin: 20px auto 0;
+  scroll-margin-top: 12px;
+}
+.reader-footnote {
+  max-width: 980px;
+  margin: 16px auto;
+}
+.pdf-reader :is(button, a, input, select) {
+  touch-action: manipulation;
+}
+.pdf-reader button:active,
+.reader-close:active {
+  transform: scale(0.97);
+}
+@media (min-width: 1000px) {
+  .reader-scroll {
+    width: min(100%, 980px);
+    margin-inline: auto;
+  }
+}
+@media (max-width: 600px) {
+  .reader-heading {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+  .reader-toolbar {
+    margin: 6px 8px 0;
+    padding: 4px;
+    gap: 2px;
+  }
+  .reader-control-group {
+    gap: 2px;
+  }
+  .reader-zoom-value {
+    min-width: 42px;
+  }
+  .reader-body {
+    padding-inline: 6px;
+  }
+  .reader-scroll {
+    padding: 6px;
+  }
+}
+@media (max-height: 500px) and (min-width: 601px) {
+  .reader-heading {
+    padding-block: 2px;
+  }
+  .reader-heading .eyebrow {
+    display: none;
+  }
+  .reader-toolbar {
+    margin-top: 2px;
+    padding-block: 2px;
+  }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .reader-toolbar {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--surface);
+  }
+}
+
+html.reader-open {
+  scrollbar-gutter: auto;
+  overflow: hidden;
 }

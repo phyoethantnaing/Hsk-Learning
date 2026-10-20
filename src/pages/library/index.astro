@@ -1,9 +1,11 @@
 ---
+import PdfReader from "../../components/PdfReader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageIntro from "../../components/PageIntro.astro";
 import Icon from "../../components/Icon.astro";
 import {
   PDF_DOCUMENTS,
+  READABLE_PDFS,
   PDF_FOLDER_URL,
   pdfTitle,
   pdfSize,
@@ -29,10 +31,10 @@ const levels = ["1", "2", "3", "4", "5", "6", "7-9"];
   <aside class="library-note card" lang="en">
     <Icon name="highlight" />
     <p>
-      Select text to save a highlight in gold, red or graphite. Highlights stay
-      in this browser. Scanned pages may not have selectable text. These books
-      retain their original editions; they are separate from this site’s HSK 3.0
-      lessons.
+      Select text to save a highlight in yellow, red or soft gold. Highlights
+      stay in this browser. Scanned pages may not have selectable text. These
+      books retain their original editions; they are separate from this site’s
+      HSK 3.0 lessons.
     </p>
   </aside>
   {levels.map((level) => (
@@ -84,6 +86,11 @@ const levels = ["1", "2", "3", "4", "5", "6", "7-9"];
                 <a
                   class="btn"
                   href={url(`/reader/${doc.id}/`)}
+                  data-reader-book={JSON.stringify({
+                    ...doc,
+                    title: pdfTitle(doc),
+                    file: url(`/pdfs/${doc.filename}`),
+                  })}
                   aria-label={`Read ${pdfTitle(doc)}`}
                 >
                   Read book <Icon name="arrow" />
@@ -110,7 +117,13 @@ const levels = ["1", "2", "3", "4", "5", "6", "7-9"];
     accessible even though this reader has no download, share, print or export
     controls.
   </p>
+  <dialog class="reader-dialog" data-reader-host aria-label="Textbook reader">
+    <PdfReader doc={READABLE_PDFS[0]} />
+  </dialog>
 </BaseLayout>
+<script>
+  import "../../scripts/pdf-library.js";
+</script>
 <style>
   .library-levels {
     display: flex;

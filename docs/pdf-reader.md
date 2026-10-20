@@ -19,36 +19,39 @@ clearly labels them as source-only and links to their original Drive viewers.
 The 16 imports plus seven existing sources fit within the 1 GB Pages site limit.
 Large originals consume bandwidth; PDFs load only when a reader is opened.
 
-| Original filename | HSK | Exact bytes | Pages | Result |
-|---|---:|---:|---:|---|
-| HSK-1-Textbook.pdf | 1 | 53,494,483 | 150 | Imported unchanged |
-| HSK-1-Workbook.pdf | 1 | 30,063,554 | 139 | Imported unchanged |
-| HSK-2-Textbook.pdf | 2 | 28,221,758 | 151 | Imported unchanged |
-| HSK-2-Workbook.pdf | 2 | 22,148,933 | 170 | Imported unchanged |
-| HSK-3-Textbook.pdf | 3 | 37,948,022 | 207 | Imported unchanged |
-| HSK-3-Workbook.pdf | 3 | 41,596,100 | 167 | Imported unchanged |
-| HSK-4A-Textbook.pdf | 4 | 51,439,082 | 153 | Imported unchanged |
-| HSK-4A-Workbook.pdf | 4 | 27,138,135 | 111 | Imported unchanged |
-| HSK-4B-Textbook.pdf | 4 | 63,875,342 | 168 | Imported unchanged |
-| HSK-4B-Workbook.pdf | 4 | 35,524,106 | 120 | Imported unchanged |
-| HSK-5A-Textbook.pdf | 5 | 25,848,528 | 195 | Imported unchanged |
-| HSK-5A-Workbook.pdf | 5 | 32,105,382 | 142 | Imported unchanged |
-| HSK-5B-Textbook.pdf | 5 | 24,813,258 | 188 | Imported unchanged |
-| HSK-5B-Workbook.pdf | 5 | 50,494,777 | 221 | Imported unchanged |
-| HSK-6A-Textbook.pdf | 6 | 105,148,446 | — | External: exceeds 100 MiB |
-| HSK-6A-Workbook.pdf | 6 | 44,204,365 | 181 | Imported unchanged |
-| HSK-6B-Textbook.pdf | 6 | 114,026,280 | — | External: exceeds 100 MiB |
-| HSK-6B-Workbook.pdf | 6 | 49,922,031 | 198 | Imported unchanged |
+| Original filename   | HSK | Exact bytes | Pages | Result                    |
+| ------------------- | --: | ----------: | ----: | ------------------------- |
+| HSK-1-Textbook.pdf  |   1 |  53,494,483 |   150 | Imported unchanged        |
+| HSK-1-Workbook.pdf  |   1 |  30,063,554 |   139 | Imported unchanged        |
+| HSK-2-Textbook.pdf  |   2 |  28,221,758 |   151 | Imported unchanged        |
+| HSK-2-Workbook.pdf  |   2 |  22,148,933 |   170 | Imported unchanged        |
+| HSK-3-Textbook.pdf  |   3 |  37,948,022 |   207 | Imported unchanged        |
+| HSK-3-Workbook.pdf  |   3 |  41,596,100 |   167 | Imported unchanged        |
+| HSK-4A-Textbook.pdf |   4 |  51,439,082 |   153 | Imported unchanged        |
+| HSK-4A-Workbook.pdf |   4 |  27,138,135 |   111 | Imported unchanged        |
+| HSK-4B-Textbook.pdf |   4 |  63,875,342 |   168 | Imported unchanged        |
+| HSK-4B-Workbook.pdf |   4 |  35,524,106 |   120 | Imported unchanged        |
+| HSK-5A-Textbook.pdf |   5 |  25,848,528 |   195 | Imported unchanged        |
+| HSK-5A-Workbook.pdf |   5 |  32,105,382 |   142 | Imported unchanged        |
+| HSK-5B-Textbook.pdf |   5 |  24,813,258 |   188 | Imported unchanged        |
+| HSK-5B-Workbook.pdf |   5 |  50,494,777 |   221 | Imported unchanged        |
+| HSK-6A-Textbook.pdf |   6 | 105,148,446 |     — | External: exceeds 100 MiB |
+| HSK-6A-Workbook.pdf |   6 |  44,204,365 |   181 | Imported unchanged        |
+| HSK-6B-Textbook.pdf |   6 | 114,026,280 |     — | External: exceeds 100 MiB |
+| HSK-6B-Workbook.pdf |   6 |  49,922,031 |   198 | Imported unchanged        |
 
 References: [GitHub file limits](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github),
 [Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
 
 ## Reader and design
 
+The subsequent [fullscreen reader diagnosis and QA](fullscreen-reader-qa.md)
+describes the current loading lifecycle, performance evidence and modal history.
+
 - `/library/` groups original textbooks, workbooks and vocabulary resources by
   level. Homepage and footer provide native, base-path-aware links. Library and
-  reader routes retain the learning tab's active state without adding competing
-  mobile navigation. Books remain distinct from unfinished interactive lessons.
+  the library retains the learning tab's active state. Fullscreen reader routes
+  omit the website navigation. Books remain distinct from unfinished interactive lessons.
 - `/reader/<document-id>/` provides native previous/next buttons, direct page
   input, zoom, fit width, page deep links and locally remembered reading position.
 - Pinned Mozilla PDF.js 6.4.299 (Apache 2.0) runs its decoder in a local worker.
@@ -66,7 +69,7 @@ References: [GitHub file limits](https://docs.github.com/en/repositories/working
   red primary actions and existing light/dark themes preserve the site's identity.
   Original PDF page colors remain intact. Decorative highlight overlays never
   receive pointer events. Natural scrolling, text selection and browser zoom work.
-- Text selection can be saved in gold, red or graphite. Page-relative rectangles
+- Text selection can be saved in yellow, red or soft gold; legacy graphite notes remain supported. Page-relative rectangles
   remain aligned when zooming or resizing. The saved list supports page jumps and
   individual deletion, with screen-reader labels and native keyboard controls.
 - New, per-document SHA-256-based storage keys keep highlights and reading position
@@ -125,8 +128,7 @@ budgets and touch target dimensions. Optional local axe integration checks WCAG
   VoiceOver, installed-PWA and Apple Pencil behavior are not claimed as verified.
   Older browsers without necessary PDF.js capabilities receive a retry/error state.
 - This is an accessible web recreation of material qualities, not native UIKit or
-  SwiftUI materials. PDF.js and document loading add work only to reader routes.
-
+  SwiftUI materials. PDF.js and document loading start only when a reader opens, including the library modal.
 
 ## Local results (2026-10-20)
 
@@ -155,11 +157,11 @@ on the same host with no other browser tests running. Results below are maximum
 recorded Event Timing interaction durations from those small scripted samples,
 **not field INP**, physical-device measurements, or guaranteed frame rates.
 
-| CPU | Document | Before | After |
-|---|---|---:|---:|
-| Normal | HSK 1 vocabulary | 48 ms | 48 ms |
-| Normal | HSK 2 textbook scan | 96 ms | 48 ms |
-| 4× slowdown | HSK 1 vocabulary | 168 ms | 56 ms |
+| CPU         | Document            | Before | After |
+| ----------- | ------------------- | -----: | ----: |
+| Normal      | HSK 1 vocabulary    |  48 ms | 48 ms |
+| Normal      | HSK 2 textbook scan |  96 ms | 48 ms |
+| 4× slowdown | HSK 1 vocabulary    | 168 ms | 56 ms |
 | 4× slowdown | HSK 2 textbook scan | 304 ms | 56 ms |
 
 For the five interactions at 4× CPU, the sum of long-task time beyond 50 ms fell

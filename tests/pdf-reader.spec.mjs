@@ -299,9 +299,7 @@ test("page turns return to the top of the page below sticky controls", async ({
   await ready(page, 1);
   await page
     .locator("[data-pdf-paper]")
-    .evaluate((el) =>
-      scrollTo(0, el.getBoundingClientRect().top + scrollY + 650),
-    );
+    .evaluate((el) => el.closest("[data-pdf-body]").scrollTo(0, 650));
   await page.locator("[data-pdf-next]").click();
   await ready(page, 2);
   const geometry = await page.evaluate(() => ({
