@@ -89,8 +89,12 @@ test("typing before the search module loads is retained and searched", async ({
     await tap(page, "[data-search-clear]");
     await expect(page.locator("#q")).toHaveValue("");
     await tap(page, "[data-query=ai4]");
-    await expect(page.locator("[data-results] a")).toHaveCount(1);
-    await tap(page, "[data-results] a");
+    // 爱 ranks first; longer words such as 爱好 (HSK 2) follow it.
+    await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+      "href",
+      /hsk1-0001\/?$/,
+    );
+    await tap(page, "[data-results] a >> nth=0");
     await expect(page).toHaveURL(/hsk1-0001\/?$/);
   } finally {
     release();

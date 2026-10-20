@@ -1,4 +1,11 @@
 import { test, expect } from "@playwright/test";
+import { existsSync, readdirSync } from "node:fs";
+
+// Levels that have word files, in syllabus order (e.g. ["1", "2"]).
+const published = ["1", "2", "3", "4", "5", "6", "7-9"].filter((key) => {
+  const dir = new URL(`../data/words/hsk${key}/`, import.meta.url);
+  return existsSync(dir) && readdirSync(dir).some((f) => f.endsWith(".json"));
+});
 
 async function setTheme(page, value) {
   await page.locator("[data-appearance-open]").click();
@@ -47,12 +54,17 @@ test("every page type loads without script errors or horizontal overflow", async
 
 test("only published levels are linked", async ({ page }) => {
   await page.goto("./");
-  await expect(page.locator(".levels a")).toHaveCount(1);
-  await expect(page.locator(".levels a")).toHaveAttribute(
-    "href",
-    /\/Hsk-Learning\/hsk1/,
+  const links = page.locator(".levels a");
+  await expect(links).toHaveCount(published.length);
+  for (const [i, key] of published.entries()) {
+    await expect(links.nth(i)).toHaveAttribute(
+      "href",
+      new RegExp(`/Hsk-Learning/hsk${key}/?$`),
+    );
+  }
+  await expect(page.locator(".levels .level:not(.ready)")).toHaveCount(
+    7 - published.length,
   );
-  await expect(page.locator(".levels .level:not(.ready)")).toHaveCount(6);
 });
 
 test("appearance follows the system and manual selection persists", async ({
@@ -128,7 +140,10 @@ test("search reports a network error and retries safely", async ({ page }) => {
   );
   await page.unroute("**/search-index.json");
   await page.locator("#q").fill("爱");
-  await expect(page.locator("[data-results] a")).toHaveCount(1);
+  await expect(page.locator("[data-results] a").first()).toHaveAttribute(
+    "href",
+    /hsk1-0001\/?$/,
+  );
 });
 
 test("existing saved progress survives themes, navigation, and flashcard answers", async ({
