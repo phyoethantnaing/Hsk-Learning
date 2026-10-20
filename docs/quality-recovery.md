@@ -48,6 +48,7 @@ fallbacks. It does not attempt expensive optical refraction.
 | V2 | Homepage wording implied all 11,000 words had Myanmar content although only 300 are published. | Present actual published HSK 1 count; upcoming levels remain unlinked. No vocabulary JSON changes. |
 | M1 | Decorative/content surfaces used the same glass treatment as navigation. | Reserve backdrop blur for the navigation layer; standard content cards and readable search field. |
 | X2 | Production CSS optimization could drop the usable blur-disable declaration, despite an active contrast preference. | Explicit supported CSS targets and correct prefixed declaration ordering; rendered increased-contrast and reduced-transparency tests. |
+| E1 | The generated 404 page advertised a nonexistent `/404/` canonical route. | Mark the error page noindex and omit canonical metadata on noindex pages; generated-reference audit and browser assertions. |
 | X1 | No increased-contrast treatment; small breadcrumb touch areas and inconsistent disabled/pressed states. | 44px controls, readable focus and states, contrast/reduced-transparency/forced-color fallbacks, safe-area and keyboard-aware chrome. |
 
 ## Reproduce verification

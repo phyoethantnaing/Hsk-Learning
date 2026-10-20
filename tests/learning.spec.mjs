@@ -34,6 +34,13 @@ test("every page type loads without script errors or horizontal overflow", async
       ),
     ).toBe(true);
     await expect(page.locator("footer")).toContainText("CC BY-SA 4.0");
+    if (route === "404.html") {
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+        "content",
+        "noindex",
+      );
+      await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+    }
   }
   expect(errors).toEqual([]);
 });

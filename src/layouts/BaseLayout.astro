@@ -55,7 +55,9 @@ const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
     {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#f7f7f8" />
     <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    {!noindex && (
+      <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    )}
 
     <!-- Local open fonts avoid third-party font requests; retain OS fallbacks. -->
     <link rel="stylesheet" href={url("/fonts/fonts.css")} />
