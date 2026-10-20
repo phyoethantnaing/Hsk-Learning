@@ -1,8 +1,8 @@
 ---
 // A word in a lesson list: character, tone-coloured pinyin, Myanmar meaning.
 // A ✓ appears when the learner has marked the word as learned (client side).
-import Pinyin from './Pinyin.astro';
-import { wordUrl } from '../lib/words.mjs';
+import Pinyin from "./Pinyin.astro";
+import { wordUrl } from "../lib/words.mjs";
 
 interface Props {
   word: any;
@@ -12,10 +12,16 @@ const { word } = Astro.props;
 ---
 
 <a class="card word-card" href={wordUrl(word)} data-word-id={word.id}>
-  <span class="hanzi" lang="zh-Hans">{word.simplified}</span>
-  <span class="py"><Pinyin pinyin={word.pinyin} /></span>
+  <span class="hanzi" lang="zh-Hans">
+    {word.simplified}
+  </span>
+  <span class="py">
+    <Pinyin pinyin={word.pinyin} />
+  </span>
   <span class="meaning">{word.myanmar.meaning}</span>
-  <span class="done" aria-label="သိပြီ" hidden>✓</span>
+  <span class="done" aria-label="သိပြီ" hidden>
+    ✓
+  </span>
 </a>
 
 <style>
@@ -25,8 +31,8 @@ const { word } = Astro.props;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2px;
-    padding: 12px 8px;
+    gap: 9px;
+    padding: 26px 12px;
     color: var(--text);
     text-decoration: none;
     height: 100%;
@@ -37,7 +43,7 @@ const { word } = Astro.props;
   }
 
   .hanzi {
-    font-size: 2rem;
+    font-size: clamp(2rem, 4vw, 2.6rem);
     line-height: 1.3;
   }
 
@@ -53,19 +59,21 @@ const { word } = Astro.props;
 
   .done {
     position: absolute;
-    top: 6px;
-    right: 8px;
-    color: var(--tone3);
+    top: 9px;
+    right: 12px;
+    color: var(--accent);
     font-weight: 700;
   }
 </style>
 
 <script>
-  import { isLearned, onProgress } from '../scripts/progress.js';
+  import { isLearned, onProgress } from "../scripts/progress.js";
 
   onProgress(() => {
-    for (const card of document.querySelectorAll<HTMLElement>('[data-word-id]')) {
-      const tick = card.querySelector<HTMLElement>('.done');
+    for (const card of document.querySelectorAll<HTMLElement>(
+      "[data-word-id]",
+    )) {
+      const tick = card.querySelector<HTMLElement>(".done");
       if (tick) tick.hidden = !isLearned(card.dataset.wordId!);
     }
   });

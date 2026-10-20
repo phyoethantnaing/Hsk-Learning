@@ -3,14 +3,28 @@
 
 <footer class="site-footer">
   <div class="container">
+    <div class="footer-heading">
+      <span>HSK မြန်မာ</span>
+      <span lang="en">A LITTLE EVERY DAY.</span>
+    </div>
     <p>
-      စကားလုံးစာရင်းနဲ့ pinyin: <span lang="zh-Hans">新版HSK考试大纲</span> (၂၀၂၅)။
-      ရိုးရာစာလုံး (Traditional) နဲ့ အင်္ဂလိပ် အဓိပ္ပာယ်:
-      <a href="https://cc-cedict.org/wiki/" rel="noopener">CC-CEDICT</a>{' '}
-      (<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">CC BY-SA 4.0</a>)။
+      စကားလုံးစာရင်းနဲ့ pinyin: <span lang="zh-Hans">新版HSK考试大纲</span>{" "}
+      (၂၀၂၅)။ ရိုးရာစာလုံး (Traditional) နဲ့ အင်္ဂလိပ် အဓိပ္ပာယ်:
+      <a href="https://cc-cedict.org/wiki/" rel="noopener">
+        CC-CEDICT
+      </a>{" "}
+      (
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noopener">
+        CC BY-SA 4.0
+      </a>
+      )။
     </p>
     <p>
-      ဒီဆိုက်က အခမဲ့ပါ။ ကုဒ်ကို <a href="https://github.com/phyoethantnaing/Hsk-Learning" rel="noopener">GitHub</a> မှာ ကြည့်လို့ရပါတယ်။
+      ဒီဆိုက်က အခမဲ့ပါ။ ကုဒ်ကို{" "}
+      <a href="https://github.com/phyoethantnaing/Hsk-Learning" rel="noopener">
+        GitHub
+      </a>{" "}
+      မှာ ကြည့်လို့ရပါတယ်။
     </p>
   </div>
 </footer>
@@ -20,10 +34,25 @@
     border-top: 1px solid var(--border);
     background: var(--surface);
     color: var(--text-muted);
-    font-size: 0.875rem;
-    padding: 16px 0 24px;
+    font-size: 0.75rem;
+    padding: 32px 0 max(32px, env(safe-area-inset-bottom));
+    line-height: 2;
   }
 
+  .footer-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .footer-heading [lang] {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+  }
   .site-footer p:last-child {
     margin-bottom: 0;
   }

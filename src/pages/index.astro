@@ -1,9 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { LEVELS, TOTAL_WORDS } from '../lib/levels.mjs';
-import ProgressCount from '../components/ProgressCount.astro';
-import { myNumber, url } from '../lib/site.mjs';
-import { readyLevels, wordsForLevel } from '../lib/words.mjs';
+import Icon from "../components/Icon.astro";
+import SpeakButton from "../components/SpeakButton.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { LEVELS, TOTAL_WORDS } from "../lib/levels.mjs";
+import ProgressCount from "../components/ProgressCount.astro";
+import { myNumber, url } from "../lib/site.mjs";
+import { readyLevels, wordsForLevel } from "../lib/words.mjs";
 
 // Levels whose content is written get a link and a progress bar; the rest say "soon".
 const READY = new Set(readyLevels().map((l) => l.key));
@@ -11,49 +13,145 @@ const READY = new Set(readyLevels().map((l) => l.key));
 
 <BaseLayout>
   <section class="hero">
-    <p class="hero-zh" lang="zh-Hans" aria-hidden="true">你好！</p>
-    <h1>တရုတ်စကားလုံးတွေကို မြန်မာလို လွယ်လွယ်လေး သင်ကြမယ်</h1>
-    <p>
-      HSK 3.0 (၂၀၂၅) စာမေးပွဲအတွက် စကားလုံး {myNumber(TOTAL_WORDS)} လုံးကို မြန်မာလို ရှင်းပြပေးထားပါတယ်။
-      ဆရာမရှိလည်း ကိုယ်တိုင် လေ့လာလို့ရပါတယ်။ အခမဲ့ပါ။
-    </p>
-    <p class="btn-row">
-      <a class="btn btn-primary" href={url('/start/')}>🌱 အစပြုရန် — ဒီကနေ စပါ</a>
-      <a class="btn" href={url('/hsk1/')}>HSK 1 စကားလုံးများ</a>
-    </p>
+    <div class="hero-copy">
+      <p class="eyebrow" lang="en">
+        YOUR CHINESE LEARNING JOURNEY
+      </p>
+      <p class="hero-zh" lang="zh-Hans">
+        你好<span>。</span>
+      </p>
+      <h1>
+        တရုတ်စကားလုံးတွေကို မြန်မာလို
+        <br class="desktop-break" /> လွယ်လွယ်လေး သင်ကြမယ်
+      </h1>
+      <p>
+        HSK 3.0 (၂၀၂၅) စာမေးပွဲအတွက် စကားလုံး {myNumber(TOTAL_WORDS)} လုံးကို
+        မြန်မာလို ရှင်းပြပေးထားပါတယ်။ ဆရာမရှိလည်း ကိုယ်တိုင် လေ့လာလို့ရပါတယ်။
+        အခမဲ့ပါ။
+      </p>
+      <p class="btn-row">
+        <a class="btn btn-primary" href={url("/start/")}>
+          အစပြုရန် — ဒီကနေ စပါ <Icon name="arrow" size={18} />
+        </a>
+        <a class="btn" href={url("/hsk1/")}>
+          HSK 1 စကားလုံးများ
+        </a>
+      </p>
+      <div class="hero-note">
+        <span lang="en">HSK 3.0</span>
+        <span aria-hidden="true">·</span>
+        <span>မြန်မာလို လေ့လာပါ</span>
+        <span aria-hidden="true">·</span>
+        <span>အခမဲ့</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="orbit orbit-one" aria-hidden="true"></div>
+      <div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="sample-card glass">
+        <div class="sample-top">
+          <span class="badge badge-ready" lang="en">
+            HSK 1
+          </span>
+          <span class="muted" lang="en">
+            01 / 20
+          </span>
+        </div>
+        <p class="sample-hanzi" lang="zh-Hans">
+          你好
+        </p>
+        <p class="sample-pinyin" lang="zh-Latn-pinyin">
+          nǐ hǎo
+        </p>
+        <p class="sample-meaning">မင်္ဂလာပါ</p>
+        <div class="sample-bottom">
+          <span class="muted">အသံ နားထောင်ရန်</span>
+          <SpeakButton text="你好" />
+        </div>
+      </div>
+      <div class="art-label glass">
+        <Icon name="book" size={18} />
+        <span>တစ်နေ့ စကားလုံး ၅ လုံး</span>
+      </div>
+      <span class="art-character" lang="zh-Hans" aria-hidden="true">
+        学
+      </span>
+    </div>
   </section>
 
-  <section aria-labelledby="levels-title">
-    <h2 id="levels-title">အဆင့် ရွေးပါ</h2>
+  <section aria-labelledby="levels-title" class="levels-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" lang="en">
+          ONE STEP AT A TIME
+        </p>
+        <h2 id="levels-title">အဆင့် ရွေးပါ</h2>
+      </div>
+      <a class="guide-link" href={url("/start/")}>
+        အစပြုသူ လမ်းညွှန် <Icon name="arrow" size={17} />
+      </a>
+    </div>
     <ul class="levels">
-      {
-        LEVELS.map((level) => {
-          const ready = READY.has(level.key);
-          const Tag = ready ? 'a' : 'div';
-          return (
-            <li>
-              <Tag class:list={['card', 'level', { ready }]} href={ready ? url(level.slug) : undefined}>
-                <span class="level-name">{level.label}</span>
-                <span class="muted">စကားလုံး <span class="nowrap">{myNumber(level.count)} လုံး</span></span>
+      {LEVELS.map((level) => {
+        const ready = READY.has(level.key);
+        const Tag = ready ? "a" : "div";
+        return (
+          <li>
+            <Tag
+              class:list={["card", "level", { ready }]}
+              href={ready ? url(level.slug) : undefined}
+            >
+              <div class="level-top">
+                <span class="level-number" lang="en">
+                  {level.key.padStart(2, "0")}
+                </span>
                 {ready ? (
-                  <ProgressCount ids={wordsForLevel(level.key).map((w) => w.id)} />
+                  <span class="badge badge-ready">လေ့လာနိုင်ပါပြီ</span>
                 ) : (
-                  <span class="badge badge-soon">မကြာခင်</span>
+                  <Icon name="lock" size={16} />
                 )}
-              </Tag>
-            </li>
-          );
-        })
-      }
+              </div>
+              <span class="level-name" lang="en">
+                {level.label}
+              </span>
+              <span class="muted">
+                စကားလုံး{" "}
+                <span class="nowrap">{myNumber(level.count)} လုံး</span>
+              </span>
+              {ready ? (
+                <ProgressCount
+                  ids={wordsForLevel(level.key).map((w) => w.id)}
+                />
+              ) : (
+                <span class="upcoming">
+                  <span class="upcoming-line" aria-hidden="true"></span>
+                  <span class="badge badge-soon">မကြာခင်</span>
+                </span>
+              )}
+            </Tag>
+          </li>
+        );
+      })}
     </ul>
   </section>
 
-  <section aria-labelledby="how-title" class="how">
+  <section aria-labelledby="how-title" class="how glass">
+    <p class="eyebrow" lang="en">
+      SMALL HABITS. REAL PROGRESS.
+    </p>
     <h2 id="how-title">ဘယ်လို လေ့လာမလဲ</h2>
     <ol>
-      <li><a href={url('/start/')}>“အစပြုရန်”</a> အပိုင်းမှာ pinyin ဆိုတာ ဘာလဲ၊ အသံ ၄ မျိုးကို ဘယ်လိုထွက်လဲ အရင် လေ့လာပါ။</li>
-      <li>HSK 1 ကနေ စပါ။ တစ်နေ့ကို စကားလုံး ၅ လုံးလောက် သင်ရင် လုံလောက်ပါပြီ။</li>
-      <li>စကားလုံးတိုင်းမှာ 🔊 ခလုတ်ကို နှိပ်ပြီး အသံကို နားထောင်ပါ။ ပြီးရင် ကျယ်ကျယ် လိုက်ပြောပါ။</li>
+      <li>
+        <a href={url("/start/")}>“အစပြုရန်”</a> အပိုင်းမှာ pinyin ဆိုတာ ဘာလဲ၊
+        အသံ ၄ မျိုးကို ဘယ်လိုထွက်လဲ အရင် လေ့လာပါ။
+      </li>
+      <li>
+        HSK 1 ကနေ စပါ။ တစ်နေ့ကို စကားလုံး ၅ လုံးလောက် သင်ရင် လုံလောက်ပါပြီ။
+      </li>
+      <li>
+        စကားလုံးတိုင်းမှာ 🔊 ခလုတ်ကို နှိပ်ပြီး အသံကို နားထောင်ပါ။ ပြီးရင်
+        ကျယ်ကျယ် လိုက်ပြောပါ။
+      </li>
       <li>ကတ်ပြားတွေနဲ့ မနေ့က သင်ထားတာတွေကို ပြန်လေ့ကျင့်ပါ။</li>
     </ol>
   </section>
@@ -61,60 +159,306 @@ const READY = new Set(readyLevels().map((l) => l.key));
 
 <style>
   .hero {
-    padding: 8px 0 12px;
+    display: grid;
+    gap: 26px;
+    align-items: center;
+    padding-bottom: 58px;
   }
-
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+  }
   .hero-zh {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: clamp(4.5rem, 10vw, 7.25rem);
+    font-weight: 650;
+    letter-spacing: -0.08em;
+    line-height: 1.1;
+    margin: 16px 0 28px;
+  }
+  .hero-zh span {
     color: var(--accent);
+  }
+  h1 {
+    font-size: clamp(1.4rem, 2.35vw, 1.85rem);
+    line-height: 1.9;
+    letter-spacing: -0.035em;
+    margin-bottom: 20px;
+  }
+  .hero-copy > p:not(.eyebrow, .hero-zh, .btn-row) {
+    color: var(--text-muted);
+    max-width: 580px;
+    font-size: 0.92rem;
+  }
+  .hero .btn-row {
+    margin-top: 27px;
+    margin-bottom: 22px;
+  }
+  .hero-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+  .hero-note [lang] {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .hero-art {
+    position: relative;
+    min-height: 365px;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+  .hero-art::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    max-width: 90%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(229 57 53 / 13%), transparent 70%);
+    z-index: -1;
+  }
+  .orbit {
+    position: absolute;
+    width: 65%;
+    aspect-ratio: 1;
+    max-width: 300px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    z-index: -1;
+  }
+  .orbit-one {
+    transform: rotate(-24deg) scaleX(1.17);
+  }
+  .orbit-two {
+    transform: rotate(35deg) scaleX(1.17);
+  }
+  .sample-card {
+    width: min(265px, 80%);
+    padding: 24px;
+    transform: rotate(-7deg);
+    border-radius: 30px;
+    box-shadow: var(--shadow-raised);
+    text-align: center;
+    z-index: 1;
+  }
+  .sample-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.65rem;
+  }
+  .sample-hanzi {
+    font-size: 4.4rem;
+    line-height: 1.4;
+    margin: 22px 0 0;
+    font-weight: 500;
+  }
+  .sample-pinyin {
+    color: var(--accent);
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 6px;
+  }
+  .sample-meaning {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+  .sample-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    font-size: 0.7rem;
+  }
+  .art-label {
+    position: absolute;
+    bottom: 5px;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 16px;
+    padding: 12px 18px;
+    font-size: 0.78rem;
+    transform: rotate(4deg);
+    z-index: 2;
+  }
+  .art-label svg {
+    color: var(--accent);
+  }
+  .art-character {
+    position: absolute;
+    right: 1%;
+    top: 6px;
+    color: var(--accent);
+    opacity: 0.08;
+    font-size: 7rem;
+    z-index: -1;
+  }
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .section-heading h2 {
     margin: 0;
   }
-
-
+  .section-heading .eyebrow {
+    margin-bottom: 8px;
+  }
+  .guide-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 44px;
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
   .levels {
     list-style: none;
-    margin: 0 0 28px;
+    margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 16px;
   }
-
   .level {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 2px;
+    gap: 8px;
     height: 100%;
     color: var(--text);
     text-decoration: none;
+    padding: 22px;
+    border-radius: 22px;
   }
-
-  .level.ready:hover {
+  .level.ready {
     border-color: var(--accent);
   }
-
-  .nowrap {
-    white-space: nowrap;
+  .level:not(.ready) {
+    background: transparent;
+    box-shadow: none;
   }
-
+  .level-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-height: 28px;
+    color: var(--text-muted);
+  }
+  .level-number {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+  .level-top .badge {
+    font-size: 0.65rem;
+    padding: 2px 7px;
+  }
   .level-name {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
     font-weight: 700;
+    margin-top: 9px;
   }
-
+  .level > .muted {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+  .level :global(.progress) {
+    margin-top: auto;
+  }
+  .level :global(.progress-text) {
+    font-size: 0.7rem;
+  }
+  .upcoming {
+    margin-top: auto;
+  }
+  .upcoming-line {
+    display: block;
+    height: 5px;
+    border-radius: 4px;
+    background: var(--border);
+    margin-bottom: 5px;
+    opacity: 0.6;
+  }
+  .upcoming .badge {
+    padding-left: 0;
+    background: none;
+    font-size: 0.7rem;
+  }
+  .how {
+    margin-top: 48px;
+    padding: clamp(24px, 4vw, 40px);
+  }
   .how ol {
-    padding-left: 1.4em;
+    list-style: none;
+    counter-reset: steps;
+    padding: 0;
+    display: grid;
+    gap: 24px;
+    margin: 22px 0 0;
   }
-
   .how li {
-    margin-bottom: 0.5em;
+    counter-increment: steps;
+    font-size: 0.86rem;
   }
-
-  @media (min-width: 640px) {
+  .how li::before {
+    content: "0" counter(steps);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 9px;
+  }
+  @media (min-width: 780px) {
+    .hero {
+      grid-template-columns: 1.3fr 1fr;
+      gap: 35px;
+      padding-bottom: 76px;
+    }
+    .hero-art {
+      min-height: 440px;
+    }
+    .sample-card {
+      width: 290px;
+    }
+    .art-label {
+      bottom: 32px;
+    }
     .levels {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .how ol {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 779px) {
+    .desktop-break {
+      display: none;
+    }
+    .hero-art {
+      max-width: 420px;
+      width: 100%;
+      margin: 10px auto 0;
+    }
+  }
+  @media (max-width: 380px) {
+    .level {
+      padding: 17px 14px;
+    }
+    .level-top .badge {
+      font-size: 0.6rem;
     }
   }
 </style>

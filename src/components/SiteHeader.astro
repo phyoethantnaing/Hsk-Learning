@@ -1,109 +1,290 @@
 ---
-import { url } from '../lib/site.mjs';
-
-// `ready: false` items are shown greyed out until their page is built.
+import { url } from "../lib/site.mjs";
+import Icon from "./Icon.astro";
 const NAV = [
-  { href: '/', label: 'ပင်မ', ready: true },
-  { href: '/start/', label: 'အစပြုရန်', ready: true },
-  { href: '/search/', label: 'ရှာရန်', ready: true },
-  { href: '/flashcards/', label: 'ကတ်ပြား', ready: true },
-  { href: '/about/', label: 'အကြောင်း', ready: true },
+  { href: "/", label: "ပင်မ", icon: "home" },
+  { href: "/start/", label: "အစပြုရန်", icon: "book" },
+  { href: "/search/", label: "ရှာရန်", icon: "search" },
+  { href: "/flashcards/", label: "ကတ်ပြား", icon: "cards" },
+  { href: "/about/", label: "အကြောင်း", icon: "info" },
 ];
-
-const current = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isCurrent = (href: string) => url(href).replace(/\/$/, '') === current.replace(/\/$/, '');
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isCurrent = (href: string) => url(href).replace(/\/$/, "") === current;
 ---
 
 <header class="site-header">
-  <div class="container bar">
-    <a class="brand" href={url('/')}>
-      <span class="logo" lang="zh-Hans" aria-hidden="true">汉</span>
-      <span>HSK မြန်မာ</span>
+  <div class="container header-inner">
+    <a class="brand" href={url("/")} aria-label="HSK မြန်မာ — ပင်မ">
+      <span class="logo" lang="zh-Hans" aria-hidden="true">
+        汉
+      </span>
+      <span>
+        HSK <span class="brand-my">မြန်မာ</span>
+        <small lang="en">A LITTLE EVERY DAY.</small>
+      </span>
     </a>
-  </div>
-  <nav class="container" aria-label="အဓိက မီနူး">
-    <ul>
-      {
-        NAV.map((item) => (
+    <nav id="site-nav" aria-label="အဓိက မီနူး">
+      <ul>
+        {NAV.map((item) => (
           <li>
-            {item.ready ? (
-              <a href={url(item.href)} aria-current={isCurrent(item.href) ? 'page' : undefined}>
-                {item.label}
-              </a>
-            ) : (
-              <span class="soon" title="မကြာခင် ရောက်လာပါမယ်">{item.label}</span>
-            )}
+            <a
+              href={url(item.href)}
+              aria-current={isCurrent(item.href) ? "page" : undefined}
+            >
+              <Icon name={item.icon} size={17} />
+              <span>{item.label}</span>
+            </a>
           </li>
-        ))
-      }
-    </ul>
-  </nav>
+        ))}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <label class="theme-control" title="အသွင်အပြင် / Appearance">
+        <Icon name="sun" size={18} />
+        <span class="visually-hidden">အသွင်အပြင် / Appearance</span>
+        <select data-theme-select aria-label="အသွင်အပြင် / Appearance">
+          <option value="system">အလိုအလျောက်</option>
+          <option value="light">အလင်း</option>
+          <option value="dark">အမှောင်</option>
+        </select>
+      </label>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="မီနူး ဖွင့်ရန်"
+      >
+        <Icon name="menu" />
+      </button>
+    </div>
+  </div>
 </header>
-
+<script>
+  import "../scripts/theme.js";
+  const menu = document.querySelector<HTMLButtonElement>(".menu-toggle")!;
+  const header = document.querySelector<HTMLElement>(".site-header")!;
+  function close() {
+    menu.setAttribute("aria-expanded", "false");
+    header.classList.remove("nav-open");
+  }
+  menu.addEventListener("click", () => {
+    const open = menu.getAttribute("aria-expanded") !== "true";
+    menu.setAttribute("aria-expanded", String(open));
+    header.classList.toggle("nav-open", open);
+    if (open) header.querySelector<HTMLAnchorElement>("nav a")?.focus();
+  });
+  header.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      close();
+      menu.focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    if (!header.contains(e.target as Node)) close();
+  });
+  matchMedia("(min-width: 960px)").addEventListener("change", close);
+</script>
 <style>
   .site-header {
-    background: var(--surface);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: var(--surface);
     border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 0 var(--highlight);
+    padding-top: env(safe-area-inset-top);
   }
-
-  .bar {
+  @supports (
+    (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px))
+  ) {
+    .site-header {
+      background-color: var(--glass);
+      -webkit-backdrop-filter: blur(20px) saturate(135%);
+      backdrop-filter: blur(20px) saturate(135%);
+    }
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    .site-header {
+      background-color: var(--surface);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+  .header-inner {
     display: flex;
     align-items: center;
-    padding-top: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
+    min-height: 88px;
   }
-
   .brand {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 1.125rem;
+    gap: 11px;
     color: var(--text);
     text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 750;
+    line-height: 1.6;
+    margin-right: auto;
   }
-
   .logo {
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: var(--accent);
-    color: var(--accent-text);
-    font-size: 1.25rem;
-    line-height: 1;
+    width: 44px;
+    height: 46px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #ed4b43, #ba2323);
+    color: white;
+    box-shadow:
+      inset 0 1px 0 #ffffff55,
+      0 3px 8px #b3261e22;
+    font-size: 1.8rem;
+    font-weight: 400;
   }
-
+  .brand small {
+    display: block;
+    font-size: 0.49rem;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  .brand-my {
+    font-size: 0.95rem;
+  }
+  nav {
+    order: 3;
+    width: 100%;
+    padding-bottom: 12px;
+  }
   nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 2px 4px;
-    margin: 0;
-    padding: 6px 0 8px;
-    list-style: none;
+    gap: 4px;
   }
-
-  nav a,
-  nav .soon {
-    display: block;
-    padding: 4px 12px;
-    border-radius: 999px;
-    white-space: nowrap;
-    text-decoration: none;
+  nav li {
+    flex: 1;
   }
-
   nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 8px 11px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 13px;
+    transition: background 180ms;
+  }
+  nav a:hover {
+    background: var(--surface-2);
     color: var(--text);
   }
-
-  nav a[aria-current='page'] {
+  nav a[aria-current="page"] {
     background: var(--accent-soft);
     color: var(--accent);
     font-weight: 700;
   }
-
-  nav .soon {
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .theme-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding-left: 10px;
     color: var(--text-muted);
-    opacity: 0.6;
+  }
+  select {
+    min-height: 44px;
+    max-width: 118px;
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    font-size: 0.7rem;
+    padding: 5px 7px 5px 0;
+    cursor: pointer;
+  }
+  option {
+    background: var(--surface);
+    color: var(--text);
+  }
+  .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    cursor: pointer;
+  }
+  :global(html:not(.js)) .theme-control {
+    display: none;
+  }
+  @media (max-width: 959px) {
+    :global(.js) nav {
+      display: none;
+    }
+    :global(.js) .nav-open nav {
+      display: block;
+    }
+    :global(.js) .menu-toggle {
+      display: grid;
+    }
+  }
+  @media (max-width: 420px) {
+    .header-inner {
+      gap: 8px;
+      min-height: 78px;
+    }
+    .theme-control {
+      padding-left: 7px;
+      gap: 2px;
+    }
+    select {
+      max-width: 87px;
+    }
+    nav a {
+      flex-direction: column;
+      gap: 1px;
+      padding: 8px 5px;
+      font-size: 0.72rem;
+    }
+    .brand {
+      gap: 8px;
+    }
+    .brand small {
+      font-size: 0.42rem;
+    }
+    .logo {
+      width: 38px;
+      height: 42px;
+    }
+  }
+  @media (min-width: 960px) {
+    nav {
+      order: initial;
+      width: auto;
+      padding: 0;
+    }
+    nav li {
+      flex: initial;
+    }
+    .header-actions {
+      margin-left: 12px;
+    }
   }
 </style>

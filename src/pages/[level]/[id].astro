@@ -1,22 +1,36 @@
 ---
 // One word (e.g. /hsk1/hsk1-0001/): everything a learner needs on one page.
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Pinyin from '../../components/Pinyin.astro';
-import ToneChips from '../../components/ToneChips.astro';
-import SpeakButton from '../../components/SpeakButton.astro';
-import ExampleSentence from '../../components/ExampleSentence.astro';
-import LearnedButton from '../../components/LearnedButton.astro';
-import { readyLevels, wordsForLevel, lessonNumberOf, findWord, wordUrl, levelUrl, lessonUrl } from '../../lib/words.mjs';
-import { posList } from '../../lib/pos.mjs';
-import { HINT_DISCLAIMER } from '../../lib/tones.mjs';
-import { myNumber, url } from '../../lib/site.mjs';
+import Icon from "../../components/Icon.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Pinyin from "../../components/Pinyin.astro";
+import ToneChips from "../../components/ToneChips.astro";
+import SpeakButton from "../../components/SpeakButton.astro";
+import ExampleSentence from "../../components/ExampleSentence.astro";
+import LearnedButton from "../../components/LearnedButton.astro";
+import {
+  readyLevels,
+  wordsForLevel,
+  lessonNumberOf,
+  findWord,
+  wordUrl,
+  levelUrl,
+  lessonUrl,
+} from "../../lib/words.mjs";
+import { posList } from "../../lib/pos.mjs";
+import { HINT_DISCLAIMER } from "../../lib/tones.mjs";
+import { myNumber, url } from "../../lib/site.mjs";
 
 export function getStaticPaths() {
   return readyLevels().flatMap((level) => {
     const words = wordsForLevel(level.key);
     return words.map((word, i) => ({
       params: { level: level.slug, id: word.id },
-      props: { level, word, prev: words[i - 1] ?? null, next: words[i + 1] ?? null },
+      props: {
+        level,
+        word,
+        prev: words[i - 1] ?? null,
+        next: words[i + 1] ?? null,
+      },
     }));
   });
 }
@@ -26,103 +40,142 @@ const lesson = lessonNumberOf(w);
 const sameScript = w.simplified === w.traditional;
 
 const SECTIONS = [
-  ['kidExplanation', '💡', 'ရှင်းပြချက်'],
-  ['memoryTip', '🧠', 'မှတ်ရလွယ်အောင်'],
-  ['usageNote', '✍️', 'ဘယ်လို သုံးမလဲ'],
-  ['commonMistake', '⚠️', 'သတိထားရန်'],
+  ["kidExplanation", "info", "ရှင်းပြချက်"],
+  ["memoryTip", "book", "မှတ်ရလွယ်အောင်"],
+  ["usageNote", "book", "ဘယ်လို သုံးမလဲ"],
+  ["commonMistake", "info", "သတိထားရန်"],
 ] as const;
 ---
 
-<BaseLayout title={`${w.simplified} (${w.pinyin}) — ${w.myanmar.meaning}`} description={w.myanmar.kidExplanation}>
+<BaseLayout
+  reading
+  title={`${w.simplified} (${w.pinyin}) — ${w.myanmar.meaning}`}
+  description={w.myanmar.kidExplanation}
+>
   <p class="breadcrumb">
-    <a href={url('/')}>ပင်မ</a> › <a href={levelUrl(level.key)}>{level.label}</a> ›{' '}
+    <a href={url("/")}>ပင်မ</a> ›{" "}
+    <a href={levelUrl(level.key)}>{level.label}</a> ›{" "}
     <a href={lessonUrl(level.key, lesson)}>သင်ခန်းစာ {myNumber(lesson)}</a>
   </p>
 
   <article>
     <header class="card hero" data-script="simplified">
       <div class="hero-top">
-        {w.reviewStatus === 'draft' && <span class="badge badge-draft" title="ဒီရှင်းပြချက်ကို စစ်ဆေးနေဆဲပါ">စစ်ဆေးဆဲ</span>}
-        <span class="muted">#{myNumber(Number(w.id.split('-').at(-1)))}</span>
+        {w.reviewStatus === "draft" && (
+          <span class="badge badge-draft" title="ဒီရှင်းပြချက်ကို စစ်ဆေးနေဆဲပါ">
+            စစ်ဆေးဆဲ
+          </span>
+        )}
+        <span class="muted">#{myNumber(Number(w.id.split("-").at(-1)))}</span>
       </div>
       <h1 class="hanzi">
-        <span class="simp" lang="zh-Hans">{w.simplified}</span>
-        <span class="trad" lang="zh-Hant">{w.traditional}</span>
+        <span class="simp" lang="zh-Hans">
+          {w.simplified}
+        </span>
+        <span class="trad" lang="zh-Hant">
+          {w.traditional}
+        </span>
       </h1>
-      <p class="py"><Pinyin pinyin={w.pinyin} /> <SpeakButton text={w.simplified} audio={w.audio.word} size="large" /></p>
+      <p class="py">
+        <Pinyin pinyin={w.pinyin} />{" "}
+        <SpeakButton text={w.simplified} audio={w.audio.word} size="large" />
+      </p>
       <p class="meaning">{w.myanmar.meaning}</p>
-      {
-        sameScript ? (
-          <p class="muted small">ရိုးရာစာလုံး (Traditional) လည်း ဒီအတိုင်းပါပဲ။</p>
-        ) : (
-          <button type="button" class="btn script-toggle" aria-pressed="false">
-            <span class="to-trad">ရိုးရာစာလုံး (繁) ကြည့်ရန်</span>
-            <span class="to-simp">ရိုးရှင်းစာလုံး (简) ပြန်ကြည့်ရန်</span>
-          </button>
-        )
-      }
+      {sameScript ? (
+        <p class="muted small">
+          ရိုးရာစာလုံး (Traditional) လည်း ဒီအတိုင်းပါပဲ။
+        </p>
+      ) : (
+        <button type="button" class="btn script-toggle" aria-pressed="false">
+          <span class="to-trad">ရိုးရာစာလုံး (繁) ကြည့်ရန်</span>
+          <span class="to-simp">ရိုးရှင်းစာလုံး (简) ပြန်ကြည့်ရန်</span>
+        </button>
+      )}
       <p class="muted small english">English: {w.english}</p>
     </header>
 
     <section class="card">
-      <h2>🗣️ အသံထွက်နည်း</h2>
+      <h2>
+        <Icon name="sound" /> အသံထွက်နည်း
+      </h2>
       <ToneChips pinyin={w.pinyin} />
       <p class="tip">{w.myanmar.pronunciationTip}</p>
       <p class="muted small">{HINT_DISCLAIMER}</p>
     </section>
 
     <section class="card">
-      <h2>🏷️ စကားလုံး အမျိုးအစား</h2>
+      <h2>
+        <Icon name="cards" /> စကားလုံး အမျိုးအစား
+      </h2>
       <ul class="pos">
-        {posList(w.partOfSpeech).map((p) => <li><strong>{p.name}</strong> — {p.help}</li>)}
+        {posList(w.partOfSpeech).map((p) => (
+          <li>
+            <strong>{p.name}</strong> — {p.help}
+          </li>
+        ))}
       </ul>
     </section>
 
-    {
-      SECTIONS.filter(([key]) => w.myanmar[key]).map(([key, icon, label]) => (
-        <section class="card">
-          <h2>{icon} {label}</h2>
-          <p>{w.myanmar[key]}</p>
-        </section>
-      ))
-    }
+    {SECTIONS.filter(([key]) => w.myanmar[key]).map(([key, icon, label]) => (
+      <section class="card">
+        <h2>
+          <Icon name={icon} /> {label}
+        </h2>
+        <p>{w.myanmar[key]}</p>
+      </section>
+    ))}
 
     <section class="card">
-      <h2>📖 ဥပမာ စာကြောင်းများ</h2>
-      {w.examples.map((ex: any) => <ExampleSentence example={ex} />)}
+      <h2>
+        <Icon name="book" /> ဥပမာ စာကြောင်းများ
+      </h2>
+      {w.examples.map((ex: any) => (
+        <ExampleSentence example={ex} />
+      ))}
     </section>
 
-    {
-      w.relatedWords.length > 0 && (
-        <section class="card">
-          <h2>🔗 ဆက်စပ် စကားလုံးများ</h2>
-          <ul class="related">
-            {w.relatedWords.map((r: string) => {
-              const found = findWord(r);
-              return (
-                <li>
-                  {found ? (
-                    <a href={wordUrl(found)}>
-                      <span lang="zh-Hans">{r}</span> <span class="muted">{found.myanmar.meaning}</span>
-                    </a>
-                  ) : (
-                    <span lang="zh-Hans">{r}</span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      )
-    }
+    {w.relatedWords.length > 0 && (
+      <section class="card">
+        <h2>
+          <Icon name="cards" /> ဆက်စပ် စကားလုံးများ
+        </h2>
+        <ul class="related">
+          {w.relatedWords.map((r: string) => {
+            const found = findWord(r);
+            return (
+              <li>
+                {found ? (
+                  <a href={wordUrl(found)}>
+                    <span lang="zh-Hans">{r}</span>{" "}
+                    <span class="muted">{found.myanmar.meaning}</span>
+                  </a>
+                ) : (
+                  <span lang="zh-Hans">{r}</span>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    )}
 
     <div class="btn-row learned-row">
       <LearnedButton id={w.id} />
     </div>
 
     <nav class="btn-row pager" aria-label="စကားလုံးများ">
-      {prev ? <a class="btn" href={wordUrl(prev)}>← <span lang="zh-Hans">{prev.simplified}</span></a> : <span />}
-      {next && <a class="btn" href={wordUrl(next)}><span lang="zh-Hans">{next.simplified}</span> →</a>}
+      {prev ? (
+        <a class="btn" href={wordUrl(prev)}>
+          ← <span lang="zh-Hans">{prev.simplified}</span>
+        </a>
+      ) : (
+        <span />
+      )}
+      {next && (
+        <a class="btn" href={wordUrl(next)}>
+          <span lang="zh-Hans">{next.simplified}</span> →
+        </a>
+      )}
     </nav>
   </article>
 </BaseLayout>
@@ -131,11 +184,18 @@ const SECTIONS = [
   article {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
   }
 
   .hero {
     text-align: center;
+    padding: clamp(24px, 4vw, 44px);
+    background-color: var(--surface);
+    background-image: radial-gradient(
+      ellipse at 50% 0%,
+      var(--accent-soft),
+      transparent 75%
+    );
   }
 
   .hero-top {
@@ -145,42 +205,44 @@ const SECTIONS = [
   }
 
   .hanzi {
-    font-size: 5rem;
+    font-size: clamp(3.5rem, 12vw, 6rem);
+    overflow-wrap: anywhere;
     font-weight: 400;
     line-height: 1.25;
     margin: 0;
   }
 
   .trad,
-  [data-script='traditional'] .simp {
+  [data-script="traditional"] .simp {
     display: none;
   }
 
-  [data-script='traditional'] .trad {
+  [data-script="traditional"] .trad {
     display: inline;
   }
 
   .py {
-    font-size: 1.75rem;
+    font-size: clamp(1.15rem, 4vw, 1.75rem);
+    flex-wrap: wrap;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 20px;
   }
 
   .meaning {
-    font-size: 1.375rem;
+    font-size: clamp(1.1rem, 3vw, 1.375rem);
     font-weight: 700;
     margin: 4px 0 8px;
   }
 
   .script-toggle .to-simp,
-  .script-toggle[aria-pressed='true'] .to-trad {
+  .script-toggle[aria-pressed="true"] .to-trad {
     display: none;
   }
 
-  .script-toggle[aria-pressed='true'] .to-simp {
+  .script-toggle[aria-pressed="true"] .to-simp {
     display: inline;
   }
 
@@ -193,7 +255,13 @@ const SECTIONS = [
   }
 
   section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 1.125rem;
+  }
+  section h2 :global(svg) {
+    color: var(--accent);
   }
 
   section p:last-child {
@@ -215,9 +283,21 @@ const SECTIONS = [
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 16px;
+    gap: 10px;
   }
 
+  .related a {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 9px 14px;
+    text-decoration: none;
+    min-height: 44px;
+  }
   .related [lang] {
     font-size: 1.25rem;
   }
@@ -232,12 +312,14 @@ const SECTIONS = [
 </style>
 
 <script>
-  for (const btn of document.querySelectorAll<HTMLButtonElement>('.script-toggle')) {
-    btn.addEventListener('click', () => {
-      const hero = btn.closest<HTMLElement>('[data-script]')!;
-      const trad = hero.dataset.script !== 'traditional';
-      hero.dataset.script = trad ? 'traditional' : 'simplified';
-      btn.setAttribute('aria-pressed', String(trad));
+  for (const btn of document.querySelectorAll<HTMLButtonElement>(
+    ".script-toggle",
+  )) {
+    btn.addEventListener("click", () => {
+      const hero = btn.closest<HTMLElement>("[data-script]")!;
+      const trad = hero.dataset.script !== "traditional";
+      hero.dataset.script = trad ? "traditional" : "simplified";
+      btn.setAttribute("aria-pressed", String(trad));
     });
   }
 </script>

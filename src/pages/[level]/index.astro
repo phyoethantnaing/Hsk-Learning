@@ -1,12 +1,22 @@
 ---
 // A level (e.g. /hsk1/): its lessons of ~20 words, each with progress.
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProgressCount from '../../components/ProgressCount.astro';
-import { readyLevels, lessonsFor, lessonUrl, flashcardsUrl, wordsForLevel } from '../../lib/words.mjs';
-import { myNumber, url } from '../../lib/site.mjs';
+import PageIntro from "../../components/PageIntro.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProgressCount from "../../components/ProgressCount.astro";
+import {
+  readyLevels,
+  lessonsFor,
+  lessonUrl,
+  flashcardsUrl,
+  wordsForLevel,
+} from "../../lib/words.mjs";
+import { myNumber, url } from "../../lib/site.mjs";
 
 export function getStaticPaths() {
-  return readyLevels().map((level) => ({ params: { level: level.slug }, props: { level } }));
+  return readyLevels().map((level) => ({
+    params: { level: level.slug },
+    props: { level },
+  }));
 }
 
 const { level } = Astro.props;
@@ -14,31 +24,51 @@ const lessons = lessonsFor(level.key);
 const words = wordsForLevel(level.key);
 ---
 
-<BaseLayout title={level.label} description={`${level.label} စကားလုံး ${myNumber(words.length)} လုံးကို မြန်မာလို သင်ခန်းစာ ${myNumber(lessons.length)} ခုနဲ့ လေ့လာပါ။`}>
-  <p class="breadcrumb"><a href={url('/')}>ပင်မ</a> › {level.label}</p>
-  <h1>{level.label} စကားလုံးများ</h1>
-  <p>
-    စကားလုံး {myNumber(words.length)} လုံးကို သင်ခန်းစာ {myNumber(lessons.length)} ခု ခွဲထားပါတယ်။ တစ်ခါမှာ သင်ခန်းစာ တစ်ခုပဲ လေ့လာပါ —
-    ဖြည်းဖြည်းချင်း သွားရင် ပိုမှတ်မိပါတယ်။
+<BaseLayout
+  title={level.label}
+  description={`${level.label} စကားလုံး ${myNumber(words.length)} လုံးကို မြန်မာလို သင်ခန်းစာ ${myNumber(lessons.length)} ခုနဲ့ လေ့လာပါ။`}
+>
+  <p class="breadcrumb">
+    <a href={url("/")}>ပင်မ</a> › {level.label}
   </p>
-  <ProgressCount ids={words.map((w) => w.id)} label={`${level.label} မှာ သိပြီးသား`} />
+  <PageIntro
+    eyebrow="YOUR LEARNING PATH"
+    title={`${level.label} စကားလုံးများ`}
+  />
+  <p>
+    စကားလုံး {myNumber(words.length)} လုံးကို သင်ခန်းစာ{" "}
+    {myNumber(lessons.length)} ခု ခွဲထားပါတယ်။ တစ်ခါမှာ သင်ခန်းစာ တစ်ခုပဲ
+    လေ့လာပါ — ဖြည်းဖြည်းချင်း သွားရင် ပိုမှတ်မိပါတယ်။
+  </p>
+  <ProgressCount
+    ids={words.map((w) => w.id)}
+    label={`${level.label} မှာ သိပြီးသား`}
+  />
 
   <ol class="lessons">
-    {
-      lessons.map((lesson) => (
-        <li class="card lesson">
-          <a class="lesson-title" href={lessonUrl(level.key, lesson.n)}>
-            <span>သင်ခန်းစာ {myNumber(lesson.n)}</span>
-            <span class="preview" lang="zh-Hans">{lesson.words.slice(0, 6).map((w) => w.simplified).join(' ')}…</span>
+    {lessons.map((lesson) => (
+      <li class="card lesson">
+        <a class="lesson-title" href={lessonUrl(level.key, lesson.n)}>
+          <span>သင်ခန်းစာ {myNumber(lesson.n)}</span>
+          <span class="preview" lang="zh-Hans">
+            {lesson.words
+              .slice(0, 6)
+              .map((w) => w.simplified)
+              .join(" ")}
+            …
+          </span>
+        </a>
+        <ProgressCount ids={lesson.words.map((w) => w.id)} />
+        <div class="btn-row">
+          <a class="btn" href={lessonUrl(level.key, lesson.n)}>
+            စကားလုံးများ →
           </a>
-          <ProgressCount ids={lesson.words.map((w) => w.id)} />
-          <div class="btn-row">
-            <a class="btn" href={lessonUrl(level.key, lesson.n)}>📖 စကားလုံးများ</a>
-            <a class="btn" href={flashcardsUrl(level.key, lesson.n)}>🃏 ကတ်ပြား</a>
-          </div>
-        </li>
-      ))
-    }
+          <a class="btn" href={flashcardsUrl(level.key, lesson.n)}>
+            ကတ်ပြား
+          </a>
+        </div>
+      </li>
+    ))}
   </ol>
 </BaseLayout>
 
@@ -48,7 +78,7 @@ const words = wordsForLevel(level.key);
     padding: 0;
     margin: 20px 0 0;
     display: grid;
-    gap: 12px;
+    gap: 20px;
   }
 
   @media (min-width: 640px) {
@@ -60,7 +90,7 @@ const words = wordsForLevel(level.key);
   .lesson {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 18px;
   }
 
   .lesson-title {
@@ -75,6 +105,8 @@ const words = wordsForLevel(level.key);
   .preview {
     font-weight: 400;
     color: var(--text-muted);
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    letter-spacing: 0.08em;
   }
 </style>
