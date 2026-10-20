@@ -29,6 +29,20 @@ const old = {
 };
 {
   const { api, storage } = await scenario(JSON.stringify(old));
+  api.isLearned("old");
+  storage.set(
+    key,
+    JSON.stringify({ ...old, learned: { old: 123, otherTab: 456 } }),
+  );
+  api.setLearned("local", true);
+  assert.equal(
+    JSON.parse(storage.get(key)).learned.otherTab,
+    456,
+    "a mutation must retain a newer saved update even before its storage event arrives",
+  );
+}
+{
+  const { api, storage } = await scenario(JSON.stringify(old));
   api.setLearned("new", true);
   api.recordCard("old", true);
   const saved = JSON.parse(storage.get(key));

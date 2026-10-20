@@ -5,6 +5,7 @@ const empty = () => ({ learned: {}, cards: {} });
 const record = (value) =>
   Boolean(value && typeof value === "object" && !Array.isArray(value));
 let memory = empty();
+let loaded = false;
 let lastRaw;
 function decode(raw) {
   try {
@@ -20,7 +21,9 @@ function decode(raw) {
     return empty();
   }
 }
-function load() {
+function load(refresh = false) {
+  if (loaded && !refresh) return memory;
+  loaded = true;
   try {
     const raw = localStorage.getItem(KEY);
     if (raw !== lastRaw) {
@@ -57,7 +60,8 @@ export function isLearned(id) {
   return Boolean(load().learned[id]);
 }
 export function setLearned(id, learned) {
-  load();
+  // Recheck before a write: another tab's storage event may still be queued.
+  load(true);
   if (learned) memory.learned[id] = Date.now();
   else delete memory.learned[id];
   save();
@@ -67,7 +71,7 @@ export function countLearned(ids) {
   return ids.filter((id) => learned[id]).length;
 }
 export function recordCard(id, known) {
-  load();
+  load(true);
   const original = memory.cards[id];
   const card = record(original) ? { ...original } : {};
   const count = (value) => (Number.isFinite(value) && value >= 0 ? value : 0);
@@ -81,11 +85,16 @@ export function recordCard(id, known) {
 export function onProgress(render) {
   render();
   document.addEventListener("progress-changed", render);
-  window.addEventListener("storage", (event) => {
-    if (event.key === KEY || event.key === null) {
-      lastRaw = undefined;
-      render();
-    }
-  });
-  window.addEventListener("pageshow", render);
 }
+// One invalidation per browser event, shared by every progress subscriber.
+window.addEventListener("storage", (event) => {
+  if (event.key === KEY || event.key === null) {
+    loaded = false;
+    document.dispatchEvent(new CustomEvent("progress-changed"));
+  }
+});
+window.addEventListener("pageshow", (event) => {
+  if (!event.persisted) return;
+  loaded = false;
+  document.dispatchEvent(new CustomEvent("progress-changed"));
+});
