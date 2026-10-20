@@ -1,0 +1,209 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Icon from "../../components/Icon.astro";
+import { READABLE_PDFS, pdfTitle, pdfSize } from "../../lib/pdf-library.mjs";
+import { url } from "../../lib/site.mjs";
+import "../../styles/pdf-reader.css";
+export function getStaticPaths() {
+  return READABLE_PDFS.map((doc) => ({
+    params: { id: doc.id },
+    props: { doc },
+  }));
+}
+const { doc } = Astro.props;
+---
+
+<BaseLayout title={pdfTitle(doc)}>
+  <div
+    class="pdf-reader"
+    lang="en"
+    data-pdf-reader
+    data-file={url(`/pdfs/${doc.filename}`)}
+    data-fingerprint={doc.sha256}
+    data-assets={url("/pdfjs/")}
+  >
+    <a class="breadcrumb" href={url("/library/")}>
+      <Icon name="back" /> PDF စာကြည့်တိုက်
+    </a>
+    <header class="reader-heading">
+      <div>
+        <p class="eyebrow">
+          HSK {doc.level} · {doc.kind}
+        </p>
+        <h1>{pdfTitle(doc)}</h1>
+      </div>
+      <p class="muted">
+        {doc.pages} pages · {pdfSize(doc.bytes)}
+      </p>
+    </header>
+    <noscript>
+      <p class="card">
+        This reader needs JavaScript to display PDFs. Your learning pages remain
+        available without it.
+      </p>
+    </noscript>
+    <div class="reader-toolbar glass" role="group" aria-label="PDF controls">
+      <div
+        class="reader-control-group"
+        role="group"
+        aria-label="Page navigation"
+      >
+        <button
+          class="icon-button"
+          type="button"
+          data-pdf-prev
+          aria-label="Previous page"
+          disabled
+        >
+          <Icon name="back" />
+        </button>
+        <form data-pdf-page-form class="reader-page-form">
+          <label for="pdf-page">Page</label>
+          <input
+            id="pdf-page"
+            type="number"
+            min="1"
+            max={doc.pages}
+            value="1"
+            inputmode="numeric"
+            disabled
+          />
+          <span data-pdf-total>of {doc.pages}</span>
+          <button
+            class="reader-go"
+            type="submit"
+            disabled
+            aria-label="Go to page"
+          >
+            Go
+          </button>
+        </form>
+        <button
+          class="icon-button"
+          type="button"
+          data-pdf-next
+          aria-label="Next page"
+          disabled
+        >
+          <Icon name="forward" />
+        </button>
+      </div>
+      <div class="reader-control-group reader-zoom" role="group" aria-label="Zoom controls">
+        <button
+          class="icon-button"
+          type="button"
+          data-pdf-zoom-out
+          aria-label="Zoom out"
+          disabled
+        >
+          <Icon name="minus" />
+        </button>
+        <button
+          class="reader-fit"
+          type="button"
+          data-pdf-fit
+          disabled
+          aria-label="Fit page to width"
+        >
+          Fit width
+        </button>
+        <button
+          class="icon-button"
+          type="button"
+          data-pdf-zoom-in
+          aria-label="Zoom in"
+          disabled
+        >
+          <Icon name="plus" />
+        </button>
+        <span data-pdf-zoom class="reader-zoom-value" aria-live="polite">
+          100%
+        </span>
+      </div>
+    </div>
+    <p class="reader-status" data-pdf-status role="status" aria-atomic="true">
+      Opening your book…
+    </p>
+    <div class="reader-error card" data-pdf-error hidden role="alert">
+      <h2>Unable to open this page</h2>
+      <p data-pdf-error-message></p>
+      <button class="btn" type="button" data-pdf-retry>
+        <Icon name="retry" />
+        Try again
+      </button>
+    </div>
+    <div
+      class="reader-scroll"
+      data-pdf-scroll
+      role="region"
+      aria-label="PDF page, scroll to read"
+      tabindex="0"
+      aria-busy="true"
+    >
+      <div class="reader-paper" data-pdf-paper hidden>
+        <canvas data-pdf-canvas aria-hidden="true"></canvas>
+        <div
+          class="reader-highlights"
+          data-pdf-highlights
+          aria-hidden="true"
+        ></div>
+        <div
+          class="textLayer"
+          data-pdf-text
+          role="document"
+          aria-label="Page text"
+          lang="zh-Hans"
+        ></div>
+      </div>
+    </div>
+    <section class="reader-marking card" aria-labelledby="highlight-title">
+      <div class="reader-highlight-heading">
+        <h2 id="highlight-title">
+          <Icon name="highlight" /> Your highlights
+        </h2>
+        <span data-pdf-count class="badge">
+          0 saved
+        </span>
+      </div>
+      <p class="muted" data-pdf-selection-help>
+        Select text on the page, choose a color, then save your highlight.
+      </p>
+      <div class="reader-highlight-actions">
+        <label class="reader-color-label" for="highlight-color">
+          Color{" "}
+          <select id="highlight-color" data-pdf-color>
+            <option value="gold">Gold</option>
+            <option value="red">Red</option>
+            <option value="graphite">Graphite</option>
+          </select>
+        </label>
+        <button class="btn btn-primary" type="button" data-pdf-save disabled>
+          <Icon name="highlight" />
+          Save highlight
+        </button>
+      </div>
+      <p data-pdf-storage class="reader-storage" role="status" hidden></p>
+      <p class="reader-empty muted" data-pdf-empty>
+        No highlights yet. They are saved on this device, separately from your
+        learning progress.
+      </p>
+      <span hidden data-pdf-remove-icon>
+        <Icon name="close" />
+      </span>
+      <ul
+        class="reader-highlight-list"
+        data-pdf-list
+        aria-label="Saved highlights"
+      ></ul>
+    </section>
+    <p class="reader-footnote muted">
+      Original page colors are preserved for legibility in both appearances.
+      Image-only pages do not support text highlighting. Browser storage may be
+      cleared by private browsing or device settings. Highlights are not written
+      into the PDF. <a href={url("/library/")}>Back to library</a>.
+    </p>
+  </div>
+</BaseLayout>
+<script>
+  import "../../scripts/pdf-reader.js";
+</script>

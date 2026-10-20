@@ -5,6 +5,8 @@ for (const path of [
   "/hsk1/hsk1-0001/",
   "/hsk1/lesson/2/",
   "/start/",
+  "/library/",
+  "/reader/hsk-1-textbook/",
   "/hsk7-9/",
 ])
   assert.equal(navigationSection(path), "learn", path);

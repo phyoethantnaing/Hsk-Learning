@@ -23,10 +23,17 @@
     "test": "node --test \"scripts/**/*.test.mjs\"",
     "test:ui": "playwright test",
     "audit:ui": "node scripts/audit-ui.mjs",
-    "profile:ui": "node scripts/profile-ui.mjs"
+    "profile:ui": "node scripts/profile-ui.mjs",
+    "predev": "node scripts/prepare-pdf-assets.mjs",
+    "prebuild": "node scripts/prepare-pdf-assets.mjs",
+    "check-pdfs": "node scripts/check-pdfs.mjs",
+    "postbuild": "node scripts/check-pdfs.mjs",
+    "audit:pdf": "node scripts/verify-pdf-ui.mjs",
+    "import-pdfs": "node scripts/import-pdfs.mjs"
   },
   "dependencies": {
-    "astro": "7.3.5"
+    "astro": "7.3.5",
+    "pdfjs-dist": "6.4.299"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",

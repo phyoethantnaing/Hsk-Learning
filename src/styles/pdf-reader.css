@@ -1,0 +1,322 @@
+.pdf-reader {
+  min-width: 0;
+}
+.reader-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 8px 24px;
+  margin-block: 24px;
+}
+.reader-heading h1 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1.3;
+  margin: 0;
+}
+.reader-heading .eyebrow {
+  margin-bottom: 8px;
+}
+.reader-heading > p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+.reader-toolbar {
+  position: sticky;
+  top: calc(var(--header-height, 76px) + 8px);
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 18px;
+  padding: 10px;
+  border-radius: 22px;
+}
+.reader-control-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.reader-page-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+}
+.reader-page-form input {
+  width: 58px;
+  min-height: 44px;
+  padding: 6px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+}
+.reader-page-form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.reader-fit,
+.reader-go {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.reader-fit:active,
+.reader-go:active {
+  background: var(--accent-soft);
+}
+.reader-zoom-value {
+  min-width: 48px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.reader-status {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 12px 2px;
+  min-height: 1.95em;
+}
+.reader-scroll {
+  max-width: 100%;
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-2);
+  scrollbar-gutter: stable;
+}
+.reader-scroll[aria-busy="true"] {
+  cursor: progress;
+}
+.reader-scroll:has(.reader-paper[hidden]) {
+  min-height: 240px;
+}
+.reader-paper {
+  position: relative;
+  margin-inline: auto;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 2px 8px #0002;
+  direction: ltr;
+  flex-shrink: 0;
+}
+.reader-paper canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.reader-highlights {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.reader-mark {
+  position: absolute;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  border-radius: 2px;
+}
+.reader-mark[data-color="gold"] {
+  background: #f0cd5b80;
+}
+.reader-mark[data-color="red"] {
+  background: #ef8b8b70;
+}
+.reader-mark[data-color="graphite"] {
+  background: #8c919960;
+}
+/* TextLayer geometry follows PDF.js 6.4 (Apache-2.0). Explicit pixel layer sizes
+   in the renderer also cover browsers without CSS round(). No gesture capture. */
+.pdf-reader .textLayer {
+  color-scheme: only light;
+  position: absolute;
+  text-align: initial;
+  inset: 0;
+  overflow: hidden;
+  line-height: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  forced-color-adjust: none;
+  transform-origin: 0 0;
+  z-index: 2;
+  --min-font-size: 1;
+  --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv: calc(1 / var(--min-font-size));
+}
+.pdf-reader .textLayer :is(span, br) {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0 0;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.pdf-reader .textLayer > :not(.markedContent),
+.pdf-reader .textLayer .markedContent span:not(.markedContent) {
+  z-index: 1;
+  --font-height: 0;
+  font-size: calc(var(--text-scale-factor) * var(--font-height));
+  --scale-x: 1;
+  --rotate: 0deg;
+  transform: rotate(var(--rotate)) scaleX(var(--scale-x))
+    scale(var(--min-font-size-inv));
+}
+.pdf-reader .textLayer .markedContent {
+  display: contents;
+}
+.pdf-reader .textLayer ::selection {
+  color: transparent;
+  background: #c9a24d70;
+}
+.reader-marking {
+  margin-top: 24px;
+}
+.reader-highlight-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.reader-highlight-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  margin: 0;
+}
+.reader-highlight-heading h2 .icon {
+  color: var(--gold);
+}
+.reader-marking > .muted {
+  font-size: 0.82rem;
+  margin-block: 12px;
+}
+.reader-highlight-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.reader-color-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+.reader-color-label select {
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 30px 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+}
+.reader-highlight-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+}
+.reader-highlight-list li {
+  display: flex;
+  gap: 12px;
+  align-items: start;
+  padding-block: 14px;
+  border-top: 1px solid var(--border);
+}
+.reader-highlight-link {
+  flex: 1;
+  min-width: 0;
+  text-align: start;
+  background: none;
+  color: var(--text);
+  border: 0;
+  padding: 6px 0;
+  min-height: 44px;
+  cursor: pointer;
+}
+.reader-highlight-link span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--gold);
+}
+.reader-highlight-link q {
+  display: block;
+  font-size: 0.9rem;
+  font-family: var(--font-zh);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.reader-storage {
+  padding: 12px;
+  border: 1px solid var(--gold-edge);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 0.82rem;
+  margin-block: 16px;
+}
+.reader-empty,
+.reader-footnote {
+  font-size: 0.8rem;
+  margin-block: 20px 0;
+}
+.reader-error {
+  margin-block: 16px;
+}
+.reader-error h2 {
+  font-size: 1.1rem;
+}
+@media (max-width: 600px) {
+  .reader-toolbar {
+    position: static;
+    gap: 6px;
+  }
+  .reader-control-group {
+    justify-content: center;
+    width: 100%;
+  }
+  .reader-scroll {
+    padding: 6px;
+    border-radius: 12px;
+  }
+  .reader-page-form {
+    gap: 4px;
+  }
+  .reader-page-form input {
+    width: 52px;
+  }
+  .reader-page-form label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .reader-highlight-actions .btn {
+    flex: 1;
+    min-width: 190px;
+  }
+}
+@media (forced-colors: active) {
+  .reader-mark {
+    forced-color-adjust: none;
+    background: Highlight !important;
+    opacity: 0.35;
+  }
+}

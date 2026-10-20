@@ -139,6 +139,17 @@ const READY = new Set(readyLevels().map((l) => l.key));
     </ul>
   </section>
 
+  <a class="card library-entry" href={url("/library/")}>
+    <Icon name="document" size={28} />
+    <span>
+      <strong>PDF စာကြည့်တိုက်</strong>
+      <span lang="en">
+        Textbooks, workbooks &amp; vocabulary · Read at your own pace
+      </span>
+    </span>
+    <Icon name="arrow" />
+  </a>
+
   <section aria-labelledby="how-title" class="how card">
     <p class="eyebrow" lang="en">
       SMALL HABITS. REAL PROGRESS.
@@ -162,6 +173,30 @@ const READY = new Set(readyLevels().map((l) => l.key));
 </BaseLayout>
 
 <style>
+  .library-entry {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 28px;
+    text-decoration: none;
+    color: var(--text);
+    border-color: var(--gold-edge);
+  }
+  .library-entry > .icon {
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .library-entry > span {
+    flex: 1;
+  }
+  .library-entry strong,
+  .library-entry span[lang] {
+    display: block;
+  }
+  .library-entry span[lang] {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
   .hero {
     display: grid;
     gap: 26px;
