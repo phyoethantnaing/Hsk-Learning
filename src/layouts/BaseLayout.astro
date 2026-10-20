@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Icon from "../components/Icon.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { url } from "../lib/site.mjs";
@@ -66,7 +67,25 @@ const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
     <SiteHeader />
     <main id="main" class:list={["container", { reading }]}>
       <slot />
+      <p class="storage-status card" data-progress-storage hidden></p>
     </main>
     <SiteFooter />
+    <p
+      class="visually-hidden"
+      data-learning-announcement
+      role="status"
+      aria-atomic="true"
+    ></p>
+    <div class="speak-message" data-audio-status hidden>
+      <p data-audio-message></p>
+      <button
+        type="button"
+        class="icon-button"
+        data-audio-dismiss
+        aria-label="ပိတ်ရန်"
+      >
+        <Icon name="close" />
+      </button>
+    </div>
   </body>
 </html>

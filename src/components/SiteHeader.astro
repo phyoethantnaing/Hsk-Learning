@@ -1,15 +1,15 @@
 ---
 import { url } from "../lib/site.mjs";
+import { NAV_ITEMS, navigationSection } from "../lib/navigation.mjs";
 import Icon from "./Icon.astro";
-const NAV = [
-  { href: "/", label: "ပင်မ", icon: "home" },
-  { href: "/start/", label: "အစပြုရန်", icon: "book" },
-  { href: "/search/", label: "ရှာရန်", icon: "search" },
-  { href: "/flashcards/", label: "ကတ်ပြား", icon: "cards" },
-  { href: "/about/", label: "အကြောင်း", icon: "info" },
-];
-const current = Astro.url.pathname.replace(/\/$/, "") || "/";
-const isCurrent = (href: string) => url(href).replace(/\/$/, "") === current;
+import Appearance from "./Appearance.astro";
+const relative =
+  Astro.url.pathname.slice(
+    import.meta.env.BASE_URL.replace(/\/$/, "").length,
+  ) || "/";
+const section = navigationSection(relative);
+const exact = (href: string) =>
+  relative.replace(/\/$/, "") === href.replace(/\/$/, "");
 ---
 
 <header class="site-header">
@@ -20,18 +20,24 @@ const isCurrent = (href: string) => url(href).replace(/\/$/, "") === current;
       </span>
       <span>
         HSK <span class="brand-my">မြန်မာ</span>
-        <small lang="en">A LITTLE EVERY DAY.</small>
       </span>
     </a>
-    <nav id="site-nav" aria-label="အဓိက မီနူး">
+    <nav id="site-nav" class="app-navigation glass" aria-label="အဓိက လမ်းညွှန်">
       <ul>
-        {NAV.map((item) => (
+        {NAV_ITEMS.map((item) => (
           <li>
             <a
               href={url(item.href)}
-              aria-current={isCurrent(item.href) ? "page" : undefined}
+              data-section={item.key}
+              aria-current={
+                section === item.key
+                  ? exact(item.href)
+                    ? "page"
+                    : "true"
+                  : undefined
+              }
             >
-              <Icon name={item.icon} size={17} />
+              <Icon name={item.icon} size={23} />
               <span>{item.label}</span>
             </a>
           </li>
@@ -39,252 +45,201 @@ const isCurrent = (href: string) => url(href).replace(/\/$/, "") === current;
       </ul>
     </nav>
     <div class="header-actions">
-      <label class="theme-control" title="အသွင်အပြင် / Appearance">
-        <Icon name="sun" size={18} />
-        <span class="visually-hidden">အသွင်အပြင် / Appearance</span>
-        <select data-theme-select aria-label="အသွင်အပြင် / Appearance">
-          <option value="system">အလိုအလျောက်</option>
-          <option value="light">အလင်း</option>
-          <option value="dark">အမှောင်</option>
-        </select>
-      </label>
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="site-nav"
-        aria-label="မီနူး ဖွင့်ရန်"
+      <a
+        class="icon-button about-link"
+        href={url("/about/")}
+        aria-label="ဆိုက်အကြောင်း"
+        aria-current={exact("/about/") ? "page" : undefined}
+        title="ဆိုက်အကြောင်း"
       >
-        <Icon name="menu" />
-      </button>
+        <Icon name="info" size={21} />
+      </a>
+      <Appearance />
     </div>
   </div>
 </header>
 <script>
-  import "../scripts/theme.js";
-  const menu = document.querySelector<HTMLButtonElement>(".menu-toggle")!;
-  const header = document.querySelector<HTMLElement>(".site-header")!;
-  function close() {
-    menu.setAttribute("aria-expanded", "false");
-    header.classList.remove("nav-open");
+  // The visual viewport shrinks when a software keyboard covers mobile content.
+  // Hide only the floating chrome while editing; never suppress browser scrolling.
+  const chrome = document.querySelector<HTMLElement>(".site-header")!;
+  const navigation = document.querySelector<HTMLElement>("#site-nav")!;
+  if ("ResizeObserver" in window) {
+    const observer = new ResizeObserver(() => {
+      document.documentElement.style.setProperty(
+        "--nav-height",
+        `${navigation.getBoundingClientRect().height}px`,
+      );
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${chrome.getBoundingClientRect().height}px`,
+      );
+    });
+    observer.observe(chrome);
+    observer.observe(navigation);
   }
-  menu.addEventListener("click", () => {
-    const open = menu.getAttribute("aria-expanded") !== "true";
-    menu.setAttribute("aria-expanded", String(open));
-    header.classList.toggle("nav-open", open);
-    if (open) header.querySelector<HTMLAnchorElement>("nav a")?.focus();
-  });
-  header.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      close();
-      menu.focus();
-    }
-  });
-  document.addEventListener("click", (e) => {
-    if (!header.contains(e.target as Node)) close();
-  });
-  matchMedia("(min-width: 960px)").addEventListener("change", close);
+  const viewport = window.visualViewport;
+  function updateKeyboard() {
+    const editing = document.activeElement?.matches(
+      'input:not([type="radio"]), textarea, [contenteditable="true"]',
+    );
+    document.documentElement.classList.toggle(
+      "keyboard-open",
+      Boolean(
+        editing && viewport && window.innerHeight - viewport.height > 120,
+      ),
+    );
+  }
+  viewport?.addEventListener("resize", updateKeyboard);
+  document.addEventListener("focusin", updateKeyboard);
+  document.addEventListener("focusout", () =>
+    requestAnimationFrame(updateKeyboard),
+  );
+  window.addEventListener("pageshow", updateKeyboard);
 </script>
 <style>
   .site-header {
     position: sticky;
     top: 0;
     z-index: 20;
-    background-color: var(--surface);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 0 var(--highlight);
+    background: var(--bg);
     padding-top: env(safe-area-inset-top);
   }
-  @supports (
-    (backdrop-filter: blur(16px)) or (-webkit-backdrop-filter: blur(16px))
-  ) {
-    .site-header {
-      background-color: var(--glass);
-      -webkit-backdrop-filter: blur(20px) saturate(135%);
-      backdrop-filter: blur(20px) saturate(135%);
-    }
-  }
-  @media (prefers-reduced-transparency: reduce) {
-    .site-header {
-      background-color: var(--surface);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-  }
   .header-inner {
+    min-height: 76px;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    min-height: 88px;
+    gap: 24px;
   }
   .brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 11px;
+    gap: 10px;
     color: var(--text);
     text-decoration: none;
-    font-size: 1.15rem;
     font-weight: 750;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    line-height: 1.5;
     margin-right: auto;
+    min-height: 44px;
+    min-width: 0;
   }
   .logo {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 46px;
-    border-radius: 14px;
-    background: linear-gradient(145deg, #ed4b43, #ba2323);
+    width: 38px;
+    height: 40px;
+    border-radius: 13px;
+    background: linear-gradient(145deg, #d8322e, #b92323);
     color: white;
-    box-shadow:
-      inset 0 1px 0 #ffffff55,
-      0 3px 8px #b3261e22;
-    font-size: 1.8rem;
+    font-size: 1.65rem;
     font-weight: 400;
-  }
-  .brand small {
-    display: block;
-    font-size: 0.49rem;
-    letter-spacing: 0.16em;
-    color: var(--text-muted);
-    font-weight: 600;
+    box-shadow: inset 0 1px 0 #ffffff55;
   }
   .brand-my {
-    font-size: 0.95rem;
-  }
-  nav {
-    order: 3;
-    width: 100%;
-    padding-bottom: 12px;
-  }
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  nav li {
-    flex: 1;
-  }
-  nav a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    min-height: 44px;
-    padding: 8px 11px;
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    text-decoration: none;
-    border-radius: 13px;
-    transition: background 180ms;
-  }
-  nav a:hover {
-    background: var(--surface-2);
-    color: var(--text);
-  }
-  nav a[aria-current="page"] {
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-weight: 700;
+    font-size: 0.92rem;
   }
   .header-actions {
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .theme-control {
+  .app-navigation {
+    padding: 5px;
+    border-radius: 24px;
+  }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+  }
+  nav a {
     display: flex;
     align-items: center;
-    gap: 6px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    padding-left: 10px;
-    color: var(--text-muted);
-  }
-  select {
+    justify-content: center;
+    gap: 8px;
     min-height: 44px;
-    max-width: 118px;
-    background: transparent;
-    border: 0;
-    color: var(--text);
-    font-size: 0.7rem;
-    padding: 5px 7px 5px 0;
-    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 19px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    transition:
+      background 160ms,
+      color 160ms,
+      transform 160ms var(--ease);
   }
-  option {
-    background: var(--surface);
-    color: var(--text);
+  nav a[aria-current] {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
   }
-  .menu-toggle {
-    display: none;
-    width: 44px;
-    height: 44px;
-    place-items: center;
-    background: var(--surface);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    cursor: pointer;
+  nav a[aria-current] :global(svg) {
+    stroke-width: 2.2;
   }
-  :global(html:not(.js)) .theme-control {
-    display: none;
-  }
-  @media (max-width: 959px) {
-    :global(.js) nav {
-      display: none;
-    }
-    :global(.js) .nav-open nav {
-      display: block;
-    }
-    :global(.js) .menu-toggle {
-      display: grid;
+  @media (hover: hover) {
+    nav a:hover {
+      background: var(--surface-2);
+      color: var(--text);
     }
   }
-  @media (max-width: 420px) {
+  nav a:active {
+    transform: scale(0.96);
+  }
+  @media (max-width: 899px) {
     .header-inner {
-      gap: 8px;
-      min-height: 78px;
+      min-height: 64px;
+      gap: 12px;
     }
-    .theme-control {
-      padding-left: 7px;
+    .app-navigation {
+      position: fixed;
+      z-index: 20;
+      left: max(12px, env(safe-area-inset-left));
+      right: max(12px, env(safe-area-inset-right));
+      bottom: calc(8px + var(--safe-bottom));
+      width: auto;
+      max-width: 480px;
+      margin-inline: auto;
+      border-radius: 30px;
+      padding: 6px;
+    }
+    nav ul {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 2px;
-    }
-    select {
-      max-width: 87px;
     }
     nav a {
       flex-direction: column;
-      gap: 1px;
-      padding: 8px 5px;
-      font-size: 0.72rem;
+      gap: 3px;
+      border-radius: 23px;
+      min-width: 0;
+      min-height: 58px;
+      padding: 6px 3px;
+      font-size: 0.68rem;
+      line-height: 1.8;
+      text-align: center;
     }
-    .brand {
-      gap: 8px;
+    nav a :global(svg) {
+      flex: none;
     }
-    .brand small {
-      font-size: 0.42rem;
+    :global(.keyboard-open) .app-navigation {
+      visibility: hidden;
+      pointer-events: none;
     }
-    .logo {
-      width: 38px;
-      height: 42px;
+    :global(html:has(dialog[open])) .app-navigation {
+      pointer-events: none;
     }
   }
-  @media (min-width: 960px) {
-    nav {
-      order: initial;
-      width: auto;
-      padding: 0;
+  @media (max-width: 899px) and (orientation: landscape) and (max-height: 500px) {
+    nav a {
+      flex-direction: row;
+      min-height: 44px;
+      gap: 8px;
     }
-    nav li {
-      flex: initial;
-    }
-    .header-actions {
-      margin-left: 12px;
+    .app-navigation {
+      border-radius: 26px;
     }
   }
 </style>

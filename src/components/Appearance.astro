@@ -1,0 +1,175 @@
+---
+import Icon from "./Icon.astro";
+const options = [
+  {
+    value: "system",
+    icon: "system",
+    label: "အလိုအလျောက်",
+    detail: "စက်၏ အသွင်အပြင်အတိုင်း",
+  },
+  {
+    value: "light",
+    icon: "sun",
+    label: "အလင်း",
+    detail: "အဖြူရောင် အသွင်အပြင်",
+  },
+  {
+    value: "dark",
+    icon: "moon",
+    label: "အမှောင်",
+    detail: "အနက်ရောင် အသွင်အပြင်",
+  },
+];
+---
+
+<button
+  class="icon-button appearance-trigger"
+  type="button"
+  data-appearance-open
+  aria-haspopup="dialog"
+  aria-controls="appearance-dialog"
+  aria-label="အသွင်အပြင် ပြောင်းရန်"
+  title="အသွင်အပြင်"
+>
+  <Icon name="sun" size={21} />
+</button>
+<dialog
+  id="appearance-dialog"
+  class="appearance-sheet"
+  aria-labelledby="appearance-title"
+>
+  <div class="sheet-heading">
+    <h2 id="appearance-title">အသွင်အပြင်</h2>
+    <button
+      class="icon-button"
+      type="button"
+      data-appearance-close
+      aria-label="ပိတ်ရန်"
+    >
+      <Icon name="close" />
+    </button>
+  </div>
+  <fieldset>
+    <legend class="visually-hidden">အသွင်အပြင် ရွေးပါ</legend>
+    {options.map((option) => (
+      <label class="appearance-option">
+        <input
+          type="radio"
+          name="appearance"
+          value={option.value}
+          data-theme-choice
+          checked={option.value === "system"}
+        />
+        <Icon name={option.icon} size={23} />
+        <span>
+          <strong>{option.label}</strong>
+          <small>{option.detail}</small>
+        </span>
+        <span class="option-check">
+          <Icon name="check" size={19} />
+        </span>
+      </label>
+    ))}
+  </fieldset>
+</dialog>
+<script>
+  import "../scripts/theme.js";
+</script>
+<style>
+  :global(html:not(.js)) .appearance-trigger {
+    display: none;
+  }
+  .appearance-sheet {
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    box-shadow: var(--shadow-raised);
+    width: min(440px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    padding: 22px;
+    overscroll-behavior: contain;
+  }
+  .appearance-sheet::backdrop {
+    background: rgb(0 0 0 / 38%);
+  }
+  .appearance-sheet[open] {
+    animation: sheet-in 180ms var(--ease);
+  }
+  .sheet-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .appearance-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    min-height: 76px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    cursor: pointer;
+  }
+  .appearance-option:has(:checked) {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .appearance-option:has(:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+  }
+  strong {
+    display: block;
+    font-size: 0.95rem;
+  }
+  small {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+  .option-check {
+    margin-left: auto;
+    visibility: hidden;
+    color: var(--accent);
+  }
+  input:checked ~ .option-check {
+    visibility: visible;
+  }
+  @keyframes sheet-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @media (max-width: 639px) {
+    .appearance-sheet {
+      margin: auto auto max(12px, env(safe-area-inset-bottom));
+      padding: 22px;
+    }
+  }
+</style>

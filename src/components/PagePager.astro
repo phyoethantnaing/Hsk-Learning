@@ -1,0 +1,63 @@
+---
+import Icon from "./Icon.astro";
+interface Destination {
+  href: string;
+  label: string;
+  lang?: string;
+}
+interface Props {
+  previous: Destination | null;
+  next: Destination | null;
+  label: string;
+}
+const { previous, next, label } = Astro.props;
+---
+
+<nav class="page-pager" aria-label={label}>
+  {previous ? (
+    <a class="btn" rel="prev" href={previous.href}>
+      <Icon name="back" size={18} />
+      <span lang={previous.lang}>{previous.label}</span>
+    </a>
+  ) : (
+    <span class="btn" aria-disabled="true">
+      <Icon name="back" size={18} />
+      <span>ရှေ့</span>
+    </span>
+  )}
+  {next ? (
+    <a class="btn" rel="next" href={next.href}>
+      <span lang={next.lang}>{next.label}</span>
+      <Icon name="forward" size={18} />
+    </a>
+  ) : (
+    <span class="btn" aria-disabled="true">
+      <span>နောက်</span>
+      <Icon name="forward" size={18} />
+    </span>
+  )}
+</nav>
+<style>
+  .page-pager {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+  .btn {
+    min-width: 0;
+    min-height: 52px;
+    justify-content: space-between;
+  }
+  .btn span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  [aria-disabled] {
+    color: var(--text-muted);
+    background: transparent;
+    opacity: 0.65;
+  }
+</style>

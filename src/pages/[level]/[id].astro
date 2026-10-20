@@ -1,6 +1,7 @@
 ---
 // One word (e.g. /hsk1/hsk1-0001/): everything a learner needs on one page.
 import Icon from "../../components/Icon.astro";
+import PagePager from "../../components/PagePager.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Pinyin from "../../components/Pinyin.astro";
 import ToneChips from "../../components/ToneChips.astro";
@@ -40,10 +41,10 @@ const lesson = lessonNumberOf(w);
 const sameScript = w.simplified === w.traditional;
 
 const SECTIONS = [
-  ["kidExplanation", "info", "ရှင်းပြချက်"],
-  ["memoryTip", "book", "မှတ်ရလွယ်အောင်"],
-  ["usageNote", "book", "ဘယ်လို သုံးမလဲ"],
-  ["commonMistake", "info", "သတိထားရန်"],
+  ["kidExplanation", "spark", "ရှင်းပြချက်"],
+  ["memoryTip", "bookmark", "မှတ်ရလွယ်အောင်"],
+  ["usageNote", "pen", "ဘယ်လို သုံးမလဲ"],
+  ["commonMistake", "warning", "သတိထားရန်"],
 ] as const;
 ---
 
@@ -91,7 +92,9 @@ const SECTIONS = [
           <span class="to-simp">ရိုးရှင်းစာလုံး (简) ပြန်ကြည့်ရန်</span>
         </button>
       )}
-      <p class="muted small english">English: {w.english}</p>
+      <p class="muted small english" lang="en">
+        English: {w.english}
+      </p>
     </header>
 
     <section class="card">
@@ -105,7 +108,7 @@ const SECTIONS = [
 
     <section class="card">
       <h2>
-        <Icon name="cards" /> စကားလုံး အမျိုးအစား
+        <Icon name="tag" /> စကားလုံး အမျိုးအစား
       </h2>
       <ul class="pos">
         {posList(w.partOfSpeech).map((p) => (
@@ -137,7 +140,7 @@ const SECTIONS = [
     {w.relatedWords.length > 0 && (
       <section class="card">
         <h2>
-          <Icon name="cards" /> ဆက်စပ် စကားလုံးများ
+          <Icon name="link" /> ဆက်စပ် စကားလုံးများ
         </h2>
         <ul class="related">
           {w.relatedWords.map((r: string) => {
@@ -163,20 +166,19 @@ const SECTIONS = [
       <LearnedButton id={w.id} />
     </div>
 
-    <nav class="btn-row pager" aria-label="စကားလုံးများ">
-      {prev ? (
-        <a class="btn" href={wordUrl(prev)}>
-          ← <span lang="zh-Hans">{prev.simplified}</span>
-        </a>
-      ) : (
-        <span />
-      )}
-      {next && (
-        <a class="btn" href={wordUrl(next)}>
-          <span lang="zh-Hans">{next.simplified}</span> →
-        </a>
-      )}
-    </nav>
+    <PagePager
+      label="စကားလုံးများ"
+      previous={
+        prev
+          ? { href: wordUrl(prev), label: prev.simplified, lang: "zh-Hans" }
+          : null
+      }
+      next={
+        next
+          ? { href: wordUrl(next), label: next.simplified, lang: "zh-Hans" }
+          : null
+      }
+    />
   </article>
 </BaseLayout>
 
@@ -304,10 +306,6 @@ const SECTIONS = [
 
   .learned-row {
     justify-content: center;
-  }
-
-  .pager {
-    justify-content: space-between;
   }
 </style>
 

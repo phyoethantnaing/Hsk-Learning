@@ -1,6 +1,7 @@
 ---
 // A word in a lesson list: character, tone-coloured pinyin, Myanmar meaning.
 // A ✓ appears when the learner has marked the word as learned (client side).
+import Icon from "./Icon.astro";
 import Pinyin from "./Pinyin.astro";
 import { wordUrl } from "../lib/words.mjs";
 
@@ -20,7 +21,7 @@ const { word } = Astro.props;
   </span>
   <span class="meaning">{word.myanmar.meaning}</span>
   <span class="done" aria-label="သိပြီ" hidden>
-    ✓
+    <Icon name="check" size={16} />
   </span>
 </a>
 
