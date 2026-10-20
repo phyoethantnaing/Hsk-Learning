@@ -1,0 +1,33 @@
+---
+// Pinyin coloured by tone (one colour per syllable; see --tone1…--tone5).
+import { readings, syllables } from '../lib/pinyin.mjs';
+
+interface Props {
+  pinyin: string;
+  class?: string;
+}
+
+const { pinyin, class: className } = Astro.props;
+const parts = readings(pinyin).map((reading) => {
+  // Keep spaces, hyphens and apostrophes from the original by walking it piece by piece.
+  return reading.split(/(\s+|-|['’])/).map((piece) => {
+    if (!piece.trim() || /^[-'’]$/.test(piece)) return [{ text: piece, tone: 0 }];
+    try {
+      return syllables(piece).map((s) => ({ text: s.text, tone: s.tone }));
+    } catch {
+      return [{ text: piece, tone: 0 }];
+    }
+  }).flat();
+});
+---
+
+<span class:list={['pinyin', className]}>
+  {
+    parts.map((reading, i) => (
+      <>
+        {i > 0 && <span class="sep"> / </span>}
+        {reading.map((p) => (p.tone ? <span class={`tone${p.tone}`}>{p.text}</span> : p.text))}
+      </>
+    ))
+  }
+</span>

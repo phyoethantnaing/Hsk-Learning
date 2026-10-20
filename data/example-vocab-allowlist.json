@@ -1,4 +1,8 @@
 {
-  "description": "Words allowed in example sentences at any level even though they are not in the HSK list for that level (e.g. proper names). Keep this list short.",
-  "words": []
+  "description": "Proper nouns (countries, cities) that example sentences may use at any level even though they are not HSK words. Proper nouns only, never ordinary words. At most one per example sentence. The site shows the gloss under any example that uses one.",
+  "words": [
+    { "word": "缅甸", "pinyin": "Miǎndiàn", "my": "မြန်မာနိုင်ငံ" },
+    { "word": "仰光", "pinyin": "Yǎngguāng", "my": "ရန်ကုန်မြို့" },
+    { "word": "曼德勒", "pinyin": "Màndélè", "my": "မန္တလေးမြို့" }
+  ]
 }

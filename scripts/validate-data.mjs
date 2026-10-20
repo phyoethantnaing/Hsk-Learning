@@ -10,7 +10,8 @@
 //  - id, level, simplified, traditional, pinyin, english match data/raw exactly
 //  - pinyinNumbered and tones match what the pinyin says
 //  - Myanmar text is Unicode, not Zawgyi (also checks the site's own UI text in src/)
-//  - example pinyin is real pinyin
+//  - example pinyin is real pinyin with one syllable per Chinese character
+//  - data/example-vocab-allowlist.json entries are well formed
 
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
@@ -19,6 +20,7 @@ import { isDeepStrictEqual } from 'node:util';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { toNumbered, tones, syllables } from '../src/lib/pinyin.mjs';
 import { zawgyiProblems } from './lib/zawgyi.mjs';
+import { ALLOWLIST } from '../src/lib/allowlist.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LEVELS = ['1', '2', '3', '4', '5', '6', '7-9'];
@@ -56,6 +58,42 @@ for (const level of LEVELS) {
 // --- schema ------------------------------------------------------------------
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const validateWord = ajv.compile(readJson(join(ROOT, 'data/schema/word.schema.json')));
+
+const SENTENCE_PUNCTUATION = /[，。！？、：；“”‘’"«»….,!?:;—–]/g;
+
+/** Explains why `pinyin` cannot be the reading of `zh`, or returns null if it fits. */
+function pinyinMismatch(zh, pinyin) {
+  let parts;
+  try {
+    parts = syllables(pinyin.replace(SENTENCE_PUNCTUATION, ' '));
+  } catch (e) {
+    return e.message;
+  }
+  const hanCount = (zh.match(/\p{Script=Han}/gu) ?? []).length;
+  const expected = hanCount - parts.filter((p) => p.erhua).length;
+  if (parts.length !== expected) {
+    return `${parts.length} syllable(s) for ${hanCount} Chinese character(s) — a syllable is missing or extra`;
+  }
+  return null;
+}
+
+// --- allowlisted proper nouns ------------------------------------------------
+for (const [i, entry] of ALLOWLIST.entries()) {
+  const where = `data/example-vocab-allowlist.json words[${i}] ${entry.word ?? ''}`;
+  const keys = Object.keys(entry).sort().join(',');
+  if (keys !== 'my,pinyin,word') {
+    err(where, 'each entry needs exactly "word", "pinyin" and "my"');
+    continue;
+  }
+  if (!/^\p{Script=Han}+$/u.test(entry.word)) err(where, 'word must be Chinese characters');
+  const problem = pinyinMismatch(entry.word, entry.pinyin);
+  if (problem) err(where, `pinyin: ${problem}`);
+  if (!/[\u1000-\u109F]/u.test(entry.my)) err(where, 'my must be Myanmar text');
+  for (const p of zawgyiProblems(entry.my)) err(where, `my looks like Zawgyi (${p})`);
+  if ([...raw.values()].some((r) => r.simplified === entry.word)) {
+    err(where, `${entry.word} is an HSK word, so it does not belong in the allowlist`);
+  }
+}
 
 // --- word batches ------------------------------------------------------------
 const FILE_NAME = /^hsk([1-6]|7-9)-(\d{3,4})-(\d{3,4})\.json$/;
@@ -123,12 +161,8 @@ for (const file of walk(join(ROOT, 'data/words'), ['.json']).sort()) {
 
     // Examples
     w.examples.forEach((ex, n) => {
-      const pinyinOnly = ex.pinyin.replace(/[，。！？、：；“”‘’"«»….,!?:;]/g, ' ');
-      try {
-        syllables(pinyinOnly);
-      } catch (e) {
-        err(where, `examples[${n}].pinyin: ${e.message}`);
-      }
+      const problem = pinyinMismatch(ex.zh, ex.pinyin);
+      if (problem) err(where, `examples[${n}].pinyin: ${problem}`);
       if (!/\p{Script=Han}/u.test(ex.zh)) err(where, `examples[${n}].zh has no Chinese characters`);
       if (!ex.zh.includes(w.simplified)) warn(where, `examples[${n}] does not contain ${w.simplified}`);
     });
