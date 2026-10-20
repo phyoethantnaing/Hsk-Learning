@@ -22,9 +22,9 @@ A 10-year-old Myanmar child who has never studied Chinese and has no teacher.
 | `meaning` | 1–4 short meanings separated by ၊ |
 | `kidExplanation` | 2–4 short sentences: what it means, when people use it |
 | `pronunciationTip` | Myanmar-letter sound hint + only what is special (see below) |
-| `memoryTip` | Fun way to remember the character. Only character-component facts you are sure of; otherwise say clearly it is a picture story |
+| `memoryTip` | Fun way to remember the character: a little story or picture, not just "A = x, B = y" (see below) |
 | `usageNote` | Word order, what it goes with. May be `""` for very simple words |
-| `commonMistake` | A mistake Myanmar learners really make. May be `""` |
+| `commonMistake` | A mistake Myanmar learners really make (see below). `""` only when there is no real confusion |
 | `examples` | ≥ 2 sentences ✔, only words of the same HSK level or lower ✔ (`npm run check-vocab`) |
 
 Fields copied from the official list (`simplified`, `pinyin`, `english`…) and
@@ -33,6 +33,28 @@ So is `partOfSpeech`: it comes from the syllabus' own labels (动 名 形 量…
 uses in （…） go to `partOfSpeechMinor`). Write `partOfSpeech` by hand only for
 the words where the syllabus gives none — `npm run validate` tells you if a
 hand-written value disagrees with the syllabus.
+
+## memoryTip
+
+Keep it as rich as HSK 1: two or three sentences that give the child a scene
+to picture. Use the character's real parts (radicals such as 氵 ရေ, 扌 လက်,
+艹 အပင်, 饣 အစားအစာ) when you are sure of them, then build a short story on
+top: "饱 = 饣 + 包 — ဗိုက်ထဲကို အစားအစာတွေနဲ့ ထုပ်ထားသလို ပြည့်နေပြီ!". If a
+part is only a look-alike, say "…လို မြင်ရတယ်" or "ပုံဖော်ပါ" so it is clear
+it is a picture story, not etymology.
+
+## commonMistake
+
+Fill it whenever there is a real confusion, for example:
+
+- similar characters: 草/早, 查/茶, 变/遍, 饱/包
+- similar sounds or tones: 冰 bīng / 病 bìng, 室 shì / 是 shì
+- words that look alike in meaning: 矮/短 (ပု/တို), 帮助/帮忙, 不用/不要, 才/就
+- word order or grammar that differs from Myanmar: 把 and 被 need a result
+  after the verb, 搬家到… ✘ → 搬到… ✔, 比 never takes 很
+
+Show the wrong form with ✘ and the right one with ✔. Leave it `""` only for
+words with no confusion worth a sentence.
 
 ## pronunciationTip
 
@@ -83,6 +105,9 @@ Use these spellings consistently so the same sound always looks the same.
 | **ian** after b p m | ျန် (normal Myanmar stacks) | biān "ပျန်" |
 | **ian** after d t n l | **ိယန်** — never တျ ထျ ဒျ နျ ✔ | diàn "တိယန်", tiān "ထိယန်", nián "နိယန်" |
 | ian after j q x | ကျန် / ချန် / ရှန် | jiàn "ကျန်", qián "ချန်" |
+| zhi chi shi ri / zi ci si | ကျီ ချီ ရှီ ရီ / ဇ ဆ စ | zhǐ "ကျီ", rì "ရီ", zì "ဇ", cì "ဆ" |
+| üan (yuan, quan, xuan, juan) | ွမ် (like ယွမ် for 元) | yuǎn "ယွမ်", quán "ချွမ်" |
+| ün / iao after n l | ွင် / ိယော် | yùn "ယွင်", niǎo "နိယော်", tiáo "ထိယော်" |
 | er | အာရ် (+ curl note) | èr "အာရ်" |
 
 Avoid hints that spell a rude or silly Myanmar word: píng is written "ဖျင်", not "ဖင်".
