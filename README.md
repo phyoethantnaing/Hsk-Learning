@@ -46,6 +46,10 @@ src/                     the Astro site
 - **`reviewStatus`** is `draft` until a person has checked the Myanmar text; the site marks draft words with a “စစ်ဆေးဆဲ” badge.
 - **`needsReview: true`** marks entries whose *source data* is uncertain and must be checked against the printed syllabus (currently hsk4-0534 嗯 ǹg, where the PDF lost a glyph).
 
+### Writing content
+
+Follow [docs/content-guide.md](docs/content-guide.md): voice and style, what goes in each field, the pronunciation-tip format and the agreed Myanmar spellings for pinyin sounds.
+
 ### Reviewing a word
 
 1. Open the batch file in `data/words/hsk{level}/`.
