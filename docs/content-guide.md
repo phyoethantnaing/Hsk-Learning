@@ -67,7 +67,14 @@ Use these spellings consistently so the same sound always looks the same.
 | ei / ui | ေ / ွေ | bēi "ပေ", duì "တွေ" |
 | ou | ို | dōu "တို" |
 | an / ang | န် | bàn "ပန်", chàng "ချန်" |
-| ong | ုန် | dōng "တုန်" |
+| ong | ုန် | dōng "တုန်", gōng "ကုန်" |
+| e | ဲ (+ "between အ and အော" note) | gē "ကဲ", hē "ဟဲ", chē "ချဲ" |
+| en / eng | န် (+ "open the mouth less than an" note) | fēn "ဖန်", hěn "ဟန်" |
+| in / ing | င် | jīn "ကျင်", tīng "ထင်", bìng "ပင်" |
+| ie | ဲ | jiě "ကျဲ" |
+| iao | ော် (ကျော် ချော် ရှော်…) | jiǎo "ကျော်", jiào "ကျော်" |
+| iu | ို | jiǔ "ကျို" |
+| ü / üe | ွီ / ွဲ (+ "round the lips" note) | yǔ "ယွီ", xué "ရှွဲ", jué "ကျွဲ" |
 | uo | ွော | duō "တွော" |
 | **ian** after b p m | ျန် (normal Myanmar stacks) | biān "ပျန်" |
 | **ian** after d t n l | **ိယန်** — never တျ ထျ ဒျ နျ ✔ | diàn "တိယန်", tiān "ထိယန်", nián "နိယန်" |
