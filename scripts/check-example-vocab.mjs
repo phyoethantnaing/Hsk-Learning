@@ -8,12 +8,14 @@
 // How it works: each sentence is split into HSK words. Of all possible splits,
 // the one with the fewest too-high/unknown words wins (then the fewest words),
 // so "大学生活" is read as 大学 + 生活 rather than 大学生 + 活.
-// Proper names and other agreed exceptions go in data/example-vocab-allowlist.json.
+// Proper nouns in data/example-vocab-allowlist.json (缅甸, 仰光 …) are allowed
+// and reported as info, but a sentence may use at most one of them.
 // Exits with code 1 if anything is flagged.
 
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ALLOWLIST } from '../src/lib/allowlist.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const LEVELS = ['1', '2', '3', '4', '5', '6', '7-9'];
@@ -26,8 +28,7 @@ for (const level of LEVELS) {
     if (!dict.has(r.simplified)) dict.set(r.simplified, rank(level));
   }
 }
-const allowPath = join(ROOT, 'data/example-vocab-allowlist.json');
-const allow = new Set(existsSync(allowPath) ? JSON.parse(readFileSync(allowPath, 'utf8')).words : []);
+const allow = new Set(ALLOWLIST.map((e) => e.word));
 const MAX_LEN = Math.max(...[...dict.keys(), ...allow].map((w) => w.length));
 
 /** Split a run of Chinese characters into words, preferring words at or below `max` rank. */
@@ -70,25 +71,38 @@ function walk(dir) {
 const only = process.argv[2];
 let checked = 0;
 const flagged = [];
+const info = [];
 for (const file of walk(join(ROOT, 'data/words')).sort()) {
   for (const w of JSON.parse(readFileSync(file, 'utf8'))) {
     if (only && String(w.level) !== only) continue;
     const max = rank(w.level);
     (w.examples ?? []).forEach((ex, n) => {
       checked++;
+      const where = `${relative(ROOT, file)} ${w.id} ${w.simplified} examples[${n}] "${ex.zh}"`;
       const runs = ex.zh.match(/\p{Script=Han}+/gu) ?? [];
-      const bad = runs.flatMap((run) => segment(run, max)).filter((t) => t.bad);
+      const tokens = runs.flatMap((run) => segment(run, max));
+      const bad = tokens.filter((t) => t.bad);
+      const allowed = tokens.filter((t) => t.level === 0).map((t) => t.word);
       if (bad.length) {
         const list = bad.map((t) => `${t.word} (${t.level ? `HSK ${LEVELS[t.level - 1]}` : 'not in any HSK list'})`);
-        flagged.push(`${relative(ROOT, file)} ${w.id} ${w.simplified} examples[${n}] "${ex.zh}"\n      ${list.join(', ')}`);
+        flagged.push(`${where}\n      ${list.join(', ')}`);
+      }
+      if (allowed.length > 1) {
+        flagged.push(`${where}\n      uses ${allowed.length} allowlisted words (${allowed.join(', ')}); at most 1 is allowed`);
+      } else if (allowed.length === 1) {
+        info.push(`${where} uses allowlisted ${allowed[0]}`);
       }
     });
   }
 }
 
 console.log(`Checked ${checked} example sentence(s).`);
+if (info.length) {
+  console.log(`\n${info.length} sentence(s) use an allowlisted proper noun (OK):`);
+  for (const i of info) console.log(`  ℹ ${i}`);
+}
 if (flagged.length) {
-  console.log(`\n${flagged.length} sentence(s) use words above their level:`);
+  console.log(`\n${flagged.length} problem(s):`);
   for (const f of flagged) console.log(`  ✗ ${f}`);
   process.exit(1);
 }

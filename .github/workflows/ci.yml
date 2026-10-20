@@ -26,6 +26,10 @@ jobs:
 
       - run: npm ci
       - run: npm test
+      - name: Word files are in sync with data/raw
+        run: |
+          npm run sync-words
+          git diff --exit-code data/words || (echo "Run npm run sync-words and commit" && exit 1)
       - name: Validate word data
         run: npm run validate
       - name: Example sentences stay within their level

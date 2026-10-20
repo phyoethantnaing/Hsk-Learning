@@ -1,0 +1,55 @@
+---
+// One example sentence: Chinese, pinyin, Myanmar. If the sentence uses an
+// allowlisted proper noun (缅甸, 仰光 …), its gloss is shown underneath because
+// it is not an HSK word the learner has studied.
+import { allowlistedIn } from '../lib/allowlist.mjs';
+
+interface Props {
+  example: { zh: string; pinyin: string; my: string; audio: string | null };
+}
+
+const { example } = Astro.props;
+const extras = allowlistedIn(example.zh);
+---
+
+<div class="example">
+  <p class="zh" lang="zh-Hans">{example.zh}</p>
+  <p class="py">{example.pinyin}</p>
+  <p class="my">{example.my}</p>
+  {
+    extras.map((e) => (
+      <p class="gloss">
+        <span lang="zh-Hans">{e.word}</span> ({e.pinyin}) — {e.my} <span class="muted">(HSK စကားလုံး မဟုတ်ပါ)</span>
+      </p>
+    ))
+  }
+</div>
+
+<style>
+  .example {
+    border-left: 4px solid var(--accent-soft);
+    padding: 4px 0 4px 12px;
+    margin: 0 0 12px;
+  }
+
+  .example p {
+    margin: 0;
+  }
+
+  .zh {
+    font-size: 1.25rem;
+  }
+
+  .py {
+    color: var(--text-muted);
+  }
+
+  .gloss {
+    margin-top: 4px !important;
+    font-size: 0.875rem;
+    background: var(--surface-2);
+    border-radius: 8px;
+    padding: 2px 8px;
+    display: inline-block;
+  }
+</style>

@@ -17,6 +17,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "parse-pdfs": "python3 scripts/parse-pdfs.py",
+    "sync-words": "node scripts/sync-words.mjs",
     "validate": "node scripts/validate-data.mjs",
     "check-vocab": "node scripts/check-example-vocab.mjs",
     "test": "node --test \"scripts/**/*.test.mjs\""

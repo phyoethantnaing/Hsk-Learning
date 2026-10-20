@@ -8,10 +8,12 @@ interface Props {
   /** Page title (shown before the site name in the browser tab). */
   title?: string;
   description?: string;
+  /** Keep this page out of search engines (e.g. internal review pages). */
+  noindex?: boolean;
 }
 
 const SITE_NAME = 'HSK မြန်မာ';
-const { title, description = 'တရုတ်စာ HSK 3.0 စကားလုံးတွေကို မြန်မာလို လွယ်လွယ်ကူကူ ကိုယ်တိုင်လေ့လာနိုင်တဲ့ အခမဲ့ ဝက်ဘ်ဆိုက်' } = Astro.props;
+const { title, noindex = false, description = 'တရုတ်စာ HSK 3.0 စကားလုံးတွေကို မြန်မာလို လွယ်လွယ်ကူကူ ကိုယ်တိုင်လေ့လာနိုင်တဲ့ အခမဲ့ ဝက်ဘ်ဆိုက်' } = Astro.props;
 const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
 ---
 
@@ -22,6 +24,7 @@ const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#b3261e" />
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
