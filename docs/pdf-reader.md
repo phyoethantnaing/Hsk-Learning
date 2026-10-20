@@ -58,6 +58,8 @@ References: [GitHub file limits](https://docs.github.com/en/repositories/working
   approximately six million pixels. Previous-page resources are cleaned up.
   Rapid requests cancel old tasks, and generation tokens prevent stale commits.
   Range requests are enabled and automatic whole-document prefetch is disabled.
+  Control feedback paints before rendering resumes, and PDF.js receives text in
+  bounded 60-item stream batches, yielding between batches for input and paint.
 - Glass stays on the compact control layer. Quiet surfaces, Chinese gold details,
   red primary actions and existing light/dark themes preserve the site's identity.
   Original PDF page colors remain intact. Decorative highlight overlays never
@@ -68,7 +70,9 @@ References: [GitHub file limits](https://docs.github.com/en/repositories/working
 - New, per-document SHA-256-based storage keys keep highlights and reading position
   separate from `hsk-mm-progress-v1` and `hsk-mm-theme-v1`. Validated Unicode data,
   cross-tab refresh, failed writes, malformed storage and quota errors are handled.
-  A book has a 1,000-highlight limit; storage failures are visibly reported.
+  A book has a 1,000-highlight limit; each selection supports up to 4,000 characters
+  and 200 text segments. Larger selections are explained rather than truncated.
+  Storage failures are visibly reported.
 - There are no reader Download, Share, Print or Export controls and no Apple Pencil
   integration. Public PDF URLs and browser features remain available. Hiding UI
   controls is not access protection. Source copyrights and existing attribution
@@ -120,3 +124,43 @@ budgets and touch target dimensions. Optional local axe integration checks WCAG
   Older browsers without necessary PDF.js capabilities receive a retry/error state.
 - This is an accessible web recreation of material qualities, not native UIKit or
   SwiftUI materials. PDF.js and document loading add work only to reader routes.
+
+
+## Local results (2026-10-20)
+
+- Clean lockfile installation, data validation and all unit tests pass. All 909
+  example sentences pass the level vocabulary check. The parser reproduces all
+  11,000 source entries, and sync leaves educational files unchanged relative to main.
+- Integrated learning/reader regression: 88 cases passed; the expanded reader
+  regression (including selection limits) passed 20 cases. The final scheduling
+  refinement is covered by the complete 90-case CI suite before merge.
+- Production build: 528 static pages; approximately 646.5 MB, under the 1 GB limit.
+  All 23 hosted originals pass size/signature/hash/deduplication checks. The 16
+  Drive imports contain 2,661 pages in total; no document was recompressed.
+- Visual QA: 69 first/middle/last page samples, 40 responsive/theme layouts,
+  eight axe states; no runtime/resource errors, overflow, small-control findings,
+  canvas-budget failures or automated WCAG violations. Screenshots were inspected
+  in mobile/desktop light/dark appearances; a narrow label-wrap defect was fixed.
+
+### Render scheduling measurements
+
+`npm run profile:pdf` measures five coordinate taps (next, next, previous, zoom,
+fit) on a vocabulary PDF and an image-scanned textbook, at 390×844 with normal
+and 4× simulated CPU speed. The before/after builds were measured sequentially
+on the same host with no other browser tests running. Results below are maximum
+recorded Event Timing interaction durations from those small scripted samples,
+**not field INP**, physical-device measurements, or guaranteed frame rates.
+
+| CPU | Document | Before | After |
+|---|---|---:|---:|
+| Normal | HSK 1 vocabulary | 48 ms | 48 ms |
+| Normal | HSK 2 textbook scan | 96 ms | 48 ms |
+| 4× slowdown | HSK 1 vocabulary | 168 ms | 56 ms |
+| 4× slowdown | HSK 2 textbook scan | 304 ms | 56 ms |
+
+For the five interactions at 4× CPU, the sum of long-task time beyond 50 ms fell
+from 1,827 to 406 ms for vocabulary and 1,039 to 614 ms for the scan. Yielding can
+increase total page-render time slightly while keeping control feedback prompt.
+Image decoding still causes long tasks; they are not claimed to be eliminated.
+Observed layout shift remained approximately 0.055–0.064 in these lab runs.
+Raw measurements: `artifacts/pdf-reader/performance-controlled-{before,after}.json`.

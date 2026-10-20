@@ -29,7 +29,8 @@
     "check-pdfs": "node scripts/check-pdfs.mjs",
     "postbuild": "node scripts/check-pdfs.mjs",
     "audit:pdf": "node scripts/verify-pdf-ui.mjs",
-    "import-pdfs": "node scripts/import-pdfs.mjs"
+    "import-pdfs": "node scripts/import-pdfs.mjs",
+    "profile:pdf": "node scripts/profile-pdf.mjs"
   },
   "dependencies": {
     "astro": "7.3.5",

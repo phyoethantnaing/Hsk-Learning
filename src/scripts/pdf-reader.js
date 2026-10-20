@@ -221,6 +221,11 @@ async function startReader(root) {
     scroll.setAttribute("aria-busy", "true");
     error.hidden = true;
     status.textContent = `Loading page ${desired} of ${pageCount}…`;
+    // Let control feedback paint before cached PDF work resumes in microtasks.
+    await new Promise((resolve) =>
+      requestAnimationFrame(() => requestAnimationFrame(resolve)),
+    );
+    if (current !== token) return;
     try {
       const page = await pdf.getPage(desired);
       if (current !== token) return;
@@ -266,8 +271,30 @@ async function startReader(root) {
       paper.style.width = `${viewport.width}px`;
       paper.style.height = `${viewport.height}px`;
       paper.hidden = false;
+      // Bounded text batches give touch input and painting a turn between work.
+      // PDF.js accepts streamed content and preserves marked-content state.
+      let offset = 0,
+        canceled = false;
+      const textChunks = new ReadableStream({
+        async pull(controller) {
+          await new Promise((resolve) => setTimeout(resolve, 0));
+          if (canceled) return;
+          if (current !== token || offset >= content.items.length) {
+            controller.close();
+            return;
+          }
+          controller.enqueue({
+            ...content,
+            items: content.items.slice(offset, offset + 60),
+          });
+          offset += 60;
+        },
+        cancel() {
+          canceled = true;
+        },
+      });
       textTask = new runtime.TextLayer({
-        textContentSource: content,
+        textContentSource: textChunks,
         container: text,
         viewport,
       });
