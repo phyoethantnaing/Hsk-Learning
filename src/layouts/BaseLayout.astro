@@ -56,13 +56,8 @@ const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
     <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
-    <!-- Fonts: Google serves small unicode-range slices, so only the characters on the page are downloaded. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap"
-    />
+    <!-- Local open fonts avoid third-party font requests; retain OS fallbacks. -->
+    <link rel="stylesheet" href={url("/fonts/fonts.css")} />
   </head>
   <body>
     <a class="skip-link" href="#main">

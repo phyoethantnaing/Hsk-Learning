@@ -282,3 +282,33 @@ test("readable pages and navigation remain available without JavaScript", async 
   await expect(page.locator(".word-card")).toHaveCount(20);
   await context.close();
 });
+
+test("local Myanmar and Chinese fonts load without third-party requests", async ({
+  page,
+}) => {
+  const fontFailures = [];
+  page.on("requestfailed", (request) => fontFailures.push(request.url()));
+  await page.goto("hsk1/hsk1-0001/");
+  const families = await page.evaluate(async () => {
+    await Promise.all([
+      document.fonts.load('400 16px "HSK Myanmar"', "မြန်မာ"),
+      document.fonts.load('700 16px "HSK Myanmar"', "မြန်မာ"),
+      document.fonts.load('400 16px "HSK CJK SC"', "爱"),
+      document.fonts.load('400 16px "HSK CJK TC"', "愛"),
+    ]);
+    return [...document.fonts]
+      .filter((font) => font.status === "loaded")
+      .map((font) => font.family);
+  });
+  expect(families).toEqual(
+    expect.arrayContaining(["HSK Myanmar", "HSK CJK SC", "HSK CJK TC"]),
+  );
+  expect(fontFailures).toEqual([]);
+  expect(
+    await page.evaluate(() =>
+      performance
+        .getEntriesByType("resource")
+        .every((resource) => new URL(resource.name).origin === location.origin),
+    ),
+  ).toBe(true);
+});
