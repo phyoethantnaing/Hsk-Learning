@@ -83,6 +83,8 @@ if (!process.env.PDF_QA_SKIP_CATALOG)
       failures.push({ id: doc.id, error: e.message });
     }
   }
+// Start on the site origin even when the full catalog pass is skipped.
+await page.goto(new URL("library/", base).href);
 for (const theme of ["light", "dark"]) {
   await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
   await page.evaluate((t) => localStorage.setItem("hsk-mm-theme-v1", t), theme);
