@@ -81,6 +81,8 @@ Use these spellings consistently so the same sound always looks the same.
 | ian after j q x | ကျန် / ချန် / ရှန် | jiàn "ကျန်", qián "ချန်" |
 | er | အာရ် (+ curl note) | èr "အာရ်" |
 
+Avoid hints that spell a rude or silly Myanmar word: píng is written "ဖျင်", not "ဖင်".
+
 `ိယန်` is read as one quick beat: say "တိ" and slide straight into "ယန်".
 
 ## Examples
