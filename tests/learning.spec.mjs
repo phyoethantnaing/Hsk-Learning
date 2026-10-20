@@ -50,7 +50,7 @@ test("only published levels are linked", async ({ page }) => {
   await expect(page.locator(".levels a")).toHaveCount(1);
   await expect(page.locator(".levels a")).toHaveAttribute(
     "href",
-    /\/Hsk-Learning\/hsk1/,
+    "/Hsk-Learning/hsk1/",
   );
   await expect(page.locator(".levels .level:not(.ready)")).toHaveCount(6);
 });
