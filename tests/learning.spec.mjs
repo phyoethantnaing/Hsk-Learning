@@ -59,7 +59,7 @@ test("only published levels are linked", async ({ page }) => {
   for (const [i, key] of published.entries()) {
     await expect(links.nth(i)).toHaveAttribute(
       "href",
-      new RegExp(`/Hsk-Learning/hsk${key}/?$`),
+      `/Hsk-Learning/hsk${key}/`,
     );
   }
   await expect(page.locator(".levels .level:not(.ready)")).toHaveCount(

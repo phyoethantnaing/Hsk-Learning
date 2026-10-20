@@ -103,7 +103,7 @@ const READY = new Set(readyLevels().map((l) => l.key));
           <li>
             <Tag
               class:list={["card", "level", { ready }]}
-              href={ready ? url(level.slug) : undefined}
+              href={ready ? url(`${level.slug}/`) : undefined}
             >
               <div class="level-top">
                 <span class="level-number" lang="en">
