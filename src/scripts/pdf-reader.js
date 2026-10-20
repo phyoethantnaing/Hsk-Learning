@@ -395,8 +395,10 @@ async function startReader(root) {
         1,
         Math.min(
           pageCount,
-          Number(new URLSearchParams(location.hash.slice(1)).get("page")) ||
-            stored,
+          Math.trunc(
+            Number(new URLSearchParams(location.hash.slice(1)).get("page")) ||
+              stored,
+          ),
         ),
       );
       readSaved();

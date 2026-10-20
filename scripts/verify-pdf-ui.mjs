@@ -44,8 +44,10 @@ async function ready(number) {
 if (!process.env.PDF_QA_SKIP_CATALOG)
   for (const doc of READABLE_PDFS) {
     try {
+      const opening = performance.now();
       await page.goto(new URL(`reader/${doc.id}/#page=1`, base).href);
       await ready(1);
+      const openMs = performance.now() - opening;
       for (const number of [
         ...new Set([1, Math.ceil(doc.pages / 2), doc.pages]),
       ]) {
@@ -55,17 +57,17 @@ if (!process.env.PDF_QA_SKIP_CATALOG)
           await page.locator(".reader-go").click();
           await ready(number);
         }
-        const data = await page
-          .locator("[data-pdf-canvas]")
-          .evaluate((c) => ({
-            width: c.width,
-            height: c.height,
-            pixels: c.width * c.height,
-          }));
+        const data = await page.locator("[data-pdf-canvas]").evaluate((c) => ({
+          width: c.width,
+          height: c.height,
+          pixels: c.width * c.height,
+        }));
         samples.push({
           id: doc.id,
           page: number,
-          renderMs: Math.round(performance.now() - start),
+          renderMs: Math.round(
+            number === 1 ? openMs : performance.now() - start,
+          ),
           ...data,
         });
         if (data.pixels > 6050000)
