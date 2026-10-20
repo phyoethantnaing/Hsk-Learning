@@ -20,8 +20,10 @@ const TONE_MARKS = {
 const INITIALS = 'b p m f d t n l g k h z c s zh ch sh r j q x y w'.split(' ');
 const FINALS = ('a o e i u v ai ei ao ou an en ang eng ong ia ie iao iu ian in ' +
   'iang ing iong ua uo uai ui uan un uang ue ve van vn').split(' ');
+// Without an initial, only finals starting with a/o/e are written as they are
+// (an, ou, e…); i/u/ü-initial ones are spelled with y/w (yan, wu, yu).
 export const SYLLABLES = new Set([
-  ...FINALS,
+  ...FINALS.filter((f) => /^[aoe]/.test(f)),
   'er',
   ...INITIALS.flatMap((i) => FINALS.map((f) => i + f)),
   'm', 'n', 'ng', 'hm', 'hng',

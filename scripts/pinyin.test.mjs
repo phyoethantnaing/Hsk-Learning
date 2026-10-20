@@ -14,6 +14,13 @@ test('toNumbered', () => {
   assert.equal(toNumbered('ǹg'), 'ng4');
 });
 
+test('syllables never start with a bare i/u/ü', () => {
+  // These are written yan, wan, …, so "qùnián" is qù + nián, not qùn + ián.
+  assert.equal(toNumbered('qùnián'), 'qu4 nian2');
+  assert.equal(toNumbered('fànguǎn'), 'fan4 guan3');
+  assert.equal(toNumbered('bīnguǎn'), 'bin1 guan3');
+});
+
 test('tones', () => {
   assert.deepEqual(tones('ài'), [4]);
   assert.deepEqual(tones('māma'), [1, 5]);
