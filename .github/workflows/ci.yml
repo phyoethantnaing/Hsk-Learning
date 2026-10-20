@@ -36,3 +36,7 @@ jobs:
         run: npm run check-vocab
       - name: Build site
         run: npm run build
+      - name: Install browser for UI regression tests
+        run: npx playwright install --with-deps chromium
+      - name: Verify learning flows in desktop and mobile appearances
+        run: npm run test:ui

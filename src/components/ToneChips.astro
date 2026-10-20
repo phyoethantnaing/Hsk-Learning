@@ -1,8 +1,8 @@
 ---
 // One chip per syllable: the syllable in its tone colour, the tone name and how
 // to say it. Built from the pinyin, so the word data never repeats tone descriptions.
-import { syllables } from '../lib/pinyin.mjs';
-import { TONES } from '../lib/tones.mjs';
+import { syllables } from "../lib/pinyin.mjs";
+import { TONES } from "../lib/tones.mjs";
 
 interface Props {
   pinyin: string;
@@ -12,15 +12,13 @@ const parts = syllables(Astro.props.pinyin);
 ---
 
 <ul class="tone-chips" aria-label="အသံ (tone) များ">
-  {
-    parts.map((p) => (
-      <li class={`chip tone-bg${p.tone}`}>
-        <span class={`syl tone${p.tone}`}>{p.text}</span>
-        <span class="name">{TONES[p.tone].name}</span>
-        <span class="how">{TONES[p.tone].short}</span>
-      </li>
-    ))
-  }
+  {parts.map((p) => (
+    <li class={`chip tone-bg${p.tone}`}>
+      <span class={`syl tone${p.tone}`}>{p.text}</span>
+      <span class="name">{TONES[p.tone].name}</span>
+      <span class="how">{TONES[p.tone].short}</span>
+    </li>
+  ))}
 </ul>
 
 <style>
@@ -38,11 +36,12 @@ const parts = syllables(Astro.props.pinyin);
     flex-direction: column;
     align-items: center;
     min-width: 84px;
-    padding: 6px 10px;
+    padding: 12px 18px;
     border-radius: 12px;
     background: var(--surface-2);
-    border: 2px solid currentColor;
-    line-height: 1.5;
+    border: 1px solid var(--border);
+    border-top: 3px solid currentColor;
+    line-height: 1.9;
   }
 
   .syl {
@@ -60,9 +59,19 @@ const parts = syllables(Astro.props.pinyin);
     color: var(--text-muted);
   }
 
-  .tone-bg1 { border-color: var(--tone1); }
-  .tone-bg2 { border-color: var(--tone2); }
-  .tone-bg3 { border-color: var(--tone3); }
-  .tone-bg4 { border-color: var(--tone4); }
-  .tone-bg5 { border-color: var(--tone5); }
+  .tone-bg1 {
+    border-color: var(--tone1);
+  }
+  .tone-bg2 {
+    border-color: var(--tone2);
+  }
+  .tone-bg3 {
+    border-color: var(--tone3);
+  }
+  .tone-bg4 {
+    border-color: var(--tone4);
+  }
+  .tone-bg5 {
+    border-color: var(--tone5);
+  }
 </style>

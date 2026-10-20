@@ -6,9 +6,14 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<button type="button" class="btn learned-btn" data-learned-id={id} aria-pressed="false">
+<button
+  type="button"
+  class="btn learned-btn"
+  data-learned-id={id}
+  aria-pressed="false"
+>
   <span class="off">☐ ဒီစကားလုံး သိပြီ</span>
-  <span class="on">✅ သိပြီ (ပြန်ဖြုတ်ရန် နှိပ်ပါ)</span>
+  <span class="on">✓ သိပြီ (ပြန်ဖြုတ်ရန် နှိပ်ပါ)</span>
 </button>
 
 <style>
@@ -16,26 +21,28 @@ const { id } = Astro.props;
     display: none;
   }
 
-  .learned-btn[aria-pressed='true'] {
+  .learned-btn[aria-pressed="true"] {
     background: var(--accent-soft);
     border-color: var(--tone3);
   }
 
-  .learned-btn[aria-pressed='true'] .on {
+  .learned-btn[aria-pressed="true"] .on {
     display: inline;
   }
 
-  .learned-btn[aria-pressed='true'] .off {
+  .learned-btn[aria-pressed="true"] .off {
     display: none;
   }
 </style>
 
 <script>
-  import { isLearned, setLearned, onProgress } from '../scripts/progress.js';
+  import { isLearned, setLearned, onProgress } from "../scripts/progress.js";
 
-  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-learned-id]')) {
+  for (const btn of document.querySelectorAll<HTMLButtonElement>(
+    "[data-learned-id]",
+  )) {
     const id = btn.dataset.learnedId!;
-    onProgress(() => btn.setAttribute('aria-pressed', String(isLearned(id))));
-    btn.addEventListener('click', () => setLearned(id, !isLearned(id)));
+    onProgress(() => btn.setAttribute("aria-pressed", String(isLearned(id))));
+    btn.addEventListener("click", () => setLearned(id, !isLearned(id)));
   }
 </script>

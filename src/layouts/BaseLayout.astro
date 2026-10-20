@@ -1,19 +1,25 @@
 ---
-import '../styles/global.css';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import { url } from '../lib/site.mjs';
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { url } from "../lib/site.mjs";
 
 interface Props {
   /** Page title (shown before the site name in the browser tab). */
   title?: string;
+  reading?: boolean;
   description?: string;
   /** Keep this page out of search engines (e.g. internal review pages). */
   noindex?: boolean;
 }
 
-const SITE_NAME = 'HSK မြန်မာ';
-const { title, noindex = false, description = 'တရုတ်စာ HSK 3.0 စကားလုံးတွေကို မြန်မာလို လွယ်လွယ်ကူကူ ကိုယ်တိုင်လေ့လာနိုင်တဲ့ အခမဲ့ ဝက်ဘ်ဆိုက်' } = Astro.props;
+const SITE_NAME = "HSK မြန်မာ";
+const {
+  title,
+  reading = false,
+  noindex = false,
+  description = "တရုတ်စာ HSK 3.0 စကားလုံးတွေကို မြန်မာလို လွယ်လွယ်ကူကူ ကိုယ်တိုင်လေ့လာနိုင်တဲ့ အခမဲ့ ဝက်ဘ်ဆိုက်",
+} = Astro.props;
 const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
 ---
 
@@ -21,12 +27,33 @@ const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
 <html lang="my">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+      try {
+        const saved = localStorage.getItem("hsk-mm-theme-v1");
+        document.documentElement.dataset.theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+      } catch {
+        document.documentElement.dataset.theme = matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches
+          ? "dark"
+          : "light";
+      }
+    </script>
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
-    <meta name="theme-color" content="#b3261e" />
-    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    <meta name="theme-color" content="#f7f7f8" />
+    <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
 
     <!-- Fonts: Google serves small unicode-range slices, so only the characters on the page are downloaded. -->
@@ -38,33 +65,13 @@ const fullTitle = title ? `${title} · ${SITE_NAME}` : SITE_NAME;
     />
   </head>
   <body>
-    <a class="skip-link" href="#main">အဓိကအကြောင်းအရာသို့ ကျော်သွားရန်</a>
+    <a class="skip-link" href="#main">
+      အဓိကအကြောင်းအရာသို့ ကျော်သွားရန်
+    </a>
     <SiteHeader />
-    <main id="main" class="container">
+    <main id="main" class:list={["container", { reading }]}>
       <slot />
     </main>
     <SiteFooter />
   </body>
 </html>
-
-<style>
-  main {
-    padding-top: 20px;
-    padding-bottom: 40px;
-    min-height: 60vh;
-  }
-
-  .skip-link {
-    position: absolute;
-    left: 8px;
-    top: -100px;
-    background: var(--surface);
-    padding: 8px 12px;
-    border-radius: 8px;
-    z-index: 10;
-  }
-
-  .skip-link:focus {
-    top: 8px;
-  }
-</style>

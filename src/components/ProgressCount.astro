@@ -4,12 +4,23 @@ interface Props {
   ids: string[];
   label?: string;
 }
-const { ids, label = 'သိပြီ' } = Astro.props;
+const { ids, label = "သိပြီ" } = Astro.props;
 ---
 
-<div class="progress" data-progress-ids={ids.join(',')}>
-  <div class="progress-bar"><span></span></div>
-  <p class="progress-text muted">{label} <span class="count">0</span> / {ids.length}</p>
+<div class="progress" data-progress-ids={ids.join(",")}>
+  <div
+    class="progress-bar"
+    role="progressbar"
+    aria-label={label}
+    aria-valuemin="0"
+    aria-valuemax={ids.length}
+    aria-valuenow="0"
+  >
+    <span></span>
+  </div>
+  <p class="progress-text muted">
+    {label} <span class="count">0</span> / {ids.length}
+  </p>
 </div>
 
 <style>
@@ -20,14 +31,22 @@ const { ids, label = 'သိပြီ' } = Astro.props;
 </style>
 
 <script>
-  import { countLearned, onProgress } from '../scripts/progress.js';
+  import { countLearned, onProgress } from "../scripts/progress.js";
 
   onProgress(() => {
-    for (const el of document.querySelectorAll<HTMLElement>('[data-progress-ids]')) {
-      const ids = el.dataset.progressIds!.split(',').filter(Boolean);
+    for (const el of document.querySelectorAll<HTMLElement>(
+      "[data-progress-ids]",
+    )) {
+      const ids = el.dataset.progressIds!.split(",").filter(Boolean);
       const done = countLearned(ids);
-      el.querySelector('.count')!.textContent = String(done);
-      el.querySelector<HTMLElement>('.progress-bar > span')!.style.width = `${ids.length ? (done / ids.length) * 100 : 0}%`;
+      el.querySelector(".count")!.textContent = String(done);
+      el.querySelector(".progress-bar")!.setAttribute(
+        "aria-valuenow",
+        String(done),
+      );
+      el.dataset.complete = String(ids.length > 0 && done === ids.length);
+      el.querySelector<HTMLElement>(".progress-bar > span")!.style.width =
+        `${ids.length ? (done / ids.length) * 100 : 0}%`;
     }
   });
 </script>

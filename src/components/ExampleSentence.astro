@@ -2,8 +2,8 @@
 // One example sentence: Chinese, pinyin, Myanmar. If the sentence uses an
 // allowlisted proper noun (缅甸, 仰光 …), its gloss is shown underneath because
 // it is not an HSK word the learner has studied.
-import { allowlistedIn } from '../lib/allowlist.mjs';
-import SpeakButton from './SpeakButton.astro';
+import { allowlistedIn } from "../lib/allowlist.mjs";
+import SpeakButton from "./SpeakButton.astro";
 
 interface Props {
   example: { zh: string; pinyin: string; my: string; audio: string | null };
@@ -16,24 +16,31 @@ const extras = allowlistedIn(example.zh);
 <div class="example">
   <p class="zh">
     <span lang="zh-Hans">{example.zh}</span>
-    <SpeakButton text={example.zh} audio={example.audio} label="ဥပမာ စာကြောင်းကို နားထောင်ရန်" />
+    <SpeakButton
+      text={example.zh}
+      audio={example.audio}
+      label="ဥပမာ စာကြောင်းကို နားထောင်ရန်"
+    />
   </p>
-  <p class="py">{example.pinyin}</p>
+  <p class="py" lang="zh-Latn-pinyin">
+    {example.pinyin}
+  </p>
   <p class="my">{example.my}</p>
-  {
-    extras.map((e) => (
-      <p class="gloss">
-        <span lang="zh-Hans">{e.word}</span> ({e.pinyin}) — {e.my} <span class="muted">(HSK စကားလုံး မဟုတ်ပါ)</span>
-      </p>
-    ))
-  }
+  {extras.map((e) => (
+    <p class="gloss">
+      <span lang="zh-Hans">{e.word}</span> ({e.pinyin}) — {e.my}{" "}
+      <span class="muted">(HSK စကားလုံး မဟုတ်ပါ)</span>
+    </p>
+  ))}
 </div>
 
 <style>
   .example {
-    border-left: 4px solid var(--accent-soft);
-    padding: 4px 0 4px 12px;
-    margin: 0 0 12px;
+    border-left: 3px solid var(--accent);
+    background: var(--surface-2);
+    border-radius: 0 16px 16px 0;
+    padding: 18px 20px;
+    margin: 0 0 18px;
   }
 
   .example p {

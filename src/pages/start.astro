@@ -1,112 +1,212 @@
 ---
 // Beginner lessons: what pinyin is, the four tones + neutral tone, tone marks,
 // sounds Myanmar does not have, and a daily routine for using the site.
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SpeakButton from '../components/SpeakButton.astro';
-import { TONES, HINT_DISCLAIMER } from '../lib/tones.mjs';
-import { levelUrl } from '../lib/words.mjs';
+import PageIntro from "../components/PageIntro.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SpeakButton from "../components/SpeakButton.astro";
+import { TONES, HINT_DISCLAIMER } from "../lib/tones.mjs";
+import { levelUrl } from "../lib/words.mjs";
 
 // Pitch contours on the usual 1 (low) – 5 (high) scale.
-const CONTOUR = { 1: [5, 5], 2: [3, 5], 3: [2, 1, 4], 4: [5, 1], 5: [3] } as const;
+const CONTOUR = {
+  1: [5, 5],
+  2: [3, 5],
+  3: [2, 1, 4],
+  4: [5, 1],
+  5: [3],
+} as const;
 const y = (level: number) => 78 - level * 13;
 const path = (levels: readonly number[]) =>
   levels.length === 1
-    ? ''
-    : levels.map((l, i) => `${i ? 'L' : 'M'}${12 + (i * 96) / (levels.length - 1)} ${y(l)}`).join(' ');
+    ? ""
+    : levels
+        .map(
+          (l, i) =>
+            `${i ? "L" : "M"}${12 + (i * 96) / (levels.length - 1)} ${y(l)}`,
+        )
+        .join(" ");
 
 const EXAMPLES = [
-  { tone: 1, py: 'mā', zh: '妈', my: 'မေမေ' },
-  { tone: 2, py: 'má', zh: '麻', my: 'ထုံကျဉ်တယ်' },
-  { tone: 3, py: 'mǎ', zh: '马', my: 'မြင်း' },
-  { tone: 4, py: 'mà', zh: '骂', my: 'ဆူတယ်' },
-  { tone: 5, py: 'ma', zh: '吗', my: '…လား' },
+  { tone: 1, py: "mā", zh: "妈", my: "မေမေ" },
+  { tone: 2, py: "má", zh: "麻", my: "ထုံကျဉ်တယ်" },
+  { tone: 3, py: "mǎ", zh: "马", my: "မြင်း" },
+  { tone: 4, py: "mà", zh: "骂", my: "ဆူတယ်" },
+  { tone: 5, py: "ma", zh: "吗", my: "…လား" },
 ];
 ---
 
-<BaseLayout title="အစပြုရန်" description="Pinyin ဆိုတာ ဘာလဲ၊ တရုတ်စကားရဲ့ အသံ ၄ မျိုးကို ဘယ်လို ထွက်မလဲ — မြန်မာလို ရိုးရိုးရှင်းရှင်း ရှင်းပြထားပါတယ်။">
-  <h1>🌱 အစပြုရန်</h1>
-  <p>စကားလုံးတွေ မသင်ခင် ဒီစာမျက်နှာကို တစ်ခေါက်လောက် ဖတ်ထားပါ။ ၁၀ မိနစ်လောက်ပဲ ကြာပါတယ်။</p>
+<BaseLayout
+  reading
+  title="အစပြုရန်"
+  description="Pinyin ဆိုတာ ဘာလဲ၊ တရုတ်စကားရဲ့ အသံ ၄ မျိုးကို ဘယ်လို ထွက်မလဲ — မြန်မာလို ရိုးရိုးရှင်းရှင်း ရှင်းပြထားပါတယ်။"
+>
+  <PageIntro eyebrow="THE FOUNDATIONS" title="အစပြုရန်" />
+  <p>
+    စကားလုံးတွေ မသင်ခင် ဒီစာမျက်နှာကို တစ်ခေါက်လောက် ဖတ်ထားပါ။ ၁၀ မိနစ်လောက်ပဲ
+    ကြာပါတယ်။
+  </p>
 
   <section class="card">
     <h2>၁။ Pinyin ဆိုတာ ဘာလဲ?</h2>
-    <p>တရုတ်စာလုံး <span lang="zh-Hans" class="zh">爱</span> ကို ကြည့်ရုံနဲ့ ဘယ်လိုဖတ်ရမလဲ မသိနိုင်ပါဘူး — စာလုံးထဲမှာ အသံ မပါလို့ပါ။</p>
-    <p>အဲဒါကြောင့် အင်္ဂလိပ် အက္ခရာတွေနဲ့ အသံကို ရေးပြထားတာကို <strong>pinyin</strong> လို့ ခေါ်ပါတယ်: 爱 = <strong class="tone4">ài</strong>။</p>
-    <p>Pinyin က အင်္ဂလိပ်စာနဲ့ အက္ခရာ တူပေမဲ့ အသံထွက်ပုံ မတူတာတွေ ရှိပါတယ်။ ဒါကြောင့် 🔊 ခလုတ်ကို နှိပ်ပြီး အမြဲ နားထောင်ပါ။</p>
+    <p>
+      တရုတ်စာလုံး{" "}
+      <span lang="zh-Hans" class="zh">
+        爱
+      </span>{" "}
+      ကို ကြည့်ရုံနဲ့ ဘယ်လိုဖတ်ရမလဲ မသိနိုင်ပါဘူး — စာလုံးထဲမှာ အသံ မပါလို့ပါ။
+    </p>
+    <p>
+      အဲဒါကြောင့် အင်္ဂလိပ် အက္ခရာတွေနဲ့ အသံကို ရေးပြထားတာကို{" "}
+      <strong>pinyin</strong> လို့ ခေါ်ပါတယ်: 爱 ={" "}
+      <strong class="tone4">ài</strong>။
+    </p>
+    <p>
+      Pinyin က အင်္ဂလိပ်စာနဲ့ အက္ခရာ တူပေမဲ့ အသံထွက်ပုံ မတူတာတွေ ရှိပါတယ်။
+      ဒါကြောင့် 🔊 ခလုတ်ကို နှိပ်ပြီး အမြဲ နားထောင်ပါ။
+    </p>
   </section>
 
   <section class="card">
     <h2>၂။ အသံ ၄ မျိုးနဲ့ အသံပေါ့</h2>
-    <p>တရုတ်စကားမှာ တူညီတဲ့ အသံကို အနိမ့်အမြင့် မတူအောင် ပြောရင် အဓိပ္ပာယ် ပြောင်းသွားပါတယ်။ ဒါကို <strong>tone (အသံ)</strong> လို့ ခေါ်ပါတယ်။ ma ကို အသံ ၅ မျိုးနဲ့ နားထောင်ကြည့်ပါ:</p>
+    <p>
+      တရုတ်စကားမှာ တူညီတဲ့ အသံကို အနိမ့်အမြင့် မတူအောင် ပြောရင် အဓိပ္ပာယ်
+      ပြောင်းသွားပါတယ်။ ဒါကို <strong>tone (အသံ)</strong> လို့ ခေါ်ပါတယ်။ ma ကို
+      အသံ ၅ မျိုးနဲ့ နားထောင်ကြည့်ပါ:
+    </p>
     <ul class="tones">
-      {
-        EXAMPLES.map((ex) => {
-          const t = TONES[ex.tone as 1 | 2 | 3 | 4 | 5];
-          const levels = CONTOUR[ex.tone as 1 | 2 | 3 | 4 | 5];
-          return (
-            <li class={`tone-card tone${ex.tone}`}>
-              <svg viewBox="0 0 120 80" class="contour" role="img" aria-label={`${t.name} ရဲ့ အသံ အနိမ့်အမြင့် ပုံ`}>
-                {[1, 2, 3, 4, 5].map((l) => (
-                  <line x1="6" x2="114" y1={y(l)} y2={y(l)} class="grid-line" />
-                ))}
-                {levels.length > 1 ? (
-                  <path d={path(levels)} fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-                ) : (
-                  <circle cx="60" cy={y(levels[0])} r="7" fill="currentColor" />
-                )}
-              </svg>
-              <div class="tone-text">
-                <p class="tone-name">{t.name} <span class="mark">{ex.py}</span></p>
-                <p class="how">{t.how}</p>
-                <p class="ex">
-                  <span lang="zh-Hans" class="zh">{ex.zh}</span> {ex.my}
-                  <SpeakButton text={ex.zh} label={`${ex.py} ကို နားထောင်ရန်`} />
-                </p>
-              </div>
-            </li>
-          );
-        })
-      }
+      {EXAMPLES.map((ex) => {
+        const t = TONES[ex.tone as 1 | 2 | 3 | 4 | 5];
+        const levels = CONTOUR[ex.tone as 1 | 2 | 3 | 4 | 5];
+        return (
+          <li class={`tone-card tone${ex.tone}`}>
+            <svg
+              viewBox="0 0 120 80"
+              class="contour"
+              role="img"
+              aria-label={`${t.name} ရဲ့ အသံ အနိမ့်အမြင့် ပုံ`}
+            >
+              {[1, 2, 3, 4, 5].map((l) => (
+                <line x1="6" x2="114" y1={y(l)} y2={y(l)} class="grid-line" />
+              ))}
+              {levels.length > 1 ? (
+                <path
+                  d={path(levels)}
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              ) : (
+                <circle cx="60" cy={y(levels[0])} r="7" fill="currentColor" />
+              )}
+            </svg>
+            <div class="tone-text">
+              <p class="tone-name">
+                {t.name} <span class="mark">{ex.py}</span>
+              </p>
+              <p class="how">{t.how}</p>
+              <p class="ex">
+                <span lang="zh-Hans" class="zh">
+                  {ex.zh}
+                </span>{" "}
+                {ex.my}
+                <SpeakButton text={ex.zh} label={`${ex.py} ကို နားထောင်ရန်`} />
+              </p>
+            </div>
+          </li>
+        );
+      })}
     </ul>
-    <p class="muted small">ပုံထဲက မျဉ်းတွေက အသံ အနိမ့်အမြင့်ပါ — အပေါ်ဆုံးက အမြင့်ဆုံး၊ အောက်ဆုံးက အနိမ့်ဆုံး။</p>
+    <p class="muted small">
+      ပုံထဲက မျဉ်းတွေက အသံ အနိမ့်အမြင့်ပါ — အပေါ်ဆုံးက အမြင့်ဆုံး၊ အောက်ဆုံးက
+      အနိမ့်ဆုံး။
+    </p>
   </section>
 
   <section class="card">
     <h2>၃။ Tone အမှတ်အသားကို ဘယ်လို ဖတ်မလဲ</h2>
     <ul>
-      <li>အသံကို သရ (a e i o u ü) ပေါ်က အမှတ်အသားလေးက ပြပါတယ်: <span class="tone1">ā</span> <span class="tone2">á</span> <span class="tone3">ǎ</span> <span class="tone4">à</span>။</li>
-      <li>အမှတ်အသား မပါရင် အသံပေါ့ပါ: <span class="tone5">ma</span>။</li>
-      <li>တချို့ စာအုပ်တွေမှာ ဂဏန်းနဲ့ ရေးပါတယ်: ma1 ma2 ma3 ma4 ma5 (ဒါမှမဟုတ် ma)။ ဒီဆိုက်မှာ ရှာတဲ့အခါ ဂဏန်းနဲ့ ရိုက်ရှာလည်း ရပါတယ်။</li>
+      <li>
+        အသံကို သရ (a e i o u ü) ပေါ်က အမှတ်အသားလေးက ပြပါတယ်:{" "}
+        <span class="tone1">ā</span> <span class="tone2">á</span>{" "}
+        <span class="tone3">ǎ</span> <span class="tone4">à</span>။
+      </li>
+      <li>
+        အမှတ်အသား မပါရင် အသံပေါ့ပါ: <span class="tone5">ma</span>။
+      </li>
+      <li>
+        တချို့ စာအုပ်တွေမှာ ဂဏန်းနဲ့ ရေးပါတယ်: ma1 ma2 ma3 ma4 ma5 (ဒါမှမဟုတ်
+        ma)။ ဒီဆိုက်မှာ ရှာတဲ့အခါ ဂဏန်းနဲ့ ရိုက်ရှာလည်း ရပါတယ်။
+      </li>
       <li>
         ဒီဆိုက်မှာ pinyin ကို အသံအလိုက် အရောင်ခွဲ ပြထားပါတယ်:
-        <span class="tone1">အသံ ၁</span>၊ <span class="tone2">အသံ ၂</span>၊ <span class="tone3">အသံ ၃</span>၊ <span class="tone4">အသံ ၄</span>၊ <span class="tone5">အသံပေါ့</span>။
+        <span class="tone1">အသံ ၁</span>၊ <span class="tone2">အသံ ၂</span>၊{" "}
+        <span class="tone3">အသံ ၃</span>၊ <span class="tone4">အသံ ၄</span>၊{" "}
+        <span class="tone5">အသံပေါ့</span>။
       </li>
-      <li>အသံ ၃ နှစ်လုံး ဆက်လာရင် ရှေ့က အသံ ၃ က အသံ ၂ လို ပြောင်းသွားပါတယ်: 你好 nǐ hǎo → ní hǎo။</li>
+      <li>
+        အသံ ၃ နှစ်လုံး ဆက်လာရင် ရှေ့က အသံ ၃ က အသံ ၂ လို ပြောင်းသွားပါတယ်: 你好
+        nǐ hǎo → ní hǎo။
+      </li>
     </ul>
   </section>
 
   <section class="card">
     <h2>၄။ မြန်မာစကားမှာ မရှိတဲ့ အသံလေးတွေ</h2>
     <ul>
-      <li><strong>b d g</strong> — မြန်မာ "ဘ ဒ ဂ" ထက် "ပ တ က" နဲ့ ပိုနီးပါတယ် (လေ မထွက်ပါ)။ <strong>p t k</strong> က "ဖ ထ ခ" လို လေ ထွက်ပါတယ်။</li>
-      <li><strong>zh ch sh r</strong> — လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။</li>
-      <li><strong>j q x</strong> — "ကျ ချ ရှ" နဲ့ နီးပြီး လျှာ မကော့ပါ။</li>
-      <li><strong>z c s</strong> — z က "ဇ/စ" ကြား၊ c က လေထွက်တဲ့ "ဆ" (ts)၊ s က "စ"။</li>
-      <li><strong>ü</strong> — "အီ" လို့ ပြောရင်း နှုတ်ခမ်းကို လုံးလိုက်ပါ။</li>
-      <li><strong>f</strong> — အပေါ်သွားကို အောက်နှုတ်ခမ်းပေါ် တင်ပြီး လေမှုတ်ပါ။</li>
+      <li>
+        <strong>b d g</strong> — မြန်မာ "ဘ ဒ ဂ" ထက် "ပ တ က" နဲ့ ပိုနီးပါတယ် (လေ
+        မထွက်ပါ)။ <strong>p t k</strong> က "ဖ ထ ခ" လို လေ ထွက်ပါတယ်။
+      </li>
+      <li>
+        <strong>zh ch sh r</strong> — လျှာဖျားကို အပေါ်ကို ကော့ပြီး ပြောပါ။
+      </li>
+      <li>
+        <strong>j q x</strong> — "ကျ ချ ရှ" နဲ့ နီးပြီး လျှာ မကော့ပါ။
+      </li>
+      <li>
+        <strong>z c s</strong> — z က "ဇ/စ" ကြား၊ c က လေထွက်တဲ့ "ဆ" (ts)၊ s က
+        "စ"။
+      </li>
+      <li>
+        <strong>ü</strong> — "အီ" လို့ ပြောရင်း နှုတ်ခမ်းကို လုံးလိုက်ပါ။
+      </li>
+      <li>
+        <strong>f</strong> — အပေါ်သွားကို အောက်နှုတ်ခမ်းပေါ် တင်ပြီး လေမှုတ်ပါ။
+      </li>
     </ul>
     <p class="muted small">{HINT_DISCLAIMER}</p>
   </section>
 
   <section class="card">
     <h2>၅။ ဒီဆိုက်နဲ့ နေ့တိုင်း ဘယ်လို လေ့လာမလဲ</h2>
-    <p>တစ်နေ့ ၁၅ မိနစ်လောက်ပဲ — ဒါပေမဲ့ <strong>နေ့တိုင်း</strong> လုပ်ပါ။</p>
+    <p>
+      တစ်နေ့ ၁၅ မိနစ်လောက်ပဲ — ဒါပေမဲ့ <strong>နေ့တိုင်း</strong> လုပ်ပါ။
+    </p>
     <ol>
-      <li><strong>ပြန်လေ့ကျင့် (၅ မိနစ်)</strong> — မနေ့က သင်ခန်းစာကို 🃏 ကတ်ပြားနဲ့ ပြန်ကစားပါ။</li>
-      <li><strong>စကားလုံးသစ် (၇ မိနစ်)</strong> — စကားလုံး ၅ လုံးလောက်ကို တစ်လုံးချင်း ဖွင့်ပါ။ 🔊 နှိပ်ပြီး နားထောင်၊ ကျယ်ကျယ် လိုက်ပြော၊ ရှင်းပြချက်နဲ့ ဥပမာတွေကို ဖတ်ပါ။</li>
-      <li><strong>ရေးကြည့် (၃ မိနစ်)</strong> — စာရွက်ပေါ်မှာ စာလုံးကို ၃ ခါလောက် ရေးကြည့်ပါ။ ရပြီဆိုရင် "သိပြီ" ခလုတ်ကို နှိပ်ပါ။</li>
+      <li>
+        <strong>ပြန်လေ့ကျင့် (၅ မိနစ်)</strong> — မနေ့က သင်ခန်းစာကို 🃏
+        ကတ်ပြားနဲ့ ပြန်ကစားပါ။
+      </li>
+      <li>
+        <strong>စကားလုံးသစ် (၇ မိနစ်)</strong> — စကားလုံး ၅ လုံးလောက်ကို
+        တစ်လုံးချင်း ဖွင့်ပါ။ 🔊 နှိပ်ပြီး နားထောင်၊ ကျယ်ကျယ် လိုက်ပြော၊
+        ရှင်းပြချက်နဲ့ ဥပမာတွေကို ဖတ်ပါ။
+      </li>
+      <li>
+        <strong>ရေးကြည့် (၃ မိနစ်)</strong> — စာရွက်ပေါ်မှာ စာလုံးကို ၃ ခါလောက်
+        ရေးကြည့်ပါ။ ရပြီဆိုရင် "သိပြီ" ခလုတ်ကို နှိပ်ပါ။
+      </li>
     </ol>
-    <p>သင်ခန်းစာ တစ်ခု (စကားလုံး ၂၀) ကို လေးငါးရက်နဲ့ ပြီးရင် အရမ်းတော်ပါပြီ! 💪</p>
-    <p><a class="btn btn-primary" href={levelUrl('1')}>HSK 1 ကနေ စမယ် →</a></p>
+    <p>
+      သင်ခန်းစာ တစ်ခု (စကားလုံး ၂၀) ကို လေးငါးရက်နဲ့ ပြီးရင် အရမ်းတော်ပါပြီ! 💪
+    </p>
+    <p>
+      <a class="btn btn-primary" href={levelUrl("1")}>
+        HSK 1 ကနေ စမယ် →
+      </a>
+    </p>
   </section>
 </BaseLayout>
 
@@ -116,7 +216,7 @@ const EXAMPLES = [
   }
 
   section h2 {
-    font-size: 1.125rem;
+    font-size: 1.2rem;
   }
 
   .zh {
@@ -144,14 +244,16 @@ const EXAMPLES = [
   .tone-card {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 8px;
-    border: 2px solid currentColor;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-left: 3px solid currentColor;
+    background: var(--surface-2);
     border-radius: 12px;
   }
 
   .contour {
-    width: 96px;
+    width: clamp(64px, 14vw, 96px);
     flex: none;
   }
 
@@ -176,11 +278,21 @@ const EXAMPLES = [
     font-size: 1.25rem;
   }
 
-  .tone1 .mark { color: var(--tone1); }
-  .tone2 .mark { color: var(--tone2); }
-  .tone3 .mark { color: var(--tone3); }
-  .tone4 .mark { color: var(--tone4); }
-  .tone5 .mark { color: var(--tone5); }
+  .tone1 .mark {
+    color: var(--tone1);
+  }
+  .tone2 .mark {
+    color: var(--tone2);
+  }
+  .tone3 .mark {
+    color: var(--tone3);
+  }
+  .tone4 .mark {
+    color: var(--tone4);
+  }
+  .tone5 .mark {
+    color: var(--tone5);
+  }
 
   .how {
     font-size: 0.9375rem;

@@ -1,47 +1,115 @@
 ---
 // Client-side search by Chinese, pinyin (with or without tones/numbers), Myanmar or English.
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { url } from '../lib/site.mjs';
+import PageIntro from "../components/PageIntro.astro";
+import Icon from "../components/Icon.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { url } from "../lib/site.mjs";
 ---
 
 <BaseLayout title="ရှာရန်">
-  <h1>🔍 စကားလုံး ရှာရန်</h1>
-  <form class="search" role="search" onsubmit="return false">
-    <label for="q" class="visually-hidden">ရှာမယ့် စကားလုံး</label>
+  <PageIntro eyebrow="FIND YOUR NEXT WORD" title="စကားလုံး ရှာရန်" />
+  <form class="search glass" role="search" onsubmit="return false">
+    <Icon name="search" size={23} />
+    <label for="q" class="visually-hidden">
+      ရှာမယ့် စကားလုံး
+    </label>
     <input
       id="q"
       type="search"
+      aria-describedby="search-help"
       autocomplete="off"
       autocapitalize="off"
       spellcheck="false"
       placeholder="爱 / ài / ai4 / ချစ် / love"
-      data-index={url('/search-index.json')}
-      data-base={url('/')}
+      data-index={url("/search-index.json")}
+      data-base={url("/")}
     />
   </form>
-  <p class="muted small">
-    တရုတ်စာလုံး၊ pinyin (အသံအမှတ် ပါပါ မပါပါ — ai၊ ài၊ ai4)၊ မြန်မာ အဓိပ္ပာယ် ဒါမှမဟုတ် အင်္ဂလိပ်လို ရိုက်ရှာလို့ ရပါတယ်။
+  <p class="muted small" id="search-help">
+    တရုတ်စာလုံး၊ pinyin (အသံအမှတ် ပါပါ မပါပါ — ai၊ ài၊ ai4)၊ မြန်မာ အဓိပ္ပာယ်
+    ဒါမှမဟုတ် အင်္ဂလိပ်လို ရိုက်ရှာလို့ ရပါတယ်။
   </p>
   <p class="status muted" aria-live="polite" data-status></p>
-  <ul class="results" data-results></ul>
+  <div class="search-empty card" data-search-empty>
+    <Icon name="search" size={32} />
+    <p>တရုတ်စာလုံး၊ pinyin၊ မြန်မာ သို့မဟုတ် English</p>
+    <div class="suggestions">
+      <button class="btn" type="button" data-query="你好" lang="zh-Hans">
+        你好
+      </button>
+      <button class="btn" type="button" data-query="ai4" lang="en">
+        ai4
+      </button>
+      <button class="btn" type="button" data-query="ချစ်">
+        ချစ်
+      </button>
+    </div>
+  </div>
+  <ul class="results" data-results aria-label="ရှာဖွေမှု ရလဒ်များ"></ul>
+  <noscript>
+    <p class="card">
+      ရှာဖွေရန် JavaScript ဖွင့်ပေးပါ။{" "}
+      <a href={url("/hsk1/")}>HSK 1 စကားလုံးများ →</a>
+    </p>
+  </noscript>
 </BaseLayout>
 
 <style>
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 20px;
+    border-radius: 22px;
+    margin-bottom: 16px;
+    color: var(--accent);
+  }
+  .search:focus-within {
+    border-color: var(--accent);
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+  }
   .search input {
     width: 100%;
-    min-height: 52px;
-    padding: 8px 16px;
-    border: 2px solid var(--border);
-    border-radius: 999px;
-    background: var(--surface);
+    min-width: 0;
+    min-height: 48px;
+    padding: 6px 0;
+    border: 0;
+    background: transparent;
     color: var(--text);
     font: inherit;
-    font-size: 1.125rem;
+    font-size: clamp(0.9rem, 3vw, 1.125rem);
+    border-radius: 0;
   }
-
   .search input:focus {
-    border-color: var(--accent);
     outline: none;
+  }
+  .search-empty {
+    text-align: center;
+    padding: 54px 20px;
+    border-style: dashed;
+    box-shadow: none;
+    background: transparent;
+    color: var(--text-muted);
+  }
+  .search-empty > svg {
+    margin-bottom: 16px;
+  }
+  .search-empty p {
+    font-size: 0.9rem;
+  }
+  .suggestions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .suggestions .btn {
+    min-width: 66px;
+    font-weight: 400;
+  }
+  .status {
+    min-height: 30px;
   }
 
   .small {
@@ -53,20 +121,21 @@ import { url } from '../lib/site.mjs';
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 8px;
+    gap: 14px;
   }
 
   .results :global(a) {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 14px;
+    padding: 20px 24px;
     color: var(--text);
     text-decoration: none;
   }
 
   .results :global(.r-hanzi) {
     font-size: 1.75rem;
+    flex-shrink: 0;
     min-width: 3.5rem;
     text-align: center;
   }
@@ -74,7 +143,8 @@ import { url } from '../lib/site.mjs';
   .results :global(.r-text) {
     display: flex;
     flex-direction: column;
-    line-height: 1.6;
+    line-height: 1.95;
+    min-width: 0;
   }
 
   .results :global(.r-level) {
@@ -83,29 +153,66 @@ import { url } from '../lib/site.mjs';
     color: var(--text-muted);
     white-space: nowrap;
   }
+  @media (max-width: 480px) {
+    .results :global(a) {
+      padding: 16px 12px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .results :global(.r-text) {
+      flex: 1;
+      font-size: 0.9rem;
+    }
+  }
 </style>
 
 <script>
-  import { normalizeForSearch, toNumbered } from '../lib/pinyin.mjs';
+  import { normalizeForSearch, toNumbered } from "../lib/pinyin.mjs";
 
-  type Entry = { id: string; l: string; ll: string; s: string; t: string; p: string; n: string; k: string; m: string; e: string };
+  type Entry = {
+    id: string;
+    l: string;
+    ll: string;
+    s: string;
+    t: string;
+    p: string;
+    n: string;
+    k: string;
+    m: string;
+    e: string;
+  };
 
-  const input = document.querySelector<HTMLInputElement>('#q')!;
-  const results = document.querySelector<HTMLElement>('[data-results]')!;
-  const status = document.querySelector<HTMLElement>('[data-status]')!;
-  const base = input.dataset.base!.replace(/\/$/, '');
+  const input = document.querySelector<HTMLInputElement>("#q")!;
+  const results = document.querySelector<HTMLElement>("[data-results]")!;
+  const status = document.querySelector<HTMLElement>("[data-status]")!;
+  const base = input.dataset.base!.replace(/\/$/, "");
   let index: Entry[] | null = null;
+  let pending: Promise<Entry[] | null> | null = null;
+  let request = 0;
+  const empty = document.querySelector<HTMLElement>("[data-search-empty]")!;
 
-  async function load() {
+  async function load(): Promise<Entry[] | null> {
     if (index) return index;
-    status.textContent = 'ခဏစောင့်ပါ…';
-    try {
-      index = await (await fetch(input.dataset.index!)).json();
-    } catch {
-      status.textContent = 'ရှာဖို့ ဒေတာ မရသေးပါဘူး။ အင်တာနက် ချိတ်ပြီး ပြန်စမ်းကြည့်ပါ။';
-      index = null;
-    }
-    return index;
+    if (pending) return pending;
+    status.textContent = "ခဏစောင့်ပါ…";
+    results.setAttribute("aria-busy", "true");
+    pending = (async () => {
+      try {
+        const response = await fetch(input.dataset.index!);
+        if (!response.ok) throw new Error("Search index unavailable");
+        index = await response.json();
+        status.textContent = "";
+        return index;
+      } catch {
+        status.textContent =
+          "ရှာဖို့ ဒေတာ မရသေးပါဘူး။ အင်တာနက် ချိတ်ပြီး ပြန်စမ်းကြည့်ပါ။";
+        return null;
+      } finally {
+        pending = null;
+        results.setAttribute("aria-busy", "false");
+      }
+    })();
+    return pending;
   }
 
   const HAN = /\p{Script=Han}/u;
@@ -119,7 +226,7 @@ import { url } from '../lib/site.mjs';
       return 0;
     }
     if (MYANMAR.test(q)) {
-      const parts = e.m.split('၊').map((x) => x.trim());
+      const parts = e.m.split("၊").map((x) => x.trim());
       if (parts.includes(q)) return 90;
       return e.m.includes(q) ? 50 : 0;
     }
@@ -128,12 +235,14 @@ import { url } from '../lib/site.mjs';
     let s = 0;
     if (bare) {
       // Tone-exact match first: "ai4" or "ài" → "ai4".
-      let numbered = '';
+      let numbered = "";
       if (/[0-9]|[\u0100-\u01dc]/i.test(q)) {
         try {
-          numbered = /[0-9]/.test(q) ? lower.replace(/[\s']/g, '').replace(/u:/g, 'v').replace(/ü/g, 'v') : toNumbered(lower).replace(/\s/g, '');
+          numbered = /[0-9]/.test(q)
+            ? lower.replace(/[\s']/g, "").replace(/u:/g, "v").replace(/ü/g, "v")
+            : toNumbered(lower).replace(/\s/g, "");
         } catch {
-          numbered = '';
+          numbered = "";
         }
       }
       if (numbered && e.n === numbered) s = Math.max(s, 95);
@@ -142,7 +251,12 @@ import { url } from '../lib/site.mjs';
     }
     const english = e.e.toLowerCase();
     if (lower.length >= 3) {
-      if (new RegExp(`(^|[;\\s(])(to )?${lower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}($|[;\\s),])`).test(english)) s = Math.max(s, 70);
+      if (
+        new RegExp(
+          `(^|[;\\s(])(to )?${lower.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|[;\\s),])`,
+        ).test(english)
+      )
+        s = Math.max(s, 70);
       else if (english.includes(lower)) s = Math.max(s, 30);
     }
     return s;
@@ -151,26 +265,32 @@ import { url } from '../lib/site.mjs';
   function render(list: Entry[], q: string) {
     results.replaceChildren(
       ...list.map((e) => {
-        const li = document.createElement('li');
+        const li = document.createElement("li");
         li.innerHTML = `<a class="card" href="${base}/${e.l}/${e.id}/">
           <span class="r-hanzi" lang="zh-Hans"></span>
-          <span class="r-text"><span class="r-py"></span><span class="r-my"></span></span>
+          <span class="r-text"><span class="r-py" lang="zh-Latn-pinyin"></span><span class="r-my"></span></span>
           <span class="r-level"></span></a>`;
-        li.querySelector('.r-hanzi')!.textContent = e.s;
-        li.querySelector('.r-py')!.textContent = e.p;
-        li.querySelector('.r-my')!.textContent = e.m;
-        li.querySelector('.r-level')!.textContent = e.ll;
+        li.querySelector(".r-hanzi")!.textContent = e.s;
+        li.querySelector(".r-py")!.textContent = e.p;
+        li.querySelector(".r-my")!.textContent = e.m;
+        li.querySelector(".r-level")!.textContent = e.ll;
         return li;
       }),
     );
-    status.textContent = q ? (list.length ? '' : 'မတွေ့ပါဘူး။ တခြား စကားလုံးနဲ့ ရှာကြည့်ပါ။') : '';
+    empty.hidden = Boolean(q.trim());
+    status.textContent = q
+      ? list.length
+        ? `${list.length}${list.length === 50 ? "+" : ""} ခု တွေ့ပါတယ်`
+        : "မတွေ့ပါဘူး။ တခြား စကားလုံးနဲ့ ရှာကြည့်ပါ။"
+      : "";
   }
 
   async function search() {
+    const currentRequest = ++request;
     const q = input.value;
-    if (!q.trim()) return render([], '');
+    if (!q.trim()) return render([], "");
     const data = await load();
-    if (!data) return;
+    if (!data || currentRequest !== request) return;
     const found = data
       .map((e) => ({ e, s: score(e, q) }))
       .filter((x) => x.s > 0)
@@ -180,9 +300,18 @@ import { url } from '../lib/site.mjs';
     render(found, q);
   }
 
-  input.addEventListener('input', search);
-  input.addEventListener('focus', load, { once: true });
-  const initial = new URLSearchParams(location.search).get('q');
+  input.addEventListener("input", search);
+  for (const chip of document.querySelectorAll<HTMLButtonElement>(
+    "[data-query]",
+  )) {
+    chip.addEventListener("click", () => {
+      input.value = chip.dataset.query!;
+      input.focus();
+      search();
+    });
+  }
+  input.addEventListener("focus", load, { once: true });
+  const initial = new URLSearchParams(location.search).get("q");
   if (initial) {
     input.value = initial;
     search();
