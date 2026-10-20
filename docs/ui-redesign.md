@@ -27,8 +27,9 @@ components provide the reusable UI.
 applies the resolved appearance before rendering. System changes and changes in
 other tabs update the UI. Storage failures leave controls usable in memory.
 
-The existing `hsk-mm-progress-v1` key and progress storage implementation are
-unchanged. Vocabulary data, IDs, lesson grouping, routes, licenses, and the Pages
+The existing `hsk-mm-progress-v1` key and storage shape are retained. The quality
+recovery pass adds malformed-data validation, write-failure recovery and cross-tab
+refresh while preserving valid saved timestamps, counters and unknown fields. Vocabulary data, IDs, lesson grouping, routes, licenses, and the Pages
 deployment workflow are unchanged. Unpublished HSK levels stay unlinked.
 
 ## Verification
@@ -73,3 +74,6 @@ Python FontTools with Brotli (`fonttools[woff]`) and Debian `fonts-noto-core` / 
 asset-maintenance tools; the normal Node build does not require them. Missing
 subset characters still use the system CJK fallback. WOFF2 is supported across
 modern iOS, Android, and desktop browsers. Fonts load with `font-display: swap`.
+
+The subsequent component audit, navigation rebuild and behavioral fixes are
+documented in [quality-recovery.md](quality-recovery.md).
