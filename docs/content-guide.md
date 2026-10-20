@@ -58,19 +58,29 @@ words with no confusion worth a sentence.
 
 ## pronunciationTip
 
-The word page already shows, for every syllable, a **tone chip** (colour, tone
-name, how to say it) built from `tones`, and **once per page** the reminder that
-Myanmar letters are only a hint and to listen with 🔊. So the tip must not
-repeat either. ✔
+The word page already shows:
 
-Write:
+- for every syllable, a **tone chip** (colour, tone name, how to say it) built
+  from `tones`;
+- **once per page**, the reminder that Myanmar letters are only a hint and to
+  listen with 🔊;
+- small links such as "d အသံ ဘယ်လို ထွက်လဲ?" to the start page, one for each
+  hard sound in the word (b/d/g, p/t/k, z/c/s, zh/ch/sh/r, j/q/x, f, h, ü, e,
+  en/eng, er/儿, the i in zhi…si, the ိယန် glide). Each rule is explained once
+  there, in `src/lib/sounds.mjs`.
+
+So the tip repeats none of these. ✔ Write:
 
 1. The Myanmar-letter hint in quotes, syllables separated by spaces (or `-`
    before a neutral-tone syllable): `"ပေါ်-ဇ" လို့ ပြောပါ။` ✔ (a quoted hint is required)
-2. Then only what is special for this word, for example:
-   - tone change (不 bù → bú before tone 4; 一 yī → yí / yì)
-   - sounds Myanmar does not have: zh ch sh r (curled tongue), z c s, j q x, f, ü, e, er, the i in zhi/chi/shi/ri/zi/ci/si
-   - b d g are unaspirated (closer to ပ တ က than ဘ ဒ ဂ); p t k are aspirated (ဖ ထ ခ)
+2. At most **one** note about what is special in *this* word, for example a
+   tone change (不 bù → bú before tone 4; 一 yī → yí / yì; 3 + 3 → 2 + 3), a
+   word with several readings (得 dé / de / děi), or a light syllable that
+   learners stress. Leave it out when nothing is special.
+
+From HSK 3 on, `npm run validate` fails a tip with more than one note or with a
+basic sound rule in it. ✔ (HSK 1–2 tips were written before this rule and still
+include the basic notes.)
 
 Do not write the tone descriptions ("ဆူသလို အပေါ်ကနေ အောက်ကို…") or the
 "(မြန်မာစာလုံးက အကြမ်းဖျင်း အသံပဲနော်…)" disclaimer. ✔
