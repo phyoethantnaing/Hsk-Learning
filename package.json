@@ -30,7 +30,9 @@
     "postbuild": "node scripts/check-pdfs.mjs",
     "audit:pdf": "node scripts/verify-pdf-ui.mjs",
     "import-pdfs": "node scripts/import-pdfs.mjs",
-    "profile:pdf": "node scripts/profile-pdf.mjs"
+    "profile:pdf": "node scripts/profile-pdf.mjs",
+    "profile:reader-opening": "node scripts/profile-reader-opening.mjs",
+    "preview:pdf-profile": "node scripts/serve-pdf-profile.mjs"
   },
   "dependencies": {
     "astro": "7.3.5",
